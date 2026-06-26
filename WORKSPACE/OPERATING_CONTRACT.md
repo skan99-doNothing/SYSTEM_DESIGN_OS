@@ -112,6 +112,33 @@ This means: never say a fix is "done" based on a sandbox-only check. Say what wa
 
 It also means: when the real state of the user's project is unknown — has a prior prompt actually been run, what's currently in a file, whether something landed correctly — do not infer it from conversation history or assume it based on what "should" have happened by now. The user is the transport layer between Claude's chat and Claude Code; Claude has no direct line to the user's filesystem. The correct move is to write the question as a small Claude Code prompt (e.g. "run this and report back: does X file exist, what are its first 5 lines, does it contain Y") for the user to copy over and return the answer from — not to ask the user to manually check and describe it themselves, and not to proceed on an assumption.
 
+### CLAUDE.md hierarchy: scope narrowly, verify before creating upward
+
+Confirmed via CC-020: this project sits inside ~/Projects/, alongside
+13+ other unrelated projects, several with their own scoped CLAUDE.md
+files. No CLAUDE.md exists above SYSTEM_DESIGN_OS/ — and it should stay
+that way unless there's a specific, deliberate reason to share context
+across all projects in ~/Projects/.
+
+Do not create a CLAUDE.md at ~/Projects/ or ~/ casually. Claude Code
+auto-loads any CLAUDE.md found walking up the directory tree, so a file
+placed there would inject into every other project's sessions
+(trading-system/, playbook/, doNothing/, etc.), not just this one — a
+wide blast radius for what might be intended as a narrow change.
+Additionally, Anthropic's own documentation has an open, acknowledged
+ambiguity about precedence when parent and child CLAUDE.md files
+conflict (some guidance says child wins, official sources say parent
+read last may override, and Anthropic's own stated position is that
+Claude may pick arbitrarily) — so a conflict, if introduced, has no
+reliable resolution to depend on.
+
+If a parent-level CLAUDE.md is ever proposed or discovered later, before
+treating it as safe: read its full content, compare it against
+SYSTEM_DESIGN_OS/CLAUDE.md for topical overlap, and report any conflict
+explicitly rather than assuming the two coexist cleanly — the same
+read-only verification CC-020 performed, not a one-time fix but a
+standing check whenever the hierarchy changes.
+
 ## 7. Don't assume the topic — ask, then go fetch only what's relevant
 
 At the start of a session, Claude does not know which domain, decision, or thread the user wants to work on — even if a prior session ended mid-topic. Carrying that prior topic forward by default is itself an assumption, and a session may have nothing to do with it.
