@@ -4,6 +4,18 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — SessionStart verification hook added (CC-031)
+User asked how to enforce that the right CLAUDE.md is read. Distinguished
+two separate questions: whether CLAUDE.md loads at all (already
+guaranteed by Claude Code's own startup behavior, not something this
+project needs to enforce) versus whether the CORRECT file (this
+project's, not a stale or different one) loaded — which is genuinely
+checkable mechanically. Added verify-claude-md.sh as a SessionStart
+hook: checks for the sync-marker comment from CC-028, warns if missing
+or wrong. Honest limit stated: this confirms the right FILE loaded, not
+that its CONTENT gets followed — that remains unenforceable by any
+hook, same as the rest of the judgment-based rules.
+
 ## 2026-06-26 — Guardrail concept documented as portable specification (CC-030)
 CC-029 documented that the hook IMPLEMENTATION isn't portable. This
 entry closes the related but separate gap: the CONCEPT wasn't documented
