@@ -4,6 +4,16 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — Simplified using official CLAUDE_PROJECT_DIR, replacing CC-033's manual walk-up (CC-034)
+User correctly questioned CC-033's approach: re-deriving the project
+root via a manual walk-up loop duplicates logic Claude Code's own
+runtime already performs, and could diverge from it. Confirmed Claude
+Code exposes CLAUDE_PROJECT_DIR directly to all hooks. Replaced the
+walk-up loop with a direct read of this variable, with a fallback to
+$(pwd) and an explicit warning if unset (a documented edge case on some
+versions/platforms). Simpler and consistent with Claude Code's own
+mechanism rather than a second independent guess at it.
+
 ## 2026-06-26 — RULES.md populated with proven patterns (CC-032)
 RULES.md had been deliberately left empty pending a real domain to
 generalize from. User correctly questioned whether that was still right

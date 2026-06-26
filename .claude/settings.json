@@ -2,7 +2,7 @@
   "hooks": {
     "SessionStart": [
       {
-        "command": "bash .claude/hooks/verify-claude-md.sh"
+        "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/verify-claude-md.sh\""
       }
     ],
     "PreToolUse": [
