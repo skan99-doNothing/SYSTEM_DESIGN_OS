@@ -180,6 +180,14 @@ When a Claude Code prompt makes a real change (per Rule 8's decision-worthiness 
 
 This means every Claude Code prompt going forward has three required parts: (1) an ID, (2) the actual task, (3) an instruction to log the result — including the ID — before reporting back.
 
+After a CC-XXX prompt makes a structural change (new files, folder
+moves, renames — not minor text edits), commit it. State in the report-
+back whether a commit was made and its message, the same way the report
+states whether a log entry was written. A structural change that exists
+only as an uncommitted working-tree state is one accidental overwrite
+away from being lost — the same risk Rule 6 names for unverified claims,
+just applied to version history instead of claims.
+
 ---
 
 ## What this file is not

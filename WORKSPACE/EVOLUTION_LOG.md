@@ -4,6 +4,9 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — Git commit established as explicit step (CC-019)
+User asked whether git commits should be implicit. Checked actual repo state: repo already existed with 2 clean commits (9e0dac8 initial build, 3271488 .gitignore cleanup) — not a fresh init, no uncommitted changes. No new commit was needed. Added a clarification to Rule 9 of OPERATING_CONTRACT.md: structural changes from a CC-XXX prompt must be committed, and the report-back must state whether a commit happened, same as it states whether a log entry was written. OPERATING_CONTRACT.md is now 199 lines — one line under the 200-line hard limit from the claude-os-guide.pdf source.
+
 ## 2026-06-26 — SYSTEM_DESIGN_OS initialized; RAW/ and WORKSPACE/ folders created; SYSTEM.md drafted as master file
 
 ## 2026-06-26 — INGEST.md created in WORKSPACE/ after two overclaim failures: a page count stated without re-checking the file (said 9 pages, actual 21), and an image described from metadata without the content rendering — anti-overclaim rule added as core protocol rule
