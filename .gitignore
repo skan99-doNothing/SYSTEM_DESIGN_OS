@@ -1,3 +1,6 @@
+# Machine-specific Claude Code overrides
+.claude/settings.local.json
+
 # Source files — stored in Google Drive, not git
 WORKSPACE/SYSTEM_SOURCES/
 DOMAINS/*/RAW/

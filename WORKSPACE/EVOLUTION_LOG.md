@@ -4,6 +4,15 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — Vercel plugin scoped out of this project (CC-036)
+User confirmed the globally-enabled Vercel plugin (CC-024/CC-025 finding)
+belongs to a different project (playbook/), not SYSTEM_DESIGN_OS — it
+was costing ~3% of context budget every session for 22 unused skill
+descriptions, surfaced by /doctor's Skills warning. Disabled at the
+project level via .claude/settings.local.json rather than globally,
+since it may be needed elsewhere. settings.local.json is gitignored,
+not committed.
+
 ## 2026-06-26 — Fixed settings.json hooks schema error (CC-035)
 Claude Code's own settings error revealed every prior hook prompt
 (CC-027, CC-031, CC-034) had written an incorrect JSON shape —
