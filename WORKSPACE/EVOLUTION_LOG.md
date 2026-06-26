@@ -4,6 +4,20 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — First real guardrail (hook) added (CC-027)
+User correctly pushed back: rules alone (text the model reads) can be
+skipped under pressure to appear helpful, as already demonstrated with
+OPERATING_CONTRACT.md test failures. A hook is categorically different
+— a shell script that runs automatically and cannot be skipped by model
+judgment, per the claude-os-guide.pdf source's own framing: "CLAUDE.md
+is a suggestion. Hooks are law." Built ingest-guard.sh as the first real
+guardrail: blocks writes into DOMAINS/, SYSTEM_BRAIN/, or
+SYSTEM_SOURCES/ (excluding _TEMPLATE/) and surfaces a warning. Honest
+limitation: this hook can detect WHERE a write is happening but cannot
+verify a genuine routing decision occurred first — it's a blunt
+instrument, not a complete solution, and still relies on logging
+(Rule 8) as the after-the-fact check.
+
 ## 2026-06-26 — CC-023 Part B: self-discovery test passed, residual risk identified (CC-026)
 Ran the actual test of whether CLAUDE.md alone (no detailed prompt) gets
 Claude Code to correctly find and follow INGEST.md from a vague
