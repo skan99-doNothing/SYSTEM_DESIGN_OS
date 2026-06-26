@@ -4,6 +4,19 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — Correction to CC-019's log entry (CC-022)
+CC-019's log entry stated OPERATING_CONTRACT.md was "one line under the
+200-line hard limit from the claude-os-guide.pdf source." This was
+wrong: the 200-line guideline in that source applies specifically to
+CLAUDE.md (the file Claude Code auto-loads every session, where context
+budget is the stated reason for the limit). OPERATING_CONTRACT.md and
+the rest of WORKSPACE/ are not auto-loaded every session and have no
+applicable line limit. Caught by Claude Code's own report on CC-021,
+which flagged the misapplied limit before it could carry forward as an
+assumption. CC-019's original entry is left unedited, since it
+accurately records what was stated at that time — this entry corrects
+the claim going forward rather than rewriting history.
+
 ## 2026-06-26 — CLAUDE.md hierarchy rule added to Rule 6 (CC-021)
 CC-020 confirmed no parent CLAUDE.md exists above SYSTEM_DESIGN_OS/ —
 ~/Projects/ holds 13+ unrelated projects, several with their own scoped
