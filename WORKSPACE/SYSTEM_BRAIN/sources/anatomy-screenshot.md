@@ -1,0 +1,47 @@
+# INGEST RECORD: anatomy.jpg
+
+- **Status:** INGESTED
+- **Method:** Visual read (image rendered and viewed directly)
+- **Verification artifacts:**
+  1. Title text visible: "anatomy of a .claude/ folder" — large heading, "anatomy of a" in black, ".claude/" in orange
+  2. Subtitle: "EVERY FILE. WHAT IT DOES. WHY IT MATTERS."
+  3. Two-column layout: YOUR PROJECT/ (left) and WHAT IT DOES (right)
+  4. Account: akashafter2am (Instagram), 24 likes shown
+  5. Caption at bottom: "Most Claude Code users never open the .claude/. THEY HAVE A BETTER .CLAUDE/."
+- **What was actually gotten from this source:** Complete visual mapping of .claude/ folder structure with one-line "what it does" descriptions for every file and subfolder. More concise than the PDF guide — a reference card rather than a tutorial.
+- **What could NOT be verified or read:** Nothing — image rendered fully and all text is legible.
+- **Date:** 2026-06-26
+
+## Key content (verbatim from image)
+
+| File/Folder | What it does |
+|---|---|
+| CLAUDE.md | where Claude actually lives |
+| CLAUDE.local.md | your rules. keep it under 200 lines |
+| .gitignore | block *.local* and your secrets |
+| .mcp.json | MCP servers. root only, no nesting |
+| .claude/ | the brain. everything below loads |
+| skills/ | model-invokable. Claude picks them |
+| → ui-ux-pro-max/ | design intelligence on tap |
+| → remotion/ | edit videos programmatically |
+| agents/ | subagents. own context window |
+| → code-reviewer.md | senior reviewer for every PR |
+| → debugger.md | hunt the bug in isolation |
+| → security-auditor.md | scan for vulns and secrets |
+| commands/ | slash commands. legacy but live |
+| → commit.md | analyze diff, write commit msg |
+| hooks/ | shell scripts that always fire |
+| → format-on-save.sh | auto-format every file edit |
+| → block-dangerous-bash.sh | block rm -rf and force-push |
+| → desktop-notify.sh | ping me when Claude finishes |
+| plugins/ | first-class in 2026. /plugin:cmd |
+| → claude-finance/ | official Anthropic plugin. 6 agents |
+| rules/ | glob-scoped. loads on match |
+| → api.md | fires only inside src/api/** |
+| output-styles/ | response shape on tap |
+| → terse.md | code only. no prose |
+| statusline | bottom-bar. branch, model, tokens |
+| settings.json | permissions, model, hook registry |
+| settings.local.json | your machine. gitignored |
+
+**Relationship to claude-os-guide.pdf:** This image is the same author's condensed reference card. The PDF expands each item with code examples; this image gives the one-liner for each. Together they cover the same structure — the image is better for quick reference, the PDF for implementation detail.
