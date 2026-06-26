@@ -4,6 +4,17 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — Guardrail concept documented as portable specification (CC-030)
+CC-029 documented that the hook IMPLEMENTATION isn't portable. This
+entry closes the related but separate gap: the CONCEPT wasn't documented
+anywhere either, meaning a future agent (e.g. Kimi) would have no
+starting point to rebuild equivalent protection in its own mechanism.
+Added a tool-agnostic specification to FRAMEWORK.md: trigger condition,
+check performed, action on match/no-match, and the known geography-vs-
+process limitation — all stated independent of Claude Code's specific
+hook syntax, so the concept itself transfers even though the
+implementation doesn't.
+
 ## 2026-06-26 — Limitation recorded: .claude/ hooks are NOT agent-agnostic (CC-029)
 CC-028 made the entry-point instructions (CLAUDE.md/AGENTS.md) and all
 WORKSPACE/ content agent-agnostic, since they're plain text any agent

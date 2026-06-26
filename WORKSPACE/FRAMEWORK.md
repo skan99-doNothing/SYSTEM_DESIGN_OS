@@ -52,6 +52,46 @@ stage to be inserted later (e.g. 15_REVIEW/ between 10 and 20) without
 renumbering every existing folder. No workflow stages exist yet in any
 domain — this convention applies the first time one is created.
 
+### The guardrail concept (mechanism-agnostic)
+
+Rules (text in CLAUDE.md/AGENTS.md/OPERATING_CONTRACT.md/INGEST.md) can
+be skipped by an agent under pressure to appear helpful — documented
+directly in EVOLUTION_LOG.md (CC-026). A guardrail is a different kind
+of thing: an automatic check that runs independently of the agent's own
+judgment, at a specific trigger point, and can block an action outright
+rather than just advising against it.
+
+This system currently implements one guardrail concept — blocking a
+write into DOMAINS/, SYSTEM_BRAIN/, or SYSTEM_SOURCES/ unless that path
+is _TEMPLATE/ — using Claude Code's specific mechanism (a PreToolUse
+hook in .claude/hooks/, registered in .claude/settings.json). That
+implementation is NOT portable to other agents (confirmed: Codex uses
+an entirely different config format and hook trust model under
+.codex/).
+
+What IS portable is the concept itself, specified here independent of
+any tool's syntax, so it can be rebuilt under a different agent's own
+mechanism:
+
+- **Trigger condition:** before any file write completes
+- **Check performed:** does the target path fall under DOMAINS/,
+  SYSTEM_BRAIN/, or SYSTEM_SOURCES/, and is it NOT under a _TEMPLATE/
+  subpath?
+- **Action on match:** block the write; surface a message referencing
+  INGEST.md Step 0 (routing must be confirmed before writing here)
+- **Action on no match:** allow the write normally
+- **Known limitation, true regardless of implementation:** this checks
+  WHERE a write happens, not WHETHER a genuine routing decision occurred
+  first. It's a geography check, not a process check (CC-027's own
+  stated limitation) — true for any agent's version of this guardrail,
+  not just Claude Code's.
+
+A future implementation under a different agent (Kimi, Codex, or
+otherwise) should read this specification and build its own equivalent
+using whatever hook/automation mechanism that agent actually supports —
+not attempt to copy .claude/hooks/ingest-guard.sh directly, since the
+underlying execution model differs.
+
 ## 3. Markdown — as the portable knowledge artifact
 
 **Purpose:** solves transferability. The system must not be locked to any
