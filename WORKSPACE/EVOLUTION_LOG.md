@@ -4,6 +4,17 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — CLAUDE.md hierarchy rule added to Rule 6 (CC-021)
+CC-020 confirmed no parent CLAUDE.md exists above SYSTEM_DESIGN_OS/ —
+~/Projects/ holds 13+ unrelated projects, several with their own scoped
+CLAUDE.md, none shared. User asked whether a rule should govern where
+CLAUDE.md is created and whether conflict-checking should be standing
+practice. Added guidance to Rule 6: don't create a parent-level
+CLAUDE.md casually given the wide blast radius across unrelated projects
+and Anthropic's own unresolved precedence ambiguity on conflicts; if one
+is ever introduced, treat CC-020's verification method as the standing
+check, not a one-time fix. Committed as 442c30b.
+
 ## 2026-06-26 — Git commit established as explicit step (CC-019)
 User asked whether git commits should be implicit. Checked actual repo state: repo already existed with 2 clean commits (9e0dac8 initial build, 3271488 .gitignore cleanup) — not a fresh init, no uncommitted changes. No new commit was needed. Added a clarification to Rule 9 of OPERATING_CONTRACT.md: structural changes from a CC-XXX prompt must be committed, and the report-back must state whether a commit happened, same as it states whether a log entry was written. OPERATING_CONTRACT.md is now 199 lines — one line under the 200-line hard limit from the claude-os-guide.pdf source.
 
