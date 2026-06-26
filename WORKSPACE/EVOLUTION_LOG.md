@@ -4,6 +4,18 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — RULES.md populated with proven patterns (CC-032)
+RULES.md had been deliberately left empty pending a real domain to
+generalize from. User correctly questioned whether that was still right
+given two real patterns already exist: domain creation via
+DOMAINS/_TEMPLATE/ (proven in CC-014) and stage numbering in increments
+of 10 (specified in CC-023). Populated RULES.md with both, restating
+what's already real elsewhere rather than inventing new content, plus
+an explicit "what's still missing" section naming the patterns that
+genuinely don't have a real case yet (skill extraction, cross-domain
+brain references) — kept honestly absent rather than speculatively
+filled in.
+
 ## 2026-06-26 — SessionStart verification hook added (CC-031)
 User asked how to enforce that the right CLAUDE.md is read. Distinguished
 two separate questions: whether CLAUDE.md loads at all (already
