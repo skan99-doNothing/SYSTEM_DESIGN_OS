@@ -8,6 +8,7 @@ brains; workflows are structured as documented stages; everything that
 matters is plain markdown.
 
 ## Read these before doing substantive work
+- WORKSPACE/STATUS.md — current open items and what's verified. Read this first for current state before starting new work.
 - WORKSPACE/OPERATING_CONTRACT.md — how Claude and Claude Code behave.
   Contains a foundational division-of-labor statement plus 9 rules
   (verification before claims, one issue at a time, surfacing problems,

@@ -4,6 +4,12 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — STATUS.md created with refresh rule (CC-037+038)
+Created STATUS.md as a current-state-only snapshot, separate from
+EVOLUTION_LOG.md's history. Added a rule to Rule 8: STATUS.md refreshes
+at session-end, Claude Code's job without being asked. Pointed to from
+CLAUDE.md and AGENTS.md.
+
 ## 2026-06-26 — Vercel plugin scoped out of this project (CC-036)
 User confirmed the globally-enabled Vercel plugin (CC-024/CC-025 finding)
 belongs to a different project (playbook/), not SYSTEM_DESIGN_OS — it
