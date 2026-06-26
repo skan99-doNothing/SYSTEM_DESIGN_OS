@@ -4,6 +4,26 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — CC-023 Part B: self-discovery test passed, residual risk identified (CC-026)
+Ran the actual test of whether CLAUDE.md alone (no detailed prompt) gets
+Claude Code to correctly find and follow INGEST.md from a vague
+instruction ("I have a new file I want to ingest"). Result: passed —
+CLAUDE.md's trigger correctly led to reading INGEST.md, which correctly
+identified the request as the ambiguous case under Step 0 and would have
+asked for routing clarification rather than guessing. This confirms
+self-discovery works: a cold session can find and attempt to follow the
+protocol without being told where to look.
+
+Residual risk identified, not yet solved: Step 0 explicitly says "do not
+guess" when routing is ambiguous, but this instruction competes against
+a model's tendency to proceed helpfully rather than pause and ask. This
+is the same category of failure documented in OPERATING_CONTRACT.md's
+own test history (job-board/course scenarios) — a correctly written rule
+can still lose to model behavior under pressure. Not a flaw in INGEST.md
+specifically; a structural limit of rule-following systems generally.
+No fix applied yet — recorded as a known, named risk rather than left
+undiscovered.
+
 ## 2026-06-26 — Correction to CC-019's log entry (CC-022)
 CC-019's log entry stated OPERATING_CONTRACT.md was "one line under the
 200-line hard limit from the claude-os-guide.pdf source." This was
@@ -58,6 +78,12 @@ CC-011 and CC-012 (create WIKI/, rename to BRAIN/ with subdivisions) had never a
 
 ## 2026-06-26 — Structural correction: RAW/ and BRAIN/ moved out of top level (CC-013)
 User caught a real design flaw: a single shared RAW/ and BRAIN/ at the SYSTEM_DESIGN_OS root would mix sources and knowledge across unrelated business domains (trading, real estate, etc.), defeating the domain separation BRAIN/ was just subdivided for in CC-012. Corrected structure: each future domain gets its own RAW/ and BRAIN/ under SYSTEM_DESIGN_OS/DOMAINS/[domain-name]/ — fully self-contained, copyable, independently inspectable, consistent with ICM's horizontal-expansion principle from the original framework discussion. The four sources that were in the old top-level RAW/ (LLM_Wiki.md, ICM paper, claude-os-guide PDF, anatomy screenshot) are sources ABOUT the system's own design, not about any business domain — moved to WORKSPACE/SYSTEM_SOURCES/, which stays shared since the contract and protocols genuinely apply across all domains. No domain folder created yet, since none has been named. Note: BRAIN/ did not exist at top level in this environment — CC-012 had not been applied here; no removal was needed.
+
+## 2026-06-26 — ICM stage numbering convention added to FRAMEWORK.md (CC-023)
+Workflow stages use increments of 10 (10_RESEARCH/, 20_FILTER/, 30_WRITE/) rather than sequential integers, so a new stage can be inserted between two existing ones without renumbering every folder. No stages exist yet — the convention is written now so the first domain that creates a workflow doesn't have to invent it. Added as a subsection under ## 2. ICM in FRAMEWORK.md.
+
+## 2026-06-26 — Confirmed: MCP tool access is global, not project-scoped (CC-025)
+CC-024 confirmed neither Gmail/Drive/Calendar nor Vercel MCP access is defined in any SYSTEM_DESIGN_OS or ~/Projects-level .mcp.json — no such file exists. Gmail/Drive/Calendar come from Anthropic's own account-level OAuth integration (~/.claude/.credentials.json). Vercel comes from a globally-enabled Claude Code plugin (~/.claude/settings.json → enabledPlugins). Both are available in every Claude Code session on this machine, across all ~14 projects under ~/Projects/, not isolated to this project. This is expected, intentional platform behavior, not a defect — recorded here so a future session doesn't assume tool access is project-scoped when reasoning about what's available in a given domain. If a domain ever needs an isolated, project-specific MCP server, that would require creating SYSTEM_DESIGN_OS/.mcp.json explicitly.
 
 ## 2026-06-26 — FRAMEWORK.md filled with real content (CC-010)
 FRAMEWORK.md had remained a 17-line placeholder since the original SYSTEM.md split — a real gap, since the actual synthesis (what LLM Wiki, ICM, and markdown are each for, and why each was chosen over alternatives) had only ever existed in chat history. User explicitly asked where this reasoning should be recorded so it doesn't need re-explaining if momentum drifts in the future. CC-010 writes the real content: purpose, mechanism, and reasoning for each of the three pillars, plus how they connect, plus a cross-reference to the division-of-labor foundational statement in OPERATING_CONTRACT.md.
