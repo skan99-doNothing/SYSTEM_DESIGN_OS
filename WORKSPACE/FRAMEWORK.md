@@ -44,6 +44,14 @@ frameworks (LangChain, CrewAI) solve a coordination problem that doesn't
 exist for sequential, human-gated work, and require code changes to
 adjust. ICM doesn't.
 
+### Stage numbering convention
+
+Workflow stages use increments of 10 (10_RESEARCH/, 20_FILTER/,
+30_WRITE/), not sequential integers (01, 02, 03). This allows a new
+stage to be inserted later (e.g. 15_REVIEW/ between 10 and 20) without
+renumbering every existing folder. No workflow stages exist yet in any
+domain — this convention applies the first time one is created.
+
 ## 3. Markdown — as the portable knowledge artifact
 
 **Purpose:** solves transferability. The system must not be locked to any
