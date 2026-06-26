@@ -1,4 +1,4 @@
-<!-- This file is mirrored in AGENTS.md for agent-agnostic compatibility (e.g. Codex). Keep both in sync. -->
+<!-- This file mirrors CLAUDE.md for Claude Code compatibility. Keep both in sync. -->
 # CLAUDE.md
 
 ## Project

@@ -4,6 +4,16 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — AGENTS.md added, system now agent-agnostic at entry point (CC-028)
+CLAUDE.md alone meant only Claude Code would auto-discover this
+system's instructions — Codex reads AGENTS.md instead, a different
+filename by convention. Since the whole point of building on plain
+markdown was transferability across any agent, having a Claude-only
+entry point contradicted that goal. Added AGENTS.md as an exact mirror
+of CLAUDE.md's content, with a one-line note in each pointing to the
+other. Added a clarification to Rule 8: the two files must be kept in
+sync as a real maintenance obligation, not a one-time fix.
+
 ## 2026-06-26 — First real guardrail (hook) added (CC-027)
 User correctly pushed back: rules alone (text the model reads) can be
 skipped under pressure to appear helpful, as already demonstrated with

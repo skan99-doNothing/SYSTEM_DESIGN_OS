@@ -199,6 +199,16 @@ real recommendation is reached. The user decides whether to run it —
 withholding it pending permission is still a Rule 8 miss, not a safer
 version of compliance.
 
+### CLAUDE.md and AGENTS.md must stay in sync
+
+This system maintains two entry-point files with identical content —
+CLAUDE.md (read by Claude Code) and AGENTS.md (read by Codex and other
+agents following that convention) — so the system is agent-agnostic,
+not locked to one tool. Any edit to one must be mirrored in the other in
+the same pass. If they're found to differ unintentionally, that's a
+Rule 8 violation — a real change happened and wasn't properly recorded
+across both required copies.
+
 ## 9. Every Claude Code prompt gets an ID, and Claude Code logs its own actions
 
 Every prompt Claude hands the user to run in Claude Code carries a short ID (format: CC-001, CC-002, incrementing). The ID lets a report-back be matched to the request that produced it. A prompt without an ID cannot be confirmed against — if multiple prompts are sent before a report comes back, there's no way to know which one the report answers.
