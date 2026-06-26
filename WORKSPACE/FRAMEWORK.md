@@ -92,6 +92,37 @@ using whatever hook/automation mechanism that agent actually supports —
 not attempt to copy .claude/hooks/ingest-guard.sh directly, since the
 underlying execution model differs.
 
+### The session-close concept (mechanism-agnostic)
+
+The obligation itself — refresh STATUS.md, confirm EVOLUTION_LOG.md is
+current, check for unverified claims, commit everything — is documented
+as a portable rule in OPERATING_CONTRACT.md Rule 8. That obligation
+applies regardless of which agent or tool is running this system.
+
+What does NOT transfer is the specific invocation mechanism currently
+built: a Claude Code skill (.claude/skills/chalo/SKILL.md), invoked by
+the trigger word "chalo." Skills are a Claude-Code-specific feature — a
+different agent would need its own equivalent mechanism, since the
+.claude/skills/ folder format isn't read by other tools.
+
+The portable specification, independent of any tool's skill syntax:
+
+- **Trigger:** an explicit user signal that a session is ending — not
+  automatic detection, since no mechanism can reliably detect "the
+  user is about to stop talking."
+- **Sequence on trigger:** review session → confirm/backfill the
+  chronological log → rewrite the snapshot's verified/open sections →
+  flag any unverified claims found → commit everything in one pass →
+  report a short honest summary back to the user.
+- **Known limitation, true regardless of implementation:** this only
+  runs if the user remembers to invoke it. If a session ends without
+  that, the snapshot goes stale until the next session catches the
+  drift.
+
+A future implementation under a different agent should read this
+specification and build the trigger + sequence in that agent's own
+mechanism — not attempt to copy .claude/skills/chalo/ directly.
+
 ## 3. Markdown — as the portable knowledge artifact
 
 **Purpose:** solves transferability. The system must not be locked to any

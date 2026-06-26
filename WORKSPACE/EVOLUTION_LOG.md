@@ -4,6 +4,13 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — Session-close concept documented as portable specification (CC-043)
+Following CC-030's pattern: chalo's obligation already lives portably
+in OPERATING_CONTRACT.md Rule 8, but its implementation
+(.claude/skills/chalo/) is Claude-Code-specific. Added a
+mechanism-agnostic specification to FRAMEWORK.md so a future agent has
+a real blueprint to rebuild this behavior.
+
 ## 2026-06-26 — STATUS.md created with refresh rule (CC-037+038)
 Created STATUS.md as a current-state-only snapshot, separate from
 EVOLUTION_LOG.md's history. Added a rule to Rule 8: STATUS.md refreshes
