@@ -2,13 +2,23 @@
   "hooks": {
     "SessionStart": [
       {
-        "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/verify-claude-md.sh\""
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/verify-claude-md.sh\""
+          }
+        ]
       }
     ],
     "PreToolUse": [
       {
         "matcher": "Write|Edit",
-        "command": "bash .claude/hooks/ingest-guard.sh"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/ingest-guard.sh"
+          }
+        ]
       }
     ]
   }

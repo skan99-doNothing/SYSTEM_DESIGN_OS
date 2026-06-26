@@ -4,6 +4,18 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — Fixed settings.json hooks schema error (CC-035)
+Claude Code's own settings error revealed every prior hook prompt
+(CC-027, CC-031, CC-034) had written an incorrect JSON shape —
+{"matcher": ..., "command": ...} directly, when the actual schema
+requires the command nested inside a "hooks" array per matcher entry.
+This was confirmed correct in earlier research pulled for CC-027 but
+not applied consistently when writing the actual prompts — a real
+process failure, caught only because Claude Code's settings validator
+surfaced the error directly rather than silently failing. Rewrote
+settings.json with the correct nested schema, validated as syntactically
+correct JSON before committing.
+
 ## 2026-06-26 — Simplified using official CLAUDE_PROJECT_DIR, replacing CC-033's manual walk-up (CC-034)
 User correctly questioned CC-033's approach: re-deriving the project
 root via a manual walk-up loop duplicates logic Claude Code's own
