@@ -4,6 +4,27 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-26 — Limitation recorded: .claude/ hooks are NOT agent-agnostic (CC-029)
+CC-028 made the entry-point instructions (CLAUDE.md/AGENTS.md) and all
+WORKSPACE/ content agent-agnostic, since they're plain text any agent
+can read. The .claude/ folder (settings.json, hooks/ingest-guard.sh) is
+different in kind, not just in name — it's executable configuration
+specific to Claude Code's runtime (hook trigger syntax, matcher format,
+settings schema). Renaming the folder would not make it portable, since
+the content itself only runs under Claude Code. Confirmed against
+Codex's actual equivalent (.codex/config.toml, separate hook/skill
+mechanisms entirely) — there is no shared format to adopt here.
+
+Honest current state: the mechanical guardrail built in CC-027
+(ingest-guard.sh) only protects sessions running under Claude Code. A
+session using Codex or another agent on this same project would have
+no equivalent mechanical block — only the text-based rules in
+WORKSPACE/, which carry the same risk already documented in CC-026 (a
+rule can be skipped under pressure to appear helpful; a hook cannot).
+If this system is ever used with a different agent, the guardrail layer
+specifically would need to be rebuilt for that agent's own mechanism —
+not just copied or renamed.
+
 ## 2026-06-26 — AGENTS.md added, system now agent-agnostic at entry point (CC-028)
 CLAUDE.md alone meant only Claude Code would auto-discover this
 system's instructions — Codex reads AGENTS.md instead, a different
