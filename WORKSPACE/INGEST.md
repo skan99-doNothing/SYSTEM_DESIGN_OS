@@ -129,6 +129,18 @@ trustworthy as ground truth — exactly the failure this protocol exists
 to prevent, just at the level of the brain instead of the level of a
 single claim.
 
+### Required sub-check before Step 6 is complete: source count in overview.md
+
+After reconciling, count the real number of files in the relevant
+brain's sources/ folder and compare against the source count stated
+in that brain's context/overview.md header line. If they don't match,
+update overview.md's header count in the same pass — this is
+MECHANICAL (a verifiable count), not something to defer to a future
+audit pass. This check exists because it happened once already (see
+EVOLUTION_LOG.md, CC-107/CC-108) and the failure mode is
+deterministic, not occasional: every source added without this check
+will produce the same staleness, every time, not just sometimes.
+
 ### Promotion from conversational.md to overview.md follows the same logic
 
 conversational.md entries are a kind of source too — sourced from

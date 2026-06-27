@@ -24,7 +24,17 @@ Compare each file's own stated rule to its actual content and git
 history. Flag any file whose own stated rule isn't being followed
 (this is what would have caught REASONING.md's staleness).
 
-### 1a. Check ARTIFACTS/ against README.md for meaningful divergence
+### 1a. Check each brain's overview.md source count against its real sources/ file count
+
+For SYSTEM_BRAIN/ and any active domain's BRAIN/: count the actual
+files in sources/ and compare against the number stated in that
+brain's context/overview.md header. A mismatch is MECHANICAL — fix
+the count in the same pass, not deferred. This is a known,
+deterministic staleness pattern (see INGEST.md Step 6 sub-check,
+EVOLUTION_LOG.md CC-107/CC-108): every source addition without a
+count update produces the same staleness, every time.
+
+### 1b. Check ARTIFACTS/ against README.md for meaningful divergence
 Read ARTIFACTS/index.md's description of each artifact. Compare
 against README.md's CURRENT structure (section count, skills listed,
 hooks listed). If README.md has changed in a way that would make an
