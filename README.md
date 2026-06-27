@@ -128,12 +128,15 @@ SYSTEM_DESIGN_OS/
   being proven, not designed speculatively in advance. Currently
   holds: the exact procedure for turning DOMAINS/_TEMPLATE/ into a
   real, working domain; the increments-of-10 numbering convention for
-  workflow stage folders; and a concrete, sourced threshold (roughly
+  workflow stage folders; a concrete, sourced threshold (roughly
   50-100 files in any one brain, or retrieval genuinely feeling slow)
-  for when plain index-file navigation should be reconsidered in
-  favor of something like Obsidian's link graph or a vector index —
-  explicitly not adopted now, because the system is nowhere near that
-  scale yet.
+  for when plain index-file navigation should be reconsidered; and a
+  domain graduation rule — when a domain is ready to be sold or
+  handed off independently, it gets copied out of DOMAINS/ into its
+  own brand-new git repository (a deliberate one-way split, not a
+  synced submodule), so ownership isolation is preserved without
+  exposing other domains' history. Not built yet; documented so the
+  decision exists before it's needed under pressure.
 
 - **PATTERNS.md** — the system's record of its own recurring mistakes.
   A failure only earns an entry here after it's been confirmed

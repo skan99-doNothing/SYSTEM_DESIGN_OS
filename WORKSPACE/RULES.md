@@ -55,6 +55,36 @@ files, or retrieval genuinely feeling slow in practice — not a
 calendar schedule. A future audit check could eventually count files
 per brain mechanically rather than requiring manual judgment.
 
+## Domain graduation — when a domain needs its own git repository
+
+Knowledge isolation (separate RAW/ and BRAIN/ per domain, enforced by
+ingest-guard.sh) is NOT the same as ownership isolation. A domain
+living as a subfolder inside SYSTEM_DESIGN_OS/'s single git
+repository cannot be handed off, sold, or operated independently
+without either losing its commit history or exposing every other
+domain's history along with it.
+
+**This is not solved today, and should not be built before it's
+needed** — that would be premature infrastructure for a domain that
+doesn't exist yet. This section exists so the decision is documented
+in advance, not discovered under pressure when a domain is actually
+ready to be separated.
+
+**When a domain reaches this point** (real revenue, a buyer or
+operator lined up, genuinely ready to stand alone): copy that
+domain's folder out of DOMAINS/ into its own, brand-new git
+repository. It inherits OPERATING_CONTRACT.md, INGEST.md, and the
+relevant skills/hooks as a one-time copy at the moment of separation
+— from then on, it evolves independently, and changes to the parent
+SYSTEM_DESIGN_OS/ no longer automatically apply to it. This is a
+deliberate, one-way split, not a synced submodule relationship, to
+avoid the complexity of keeping two repos' shared rules in lockstep.
+
+**What stays shared, always:** SYSTEM_DESIGN_OS/ itself remains the
+parent scaffold that future domains start from — DOMAINS/_TEMPLATE/
+keeps producing new domains the same way, regardless of how many
+prior domains have graduated out.
+
 ## What's still missing here
 
 Patterns for: when to extract a repeated workflow into a Claude Code
