@@ -221,6 +221,18 @@ A future implementation under a different agent should build an
 equivalent session-close check using the above trigger and precondition,
 not by copying the Claude Code skill directly.
 
+### The transmission-verification concept (mechanism-agnostic)
+
+A prompt being correctly written is not evidence it was executed — it
+has to cross from chat into the tool that runs it, and that crossing
+can silently fail. The portable practice: before relying on any prior
+prompt's output, verify the artifact exists where it should and a real
+commit corresponds to it, rather than trusting that a well-formed
+prompt implies a completed action. This applies regardless of which
+chat interface or coding tool is involved — the gap is structural
+(two separate systems, a human as the only bridge between them), not
+specific to Claude Code.
+
 ## 3. Markdown — as the portable knowledge artifact
 
 **Purpose:** solves transferability. The system must not be locked to any

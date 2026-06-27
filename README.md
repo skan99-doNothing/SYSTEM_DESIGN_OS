@@ -134,12 +134,14 @@ SYSTEM_DESIGN_OS/
 
 - **PATTERNS.md** — the system's record of its own recurring mistakes.
   A failure only earns an entry here after it's been confirmed
-  happening at least twice. As of this writing it holds two: known
+  happening at least twice. As of this writing it holds three: known
   principles not being self-applied to new work (caught three times
-  across this session before being named explicitly), and a fix
-  declared clean immediately after landing, without independent
-  verification (caught twice). Each entry states its standing
-  countermeasure. audit reads this file first, every run, before its
+  before being named explicitly); a fix declared clean immediately
+  after landing, without independent verification (caught twice); and
+  a fully correct prompt written in chat that never crossed into the
+  tool that executes it (confirmed twice — the same prompt drafted and
+  failing to transmit on two separate occasions). Each entry states
+  its standing countermeasure. audit reads this file first, every run, before its
   own checks — this is the literal mechanism that makes the system's
   learning durable rather than something that has to be re-explained
   in conversation every time.

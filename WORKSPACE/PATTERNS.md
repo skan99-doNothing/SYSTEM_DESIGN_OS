@@ -59,6 +59,33 @@ applied and what angle was used.
 
 ---
 
+## P003 — A fully correct prompt drafted in chat that never reaches Claude Code
+
+**Instances:**
+- CC-087 (first occurrence): the update-readme skill spec was complete
+  and correct, written in chat, but never transmitted into a Claude Code
+  session — confirmed via CC-088's read-only check finding nothing on
+  disk
+- CC-087 (second occurrence): the same gap recurred at a chalo session
+  close before being caught and finally transmitted successfully
+
+**Pattern shape:** The content was never wrong — it simply never
+crossed from one side of the human-as-transport-layer boundary to the
+other. Chat and Claude Code are two separate systems with a human as
+the only bridge; a well-formed prompt in chat implies nothing about
+execution in Claude Code.
+
+**Countermeasure:** Before treating any CC-XXX prompt as "done" or
+building on top of it, verify it was actually transmitted AND executed
+— confirm the artifact exists on disk and a real commit corresponds to
+it, not just that a well-formed prompt was produced at some point. The
+check CC-088 used is the standing template: read the expected artifact
+path and confirm a commit exists for it.
+
+**Current status:** Two confirmed instances. Pattern is active.
+
+---
+
 ## Open question: what this can and can't catch
 
 Both patterns above were identified by the user, not by the system
@@ -77,4 +104,4 @@ looking at the output with genuine skepticism.
 ## Last updated
 
 2026-06-27 — initial build with P001 (3 instances) and P002
-(2 instances) (CC-079)
+(2 instances) (CC-079); P003 added (2 instances) (CC-089)
