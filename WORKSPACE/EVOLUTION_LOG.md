@@ -423,6 +423,22 @@ separation infrastructure now since no domain exists yet to need it.
 update-readme invoked: README.md's RULES.md entry updated to include
 domain graduation alongside the existing three documented patterns.
 
+## 2026-06-27 — Growth Engine document properly ingested before any decision (CC-098)
+User caught a real process violation: ideas from a document were
+being evaluated for adoption into INGEST.md before the document
+itself had ever been formally ingested per the system's own protocol.
+Corrected by routing it through INGEST.md Step 0 (system-level
+methodology source, same category as ICM/LLM Wiki, not a business
+domain), running the real verification steps (5 specific extracts
+confirmed: 13 table names, 7-step lifecycle, 7 Verifier check weights,
+5 memory types, 0-1 confidence scale), and reconciling it into
+SYSTEM_BRAIN/ as a new concept page documenting actual content —
+factually, before any evaluation of what to adopt. Source file on
+disk in SYSTEM_SOURCES/ (gitignored per design); ingestion record,
+concept page, and index update committed. README.md SYSTEM_SOURCES/
+entry updated from four to five sources via update-readme.
+This is the correct order: ingest first, decide second.
+
 ## 2026-06-27 — Tagged v0-scaffold-complete (CC-096)
 Tagged the current commit (2821b47) as a single named revert point
 rather than duplicating git's own history with a separate clone —
