@@ -65,6 +65,9 @@ scratch — full reasoning lives in WORKSPACE/FRAMEWORK.md.
 - **WORKSPACE/OPERATING_CONTRACT.md** — behavioral rules, tested.
 - **WORKSPACE/INGEST.md** — the verification protocol.
 - **WORKSPACE/FRAMEWORK.md** — why the system is built this way.
+- **WORKSPACE/DECISIONS.md** — locked decisions with status and reasoning trigger.
+- **WORKSPACE/REASONING.md** — the why behind each locked decision.
+- **WORKSPACE/RULES.md** — proven expansion patterns (horizontal/vertical/scaling).
 - **WORKSPACE/SYSTEM_BRAIN/** — knowledge about the system itself.
 - **WORKSPACE/SYSTEM_SOURCES/** — the raw, original documents (LLM Wiki
   notes, the ICM paper, a CLAUDE.md guide, a screenshot) that

@@ -383,3 +383,13 @@ time inside the very tool built to catch it.
 ## 2026-06-27 — Audit ran against new check 4b; clean pass (CC-076)
 All checks passed. No findings. Check 4b confirmed SYSTEM_SOURCES/ (the
 only reverse-direction gap that existed) was already fixed by CC-075.
+
+## 2026-06-27 — Audit's "clean pass" was wrong; second blind spot found and fixed (CC-077)
+User correctly distrusted a clean pass immediately after a fix landed
+— right instinct, since that's exactly when under-scoping is most
+likely. Confirmed: SYSTEM.md was never mentioned anywhere, yet 4b
+reported clean. Root cause: 4b's wording excluded loose root files.
+Fixed wording; deleted stale SYSTEM.md (stale pointer, D001 still
+showing PENDING, fully superseded by README.md and CLAUDE.md).
+Re-run found 3 more MECHANICAL findings: DECISIONS.md, REASONING.md,
+RULES.md also missing from README.md and FRAMEWORK.md. All fixed.

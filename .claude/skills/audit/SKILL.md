@@ -31,11 +31,13 @@ Confirm every file path referenced across CLAUDE.md, AGENTS.md,
 README.md, FRAMEWORK.md, and skill files actually exists.
 
 ### 4b. Check for real structure that's undocumented (the reverse direction)
-List every top-level folder and major subfolder in WORKSPACE/ and
-DOMAINS/ (excluding _TEMPLATE/'s intentional placeholders). Confirm
-each is mentioned in at least README.md OR FRAMEWORK.md. Flag any
-real, populated folder appearing in neither as MECHANICAL — fixable
-directly with one line, the same way SYSTEM_SOURCES/ was fixed.
+List every top-level folder, major subfolder, AND loose file directly
+inside WORKSPACE/'s root and DOMAINS/ (excluding _TEMPLATE/'s
+intentional placeholders). Confirm each is mentioned in at least
+README.md OR FRAMEWORK.md. Flag any real, populated item appearing in
+neither as MECHANICAL — fixable directly with one line, the same way
+SYSTEM_SOURCES/ was fixed. A populated standalone file can be just as
+undocumented as a folder.
 
 ## 5. Check for rules that exist but were never actually exercised
 Flag OPERATING_CONTRACT.md rules with no corresponding EVOLUTION_LOG.md
