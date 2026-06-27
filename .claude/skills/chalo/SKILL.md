@@ -15,5 +15,11 @@ invocation.
 ## 4. Rewrite STATUS.md's "Open items" section; update the date.
 ## 5. Check for unverified claims before committing — including
    checking whether prompts given earlier actually got confirmed run.
+## 5a. If any dialogue-derived insight emerged this session (a non-obvious
+   constraint, corrected assumption, or design decision not traceable to
+   an ingested source), append it to the relevant brain's
+   context/conversational.md (WORKSPACE/SYSTEM_BRAIN/context/conversational.md
+   for system-level insights; DOMAINS/<domain>/BRAIN/context/conversational.md
+   for domain-specific ones).
 ## 6. Commit: git add -A && git commit -m "Close day [DATE]: ..."
 ## 7. Report back: what got done, what's open, confirm both committed.

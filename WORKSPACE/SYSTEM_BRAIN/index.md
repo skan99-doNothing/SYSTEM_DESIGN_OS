@@ -31,13 +31,14 @@ Reusable ideas extracted from sources and governing how this system operates.
 
 ---
 
-## Synthesis
+## Context
 
-Big-picture views connecting multiple sources.
+Big-picture views: document-derived synthesis and dialogue-derived insights.
 
 | Page | One-line summary |
 |------|-----------------|
-| [overview.md](synthesis/overview.md) | How LLM Wiki (what agents know), ICM (what agents do), and markdown (transferable format) connect; the division of labor; the autonomy goal |
+| [overview.md](context/overview.md) | How LLM Wiki (what agents know), ICM (what agents do), and markdown (transferable format) connect; the division of labor; the autonomy goal |
+| [conversational.md](context/conversational.md) | Insights from live dialogue — non-obvious constraints, corrected assumptions, design decisions not traceable to any ingested source |
 
 ---
 

@@ -7,8 +7,9 @@ content type:
   relevant to this domain
 - concepts/ — pages about ideas, frameworks, methodologies relevant to
   this domain
-- synthesis/ — the evolving big-picture view connecting everything
-  ingested into this domain so far
+- context/ — the evolving big-picture view connecting everything
+  ingested into this domain so far; overview.md (document-derived) and
+  conversational.md (dialogue-derived insights)
 - sources/ — one page per raw source ingested into this domain,
   summarizing what it contributed
 

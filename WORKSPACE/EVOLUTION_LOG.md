@@ -308,3 +308,9 @@ AGENTS.md.
 Added the 4-pillar summary (LLM Wiki, ICM, spine/scaffold, markdown)
 that was missing from the original README draft — pointing back to
 FRAMEWORK.md for full reasoning rather than duplicating it.
+
+## 2026-06-27 — synthesis/ renamed to context/, conversational.md added (CC-063)
+Replaced the never-built standalone CONTEXT.md design with a properly
+per-brain-scoped version: renamed synthesis/ to context/ in both
+SYSTEM_BRAIN/ and the domain template, added conversational.md
+alongside overview.md, fixed all references, updated chalo.
