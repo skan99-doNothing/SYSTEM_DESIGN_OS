@@ -34,13 +34,9 @@ here, this file may be stale — cross-check before trusting it fully.
 
 1. **No real business domain exists yet.** Unresolved since session
    one. Nothing else matters more than this.
-2. **REASONING.md is a placeholder** despite D001 being LOCKED.
-   Surfaced CC-053 (read-only). D001's reasoning lives in DECISIONS.md
-   but was never promoted to REASONING.md as the schema intends. Low
-   priority; fix whenever DECISIONS.md next gets a new locked entry.
-3. **Vercel plugin warning is a known, accepted, dropped issue** —
+2. **Vercel plugin warning is a known, accepted, dropped issue** —
    Claude Code bug anthropics/claude-code#62174. Do not re-investigate.
-4. **CC-026's residual risk is permanent**: rules can be skipped under
+3. **CC-026's residual risk is permanent**: rules can be skipped under
    pressure. No hook fixes this. Only spot-checking does.
 
 ## What to do next time
