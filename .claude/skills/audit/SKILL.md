@@ -24,6 +24,16 @@ Compare each file's own stated rule to its actual content and git
 history. Flag any file whose own stated rule isn't being followed
 (this is what would have caught REASONING.md's staleness).
 
+### 1a. Check ARTIFACTS/ against README.md for meaningful divergence
+Read ARTIFACTS/index.md's description of each artifact. Compare
+against README.md's CURRENT structure (section count, skills listed,
+hooks listed). If README.md has changed in a way that would make an
+existing artifact visibly wrong or incomplete (a new skill not shown,
+a renamed section), flag as JUDGMENT-REQUIRED: "ARTIFACTS/[name] may
+be stale relative to README.md's current state — consider
+regenerating." Do not auto-regenerate — this is expensive and a human
+should decide it's worth doing, not a mechanical pass.
+
 ## 2. Check for promotion/threshold conditions that may have been crossed
 Has enough material accumulated for a judgment-based promotion (e.g.
 conversational.md to overview.md) to be warranted? Flag, don't act.

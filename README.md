@@ -65,6 +65,7 @@ SYSTEM_DESIGN_OS/
 │       └── BRAIN/           (same shape as SYSTEM_BRAIN/, see section 3.2)
 │
 └── WORKSPACE/               (everything governing the system itself — see section 3.1)
+    └── ARTIFACTS/           (generated human-facing outputs — see section 3.1)
 ```
 
 ### 3.1 — Every file in WORKSPACE/, what it actually does
@@ -189,6 +190,19 @@ SYSTEM_DESIGN_OS/
   system was synthesized from, kept immutable and separate from
   SYSTEM_BRAIN/ per INGEST.md's own rule that sources are never
   edited, only read.
+
+- **ARTIFACTS/** — generated, human-facing outputs rendered from
+  existing knowledge for human consumption — visual diagrams, exported
+  summaries. Distinct from SYSTEM_BRAIN/ (synthesized knowledge) and
+  SYSTEM_SOURCES/ (raw documents knowledge was built from): nothing
+  here should be ingested back into SYSTEM_BRAIN/ as a new source,
+  because it already represents what the brain already knows in a
+  different format. Staleness is not tied to every README.md edit or
+  a fixed calendar — audit compares each artifact's description in
+  ARTIFACTS/index.md against README.md's current structure and flags
+  meaningful divergence (a new skill not shown, a renamed section) as
+  JUDGMENT-REQUIRED. Regenerating is a human decision, not a
+  mechanical trigger.
 
 ### 3.2 — DOMAINS/_TEMPLATE/
 
