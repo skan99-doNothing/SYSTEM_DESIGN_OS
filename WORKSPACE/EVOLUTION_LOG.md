@@ -4,6 +4,19 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-28 — Confidence gradient adopted, conflict preservation deferred, Step 6/7 boundary clarified (CC-100)
+Of the two PROPOSED suggestions from the Growth Engine source: adopted
+the confidence gradient for real (low-risk, closes an existing
+precision gap in INGEST.md's own Core Rule) — applied to Steps 4 and
+5, status updated to APPLIED. Deferred conflict preservation — sound
+idea, but building it now would mean designing against a hypothetical
+since zero real conflicts exist yet; documented the trigger condition
+in RULES.md instead, status updated to DEFERRED, matching the
+domain-graduation precedent of deciding in advance without building
+prematurely. Also clarified that most ingested findings stop at Step
+6 — Step 7 (suggestion records) applies only to the smaller subset
+describing a system-level pattern, not ordinary knowledge.
+
 update-readme: RULES.md conflict preservation pattern added to README.md dictionary (CC-100)
 
 ## 2026-06-28 — INGEST.md Step 7 added: suggestions are surfaced, never auto-applied (CC-099)
