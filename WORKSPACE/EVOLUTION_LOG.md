@@ -411,6 +411,9 @@ The system's core identity had only existed implicitly across
 multiple files. Added one explicit statement tying all five qualities
 to their actual mechanisms, with the honest limit in the same breath.
 
+## 2026-06-27 — update-readme spec: tree-vs-dictionary distinction added as step 2a (CC-093)
+CC-092 surfaced a gap in the spec: the tree (section 3) vs full dictionary entries (3.1, 4, 5) wasn't documented. Added step 2a so future invocations don't need to rediscover this judgment.
+
 ## 2026-06-27 — README.md architecture tree updated: skills/ now lists all three skills (CC-092)
 update-readme invoked; stale "(chalo, audit)" updated to "(chalo, audit, update-readme)". Section 4 already had the full entry — tree was the only gap.
 
