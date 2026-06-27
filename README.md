@@ -57,7 +57,7 @@ SYSTEM_DESIGN_OS/
 ├── .claude/                (Claude-Code-specific machinery — see section 5)
 │   ├── settings.json / settings.local.json
 │   ├── hooks/               (mechanical guardrails — see section 5)
-│   └── skills/              (chalo, audit — see section 4)
+│   └── skills/              (chalo, audit, update-readme — see section 4)
 │
 ├── DOMAINS/
 │   └── _TEMPLATE/           (copy + rename this to start a real domain)
