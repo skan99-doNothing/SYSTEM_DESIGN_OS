@@ -393,3 +393,9 @@ Fixed wording; deleted stale SYSTEM.md (stale pointer, D001 still
 showing PENDING, fully superseded by README.md and CLAUDE.md).
 Re-run found 3 more MECHANICAL findings: DECISIONS.md, REASONING.md,
 RULES.md also missing from README.md and FRAMEWORK.md. All fixed.
+
+## 2026-06-27 — Pattern from CC-076/077 codified into audit as 6b (CC-078)
+Twice this session, audit's clean pass right after a self-correction
+was wrong, caught only by the user asking for independent
+verification. Added 6b with an explicit stated limit: it targets this
+specific pattern, not unforeseen categories of gap.

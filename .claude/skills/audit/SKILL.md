@@ -46,6 +46,22 @@ entry showing real application.
 ## 6. Produce a report, not a fix
 Tag each finding MECHANICAL or JUDGMENT-REQUIRED. Don't silently fix.
 
+## 6b. Distrust a clean pass that follows a fix to audit itself
+
+If this audit run happens immediately after a previous check was just
+corrected, do not accept a clean result on it at face value. Attempt
+to actively falsify it on at least one different angle before
+reporting clean.
+
+This does not guarantee catching every blind spot — it targets the
+specific pattern observed twice this session (CC-076, CC-077): a fix
+to one narrow gap, reported clean immediately after, while a
+different gap in the same category was still present. It cannot
+invent entirely new categories of undocumented structure on its own —
+that still depends on a human asking a question audit wasn't built to
+ask. State this limitation explicitly in any report following a
+self-correction.
+
 ## 7. Log the audit itself
 Append to EVOLUTION_LOG.md what ran and what was found, or that
 nothing was found, explicitly.
