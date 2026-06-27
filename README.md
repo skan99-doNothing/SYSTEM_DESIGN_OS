@@ -1,89 +1,284 @@
-# SYSTEM_DESIGN_OS
+# SYSTEM_DESIGN_OS — Full System Reference
 
-A reusable foundation for building autonomous, agent-driven businesses
-— knowledge accumulates in domain-specific "brains," workflows are
-documented as repeatable stages, and everything that matters is plain
-markdown so it's transferable to any agent, any person, any future
-version of yourself who's forgotten the details.
+This is the comprehensive reference for this system, not a short
+pointer. CLAUDE.md and AGENTS.md are the short pointers that lead
+here. Read WORKSPACE/STATUS.md for the current state right now;
+everything below is the durable map of how the system works and why
+it's built this way.
 
-The five qualities this is built toward — agent-agnostic, transferable, scalable, self-auditing, ever-learning — and the honest limit of each are stated explicitly in WORKSPACE/FRAMEWORK.md.
+---
 
-**Read WORKSPACE/STATUS.md right now for what's actually open.**
+## 1. What this is, in plain terms
 
-## The foundation this is built on
+A governance and memory scaffold for building autonomous, agent-driven
+businesses. It accumulates knowledge in domain-specific "brains,"
+structures workflows as repeatable folder-based stages, and writes
+everything in plain markdown so it transfers to any agent, any person,
+any future version of yourself who's forgotten the details. As of this
+writing, no real business domain has been built inside it — every
+mechanism here has only been exercised on its own construction.
 
-Four ideas, each borrowed from a real source rather than invented from
-scratch — full reasoning lives in WORKSPACE/FRAMEWORK.md.
+## 2. The DNA — five qualities, each tied to a real mechanism
 
-1. **LLM Wiki (knowledge accumulation)** — a source gets read once and
-   woven into a standing, interlinked knowledge base ("brain") rather
-   than re-derived every time something's asked. This is what each
-   domain's BRAIN/ and WORKSPACE/SYSTEM_BRAIN/ actually are.
+- **Agent-agnostic** — governed by plain markdown any LLM can read
+  (CLAUDE.md + AGENTS.md as identical, synced entry points), with
+  tool-specific implementations (hooks, skills) kept explicitly
+  separate from their portable concepts in FRAMEWORK.md, so the
+  system survives a change of tooling.
+- **Transferable** — no database, no proprietary format. Copyable
+  wholesale to another person, agent, or future session with no
+  translation step.
+- **Scalable** — knowledge accumulates per-domain, never shared
+  across unrelated work, with a concrete, evidence-based threshold
+  (RULES.md) for when plain index-file navigation needs to become
+  something more sophisticated — not solved before that's actually
+  true.
+- **Self-auditing** — the audit skill checks the system against its
+  own stated rules, automatically, every session via chalo, rather
+  than depending on anyone remembering to check.
+- **Ever-learning** — PATTERNS.md converts a confirmed second instance
+  of a failure into a standing rule that gets checked before the
+  failure has a chance to recur a third time.
 
-2. **ICM — Interpretable Context Methodology (workflow orchestration)**
-   — a multi-step process as numbered folders (increments of 10, so a
-   stage can be inserted later without renumbering), each holding the
-   instructions and context for that stage. This is what DOMAINS/
-   workflow stages will be, once a real domain exists.
+**The honest limit, stated once and meant to be remembered:** this
+system gets better at not repeating a KNOWN mistake. It does not
+recognize a brand-new pattern from a single occurrence — that still
+requires a human noticing, the same way every pattern currently in
+PATTERNS.md was found by the user, not by the system itself.
 
-3. **The spine / scaffold (filesystem as coordination)** — RAW/
-   (immutable sources) → BRAIN/ (accumulated knowledge) → workflow
-   stages (execution), kept separate per domain. WORKSPACE/ holds
-   what's shared across all of it.
+## 3. Architecture — how the pieces fit together
 
-4. **Markdown as the portable artifact** — every one of the above is
-   plain text — no database, no proprietary format. This is why
-   points 1-3 are transferable at all, not just internally consistent.
+```
+SYSTEM_DESIGN_OS/
+├── README.md              (this file — the full reference)
+├── CLAUDE.md / AGENTS.md  (short, auto-loading pointers into this file)
+├── .gitignore
+│
+├── .claude/                (Claude-Code-specific machinery — see section 5)
+│   ├── settings.json / settings.local.json
+│   ├── hooks/               (mechanical guardrails — see section 5)
+│   └── skills/              (chalo, audit — see section 4)
+│
+├── DOMAINS/
+│   └── _TEMPLATE/           (copy + rename this to start a real domain)
+│       ├── RAW/             (immutable sources for that domain only)
+│       └── BRAIN/           (same shape as SYSTEM_BRAIN/, see section 3.2)
+│
+└── WORKSPACE/               (everything governing the system itself — see section 3.1)
+```
 
-## How the system is invoked (touched every session)
+### 3.1 — Every file in WORKSPACE/, what it actually does
 
-- Open Claude Code inside this folder. CLAUDE.md / AGENTS.md auto-load
-  — no command needed.
-- They point you to WORKSPACE/OPERATING_CONTRACT.md (how Claude should
-  behave) and WORKSPACE/INGEST.md (how new sources get verified).
-- A SessionStart hook silently confirms the right CLAUDE.md loaded —
-  you'll only see output if something's wrong.
+- **OPERATING_CONTRACT.md** — the behavioral contract. Opens with a
+  foundational division-of-labor statement (the user owns vision and
+  real-world testing; Claude owns reasoning in conversation; Claude
+  Code owns documentation and execution), then 9 rules: no claim
+  without a check; one issue at a time with the order stated even when
+  obvious; surface problems the moment they're seen; push back rather
+  than agree by default; the sandbox is not the real filesystem, and
+  unknowns get queried via a Claude Code prompt rather than assumed;
+  don't assume the topic of a session; log decisions as they happen
+  without being asked, including a precise definition of what counts
+  as decision-worthy; every Claude Code prompt gets an ID so a report-
+  back can be matched to its request, and Claude Code logs its own
+  actions; the CLAUDE.md hierarchy should be scoped narrowly and
+  verified rather than assumed safe; and anything built under .claude/
+  needs its portable concept documented in FRAMEWORK.md in the same
+  pass, not as an afterthought.
 
-## How the loop closes (touched at the end of every session)
+- **INGEST.md** — the verification protocol for any new source, of
+  any kind. Seven steps in order: (0) route the resource — is it about
+  the system itself or about a specific business domain, and if
+  ambiguous, ask rather than guess; (1) confirm the file is actually
+  readable; (2) read the real content, with explicit handling for
+  text, scanned/visual content, and tool/format mismatches; (3)
+  produce 3-5 specific, checkable extracts as proof of having actually
+  read it; (4) self-check before claiming anything, including whether
+  a claim is being carried forward from memory rather than verified in
+  the current turn; (5) write a formal ingestion record (INGESTED /
+  PARTIAL / FAILED — no rounding up); (6) reconcile the new knowledge
+  into the relevant brain, explicitly marked as extending, conflicting
+  with, or being genuinely new relative to what's already there. The
+  same file also states the core rule behind all of this: no
+  confidence claim may exceed the evidence that currently exists for
+  it, illustrated with the two real failures that produced this rule
+  (a wrong page count stated from memory, an image described from its
+  filename without ever actually being viewed).
 
-- Say **"chalo"** when wrapping up. It reviews the session, refreshes
-  STATUS.md, confirms EVOLUTION_LOG.md is current, checks for
-  unverified claims, and commits everything in one pass.
-- Audit runs automatically as chalo's first step — it doesn't need to
-  be invoked separately.
-- If a session ends without this, the snapshot goes stale until the
-  next session catches the drift — depends on remembering to say it.
+- **FRAMEWORK.md** — why the system is built this way, not just what
+  it does. Opens with the DNA statement (section 2 above), then the
+  three foundational pillars: knowledge accumulation via an LLM-Wiki-
+  style pattern (a source is read once and woven into a standing,
+  cross-referenced brain rather than re-derived every query); workflow
+  orchestration via ICM-style numbered folders (stages in increments
+  of 10 so one can be inserted later without renumbering everything);
+  and plain markdown as the only artifact format, specifically because
+  it's the one format that's simultaneously machine-readable,
+  human-readable, version-controllable, and requires no translation
+  step to hand to someone else. It also holds three mechanism-agnostic
+  specifications — for the ingest-guard hook, for the chalo
+  session-close skill, and for the audit self-check — written so a
+  different agent's tooling could rebuild the same behavior without
+  copying Claude Code's specific files.
 
-## What gets touched often
+- **RULES.md** — expansion patterns, deliberately written only after
+  being proven, not designed speculatively in advance. Currently
+  holds: the exact procedure for turning DOMAINS/_TEMPLATE/ into a
+  real, working domain; the increments-of-10 numbering convention for
+  workflow stage folders; and a concrete, sourced threshold (roughly
+  50-100 files in any one brain, or retrieval genuinely feeling slow)
+  for when plain index-file navigation should be reconsidered in
+  favor of something like Obsidian's link graph or a vector index —
+  explicitly not adopted now, because the system is nowhere near that
+  scale yet.
 
-- **DOMAINS/** — once a real domain exists (none do yet), actual work
-  happens here.
-- **WORKSPACE/STATUS.md** — read first, every session.
-- **WORKSPACE/EVOLUTION_LOG.md** — every real decision logged as it
-  happens.
+- **PATTERNS.md** — the system's record of its own recurring mistakes.
+  A failure only earns an entry here after it's been confirmed
+  happening at least twice. As of this writing it holds two: known
+  principles not being self-applied to new work (caught three times
+  across this session before being named explicitly), and a fix
+  declared clean immediately after landing, without independent
+  verification (caught twice). Each entry states its standing
+  countermeasure. audit reads this file first, every run, before its
+  own checks — this is the literal mechanism that makes the system's
+  learning durable rather than something that has to be re-explained
+  in conversation every time.
 
-## What gets touched rarely (the foundation, mostly stable now)
+- **DECISIONS.md** — a small, deliberately short list of choices that
+  reached LOCKED status, each with what was decided, why, what
+  triggered the question, and what would reopen it. Most day-to-day
+  changes don't qualify and live in EVOLUTION_LOG.md instead; this
+  file is reserved for the few decisions formally promoted beyond a
+  routine log entry.
 
-- **WORKSPACE/OPERATING_CONTRACT.md** — behavioral rules, tested.
-- **WORKSPACE/INGEST.md** — the verification protocol.
-- **WORKSPACE/FRAMEWORK.md** — why the system is built this way.
-- **WORKSPACE/DECISIONS.md** — locked decisions with status and reasoning trigger.
-- **WORKSPACE/REASONING.md** — the why behind each locked decision.
-- **WORKSPACE/RULES.md** — proven expansion patterns (horizontal/vertical/scaling).
-- **WORKSPACE/PATTERNS.md** — recurring failure patterns that audit checks against
-  first. The closest thing this system has to learning from its own mistakes
-  across builds.
-- **WORKSPACE/SYSTEM_BRAIN/** — knowledge about the system itself.
-- **WORKSPACE/SYSTEM_SOURCES/** — the raw, original documents (LLM Wiki
-  notes, the ICM paper, a CLAUDE.md guide, a screenshot) that
-  SYSTEM_BRAIN/ was built FROM. Kept separate and untouched, per
-  INGEST.md's own rule that sources are immutable.
-- **DOMAINS/_TEMPLATE/** — copy and rename to start a real domain.
-- **.claude/** — Claude-Code-specific machinery, not portable by
-  itself — see FRAMEWORK.md's mechanism-agnostic specs to rebuild
-  under another agent.
+- **REASONING.md** — the deeper thought process behind a LOCKED
+  decision, once one exists — what alternative was seriously
+  considered and rejected, what specifically justified the final call,
+  and what would actually have to be true for the decision to be
+  revisited. Distinct from DECISIONS.md's short "Why" field; this is
+  the long version.
 
-## The one thing this is waiting on
+- **EVOLUTION_LOG.md** — the complete chronological history. Every
+  real change, logged in the same pass it happened, not reconstructed
+  afterward — including the system's own mistakes and their
+  corrections, left visible rather than edited away, because rewriting
+  history to look cleaner than it was is itself a form of the
+  overclaiming this whole system exists to prevent.
 
-No real business domain exists yet. Everything above is built and
-tested, ready the moment one does.
+- **STATUS.md** — a current-state snapshot, explicitly distinct from
+  the log above: what's actually built and verified right now, what's
+  genuinely still open, and what to check first next time. Refreshed
+  by chalo at the close of a session that did real work, not after
+  every individual change — it's a snapshot, not a second log.
+
+- **SYSTEM_BRAIN/** — what the system knows about its own design,
+  synthesized from the documents in SYSTEM_SOURCES/. Internally split
+  into sources/ (one verified ingestion record per original document),
+  concepts/ (the reusable ideas extracted from them), and context/
+  (overview.md holding the document-derived synthesis, and
+  conversational.md holding insight that came from dialogue rather
+  than from any document — with a judgment-based, not automatic,
+  promotion path from the latter into the former once a real pattern
+  is visible).
+
+- **SYSTEM_SOURCES/** — the four original, raw documents this whole
+  system was synthesized from, kept immutable and separate from
+  SYSTEM_BRAIN/ per INGEST.md's own rule that sources are never
+  edited, only read.
+
+### 3.2 — DOMAINS/_TEMPLATE/
+
+The reusable pattern for a real business domain, mirroring
+SYSTEM_BRAIN/'s exact shape (RAW/, then BRAIN/ with the same
+sources/concepts/context/ split). To start a real domain: copy this
+folder, rename it, drop real sources into its RAW/, and run them
+through INGEST.md. No domain currently exists — this is the one
+thing the entire system has been waiting on since its first session.
+
+## 4. The two skills — what they actually do, in full
+
+### chalo
+
+Triggered by saying "chalo," or by typing /chalo, when ending a
+session. Runs audit first, unconditionally, as its own step 0 — a
+self-check nobody is forced to run has the same failure mode it
+exists to catch. Then: reviews what actually happened this session
+against EVOLUTION_LOG.md; confirms the log is current, backfilling
+honestly if something was missed; checks whether this session produced
+any insight through dialogue rather than from a document, and if so
+writes it to the relevant brain's context/conversational.md; checks
+whether that file has grown enough that a real pattern is now visible
+and worth promoting into overview.md — flagging this as a judgment
+call rather than auto-promoting; rewrites STATUS.md's two sections
+(what's verified, what's open) to match reality rather than just
+appending; scans the session for anything stated as fact that was
+never actually checked with a real command; and commits everything
+in one final pass, with a short, honest report back covering what got
+done, what's still open, and explicit confirmation that STATUS.md and
+EVOLUTION_LOG.md are both committed.
+
+### audit
+
+A system-wide self-check, distinct from chalo's single-session review
+— this checks the system's entire current state against its own
+stated rules. Reads PATTERNS.md first, every time, and applies any
+matching standing countermeasure rather than rediscovering a known
+failure from scratch. Then runs five checks: (1) does every file in
+WORKSPACE/ and any active domain's BRAIN/ actually do what its own
+stated purpose says, using git history as evidence rather than
+assumption; (2) has any judgment-based promotion condition (like
+conversational.md's threshold) quietly been crossed without anyone
+acting on it; (3) has a known, already-written principle been applied
+in one place but skipped somewhere it clearly also applies — searched
+for specifically, not assumed absent; (4) are there broken references
+pointing to things that don't exist, and separately, is there real,
+populated structure that exists but isn't documented anywhere it
+should be — both directions checked, since the second direction was
+itself a blind spot found and fixed mid-session; (5) are there rules
+in OPERATING_CONTRACT.md with no EVOLUTION_LOG.md entry ever showing
+them actually being exercised, not just declared. Every finding gets
+tagged MECHANICAL (a verifiable fact, may be fixed in the same pass,
+but always reported, never silent) or JUDGMENT-REQUIRED (a human
+decision, never auto-resolved). If this run is happening immediately
+after a previous check was just corrected, audit is required to
+actively try to disprove its own clean result on a different angle
+before reporting it clean — this rule exists because exactly that
+failure happened twice in one session before being caught.
+
+## 5. The two hooks — mechanical, cannot be talked past
+
+### ingest-guard.sh
+
+Fires on every file write attempt, before it completes. Blocks any
+write into DOMAINS/, SYSTEM_BRAIN/, or SYSTEM_SOURCES/ unless the
+target path is inside a _TEMPLATE/ folder. This is not advice Claude
+can choose to follow — it's a shell script that runs regardless of
+what Claude decides in the moment, which is the entire reason it
+exists: rules in markdown can be skipped under pressure to seem
+helpful; a hook cannot.
+
+### verify-claude-md.sh
+
+Fires at the start of every session. Confirms the CLAUDE.md that
+actually loaded is the genuine one for this project — not a stale
+copy, not a different project's file — using the official
+CLAUDE_PROJECT_DIR environment variable Claude Code itself sets,
+rather than a hand-written guess at the project root (an earlier,
+abandoned version of this hook tried to manually walk up the directory
+tree and was replaced once the official variable was found to do the
+same job more reliably).
+
+**Known, permanent limitation of both hooks:** they are Claude-Code-
+specific. A different agent (Codex, or otherwise) would need its own
+equivalent built in its own mechanism — FRAMEWORK.md's mechanism-
+agnostic specifications exist specifically so that rebuild has a real
+blueprint to start from, rather than starting at zero.
+
+## 6. What this system is not, yet
+
+There is no business logic here. No domain has been ingested, no
+workflow stage has been built, no revenue model has been tested. Every
+mechanism described above has only ever been exercised on the
+construction of this scaffold itself. The single open item, unchanged
+since the very first message that started this project, is bringing
+a real domain and running it through DOMAINS/_TEMPLATE/ for real.

@@ -410,3 +410,18 @@ ones.
 The system's core identity had only existed implicitly across
 multiple files. Added one explicit statement tying all five qualities
 to their actual mechanisms, with the honest limit in the same breath.
+
+## 2026-06-27 — README.md replaced with comprehensive system reference (CC-086)
+User explicitly requested README.md become the exhaustive, fully
+categorized reference for the entire system rather than a short
+pointer, after CC-084 confirmed it had been treating "audit" as an
+already-understood concept. Confirmed via direct question that this
+should REPLACE README.md, not live in a separate file. Rewrote it to
+cover: the architecture tree, every WORKSPACE file's full role pulled
+from real content, both skills described in complete depth (audit's
+5 checks and self-distrust rule, not just chalo), both hooks with
+their actual mechanics and known limitation, and the DNA statement
+with its honest limit. CLAUDE.md and AGENTS.md were correspondingly
+shortened to pure pointers into this file, since duplicating this much
+content into the auto-loading files would blow well past their real,
+sourced 200-line context-budget guideline.
