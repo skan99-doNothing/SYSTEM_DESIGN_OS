@@ -135,13 +135,19 @@ SYSTEM_DESIGN_OS/
   real, working domain; the increments-of-10 numbering convention for
   workflow stage folders; a concrete, sourced threshold (roughly
   50-100 files in any one brain, or retrieval genuinely feeling slow)
-  for when plain index-file navigation should be reconsidered; and a
+  for when plain index-file navigation should be reconsidered; a
   domain graduation rule — when a domain is ready to be sold or
   handed off independently, it gets copied out of DOMAINS/ into its
   own brand-new git repository (a deliberate one-way split, not a
   synced submodule), so ownership isolation is preserved without
-  exposing other domains' history. Not built yet; documented so the
-  decision exists before it's needed under pressure.
+  exposing other domains' history; and a conflict preservation
+  mechanism — documented but not yet built, with an explicit trigger
+  condition (the first real conflict surfaced by Step 6 reconciliation
+  or audit), specifying that both sides of a contradiction must be
+  preserved intact with their source provenance and tagged CONFLICT
+  for human resolution rather than silently overwritten. Both of the
+  last two are not built yet; documented so the decisions exist before
+  they're needed under pressure.
 
 - **PATTERNS.md** — the system's record of its own recurring mistakes.
   A failure only earns an entry here after it's been confirmed
