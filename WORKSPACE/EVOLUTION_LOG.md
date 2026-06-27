@@ -298,3 +298,8 @@ executed as CC-056 to avoid duplicate IDs.
 CC-056 completed the last real gap. STATUS.md updated to reflect
 DECISIONS.md and REASONING.md as fully built and verified. All
 infrastructure confirmed complete. Next: real business domain.
+
+## 2026-06-27 — README.md created (CC-058)
+Short orientation README added at project root, pointing to what does
+what rather than duplicating content. Synced pointer into CLAUDE.md/
+AGENTS.md.

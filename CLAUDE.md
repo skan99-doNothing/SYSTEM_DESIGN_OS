@@ -1,6 +1,8 @@
 <!-- This file is mirrored in AGENTS.md for agent-agnostic compatibility (e.g. Codex). Keep both in sync. -->
 # CLAUDE.md
 
+New here or returning after a gap? Start with README.md at the project root, then STATUS.md.
+
 ## Project
 This is SYSTEM_DESIGN_OS — a system for building autonomous,
 agent-driven businesses. Knowledge accumulates in domain-specific
