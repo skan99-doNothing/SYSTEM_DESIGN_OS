@@ -18,7 +18,7 @@ you need the full dictionary of any file, skill, or hook.
 
 Current real state, as of 2026-06-28:
 - No real business domain exists yet — DOMAINS/_TEMPLATE/ is ready to copy, nothing inside it
-- ARTIFACTS/ visual PDF is stale: missing ingest-validate (4th skill), the handoff baton section, and ARTIFACTS/ itself — JUDGMENT-REQUIRED whether to regenerate
+- ARTIFACTS/ visual PDF is stale: missing ingest-validate (4th skill), handoff baton section, ARTIFACTS/ folder — JUDGMENT-REQUIRED whether to regenerate
 - CC-026 residual risk is permanent: rules can be skipped under pressure; only spot-checking closes this
 
 What I want to do this session:
@@ -46,7 +46,8 @@ verification step or treat something as done without checking.
   (ingest-validate, added CC-110), transmission-verification
 - **chalo skill** — fires exactly once; Step 0 invokes audit; Steps
   5a/5b for conversational.md; Step 5c checks README.md; Step 5d
-  regenerates handoff baton; Step 6 commits
+  regenerates handoff baton; Step 6 commits AND pushes to remote
+  (auto-push, explicit failure report if push fails — CC-111)
 - **audit skill** — Steps 0-7 including 1a (source count vs
   overview.md — deterministic check, CC-109), 1b (ARTIFACTS/
   staleness), 4b (reverse-direction undocumented structure), 6b
@@ -67,7 +68,7 @@ verification step or treat something as done without checking.
   deferred with trigger condition — CC-100)
 - **SYSTEM_BRAIN/** — built from 5 sources (4 original + Growth
   Engine, CC-098); context/ holds overview.md (source count fixed
-  CC-108) and conversational.md (2 entries); 2 SUGGESTION RECORDs
+  CC-108) and conversational.md (3 entries); 2 SUGGESTION RECORDs
   in agentic-growth-engine-patterns.md: confidence gradient (APPLIED),
   conflict preservation (DEFERRED)
 - **DOMAINS/_TEMPLATE/** — ready to copy and rename for first real domain
@@ -79,7 +80,9 @@ verification step or treat something as done without checking.
 - **.claude/hooks/ingest-guard.sh** — mechanical write-block, working
 - **.claude/hooks/verify-claude-md.sh** — SessionStart check confirmed
 - **.claude/settings.json** — correct nested hooks schema
-- **Git history** — accurate, includes its own corrections
+- **Git history** — accurate, includes its own corrections; pushed
+  to GitHub (skan99-doNothing/SYSTEM_DESIGN_OS, private); both tags
+  on remote; git email set to no-reply address (CC-111)
 
 ## Open items — genuinely unresolved right now
 
