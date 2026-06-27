@@ -1,6 +1,6 @@
 # Synthesis: How the Three Pillars Connect
 
-**Sources:** LLM Wiki.md, ICM paper, claude-os-guide.pdf, anatomy.jpg
+**Sources:** LLM Wiki.md, ICM paper, claude-os-guide.pdf, anatomy.jpg, autonomous-ai-growth-engine.md
 **Cross-reference:** FRAMEWORK.md
 
 ## The connective layer
@@ -27,6 +27,10 @@ Skills (reusable /name-invoked workflows) are how ICM stages get operationalized
 - User owns vision and real-world testing
 - Claude (in conversation) owns knowledge synthesis — the LLM Wiki layer
 - Claude Code / any filesystem-access LLM owns documentation and execution — the ICM layer, the .claude/ configuration, the brain maintenance
+
+## What the fifth source added (and didn't add)
+
+The Growth Engine source (autonomous-ai-growth-engine.md, ingested CC-098) did not introduce a new pillar — its multi-agent coordination patterns extend the existing self-auditing and ever-learning qualities rather than redefining how knowledge accumulates or workflows are orchestrated. Two proposals emerged from it: the confidence gradient (APPLIED in CC-100 — INGEST.md Steps 4 and 5 now grade each verification artifact on a 1.0/0.7/0.4/0.2 scale rather than treating verification as binary) and conflict preservation (DEFERRED in CC-100 — documented with a trigger condition in RULES.md, to be built when a real conflict is first surfaced). Full record in `SYSTEM_BRAIN/concepts/agentic-growth-engine-patterns.md`.
 
 ## The goal this serves
 
