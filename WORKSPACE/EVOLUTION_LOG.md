@@ -411,6 +411,15 @@ The system's core identity had only existed implicitly across
 multiple files. Added one explicit statement tying all five qualities
 to their actual mechanisms, with the honest limit in the same breath.
 
+## 2026-06-27 — Chalo (close-day): update-readme built, P003, CC-092/093 landed; STATUS.md rewritten
+Audit ran: two MECHANICAL findings fixed in this pass — README.md's
+FRAMEWORK.md entry said "three mechanism-agnostic specifications" but
+now five exist (ingest-guard, session-close, self-audit, dictionary-
+maintenance, transmission-verification); STATUS.md was stale (CC-087
+open item resolved, update-readme missing from built list, P003
+missing). Both fixed. No JUDGMENT-REQUIRED findings. 5c check: no new
+structural items since last chalo's commit.
+
 ## 2026-06-27 — update-readme spec: tree-vs-dictionary distinction added as step 2a (CC-093)
 CC-092 surfaced a gap in the spec: the tree (section 3) vs full dictionary entries (3.1, 4, 5) wasn't documented. Added step 2a so future invocations don't need to rediscover this judgment.
 

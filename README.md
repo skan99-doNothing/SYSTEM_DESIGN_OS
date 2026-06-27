@@ -115,11 +115,13 @@ SYSTEM_DESIGN_OS/
   and plain markdown as the only artifact format, specifically because
   it's the one format that's simultaneously machine-readable,
   human-readable, version-controllable, and requires no translation
-  step to hand to someone else. It also holds three mechanism-agnostic
+  step to hand to someone else. It also holds five mechanism-agnostic
   specifications — for the ingest-guard hook, for the chalo
-  session-close skill, and for the audit self-check — written so a
-  different agent's tooling could rebuild the same behavior without
-  copying Claude Code's specific files.
+  session-close skill, for the audit self-check, for the update-readme
+  dictionary-maintenance process, and for the transmission-verification
+  practice (confirming a prompt was executed, not just written) —
+  written so a different agent's tooling could rebuild the same
+  behavior without copying Claude Code's specific files.
 
 - **RULES.md** — expansion patterns, deliberately written only after
   being proven, not designed speculatively in advance. Currently
