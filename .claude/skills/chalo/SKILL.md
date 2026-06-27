@@ -34,5 +34,9 @@ user rather than resolving them.
    now visible that wasn't before, flag it explicitly: "conversational.md
    has grown — consider promoting a synthesis into overview.md," with
    specific reasoning, not just a count.
+## 5c. Check whether README.md needs a dictionary update
+If this session created a new domain, skill, hook, or WORKSPACE file
+— or removed/renamed an existing one — invoke update-readme before
+committing. If nothing structural changed this session, skip silently.
 ## 6. Commit: git add -A && git commit -m "Close day [DATE]: ..."
 ## 7. Report back: what got done, what's open, confirm both committed.

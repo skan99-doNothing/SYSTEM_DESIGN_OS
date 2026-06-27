@@ -191,6 +191,36 @@ A future implementation under a different agent should build an
 equivalent periodic-check trigger in that agent's own mechanism, using
 the 5 categories above as the check list.
 
+### The dictionary-maintenance concept (mechanism-agnostic)
+
+The obligation itself — keeping README.md current as the system grows
+— applies regardless of agent or tool. Any agent creating or removing
+named structure (a domain, a skill, a hook, a WORKSPACE file) should
+document or un-document that structure in README.md's existing format
+before the session closes.
+
+What does NOT transfer is the specific invocation: a Claude Code skill
+(.claude/skills/update-readme/SKILL.md), wired into chalo's Step 5c.
+Skills are Claude-Code-specific.
+
+The portable specification:
+
+- **Trigger:** any structural change — checked at session close, not
+  as a separate invocation
+- **Precondition:** read the new thing's actual content before writing
+  its entry — no entry from the name alone (no-overclaim rule)
+- **Action:** find the right section in README.md, write an entry
+  matching its neighbors in density and style, verify no duplication
+  or contradiction
+- **Post-action:** append one line to EVOLUTION_LOG.md
+- **What it does NOT do:** decide whether something is finished enough
+  to document — applies the same threshold INGEST.md uses before
+  calling a source ingested; templates and placeholders never get entries
+
+A future implementation under a different agent should build an
+equivalent session-close check using the above trigger and precondition,
+not by copying the Claude Code skill directly.
+
 ## 3. Markdown — as the portable knowledge artifact
 
 **Purpose:** solves transferability. The system must not be locked to any

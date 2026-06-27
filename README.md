@@ -195,7 +195,7 @@ folder, rename it, drop real sources into its RAW/, and run them
 through INGEST.md. No domain currently exists — this is the one
 thing the entire system has been waiting on since its first session.
 
-## 4. The two skills — what they actually do, in full
+## 4. The three skills — what they actually do, in full
 
 ### chalo
 
@@ -244,6 +244,24 @@ after a previous check was just corrected, audit is required to
 actively try to disprove its own clean result on a different angle
 before reporting it clean — this rule exists because exactly that
 failure happened twice in one session before being caught.
+
+### update-readme
+
+Triggered by structural change — a new domain under DOMAINS/, a new
+skill under .claude/skills/, a new hook under .claude/hooks/, or a
+new file in WORKSPACE/ — checked as step 5c of chalo rather than
+invoked separately. Also fires on explicit request ("update the
+readme," "add this to the dictionary"). Reads the new or changed
+thing's actual content first (per the no-overclaim rule), never from
+the name alone. Finds its correct section in README.md's numbered
+structure, writes an entry matching its neighbors in density and
+style, verifies the new entry doesn't duplicate or contradict an
+existing one, commits the change, and appends one line to
+EVOLUTION_LOG.md. Does not decide whether something is finished enough
+to document — only fires once something genuinely exists and is in
+active use, applying the same threshold INGEST.md uses before calling
+a source ingested. DOMAINS/_TEMPLATE/ never gets a "Domains" entry
+for exactly this reason.
 
 ## 5. The two hooks — mechanical, cannot be talked past
 

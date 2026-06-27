@@ -411,6 +411,21 @@ The system's core identity had only existed implicitly across
 multiple files. Added one explicit statement tying all five qualities
 to their actual mechanisms, with the honest limit in the same breath.
 
+## 2026-06-27 — update-readme skill built, wired into chalo (CC-087)
+CC-086 rewrote README.md as a comprehensive dictionary — a one-time
+prompt with nothing to keep it current as the system grows.
+update-readme built: triggered by structural changes (new domain,
+skill, hook, or WORKSPACE file), wired into chalo's Step 5c so the
+check happens automatically. Rule 6 applied in same pass: dictionary-
+maintenance concept added to FRAMEWORK.md (portable spec). update-
+readme's own spec applied to itself: entry added to README.md section
+4 (now "three skills"); section header updated accordingly. Note:
+CC-087 was drafted in chat twice (once in the prior session's chat,
+once at end of yesterday's chalo) before actually reaching Claude Code
+— a distinct failure shape: correct, complete prompt that simply
+never got transmitted into the tool that executes it. Worth naming in
+PATTERNS.md as P003 in a future pass.
+
 ## 2026-06-27 — Chalo (close-day): audit built, PATTERNS.md, README.md comprehensive, CC-087 confirmed missing
 Audit ran clean: all WORKSPACE files documented in README.md and
 FRAMEWORK.md, all cross-references resolve, no inconsistent principles
