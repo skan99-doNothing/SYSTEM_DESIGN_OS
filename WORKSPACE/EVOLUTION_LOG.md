@@ -411,6 +411,16 @@ The system's core identity had only existed implicitly across
 multiple files. Added one explicit statement tying all five qualities
 to their actual mechanisms, with the honest limit in the same breath.
 
+## 2026-06-27 — P003 added to PATTERNS.md (CC-089)
+Confirmed twice per user's own tracking: a fully correct CC-087
+prompt drafted in chat never reached Claude Code on its first attempt,
+and the same shape recurred once more before finally landing. Added as
+P003 with its standing countermeasure (verify the artifact and a real
+commit exist, don't trust a well-formed prompt as proof of execution),
+and documented its mechanism-agnostic concept in FRAMEWORK.md in the
+same pass per Rule 6. README.md's PATTERNS.md entry updated from "two"
+to "three" to match ground truth.
+
 ## 2026-06-27 — update-readme skill built, wired into chalo (CC-087)
 CC-086 rewrote README.md as a comprehensive dictionary — a one-time
 prompt with nothing to keep it current as the system grows.
