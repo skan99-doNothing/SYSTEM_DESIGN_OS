@@ -77,14 +77,30 @@ source would likely fall into:
 Do not decide the routing — flag the likely answer and let the user
 confirm at Step 0.
 
-### 6. Prompt
+### 6. Ready-to-use handoff block
 
-End with:
+After completing sections 1-5, output the following block verbatim,
+with the full report content from sections 1-5 already inserted where
+marked. The user copies this entire block once and sends it to a new
+Claude chat with the new source's content dropped in at the
+placeholder — no assembly required.
 
 ---
-To proceed with formal ingestion, paste the source content here (or
-provide a URL if it can be fetched). INGEST.md Step 0 routing will
-be confirmed before anything is written.
+I found a new source I'm considering for the system. Here's the
+current ingest-validate report, followed by the source itself.
+
+[INSERT THE FULL REPORT FROM SECTIONS 1-5 HERE — all five sections,
+verbatim, exactly as generated above]
+
+The new source:
+[PASTE THE SOURCE'S ACTUAL CONTENT, OR THE LINK PLUS WHAT YOU'VE READ
+OF IT, HERE]
+
+Per OPERATING_CONTRACT.md: don't be agreeable for its own sake. Tell
+me plainly — is this worth ingesting, does it overlap with anything
+already in SYSTEM_SOURCES/ or SYSTEM_BRAIN/concepts/, is it credible
+or thin, and does it suggest anything genuinely new. If you don't
+have enough to judge it, say so and ask, rather than guessing.
 ---
 
 ## What this does NOT do
