@@ -254,10 +254,14 @@ appending; regenerates STATUS.md's handoff baton section in full
 (replacing the prior one entirely) so the next session's opener
 reflects the current real state, not a prior session's; scans the
 session for anything stated as fact that was never actually checked
-with a real command; and commits everything in one final pass, with
-a short, honest report back covering what got done, what's still
-open, and explicit confirmation that STATUS.md and EVOLUTION_LOG.md
-are both committed.
+with a real command; commits everything in one final pass and immediately pushes to
+the remote (git push origin master && git push --tags) — push is
+not optional, since a local-only commit provides zero protection
+against machine failure or disk loss, and if the push fails it is
+reported explicitly rather than silently treated as if the backup
+succeeded; and produces a short, honest report back covering what
+got done, what's still open, and explicit confirmation that
+STATUS.md and EVOLUTION_LOG.md are both committed and pushed.
 
 ### audit
 
