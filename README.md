@@ -57,7 +57,7 @@ SYSTEM_DESIGN_OS/
 ├── .claude/                (Claude-Code-specific machinery — see section 5)
 │   ├── settings.json / settings.local.json
 │   ├── hooks/               (mechanical guardrails — see section 5)
-│   └── skills/              (chalo, audit, update-readme — see section 4)
+│   └── skills/              (chalo, audit, update-readme, ingest-validate — see section 4)
 │
 ├── DOMAINS/
 │   └── _TEMPLATE/           (copy + rename this to start a real domain)
@@ -231,7 +231,7 @@ folder, rename it, drop real sources into its RAW/, and run them
 through INGEST.md. No domain currently exists — this is the one
 thing the entire system has been waiting on since its first session.
 
-## 4. The three skills — what they actually do, in full
+## 4. The four skills — what they actually do, in full
 
 ### chalo
 
@@ -298,6 +298,27 @@ to document — only fires once something genuinely exists and is in
 active use, applying the same threshold INGEST.md uses before calling
 a source ingested. DOMAINS/_TEMPLATE/ never gets a "Domains" entry
 for exactly this reason.
+
+### ingest-validate
+
+Triggered on demand — "ingest-validate," "should I ingest this," or
+explicit /ingest-validate invocation — when the user has a new source
+and wants to know what the system already contains before committing
+to a full INGEST.md pass. Distinct from chalo (session-close) and
+audit (system-wide self-check): this is a one-shot pre-ingestion
+orientation report with no automatic trigger. Produces six sections in
+order: (1) every source already in SYSTEM_BRAIN/index.md with a
+one-line description and ingest date; (2) every synthesized concept
+already in the index; (3) active domains under DOMAINS/ (or an
+explicit "none" if _TEMPLATE/ is the only entry); (4) any open
+SUGGESTION RECORDs found in SYSTEM_BRAIN/concepts/, with their
+current status; (5) routing guidance — which INGEST.md Step 0 bucket
+the new source likely belongs to, stated as a suggestion not a
+decision, with ambiguity named rather than silently resolved; (6) a
+prompt to the user to paste the source content if they decide to
+proceed. Writes no files, produces no ingestion record, makes no
+routing decision — the report only answers the prior question of
+whether a full ingest is worth the effort.
 
 ## 5. The two hooks — mechanical, cannot be talked past
 
