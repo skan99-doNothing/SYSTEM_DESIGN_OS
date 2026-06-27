@@ -4,6 +4,14 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-28 — overview.md staleness fixed (CC-108)
+CC-107 confirmed overview.md's source count was wrong (listed 4,
+should be 5 after tonight's Growth Engine ingestion) — a MECHANICAL
+gap, not judgment-required. Fixed the count and added a short note
+on where the source's adopted idea (confidence gradient) landed,
+without rewriting the synthesis itself — the source didn't introduce
+a new pillar, it extended existing ones.
+
 ## 2026-06-28 — ingest-validate packages report + handoff prompt as one unit (CC-106)
 User correctly identified that the handoff prompt for evaluating a
 new source should live inside ingest-validate's own output, not be
