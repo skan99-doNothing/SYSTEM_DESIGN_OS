@@ -49,8 +49,11 @@ here, this file may be stale — cross-check before trusting it fully.
    "chalo" or typing "/chalo" actually fires the skill now that the
    skill list has had a chance to reload.
 
-## What to do next time, in order
+## What to do next time
 
-1. Confirm chalo actually fires (skill trigger or /chalo command) in a
-   fresh session — see open item 5.
-2. Bring a real business domain — open since session one.
+1. Run CC-051 if it hasn't been run yet — it combines the actual fixes
+   for everything CC-049/CC-050 found missing (standing rule, self-
+   observation log, FRAMEWORK.md correction, real chalo build).
+2. Once CC-051 is confirmed, bring a real business domain — this has
+   been the single open item since session one, and infrastructure is
+   otherwise in a known, accurate state.
