@@ -1,6 +1,7 @@
 # INGEST RECORD: autonomous-ai-growth-engine.md
 
 - **Status:** INGESTED
+- **Source URL:** https://pricey-primrose-606.notion.site/Build-Your-Own-Autonomous-AI-Growth-Engine-38cd551ec9ab81bea830d426e2cd9024
 - **Method:** Text extraction (plain text/markdown provided directly in conversation)
 - **Verification artifacts:**
   1. 13 table names confirmed (exact): context_entries, business_state, agent_memory, context_handoffs, agent_runs, verification_results, verification_review_queue, eval_results, golden_examples, review_queue, growth_experiments, context_conflicts, kb_articles
