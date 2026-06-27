@@ -411,6 +411,11 @@ The system's core identity had only existed implicitly across
 multiple files. Added one explicit statement tying all five qualities
 to their actual mechanisms, with the honest limit in the same breath.
 
+## 2026-06-27 — Tagged v0-scaffold-complete (CC-096)
+Tagged the current commit (2821b47) as a single named revert point
+rather than duplicating git's own history with a separate clone —
+marks the exact state before any real domain content exists.
+
 ## 2026-06-27 — Chalo (close-day): ARTIFACTS/ created and verified, STATUS.md updated
 Audit ran: one MECHANICAL finding (STATUS.md didn't reflect CC-094);
 fixed in this pass. One JUDGMENT-REQUIRED finding surfaced: the PDF
