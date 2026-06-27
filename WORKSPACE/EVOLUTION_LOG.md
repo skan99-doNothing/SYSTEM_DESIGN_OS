@@ -411,6 +411,19 @@ The system's core identity had only existed implicitly across
 multiple files. Added one explicit statement tying all five qualities
 to their actual mechanisms, with the honest limit in the same breath.
 
+## 2026-06-27 — Chalo (close-day): audit built, PATTERNS.md, README.md comprehensive, CC-087 confirmed missing
+Audit ran clean: all WORKSPACE files documented in README.md and
+FRAMEWORK.md, all cross-references resolve, no inconsistent principles
+found. STATUS.md was stale — reflected items already fixed by CC-071
+(FRAMEWORK.md audit concept, Rule 5 example) and missed PATTERNS.md,
+the full README.md rewrite, and the updated audit skill description.
+Rewrote STATUS.md to match current ground truth. Appended P002
+behavioral pattern entry to conversational.md: user's instinct to
+distrust a clean pass immediately after a self-correction proved
+correct twice this session; now codified as audit 6b and PATTERNS.md
+P002. Conversational.md has 2 entries total — not yet at promotion
+threshold; no promotion this session.
+
 ## 2026-06-27 — README.md replaced with comprehensive system reference (CC-086)
 User explicitly requested README.md become the exhaustive, fully
 categorized reference for the entire system rather than a short

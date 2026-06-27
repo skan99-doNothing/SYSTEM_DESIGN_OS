@@ -34,3 +34,25 @@ creation time. Two data points now (CC-045 was the first). Watch for
 this: when creating any new file or structure, explicitly check whether
 known system principles (compounding value, lint passes, promotion paths)
 apply to the new thing.
+
+### 2026-06-27 — P002 pattern: user distrust of post-self-correction clean pass is a reliable catch signal
+
+This session saw the same shape twice. Audit self-corrected a check (4b
+wording fixed after CC-076 missed SYSTEM.md; then 4b re-run after
+CC-077). Each time the corrected check immediately reported clean. Each
+time the user asked for independent verification anyway. Each time the
+gap was still present. Both catches came from the user's instinct, not
+from anything audit was built to do at that point.
+
+**Constraint this reveals:** "User requesting independent verification
+right after a clean pass" is a reliable diagnostic signal, not
+overcaution. The key asymmetry: a fix to a check mechanism means the
+first run of the corrected check is exactly when under-scoping is most
+likely — the check hasn't been stress-tested yet in its new scope. The
+right response is active falsification on at least one different angle,
+not acceptance.
+
+The P002 pattern and its countermeasure (audit's 6b) are now in
+PATTERNS.md and audit/SKILL.md. This entry records the behavioral
+evidence behind why that rule exists — a user instinct confirmed twice
+in one session, now made automatic.

@@ -6,60 +6,66 @@ here, this file may be stale — cross-check before trusting it fully.
 
 ## What's built and verified
 
-- OPERATING_CONTRACT.md — division-of-labor statement, 9 rules with
-  clarifications, plus the standing rule on tool-specific mechanisms
-  needing a mechanism-agnostic concept written into FRAMEWORK.md
-  (CC-044/CC-051)
-- INGEST.md — Step 0 through Step 6, tested live; includes promotion
-  note: conversational.md entries follow the same extends/conflicts/
-  genuinely-new reconciliation logic as any other source (CC-064)
-- FRAMEWORK.md — 3 pillars, stage numbering, guardrail concept,
-  session-close concept (CC-047/CC-051); review concept NOT yet
-  documented here — open item (see below)
-- chalo skill — fires exactly once, confirmed; Step 0 now invokes
-  review before anything else (CC-066/068); Steps 5a/5b added for
-  conversational.md write and promotion check (CC-063/CC-064)
-- audit skill — .claude/skills/audit/SKILL.md built per full spec;
-  first real run this session produced 1 mechanical fix + 2 judgment
-  flags (CC-066/068)
-- DECISIONS.md + REASONING.md — D001 locked and fully promoted:
-  DECISIONS.md holds the what/why/trigger, REASONING.md holds RT001
-- RULES.md — 2 proven expansion patterns
-- WORKSPACE/SYSTEM_BRAIN/ — built from 4 real re-ingested sources;
-  context/ holds overview.md (document-derived) and conversational.md
-  (dialogue-derived; CC-045 pattern entry, second data point)
-- DOMAINS/_TEMPLATE/ — ready to copy for the first real domain;
-  context/ with conversational.md placeholder
-- README.md — project root orientation with 4-pillar foundation summary
-  (CC-058/CC-059)
-- CLAUDE.md + AGENTS.md — agent-agnostic, synced; pointer to README.md
-  added for returning users
-- .claude/hooks/ingest-guard.sh — mechanical write-block, working
-- .claude/hooks/verify-claude-md.sh — SessionStart check confirmed
-- .claude/settings.json — correct nested hooks schema
-- Git history — accurate, includes its own corrections
+- **OPERATING_CONTRACT.md** — division-of-labor statement, 9 rules with
+  clarifications; Rule 5 has a real logged example (CC-071 — two
+  sessions correctly refused to fabricate a missing spec); Rule 6
+  confirmed: every .claude/ artifact has a mechanism-agnostic concept
+  in FRAMEWORK.md
+- **INGEST.md** — Steps 0-6, tested live; includes note on
+  conversational.md entries following the same reconciliation logic
+- **FRAMEWORK.md** — 3 pillars, stage numbering, guardrail concept,
+  session-close concept, self-audit concept (CC-071); DNA section
+  stating all 5 qualities with honest limit (CC-080)
+- **chalo skill** — fires exactly once, confirmed; Step 0 invokes audit
+  unconditionally; Steps 5a/5b handle conversational.md write and
+  promotion check
+- **audit skill** — fully built: Steps 0-7 including 4b (reverse-
+  direction undocumented-structure check, for folders AND loose files)
+  and 6b (actively distrust clean pass immediately after a self-
+  correction); reads PATTERNS.md as its own Step 0 before any checks
+- **PATTERNS.md** — P001 (known principle not self-applied, 3
+  instances), P002 (fix declared clean without independent
+  verification, 2 instances); each with standing countermeasure; read
+  by audit before its own checks (CC-079)
+- **DECISIONS.md + REASONING.md** — D001 locked and fully promoted:
+  DECISIONS.md holds what/why/trigger, REASONING.md holds RT001
+- **RULES.md** — horizontal expansion (adding a domain), vertical
+  expansion (workflow stage folders), and scaling threshold for
+  index-file navigation (~50-100 files per brain, evidence-based)
+- **SYSTEM_BRAIN/** — built from 4 real re-ingested sources; context/
+  holds overview.md (document-derived) and conversational.md (2
+  entries: CC-045/P001 pattern; P002 behavioral pattern confirming
+  user's post-clean-pass skepticism is a reliable signal)
+- **DOMAINS/_TEMPLATE/** — ready to copy and rename for first real domain
+- **README.md** — comprehensive 284-line full system reference:
+  architecture tree, every WORKSPACE file's role, both skills in full
+  depth (not just named), both hooks with mechanics + known limitation,
+  DNA statement with honest limit (CC-086)
+- **CLAUDE.md + AGENTS.md** — 32-line short pointers into README.md;
+  synced (CC-086)
+- **.claude/hooks/ingest-guard.sh** — mechanical write-block, working
+- **.claude/hooks/verify-claude-md.sh** — SessionStart check confirmed
+  at real session start
+- **.claude/settings.json** — correct nested hooks schema
+- **Git history** — accurate, includes its own corrections
 
 ## Open items — genuinely unresolved right now
 
-1. **No real business domain exists yet.** Unresolved since session
-   one. Nothing else matters more than this.
-2. **FRAMEWORK.md missing audit skill concept** — per Rule 6, any
-   .claude/ artifact needs a mechanism-agnostic concept in FRAMEWORK.md.
-   audit skill created in CC-066/068 without that step. Needs a pass
-   to add the self-audit concept spec to FRAMEWORK.md.
-3. **Rule 5 (plain acknowledgment of limits) has no logged real-world
-   application** — may simply never have come up, but unverifiable from
-   history. Not urgent, but flagged.
-4. **Vercel plugin warning is a known, accepted, dropped issue** —
-   Claude Code bug anthropics/claude-code#62174. Do not re-investigate.
-5. **CC-026's residual risk is permanent**: rules can be skipped under
-   pressure. No hook fixes this. Only spot-checking does.
-6. **CC-045 pattern has two data points**: Claude doesn't reliably
-   self-apply known principles to new structures it creates. Logged in
-   context/conversational.md. Watch for this on any new file or structure.
+1. **No real business domain exists yet.** Unchanged since session one.
+   Nothing else matters more than this.
+2. **CC-087 (update-readme skill) spec exists only in chat.** Confirmed
+   NOT built (CC-088). Same pattern as CC-066/067 before this session:
+   spec transmitted in conversation, never reached a Claude Code
+   session. To fix: transmit the full spec from chat into a new Claude
+   Code session before asking Claude Code to build it.
+3. **CC-026's residual risk is permanent** — rules can be skipped under
+   pressure to appear helpful; no hook fixes this; only spot-checking
+   does.
+4. **Vercel plugin warning** — Claude Code bug, accepted, dropped. Do
+   not re-investigate.
 
 ## What to do next time
 
-1. Write the review concept into FRAMEWORK.md (Rule 6 compliance for
-   CC-066/068) — quick, mechanical.
-2. Bring a real business domain. Everything else is ready.
+1. Bring a real business domain. Everything else is ready.
+2. If the update-readme skill is needed: transmit the full spec
+   (currently in chat only) into a new Claude Code session first.
