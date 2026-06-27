@@ -38,6 +38,10 @@ grows.
    entry from the name alone, per INGEST.md's own no-overclaim rule.
 2. Find where it belongs in README.md's existing structure (which
    numbered section, alphabetical or logical position within it).
+2a. Distinguish the architecture tree (section 3) from the full
+   dictionary (sections 3.1, 4, 5). The tree gets a short
+   parenthetical mention; full entries belong in the numbered
+   sections. Never duplicate full prose into the tree.
 3. Write the entry in the same density and style as its neighbors —
    this is a dictionary, every entry should be readable on its own
    without depending on surrounding narrative.
