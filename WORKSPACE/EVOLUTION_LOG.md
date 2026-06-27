@@ -256,3 +256,8 @@ recurring risk.
 Combined and executed in one sequential pass: standing rule added,
 self-observation logged, FRAMEWORK.md's false claim corrected, chalo
 built and tested for real.
+
+## 2026-06-27 — STATUS.md's next-time section corrected (CC-052)
+Caught during CC-050's own report: "What to do next time" still asked
+whether CC-047 completed, even though CC-049/CC-050 had already
+answered that. Updated to point at CC-051 instead.
