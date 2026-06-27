@@ -4,6 +4,21 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-28 — Structural fix for overview.md staleness, not deferred to a second instance (CC-109)
+User correctly rejected treating this as a PATTERNS.md candidate
+waiting for a second occurrence — the failure mode (overview.md's
+source count going stale every time a new source is reconciled) is
+deterministic, not occasional, since nothing currently re-checks it.
+Added a mechanical count-check directly into INGEST.md's Step 6 (fix
+in the same pass as reconciliation) and a backstop into audit's check
+1a (catch it even if Step 6's check is ever skipped). CC-109b first
+confirmed the blast radius: overview.md was the only file that broke
+— index.md, README.md, and concepts/ cross-references were all
+current after CC-098's ingestion. The two-place structural fix is
+correctly scoped to the one deterministic gap. PATTERNS.md is for
+behavioral failures that may or may not recur; this was a structural
+gap that recurs with certainty — the distinction matters.
+
 ## 2026-06-28 — overview.md staleness fixed (CC-108)
 CC-107 confirmed overview.md's source count was wrong (listed 4,
 should be 5 after tonight's Growth Engine ingestion) — a MECHANICAL
