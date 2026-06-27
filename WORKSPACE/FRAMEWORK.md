@@ -99,11 +99,12 @@ current, check for unverified claims, commit everything — is documented
 as a portable rule in OPERATING_CONTRACT.md Rule 8. That obligation
 applies regardless of which agent or tool is running this system.
 
-What does NOT transfer is the specific invocation mechanism currently
-built: a Claude Code skill (.claude/skills/chalo/SKILL.md), invoked by
-the trigger word "chalo." Skills are a Claude-Code-specific feature — a
-different agent would need its own equivalent mechanism, since the
-.claude/skills/ folder format isn't read by other tools.
+What does NOT transfer, if and when this is built, is the specific
+invocation mechanism: a Claude Code skill
+(.claude/skills/chalo/SKILL.md), invoked by the trigger word "chalo."
+Skills are a Claude-Code-specific feature — a different agent would
+need its own equivalent mechanism, since the .claude/skills/ folder
+format isn't read by other tools.
 
 The portable specification, independent of any tool's skill syntax:
 

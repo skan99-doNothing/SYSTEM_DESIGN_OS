@@ -139,6 +139,23 @@ explicitly rather than assuming the two coexist cleanly — the same
 read-only verification CC-020 performed, not a one-time fix but a
 standing check whenever the hierarchy changes.
 
+### Anything tool-specific must get its concept documented separately
+
+When something is built that depends on Claude Code's specific
+mechanism — a hook, a skill, a settings.json entry, or anything else
+that wouldn't transfer to a different agent — documenting the working
+implementation is not sufficient on its own. The mechanism-agnostic
+CONCEPT must also be written into FRAMEWORK.md, in the same pass.
+
+This rule exists because the pattern was demonstrated twice (CC-030,
+CC-043) only because the user caught the gap each time. Without a
+standing rule, a third tool-specific build has no guarantee the same
+documentation happens.
+
+Going forward: any prompt that creates something under .claude/ must
+include, as part of that same prompt, a step writing the corresponding
+concept into FRAMEWORK.md.
+
 ## 7. Don't assume the topic — ask, then go fetch only what's relevant
 
 At the start of a session, Claude does not know which domain, decision, or thread the user wants to work on — even if a prior session ended mid-topic. Carrying that prior topic forward by default is itself an assumption, and a session may have nothing to do with it.

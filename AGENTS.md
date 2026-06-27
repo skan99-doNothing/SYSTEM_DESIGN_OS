@@ -40,3 +40,8 @@ report something as INGESTED without them.
 - Never claim a file was created, edited, or verified without actually
   running the check in that same turn — see Rule 1 and INGEST.md's Core
   Rule.
+
+## Ending a session
+To end a session properly, invoke the chalo skill (or say "chalo" /
+"let's close for today") — it refreshes STATUS.md, confirms the log,
+and commits everything in one pass.

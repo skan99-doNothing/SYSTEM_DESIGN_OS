@@ -240,3 +240,14 @@ A sanity check (CC-002) found that Rule 8 referenced decision-worthiness criteri
 
 ## 2026-06-26 — OPERATING_CONTRACT.md Rule 9 added (CC-001)
 User caught two gaps: Claude Code prompts had no ID, so a report-back couldn't be matched to its request when multiple prompts were sent close together; and Rule 8 never specified that Claude Code itself — not just Claude in chat — is responsible for writing the log entry at the moment a change is made. Rule 9 adds prompt IDs and makes logging a required part of every Claude Code prompt's own instructions, executed by Claude Code in the same pass as the change. This log entry written by Claude Code in the same pass as the Rule 9 edit, per CC-001.
+
+## 2026-06-27 — Self-observation: pattern recognized but not proactively escalated (CC-045)
+Between CC-030 and CC-043, the same shape of problem repeated. Claude
+recognized the pattern by CC-043 but did not proactively propose a
+standing rule until asked. Logged as an honest finding — the existing
+rules already covered this; the failure was in applying them
+proactively, not reactively. Worth noting: this same gap recurred a
+second time — CC-044/045/047 themselves sat unrun for multiple turns
+without either party noticing until CC-049 forced the discovery.
+"Drafted but not confirmed executed" is now itself a recognized
+recurring risk.
