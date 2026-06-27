@@ -4,6 +4,11 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-27 — STATUS.md manually refreshed ahead of session limit (CC-048)
+Session hit its limit before CC-047's confirmation. Manually refreshed
+STATUS.md to cover CC-039 through CC-047 honestly, flagging chalo's
+status as unverified rather than assumed.
+
 ## 2026-06-26 — Session-close concept documented as portable specification (CC-043)
 Following CC-030's pattern: chalo's obligation already lives portably
 in OPERATING_CONTRACT.md Rule 8, but its implementation
