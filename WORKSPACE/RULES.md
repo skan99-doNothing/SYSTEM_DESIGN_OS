@@ -85,6 +85,22 @@ parent scaffold that future domains start from — DOMAINS/_TEMPLATE/
 keeps producing new domains the same way, regardless of how many
 prior domains have graduated out.
 
+## Conflict preservation mechanism — documented, not yet built
+
+The Growth Engine source (SYSTEM_SOURCES/) describes preserving both
+sides of a contradicting fact, tagged and flagged for human review,
+rather than silently overwriting. This is a real, good idea — but
+building it now would mean designing against a hypothetical: zero
+genuine conflicts exist across any ingested source or domain as of
+this writing.
+
+**Build this for real the first time INGEST.md's Step 6 reconciliation
+or audit's own checks actually surface a genuine conflicting fact** —
+not before. At that point, the mechanism should: preserve both claims
+intact with their source provenance, tag the entry as CONFLICT, and
+require explicit human resolution rather than auto-resolving by
+recency or confidence score alone.
+
 ## What's still missing here
 
 Patterns for: when to extract a repeated workflow into a Claude Code

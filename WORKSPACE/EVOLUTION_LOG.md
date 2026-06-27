@@ -4,6 +4,8 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+update-readme: RULES.md conflict preservation pattern added to README.md dictionary (CC-100)
+
 ## 2026-06-28 — INGEST.md Step 7 added: suggestions are surfaced, never auto-applied (CC-099)
 User identified a real gap: INGEST.md's protocol ended at
 reconciliation (Step 6), with nothing covering the distinct later

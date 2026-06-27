@@ -82,6 +82,8 @@ Ask, explicitly, before writing "INGESTED" or stating any specific fact about a 
 
 If the answer to any of these is uncertain — including mild uncertainty, not just clear doubt — the status is PARTIAL or FAILED, not INGESTED, and any specific fact in question gets re-verified before being stated rather than stated with a hedge. Uncertainty does not round up to success, and a hedge ("I believe it's around 9 pages") is not a substitute for actually checking.
 
+Grade each verification artifact's confidence rather than treating verification as binary: **1.0** = confirmed via a live command/API call in this turn; **0.7** = inferred from multiple consistent signals; **0.4** = a single, unconfirmed mention; **0.2** = speculative/inferred, not directly evidenced. A source can be INGESTED while still carrying mixed-confidence facts inside it — the status is about whether the source was read, the confidence score is about how strongly any single extracted fact is actually supported.
+
 ### Step 5 — Write the ingestion record
 Every ingestion produces a record in this format:
 
@@ -89,9 +91,9 @@ Every ingestion produces a record in this format:
 - **Status:** INGESTED / PARTIAL / FAILED
 - **Method:** [text extraction / visual read / both]
 - **Verification artifacts:**
-  1. [specific extract]
-  2. [specific extract]
-  3. [specific extract]
+  1. [specific extract] (confidence: 1.0)
+  2. [specific extract] (confidence: 0.7)
+  3. [specific extract] (confidence: 1.0)
 - **What was actually gotten from this source:** [brief, honest, not padded]
 - **What could NOT be verified or read:** [explicit gaps, even if small]
 - **Date:** [date]
@@ -135,6 +137,13 @@ conflicts/genuinely-new test as any reconciliation, triggered by
 chalo's periodic flag, not automatically every session.
 
 ### Step 7 — Surface system-improvement suggestions, never auto-apply them
+
+Most ingested findings stop at Step 6 — a new fact or concept gets
+reconciled into the brain and that is the complete, correct outcome.
+Step 7 applies only to the smaller subset of findings that describe a
+PATTERN OR MECHANISM the system itself could adopt, not ordinary
+domain or conceptual knowledge. Do not treat every ingestion as a
+trigger for Step 7 — most should end cleanly at Step 6.
 
 Reconciling a source into the brain (Step 6) is not the end of the
 process if the source describes a PATTERN OR MECHANISM, not just a

@@ -227,7 +227,9 @@ than left as informal chat conclusions.
   order was inferred from narrative sequence, but both were recorded
   at the same confidence level. The Growth Engine source has a
   working vocabulary for that distinction.
-- **Status:** PROPOSED
+- **Status:** APPLIED — adopted in CC-100; confidence gradient added to
+  INGEST.md Step 4 (grade each artifact) and Step 5 (template now
+  includes confidence field on each verification artifact line).
 - **Date:** 2026-06-28
 
 ---
@@ -256,7 +258,10 @@ than left as informal chat conclusions.
   area. But the first real domain ingestion may produce exactly this
   situation if the Growth Engine's patterns conflict with the ICM
   paper's workflow model.
-- **Status:** PROPOSED
+- **Status:** DEFERRED — decision and trigger condition documented in
+  RULES.md ("Conflict preservation mechanism — documented, not yet
+  built"). Build when the first real conflict is surfaced by Step 6
+  reconciliation or audit, not before.
 - **Date:** 2026-06-28
 
 ---
