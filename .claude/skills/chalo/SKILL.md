@@ -21,5 +21,13 @@ invocation.
    context/conversational.md (WORKSPACE/SYSTEM_BRAIN/context/conversational.md
    for system-level insights; DOMAINS/<domain>/BRAIN/context/conversational.md
    for domain-specific ones).
+## 5b. Check if conversational.md has grown enough to warrant
+   promoting into overview.md
+   Do NOT auto-promote every session — that risks thin synthesis from too
+   little material. Instead: check how many new entries have accumulated
+   since overview.md was last meaningfully updated. If a real pattern is
+   now visible that wasn't before, flag it explicitly: "conversational.md
+   has grown — consider promoting a synthesis into overview.md," with
+   specific reasoning, not just a count.
 ## 6. Commit: git add -A && git commit -m "Close day [DATE]: ..."
 ## 7. Report back: what got done, what's open, confirm both committed.

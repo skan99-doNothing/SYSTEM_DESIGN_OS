@@ -127,6 +127,13 @@ trustworthy as ground truth — exactly the failure this protocol exists
 to prevent, just at the level of the brain instead of the level of a
 single claim.
 
+### Promotion from conversational.md to overview.md follows the same logic
+
+conversational.md entries are a kind of source too — sourced from
+dialogue instead of a document. Promotion follows the same extends/
+conflicts/genuinely-new test as any reconciliation, triggered by
+chalo's periodic flag, not automatically every session.
+
 ---
 
 ## Status Definitions (No Rounding Up)

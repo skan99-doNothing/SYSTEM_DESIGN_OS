@@ -314,3 +314,8 @@ Replaced the never-built standalone CONTEXT.md design with a properly
 per-brain-scoped version: renamed synthesis/ to context/ in both
 SYSTEM_BRAIN/ and the domain template, added conversational.md
 alongside overview.md, fixed all references, updated chalo.
+
+## 2026-06-27 — Promotion path from conversational.md to overview.md added (CC-064)
+Fixed a real asymmetry: chalo wrote into conversational.md but nothing
+read back out to update overview.md. Added a judgment-based periodic
+check, connected to INGEST.md's existing reconciliation logic.
