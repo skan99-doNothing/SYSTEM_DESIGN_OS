@@ -4,6 +4,37 @@ This file answers one question, durably, so it doesn't need
 re-explaining when momentum drifts: what are we actually using, for
 what purpose, and why this choice over the alternatives.
 
+## The DNA this system is built toward
+
+Five qualities, each tied to an actual implementing mechanism — not
+aspirations, but things that exist in the current codebase and can be
+verified right now:
+
+- **Agent-agnostic** — every behavioral rule lives in CLAUDE.md and
+  its mirror AGENTS.md; the .claude/ machinery is documented as
+  mechanism-agnostic specs in FRAMEWORK.md so it can be rebuilt under
+  any agent without starting from scratch.
+- **Transferable** — everything is plain markdown, no database, no
+  proprietary format. The whole system is a folder you can hand to
+  anyone.
+- **Scalable** — knowledge stays per-domain (each BRAIN/ is isolated),
+  and RULES.md documents the concrete threshold where index-file
+  navigation stops being sufficient (~50-100 files per brain) so the
+  decision to add tooling is driven by evidence, not anxiety.
+- **Self-auditing** — audit runs as chalo's first step every session,
+  reading PATTERNS.md before its own checks, so accumulated lessons
+  apply automatically rather than depending on being remembered.
+- **Ever-learning** — PATTERNS.md converts confirmed multi-instance
+  failures into checkable rules. Each new pattern makes the next
+  instance of that shape catchable without human intervention.
+
+**The honest limit:** this compounds *known* lessons — it does not
+independently discover unknown ones. A failure has to happen at least
+twice, be noticed by a human, and get logged before PATTERNS.md can
+act on it. The system does not predict unforeseen first instances on
+its own. That still requires a human looking at the output with
+genuine skepticism.
+
 ## 1. LLM Wiki — for knowledge accumulation
 
 **Purpose:** solves the problem that knowledge doesn't accumulate by

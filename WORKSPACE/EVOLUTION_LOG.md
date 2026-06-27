@@ -405,3 +405,8 @@ Built the connective layer between individual fixes and recognized
 patterns, checked by audit before its own checks. Explicit limitation
 stated: catches second instances, doesn't predict unforeseen first
 ones.
+
+## 2026-06-27 — Unifying DNA thesis stated explicitly in FRAMEWORK.md (CC-080)
+The system's core identity had only existed implicitly across
+multiple files. Added one explicit statement tying all five qualities
+to their actual mechanisms, with the honest limit in the same breath.

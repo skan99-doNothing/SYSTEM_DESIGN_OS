@@ -6,6 +6,8 @@ documented as repeatable stages, and everything that matters is plain
 markdown so it's transferable to any agent, any person, any future
 version of yourself who's forgotten the details.
 
+The five qualities this is built toward — agent-agnostic, transferable, scalable, self-auditing, ever-learning — and the honest limit of each are stated explicitly in WORKSPACE/FRAMEWORK.md.
+
 **Read WORKSPACE/STATUS.md right now for what's actually open.**
 
 ## The foundation this is built on
