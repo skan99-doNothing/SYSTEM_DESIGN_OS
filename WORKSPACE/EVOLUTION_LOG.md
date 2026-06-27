@@ -411,6 +411,9 @@ The system's core identity had only existed implicitly across
 multiple files. Added one explicit statement tying all five qualities
 to their actual mechanisms, with the honest limit in the same breath.
 
+## 2026-06-27 — README.md architecture tree updated: skills/ now lists all three skills (CC-092)
+update-readme invoked; stale "(chalo, audit)" updated to "(chalo, audit, update-readme)". Section 4 already had the full entry — tree was the only gap.
+
 ## 2026-06-27 — P003 added to PATTERNS.md (CC-089)
 Confirmed twice per user's own tracking: a fully correct CC-087
 prompt drafted in chat never reached Claude Code on its first attempt,
