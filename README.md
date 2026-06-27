@@ -121,13 +121,16 @@ SYSTEM_DESIGN_OS/
   and plain markdown as the only artifact format, specifically because
   it's the one format that's simultaneously machine-readable,
   human-readable, version-controllable, and requires no translation
-  step to hand to someone else. It also holds five mechanism-agnostic
+  step to hand to someone else. It also holds six mechanism-agnostic
   specifications — for the ingest-guard hook, for the chalo
   session-close skill, for the audit self-check, for the update-readme
-  dictionary-maintenance process, and for the transmission-verification
-  practice (confirming a prompt was executed, not just written) —
-  written so a different agent's tooling could rebuild the same
-  behavior without copying Claude Code's specific files.
+  dictionary-maintenance process, for the ingest-validate pre-ingestion
+  orientation (on-demand report of what the system already contains,
+  before deciding whether a new source is worth a full ingest pass),
+  and for the transmission-verification practice (confirming a prompt
+  was executed, not just written) — written so a different agent's
+  tooling could rebuild the same behavior without copying Claude Code's
+  specific files.
 
 - **RULES.md** — expansion patterns, deliberately written only after
   being proven, not designed speculatively in advance. Currently
@@ -247,11 +250,14 @@ whether that file has grown enough that a real pattern is now visible
 and worth promoting into overview.md — flagging this as a judgment
 call rather than auto-promoting; rewrites STATUS.md's two sections
 (what's verified, what's open) to match reality rather than just
-appending; scans the session for anything stated as fact that was
-never actually checked with a real command; and commits everything
-in one final pass, with a short, honest report back covering what got
-done, what's still open, and explicit confirmation that STATUS.md and
-EVOLUTION_LOG.md are both committed.
+appending; regenerates STATUS.md's handoff baton section in full
+(replacing the prior one entirely) so the next session's opener
+reflects the current real state, not a prior session's; scans the
+session for anything stated as fact that was never actually checked
+with a real command; and commits everything in one final pass, with
+a short, honest report back covering what got done, what's still
+open, and explicit confirmation that STATUS.md and EVOLUTION_LOG.md
+are both committed.
 
 ### audit
 
