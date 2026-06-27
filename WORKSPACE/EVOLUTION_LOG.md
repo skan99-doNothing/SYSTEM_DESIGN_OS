@@ -399,3 +399,9 @@ Twice this session, audit's clean pass right after a self-correction
 was wrong, caught only by the user asking for independent
 verification. Added 6b with an explicit stated limit: it targets this
 specific pattern, not unforeseen categories of gap.
+
+## 2026-06-27 — PATTERNS.md created: the feedback loop's missing piece (CC-079)
+Built the connective layer between individual fixes and recognized
+patterns, checked by audit before its own checks. Explicit limitation
+stated: catches second instances, doesn't predict unforeseen first
+ones.

@@ -13,6 +13,12 @@ we're doing what we said we'd do," or explicit invocation.
 This is a mechanical audit where possible, and an explicit flag where
 it isn't. Do not silently pass anything that requires human judgment.
 
+## 0. Read PATTERNS.md first
+Before running any check, read WORKSPACE/PATTERNS.md. Apply the
+countermeasure for each active pattern during this run — do not
+re-derive them from scratch. Flag any new instance of a known pattern
+immediately, before continuing.
+
 ## 1. Check every file against its own stated purpose
 Compare each file's own stated rule to its actual content and git
 history. Flag any file whose own stated rule isn't being followed

@@ -68,6 +68,9 @@ scratch — full reasoning lives in WORKSPACE/FRAMEWORK.md.
 - **WORKSPACE/DECISIONS.md** — locked decisions with status and reasoning trigger.
 - **WORKSPACE/REASONING.md** — the why behind each locked decision.
 - **WORKSPACE/RULES.md** — proven expansion patterns (horizontal/vertical/scaling).
+- **WORKSPACE/PATTERNS.md** — recurring failure patterns that audit checks against
+  first. The closest thing this system has to learning from its own mistakes
+  across builds.
 - **WORKSPACE/SYSTEM_BRAIN/** — knowledge about the system itself.
 - **WORKSPACE/SYSTEM_SOURCES/** — the raw, original documents (LLM Wiki
   notes, the ICM paper, a CLAUDE.md guide, a screenshot) that
