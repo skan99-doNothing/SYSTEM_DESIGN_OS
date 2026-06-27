@@ -411,6 +411,14 @@ The system's core identity had only existed implicitly across
 multiple files. Added one explicit statement tying all five qualities
 to their actual mechanisms, with the honest limit in the same breath.
 
+## 2026-06-27 — Chalo (close-day): ARTIFACTS/ created and verified, STATUS.md updated
+Audit ran: one MECHANICAL finding (STATUS.md didn't reflect CC-094);
+fixed in this pass. One JUDGMENT-REQUIRED finding surfaced: the PDF
+was generated before CC-094 added ARTIFACTS/ to the system — the
+visual doesn't show that folder yet. User decides whether to
+regenerate. No new conversational.md insights this session (gitignore
+exception was a standard call, not a non-obvious constraint).
+
 ## 2026-06-27 — WORKSPACE/ARTIFACTS/ created for generated outputs (CC-094)
 User asked where a generated visual PDF should live, and proposed
 checking staleness via audit rather than tying regeneration to every

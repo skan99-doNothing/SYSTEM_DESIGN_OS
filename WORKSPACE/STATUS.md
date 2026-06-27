@@ -16,30 +16,35 @@ here, this file may be stale — cross-check before trusting it fully.
 - **chalo skill** — fires exactly once, confirmed; Step 0 invokes
   audit; Steps 5a/5b for conversational.md; Step 5c checks whether
   README.md needs a dictionary update
-- **audit skill** — fully built: Steps 0-7 including 4b and 6b;
-  reads PATTERNS.md as Step 0 before any checks
-- **update-readme skill** — triggers on structural change (new domain,
-  skill, hook, WORKSPACE file) or explicit request; step 2a documents
-  tree-vs-dictionary distinction; wired into chalo Step 5c (CC-087,
-  CC-093)
+- **audit skill** — fully built: Steps 0-7 including 1a (ARTIFACTS/
+  staleness check), 4b (reverse-direction undocumented structure),
+  and 6b (distrust clean pass after self-correction); reads
+  PATTERNS.md as Step 0
+- **update-readme skill** — triggers on structural change or explicit
+  request; step 2a documents tree-vs-dictionary distinction; wired
+  into chalo Step 5c (CC-087, CC-093)
 - **PATTERNS.md** — P001 (3 instances), P002 (2 instances), P003
-  (2 instances — correct prompt never transmitted to Claude Code);
-  each with standing countermeasure; read by audit before its own
-  checks (CC-079, CC-089)
+  (2 instances); each with standing countermeasure; read by audit
+  before its own checks
 - **DECISIONS.md + REASONING.md** — D001 locked; RT001 promoted
 - **RULES.md** — horizontal expansion, vertical expansion, scaling
-  threshold for index-file navigation (~50-100 files per brain)
+  threshold for index-file navigation
 - **SYSTEM_BRAIN/** — built from 4 sources; context/ holds overview.md
   and conversational.md (2 entries: P001 pattern, P002 behavioral
   pattern)
 - **DOMAINS/_TEMPLATE/** — ready to copy and rename for first real domain
 - **README.md** — comprehensive full system reference: architecture
-  tree (all three skills listed), every WORKSPACE file's role, three
-  skills in full depth, two hooks with mechanics + known limitation,
-  DNA statement with honest limit, PATTERNS.md entry updated to three
-  patterns (CC-086, CC-089, CC-092)
+  tree (ARTIFACTS/ shown), all WORKSPACE files including ARTIFACTS/,
+  three skills in full depth, two hooks, DNA statement (CC-086 through
+  CC-094)
 - **CLAUDE.md + AGENTS.md** — 32-line short pointers into README.md;
   synced
+- **WORKSPACE/ARTIFACTS/** — generated human-facing outputs, distinct
+  from SYSTEM_BRAIN/ and SYSTEM_SOURCES/; currently holds the 5-page
+  full visual PDF; staleness checked by audit 1a, not a fixed trigger
+  (CC-094)
+- **.gitignore** — ARTIFACTS/*.pdf explicitly excepted from the
+  blanket *.pdf safety net so generated visuals are tracked (CC-094)
 - **.claude/hooks/ingest-guard.sh** — mechanical write-block, working
 - **.claude/hooks/verify-claude-md.sh** — SessionStart check confirmed
 - **.claude/settings.json** — correct nested hooks schema
@@ -49,11 +54,17 @@ here, this file may be stale — cross-check before trusting it fully.
 
 1. **No real business domain exists yet.** Unchanged since session
    one. Nothing else matters more than this.
-2. **CC-026's residual risk is permanent** — rules can be skipped
+2. **ARTIFACTS/ visual may be slightly stale** — generated before
+   CC-094 added ARTIFACTS/ to the system; the PDF doesn't show that
+   folder. JUDGMENT-REQUIRED: decide whether the omission warrants
+   a regeneration pass.
+3. **CC-026's residual risk is permanent** — rules can be skipped
    under pressure; no hook fixes this; only spot-checking does.
-3. **Vercel plugin warning** — Claude Code bug, accepted, dropped.
+4. **Vercel plugin warning** — Claude Code bug, accepted, dropped.
    Do not re-investigate.
 
 ## What to do next time
 
-Bring a real business domain. Everything else is ready.
+1. Bring a real business domain. Everything else is ready.
+2. Decide whether to regenerate the visual now that ARTIFACTS/ exists
+   as a named part of the system.
