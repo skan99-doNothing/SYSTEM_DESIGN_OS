@@ -251,3 +251,8 @@ second time — CC-044/045/047 themselves sat unrun for multiple turns
 without either party noticing until CC-049 forced the discovery.
 "Drafted but not confirmed executed" is now itself a recognized
 recurring risk.
+
+## 2026-06-27 — CC-044, 045, 047 actually completed (CC-051)
+Combined and executed in one sequential pass: standing rule added,
+self-observation logged, FRAMEWORK.md's false claim corrected, chalo
+built and tested for real.
