@@ -8,6 +8,31 @@ version of yourself who's forgotten the details.
 
 **Read WORKSPACE/STATUS.md right now for what's actually open.**
 
+## The foundation this is built on
+
+Four ideas, each borrowed from a real source rather than invented from
+scratch — full reasoning lives in WORKSPACE/FRAMEWORK.md.
+
+1. **LLM Wiki (knowledge accumulation)** — a source gets read once and
+   woven into a standing, interlinked knowledge base ("brain") rather
+   than re-derived every time something's asked. This is what each
+   domain's BRAIN/ and WORKSPACE/SYSTEM_BRAIN/ actually are.
+
+2. **ICM — Interpretable Context Methodology (workflow orchestration)**
+   — a multi-step process as numbered folders (increments of 10, so a
+   stage can be inserted later without renumbering), each holding the
+   instructions and context for that stage. This is what DOMAINS/
+   workflow stages will be, once a real domain exists.
+
+3. **The spine / scaffold (filesystem as coordination)** — RAW/
+   (immutable sources) → BRAIN/ (accumulated knowledge) → workflow
+   stages (execution), kept separate per domain. WORKSPACE/ holds
+   what's shared across all of it.
+
+4. **Markdown as the portable artifact** — every one of the above is
+   plain text — no database, no proprietary format. This is why
+   points 1-3 are transferable at all, not just internally consistent.
+
 ## How the system is invoked (touched every session)
 
 - Open Claude Code inside this folder. CLAUDE.md / AGENTS.md auto-load

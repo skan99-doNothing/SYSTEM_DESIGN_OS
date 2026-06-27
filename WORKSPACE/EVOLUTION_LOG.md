@@ -303,3 +303,8 @@ infrastructure confirmed complete. Next: real business domain.
 Short orientation README added at project root, pointing to what does
 what rather than duplicating content. Synced pointer into CLAUDE.md/
 AGENTS.md.
+
+## 2026-06-27 — README.md: foundation pillars added (CC-059)
+Added the 4-pillar summary (LLM Wiki, ICM, spine/scaffold, markdown)
+that was missing from the original README draft — pointing back to
+FRAMEWORK.md for full reasoning rather than duplicating it.
