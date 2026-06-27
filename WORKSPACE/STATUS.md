@@ -7,8 +7,7 @@ here, this file may be stale — cross-check before trusting it fully.
 ## What's built and verified
 
 - OPERATING_CONTRACT.md — division-of-labor statement, 9 rules with
-  clarifications, including CC-044's standing rule that any .claude/-
-  specific build must get its concept documented in FRAMEWORK.md
+  clarifications
 - INGEST.md — Step 0 through Step 6, tested live
 - FRAMEWORK.md — 3 pillars, stage numbering, guardrail concept,
   session-close concept (correction pending verification — see below)
@@ -23,19 +22,20 @@ here, this file may be stale — cross-check before trusting it fully.
 
 ## Open items — genuinely unresolved right now
 
-1. **chalo skill — STATUS UNKNOWN, NEEDS VERIFICATION FIRST.** CC-046
-   confirmed it did NOT exist. CC-047 was sent to fix FRAMEWORK.md's
-   false claim AND build chalo for real — but its report-back was
-   never received before this session hit its limit. **First action
-   next session: check whether CC-047 actually ran.**
+1. **chalo skill does NOT exist — confirmed, not unknown.** CC-049
+   verified directly: no .claude/skills/, no .claude/commands/chalo.md,
+   FRAMEWORK.md still falsely states "currently built" (uncorrected).
+   CC-044 through CC-047 never ran at all — EVOLUTION_LOG.md gap from
+   CC-043 to CC-048 confirms it. Needed, in order: (a) correct
+   FRAMEWORK.md's false claim, (b) add CC-044's rule for real, (c)
+   build chalo for real, (d) log CC-045's self-observation.
 2. **No real business domain exists yet.** Unresolved since session
    one. Nothing else matters more than this.
 3. **verify-claude-md.sh's success line** never visually confirmed at
    a genuine session start — only inferred from /doctor.
 4. **Vercel plugin warning is a known, accepted, dropped issue** —
    Claude Code bug anthropics/claude-code#62174. Do not re-investigate.
-5. **CC-045's self-observation entry** — check EVOLUTION_LOG.md to
-   confirm it was actually written.
+5. **CC-045's entry — CONFIRMED not logged.** See item 1.
 6. **CC-026's residual risk is permanent**: rules can be skipped under
    pressure. No hook fixes this. Only spot-checking does.
 

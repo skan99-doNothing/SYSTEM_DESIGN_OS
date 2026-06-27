@@ -4,6 +4,12 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-27 — STATUS.md corrected with definitive findings (CC-050)
+CC-049 confirmed CC-044 through CC-047 never ran at all. FRAMEWORK.md's
+false claim is still live. chalo has zero implementation. Updated
+STATUS.md from "unknown" to "confirmed not done," and removed a second
+false claim about CC-044's rule already existing.
+
 ## 2026-06-27 — STATUS.md manually refreshed ahead of session limit (CC-048)
 Session hit its limit before CC-047's confirmation. Manually refreshed
 STATUS.md to cover CC-039 through CC-047 honestly, flagging chalo's
