@@ -286,3 +286,10 @@ fired exactly once in a fresh session — skill works, triple-fire fixed
 by CC-055. (2) verify-claude-md.sh fired correctly at real session start
 ("✓ CLAUDE.md verified" on startup) — no longer inferred from /doctor
 only. Infrastructure is now fully confirmed working.
+
+## 2026-06-27 — D001's reasoning promoted to REASONING.md (CC-056)
+CC-053 found the real, narrow gap: D001 LOCKED since session start, but
+REASONING.md's own promotion rule was never followed. Promoted RT001.
+Note: the prompt that specified this work was labeled CC-055 but that ID
+was already taken by the chalo triple-fire fix earlier this session —
+executed as CC-056 to avoid duplicate IDs.
