@@ -9,6 +9,11 @@ invocation.
 
 # Chalo (Close Day)
 
+## 0. Run review first
+Invoke review before anything else. Fix MECHANICAL findings in this
+same run where reasonable. Report JUDGMENT-REQUIRED findings to the
+user rather than resolving them.
+
 ## 1. Review what actually happened this session.
 ## 2. Confirm EVOLUTION_LOG.md is current; log retroactively if needed.
 ## 3. Rewrite STATUS.md's "What's built and verified" section.
