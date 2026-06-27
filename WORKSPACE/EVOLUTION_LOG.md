@@ -352,3 +352,11 @@ Renamed the system self-audit skill from review to audit. Fixed every
 reference across chalo, README.md, STATUS.md. Historical EVOLUTION_LOG
 entries left as-is (append-only). README.md updated to state audit runs
 automatically via chalo, not as a separate invocation.
+
+## 2026-06-27 — Audit findings #2/#3 resolved, review renamed to audit (CC-071)
+First real audit run found two judgment-required items about itself —
+fixed both, then completed the rename. First time this session's
+recurring pattern was caught mechanically rather than by the user.
+FRAMEWORK.md now has the self-audit concept spec (Rule 6 compliance).
+Rule 5 now has a real logged example: CC-068's two-session refusal to
+fabricate the missing spec.

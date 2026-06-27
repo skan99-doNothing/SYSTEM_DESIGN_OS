@@ -124,6 +124,42 @@ A future implementation under a different agent should read this
 specification and build the trigger + sequence in that agent's own
 mechanism — not attempt to copy .claude/skills/chalo/ directly.
 
+### The system self-audit concept (mechanism-agnostic)
+
+The obligation itself — periodically checking the system against its
+own stated rules, flagging staleness and missed self-applications —
+is portable regardless of agent or tool.
+
+What does NOT transfer is the specific invocation mechanism: a Claude
+Code skill (.claude/skills/audit/SKILL.md), fired as chalo's first
+step. Skills are Claude-Code-specific. A different agent would need its
+own equivalent trigger.
+
+The portable specification:
+
+- **Trigger:** fires as part of session-close, not separately invoked —
+  ensuring it runs reliably rather than depending on being remembered.
+- **What it checks (5 categories):** (1) every file against its own
+  stated purpose; (2) promotion/threshold conditions that may have been
+  crossed; (3) principles applied once but not self-applied elsewhere;
+  (4) broken or stale cross-references; (5) rules that exist but were
+  never actually exercised with a real logged instance.
+- **Output discipline:** each finding tagged MECHANICAL (can fix in
+  this pass) or JUDGMENT-REQUIRED (surface to user, don't resolve
+  unilaterally). Never silently pass anything requiring human judgment.
+- **Known limitation, true regardless of implementation:** the audit
+  checks whether known principles were applied to existing structures.
+  It cannot prevent a new structure from being created without those
+  principles — the root cause is a judgment failure at creation time,
+  not a missing check. This was demonstrated by the audit's own first
+  run (CC-066/068), which found its own FRAMEWORK.md concept missing.
+  Mechanical checks catch this pattern after the fact; they can't
+  guarantee it never recurs.
+
+A future implementation under a different agent should build an
+equivalent periodic-check trigger in that agent's own mechanism, using
+the 5 categories above as the check list.
+
 ## 3. Markdown — as the portable knowledge artifact
 
 **Purpose:** solves transferability. The system must not be locked to any
