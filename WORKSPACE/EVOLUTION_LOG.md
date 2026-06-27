@@ -4,6 +4,15 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-28 — ingest-validate packages report + handoff prompt as one unit (CC-106)
+User correctly identified that the handoff prompt for evaluating a
+new source should live inside ingest-validate's own output, not be
+assembled by hand in chat each time — otherwise it's just another
+good idea that exists only in conversation. Updated the skill so a
+single run produces the full report with the ready-to-use prompt
+already embedded, ready to copy once and paste into a new chat with
+the new source's content dropped in.
+
 ## 2026-06-28 — Command/skill split removed, everything is a skill (CC-105)
 User correctly challenged the command/skill distinction drawn in
 CC-103 — on inspection, the supposed difference (skills carry
