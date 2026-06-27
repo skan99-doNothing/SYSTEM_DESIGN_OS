@@ -46,5 +46,16 @@ updated Open Items section, not from memory of an earlier session.
 Leave the "What I want to do this session" line as a blank placeholder
 — chalo does not guess the next task. The date in the baton header
 must match today's real date, not a prior session's.
-## 6. Commit: git add -A && git commit -m "Close day [DATE]: ..."
-## 7. Report back: what got done, what's open, confirm both committed.
+## 6. Commit and push
+Run: git add -A && git commit -m "Close day [DATE]: ..."
+Then immediately: git push origin master && git push --tags
+
+Push is not optional. The risk being defended against is total loss
+on machine failure or disk corruption — a local-only commit provides
+zero protection against that. This matches standard development
+practice (commit often, push always), not a cautious default.
+
+If the push fails (no remote configured, network issue, auth problem),
+report it explicitly as a FAILED step — do NOT silently continue as if
+the backup succeeded. A commit that didn't push is not yet safe.
+## 7. Report back: what got done, what's open, confirm both committed and pushed to remote.
