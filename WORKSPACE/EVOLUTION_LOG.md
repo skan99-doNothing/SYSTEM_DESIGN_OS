@@ -4,6 +4,20 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-28 — INGEST.md Step 7 added: suggestions are surfaced, never auto-applied (CC-099)
+User identified a real gap: INGEST.md's protocol ended at
+reconciliation (Step 6), with nothing covering the distinct later
+question of whether newly-ingested knowledge should change the
+SYSTEM itself. Added Step 7: produce a SUGGESTION RECORD (status
+always starts PROPOSED) in the relevant concept page, never edit the
+target file directly in the same pass. This is always JUDGMENT-
+REQUIRED, matching audit's existing discipline — the system can know
+something and suggest acting on it, but a human decides what
+actually changes. Retroactively recorded tonight's own two real
+proposals (confidence gradient for INGEST.md, conflict preservation
+mechanism) as the first real instances of this step, rather than
+leaving them as informal chat conclusions with no trail.
+
 ## 2026-06-27 — STATUS.md corrected with definitive findings (CC-050)
 CC-049 confirmed CC-044 through CC-047 never ran at all. FRAMEWORK.md's
 false claim is still live. chalo has zero implementation. Updated
