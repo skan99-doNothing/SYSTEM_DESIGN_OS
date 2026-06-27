@@ -18,6 +18,9 @@ here, this file may be stale — cross-check before trusting it fully.
   fresh session (this session): fires exactly once via the skill
   mechanism. The fallback slash command (.claude/commands/chalo.md)
   was deleted (CC-055) after it caused triple-fire.
+- DECISIONS.md + REASONING.md — D001 locked and fully promoted:
+  DECISIONS.md holds the what/why/trigger, REASONING.md holds RT001
+  (rejected alternative, justification, re-open logic, session tension)
 - RULES.md — 2 proven expansion patterns
 - WORKSPACE/SYSTEM_BRAIN/ — built from 4 real re-ingested sources
 - DOMAINS/_TEMPLATE/ — ready to copy for the first real domain

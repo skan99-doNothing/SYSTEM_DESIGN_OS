@@ -293,3 +293,8 @@ REASONING.md's own promotion rule was never followed. Promoted RT001.
 Note: the prompt that specified this work was labeled CC-055 but that ID
 was already taken by the chalo triple-fire fix earlier this session —
 executed as CC-056 to avoid duplicate IDs.
+
+## 2026-06-27 — Infrastructure thread closed; DECISIONS.md/REASONING.md added to STATUS.md built list (chalo)
+CC-056 completed the last real gap. STATUS.md updated to reflect
+DECISIONS.md and REASONING.md as fully built and verified. All
+infrastructure confirmed complete. Next: real business domain.
