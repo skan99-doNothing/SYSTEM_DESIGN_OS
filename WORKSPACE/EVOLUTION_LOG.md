@@ -266,3 +266,11 @@ answered that. Updated to point at CC-051 instead.
 CC-052's own report flagged its fix arrived after CC-051 had already
 superseded the premise. Fixed to reflect the actual open item:
 confirming chalo's live invocation.
+
+## 2026-06-27 — chalo triple-fire fixed by removing duplicate slash command (CC-055)
+CC-051 created both .claude/skills/chalo/SKILL.md and
+.claude/commands/chalo.md as a belt-and-suspenders approach. In
+practice this caused three firings on every "chalo" invocation: the
+slash command, the skill it called, and the harness's own skill
+registration. Deleted commands/chalo.md — the skill is confirmed
+working and the command was redundant.
