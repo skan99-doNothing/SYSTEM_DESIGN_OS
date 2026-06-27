@@ -14,30 +14,28 @@ here, this file may be stale — cross-check before trusting it fully.
   note: conversational.md entries follow the same extends/conflicts/
   genuinely-new reconciliation logic as any other source (CC-064)
 - FRAMEWORK.md — 3 pillars, stage numbering, guardrail concept,
-  session-close concept (false "currently built" claim corrected,
-  CC-047/CC-051)
-- chalo skill — .claude/skills/chalo/SKILL.md confirmed working in a
-  fresh session; fires exactly once. Steps 5a and 5b added: write
-  dialogue-derived insights to context/conversational.md, then check
-  whether enough has accumulated to promote into overview.md (CC-063/CC-064)
+  session-close concept (CC-047/CC-051); review concept NOT yet
+  documented here — open item (see below)
+- chalo skill — fires exactly once, confirmed; Step 0 now invokes
+  review before anything else (CC-066/068); Steps 5a/5b added for
+  conversational.md write and promotion check (CC-063/CC-064)
+- review skill — .claude/skills/review/SKILL.md built per full spec;
+  first real run this session produced 1 mechanical fix + 2 judgment
+  flags (CC-066/068)
 - DECISIONS.md + REASONING.md — D001 locked and fully promoted:
   DECISIONS.md holds the what/why/trigger, REASONING.md holds RT001
-  (rejected alternative, justification, re-open logic, session tension)
 - RULES.md — 2 proven expansion patterns
 - WORKSPACE/SYSTEM_BRAIN/ — built from 4 real re-ingested sources;
-  synthesis/ renamed to context/; context/ now holds overview.md
-  (document-derived) and conversational.md (dialogue-derived, first
-  real entry added this session: CC-045 pattern, second data point)
+  context/ holds overview.md (document-derived) and conversational.md
+  (dialogue-derived; CC-045 pattern entry, second data point)
 - DOMAINS/_TEMPLATE/ — ready to copy for the first real domain;
-  synthesis/ renamed to context/, conversational.md placeholder added
-- README.md — project root orientation: what does what, how to invoke,
-  how the loop closes, 4-pillar foundation summary, the one waiting item
+  context/ with conversational.md placeholder
+- README.md — project root orientation with 4-pillar foundation summary
   (CC-058/CC-059)
 - CLAUDE.md + AGENTS.md — agent-agnostic, synced; pointer to README.md
   added for returning users
 - .claude/hooks/ingest-guard.sh — mechanical write-block, working
-- .claude/hooks/verify-claude-md.sh — SessionStart check confirmed at
-  a real session start ("✓ CLAUDE.md verified" fires on startup)
+- .claude/hooks/verify-claude-md.sh — SessionStart check confirmed
 - .claude/settings.json — correct nested hooks schema
 - Git history — accurate, includes its own corrections
 
@@ -45,17 +43,23 @@ here, this file may be stale — cross-check before trusting it fully.
 
 1. **No real business domain exists yet.** Unresolved since session
    one. Nothing else matters more than this.
-2. **Vercel plugin warning is a known, accepted, dropped issue** —
+2. **FRAMEWORK.md missing review skill concept** — per Rule 6, any
+   .claude/ artifact needs a mechanism-agnostic concept in FRAMEWORK.md.
+   review skill created in CC-066/068 without that step. Needs a pass
+   to add the self-audit concept spec to FRAMEWORK.md.
+3. **Rule 5 (plain acknowledgment of limits) has no logged real-world
+   application** — may simply never have come up, but unverifiable from
+   history. Not urgent, but flagged.
+4. **Vercel plugin warning is a known, accepted, dropped issue** —
    Claude Code bug anthropics/claude-code#62174. Do not re-investigate.
-3. **CC-026's residual risk is permanent**: rules can be skipped under
+5. **CC-026's residual risk is permanent**: rules can be skipped under
    pressure. No hook fixes this. Only spot-checking does.
-4. **CC-045 pattern has two data points now**: Claude does not reliably
-   self-apply known principles to new structures it creates. Watch for
-   this on any new file or structure. Not fixable structurally — only
-   by awareness. Logged in context/conversational.md.
+6. **CC-045 pattern has two data points**: Claude doesn't reliably
+   self-apply known principles to new structures it creates. Logged in
+   context/conversational.md. Watch for this on any new file or structure.
 
 ## What to do next time
 
-1. Bring a real business domain — the single open item since session
-   one. All infrastructure is confirmed working and in an accurate
-   state. No more prerequisite work remains.
+1. Write the review concept into FRAMEWORK.md (Rule 6 compliance for
+   CC-066/068) — quick, mechanical.
+2. Bring a real business domain. Everything else is ready.

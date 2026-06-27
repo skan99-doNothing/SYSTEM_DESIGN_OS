@@ -331,3 +331,18 @@ conversational.md when that file was created, and only got fixed
 after the user asked why. Same shape of failure as CC-045: a known
 pattern not proactively self-applied, caught by the user, not by
 Claude noticing on its own. Second data point on a recurring risk.
+
+## 2026-06-27 — review wired into chalo as a reliable trigger (CC-066/068)
+Spec existed only in chat, never reached a Claude Code session until
+now — confirmed via two sessions correctly refusing to fabricate it.
+Built per full spec, wired as chalo's first step for reliability.
+
+## 2026-06-27 — review ran as chalo's step 0; findings logged (CC-066/068)
+MECHANICAL: SYSTEM_BRAIN/index.md had stale "last updated" date
+(2026-06-26 → 2026-06-27); fixed in this pass.
+JUDGMENT-REQUIRED (1): review skill created under .claude/ with no
+mechanism-agnostic concept written into FRAMEWORK.md — per Rule 6, that
+step was missing from CC-066/068's prompt. Surfaced to user.
+JUDGMENT-REQUIRED (2): Rule 5 (plain acknowledgment of limits) has no
+explicit EVOLUTION_LOG.md entry showing real application. May never
+have come up; unverifiable from history. Surfaced to user.

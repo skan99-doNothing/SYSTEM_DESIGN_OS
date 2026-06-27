@@ -50,4 +50,4 @@ Big-picture views: document-derived synthesis and dialogue-derived insights.
 
 ## Last updated
 
-2026-06-26 — initial SYSTEM_BRAIN build from 4 system-design sources (CC-015)
+2026-06-27 — synthesis/ renamed to context/, conversational.md added (CC-063); review skill wired in (CC-066/068)
