@@ -4,6 +4,8 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+update-readme: ingest-validate added as fourth skill to README.md section 4 and architecture tree (CC-105)
+
 ## 2026-06-28 — Confidence gradient adopted, conflict preservation deferred, Step 6/7 boundary clarified (CC-100)
 Of the two PROPOSED suggestions from the Growth Engine source: adopted
 the confidence gradient for real (low-risk, closes an existing
