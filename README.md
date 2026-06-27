@@ -66,6 +66,10 @@ scratch — full reasoning lives in WORKSPACE/FRAMEWORK.md.
 - **WORKSPACE/INGEST.md** — the verification protocol.
 - **WORKSPACE/FRAMEWORK.md** — why the system is built this way.
 - **WORKSPACE/SYSTEM_BRAIN/** — knowledge about the system itself.
+- **WORKSPACE/SYSTEM_SOURCES/** — the raw, original documents (LLM Wiki
+  notes, the ICM paper, a CLAUDE.md guide, a screenshot) that
+  SYSTEM_BRAIN/ was built FROM. Kept separate and untouched, per
+  INGEST.md's own rule that sources are immutable.
 - **DOMAINS/_TEMPLATE/** — copy and rename to start a real domain.
 - **.claude/** — Claude-Code-specific machinery, not portable by
   itself — see FRAMEWORK.md's mechanism-agnostic specs to rebuild

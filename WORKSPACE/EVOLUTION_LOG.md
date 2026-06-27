@@ -366,3 +366,9 @@ Checked the question against LLM_Wiki.md's own stated experience
 rather than answering from general knowledge. Current state nowhere
 near the threshold where Obsidian/vector search would help; documented
 the concrete trigger so it isn't re-litigated from memory later.
+
+## 2026-06-27 — README.md gap fixed: SYSTEM_SOURCES/ was missing entirely (CC-075)
+Direct check of README.md's actual content (rather than trusting a
+summary) surfaced a real gap: SYSTEM_SOURCES/ was never mentioned.
+Fixed with one line. This is exactly the kind of finding audit's
+cross-reference check should eventually catch on its own.
