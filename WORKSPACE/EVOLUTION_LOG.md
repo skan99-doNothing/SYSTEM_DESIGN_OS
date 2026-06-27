@@ -4,6 +4,19 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-06-28 — Command/skill split removed, everything is a skill (CC-105)
+User correctly challenged the command/skill distinction drawn in
+CC-103 — on inspection, the supposed difference (skills carry
+judgment, commands don't) didn't hold up: ingest-validate already
+makes small judgment calls about what to include in its report.
+Maintaining two categories for functionally the same kind of
+invokable thing added complexity without a real justification.
+Consolidated: ingest-validate is now a proper skill at
+.claude/skills/ingest-validate/, the commands/ folder removed
+entirely (it was an empty local directory, never tracked in git),
+FRAMEWORK.md required no correction since it already only referenced
+skills. README.md updated: four skills, architecture tree updated.
+
 update-readme: ingest-validate added as fourth skill to README.md section 4 and architecture tree (CC-105)
 
 ## 2026-06-28 — Confidence gradient adopted, conflict preservation deferred, Step 6/7 boundary clarified (CC-100)
