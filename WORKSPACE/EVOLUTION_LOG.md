@@ -411,6 +411,18 @@ The system's core identity had only existed implicitly across
 multiple files. Added one explicit statement tying all five qualities
 to their actual mechanisms, with the honest limit in the same breath.
 
+## 2026-06-27 — Domain graduation rule documented (CC-097)
+User confirmed a real future need: a domain may eventually be sold or
+handed off independently. Existing knowledge isolation (per-domain
+RAW/BRAIN, enforced by ingest-guard.sh) does not provide ownership
+isolation — a shared git repo cannot be split cleanly per folder.
+Documented the graduation rule (copy out to a new, independent repo
+at the moment a domain is genuinely ready, one-way split, not a
+synced submodule) in RULES.md, deliberately not building the
+separation infrastructure now since no domain exists yet to need it.
+update-readme invoked: README.md's RULES.md entry updated to include
+domain graduation alongside the existing three documented patterns.
+
 ## 2026-06-27 — Tagged v0-scaffold-complete (CC-096)
 Tagged the current commit (2821b47) as a single named revert point
 rather than duplicating git's own history with a separate clone —
