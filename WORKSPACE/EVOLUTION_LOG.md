@@ -411,6 +411,17 @@ The system's core identity had only existed implicitly across
 multiple files. Added one explicit statement tying all five qualities
 to their actual mechanisms, with the honest limit in the same breath.
 
+## 2026-06-27 — WORKSPACE/ARTIFACTS/ created for generated outputs (CC-094)
+User asked where a generated visual PDF should live, and proposed
+checking staleness via audit rather than tying regeneration to every
+README.md edit or a fixed calendar — both correctly identified as
+overkill. Created ARTIFACTS/ as a third memory-adjacent category,
+distinct from SYSTEM_BRAIN/ (synthesized) and SYSTEM_SOURCES/ (raw).
+Added judgment-based staleness check to audit's existing check #1
+(1a) rather than inventing a new trigger mechanism. update-readme
+invoked to add ARTIFACTS/ to README.md section 3.1 and the
+architecture tree.
+
 ## 2026-06-27 — Chalo (close-day): update-readme built, P003, CC-092/093 landed; STATUS.md rewritten
 Audit ran: two MECHANICAL findings fixed in this pass — README.md's
 FRAMEWORK.md entry said "three mechanism-agnostic specifications" but
