@@ -4,6 +4,8 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+update-readme: FRAMEWORK.md six specs and chalo Step 5d baton added to README.md dictionary (CC-110)
+
 ## 2026-06-28 — Structural fix for overview.md staleness, not deferred to a second instance (CC-109)
 User correctly rejected treating this as a PATTERNS.md candidate
 waiting for a second occurrence — the failure mode (overview.md's

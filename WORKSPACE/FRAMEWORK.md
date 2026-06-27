@@ -221,6 +221,18 @@ A future implementation under a different agent should build an
 equivalent session-close check using the above trigger and precondition,
 not by copying the Claude Code skill directly.
 
+### The pre-ingestion orientation concept (mechanism-agnostic)
+
+Before committing to a full ingestion pass (which writes to SYSTEM_BRAIN/, updates indexes, and requires formal verification artifacts), an agent should be able to answer: "what does the system already contain, and would this new source add anything genuinely new?" That orientation check is distinct from ingestion itself — it reads existing state, produces a report, and makes no writes.
+
+The portable specification:
+
+- **Trigger:** on demand, when a user has a new source and wants to evaluate it before deciding; never automatic
+- **Output:** the current brain's source list and concept list (read from the index, not from memory); the list of active domains; any open SUGGESTION RECORDs; a routing suggestion (system-level methodology vs. domain-specific); and a ready-to-use handoff prompt the user can copy with the new source's content inserted
+- **What it does NOT do:** write any files, produce an ingestion record, or make a routing decision — the report only surfaces what exists and suggests a bucket; Step 0 of INGEST.md confirms routing
+
+A future implementation under a different agent should build an equivalent on-demand report generator using the output spec above, not by copying the Claude Code skill (.claude/skills/ingest-validate/SKILL.md) directly.
+
 ### The transmission-verification concept (mechanism-agnostic)
 
 A prompt being correctly written is not evidence it was executed — it

@@ -38,5 +38,13 @@ user rather than resolving them.
 If this session created a new domain, skill, hook, or WORKSPACE file
 — or removed/renamed an existing one — invoke update-readme before
 committing. If nothing structural changed this session, skip silently.
+## 5d. Regenerate the handoff baton
+Before the final commit, rewrite STATUS.md's "Handoff baton" section
+in full, replacing the previous one entirely — never append. Pull the
+"current real state" lines directly from this same chalo run's
+updated Open Items section, not from memory of an earlier session.
+Leave the "What I want to do this session" line as a blank placeholder
+— chalo does not guess the next task. The date in the baton header
+must match today's real date, not a prior session's.
 ## 6. Commit: git add -A && git commit -m "Close day [DATE]: ..."
 ## 7. Report back: what got done, what's open, confirm both committed.

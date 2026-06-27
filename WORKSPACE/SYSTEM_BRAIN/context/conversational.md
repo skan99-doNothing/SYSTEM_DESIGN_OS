@@ -56,3 +56,19 @@ The P002 pattern and its countermeasure (audit's 6b) are now in
 PATTERNS.md and audit/SKILL.md. This entry records the behavioral
 evidence behind why that rule exists — a user instinct confirmed twice
 in one session, now made automatic.
+### 2026-06-28 — Deterministic structural gaps vs. behavioral failure patterns (CC-109)
+
+PATTERNS.md's two-instance confirmation threshold is correct for
+behavioral failures that might not recur — whether or not a second
+instance occurs is genuinely uncertain. But some gaps are structurally
+deterministic: every future ingestion that adds a source would produce
+the same overview.md staleness, not occasionally but every time,
+because nothing in the protocol checked it.
+
+**Design decision surfaced:** These two categories need different
+responses. Behavioral failures → PATTERNS.md, watch for second
+instance before building a countermeasure. Deterministic structural
+gaps → fix immediately, in the protocol itself, without waiting for
+a second occurrence. Waiting for the second instance of a
+deterministic gap means deliberately letting the known failure happen
+again. The distinction: the gap recurs with certainty vs. might recur.
