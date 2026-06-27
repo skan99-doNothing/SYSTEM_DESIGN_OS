@@ -346,3 +346,9 @@ step was missing from CC-066/068's prompt. Surfaced to user.
 JUDGMENT-REQUIRED (2): Rule 5 (plain acknowledgment of limits) has no
 explicit EVOLUTION_LOG.md entry showing real application. May never
 have come up; unverifiable from history. Surfaced to user.
+
+## 2026-06-27 — review renamed to audit (CC-070)
+Renamed the system self-audit skill from review to audit. Fixed every
+reference across chalo, README.md, STATUS.md. Historical EVOLUTION_LOG
+entries left as-is (append-only). README.md updated to state audit runs
+automatically via chalo, not as a separate invocation.

@@ -9,8 +9,8 @@ invocation.
 
 # Chalo (Close Day)
 
-## 0. Run review first
-Invoke review before anything else. Fix MECHANICAL findings in this
+## 0. Run audit first
+Invoke audit before anything else. Fix MECHANICAL findings in this
 same run where reasonable. Report JUDGMENT-REQUIRED findings to the
 user rather than resolving them.
 

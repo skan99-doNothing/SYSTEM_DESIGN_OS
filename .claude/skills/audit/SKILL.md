@@ -1,14 +1,14 @@
 ---
-name: review
+name: audit
 description: System self-audit. Checks the system against its own
 stated rules and design — not a single session's work, the whole
 system over time. Identifies staleness, unapplied principles, missing
 promotions, broken cross-references, and rules that exist but were
-never followed. Trigger on "review," "audit the system," "check if
+never followed. Trigger on "audit," "audit the system," "check if
 we're doing what we said we'd do," or explicit invocation.
 ---
 
-# Review
+# Audit
 
 This is a mechanical audit where possible, and an explicit flag where
 it isn't. Do not silently pass anything that requires human judgment.
@@ -37,6 +37,6 @@ entry showing real application.
 ## 6. Produce a report, not a fix
 Tag each finding MECHANICAL or JUDGMENT-REQUIRED. Don't silently fix.
 
-## 7. Log the review itself
+## 7. Log the audit itself
 Append to EVOLUTION_LOG.md what ran and what was found, or that
 nothing was found, explicitly.

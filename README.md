@@ -47,6 +47,8 @@ scratch — full reasoning lives in WORKSPACE/FRAMEWORK.md.
 - Say **"chalo"** when wrapping up. It reviews the session, refreshes
   STATUS.md, confirms EVOLUTION_LOG.md is current, checks for
   unverified claims, and commits everything in one pass.
+- Audit runs automatically as chalo's first step — it doesn't need to
+  be invoked separately.
 - If a session ends without this, the snapshot goes stale until the
   next session catches the drift — depends on remembering to say it.
 

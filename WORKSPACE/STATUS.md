@@ -19,7 +19,7 @@ here, this file may be stale — cross-check before trusting it fully.
 - chalo skill — fires exactly once, confirmed; Step 0 now invokes
   review before anything else (CC-066/068); Steps 5a/5b added for
   conversational.md write and promotion check (CC-063/CC-064)
-- review skill — .claude/skills/review/SKILL.md built per full spec;
+- audit skill — .claude/skills/audit/SKILL.md built per full spec;
   first real run this session produced 1 mechanical fix + 2 judgment
   flags (CC-066/068)
 - DECISIONS.md + REASONING.md — D001 locked and fully promoted:
@@ -43,9 +43,9 @@ here, this file may be stale — cross-check before trusting it fully.
 
 1. **No real business domain exists yet.** Unresolved since session
    one. Nothing else matters more than this.
-2. **FRAMEWORK.md missing review skill concept** — per Rule 6, any
+2. **FRAMEWORK.md missing audit skill concept** — per Rule 6, any
    .claude/ artifact needs a mechanism-agnostic concept in FRAMEWORK.md.
-   review skill created in CC-066/068 without that step. Needs a pass
+   audit skill created in CC-066/068 without that step. Needs a pass
    to add the self-audit concept spec to FRAMEWORK.md.
 3. **Rule 5 (plain acknowledgment of limits) has no logged real-world
    application** — may simply never have come up, but unverifiable from
