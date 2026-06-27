@@ -189,10 +189,14 @@ SYSTEM_DESIGN_OS/
   promotion path from the latter into the former once a real pattern
   is visible).
 
-- **SYSTEM_SOURCES/** — the four original, raw documents this whole
-  system was synthesized from, kept immutable and separate from
-  SYSTEM_BRAIN/ per INGEST.md's own rule that sources are never
-  edited, only read.
+- **SYSTEM_SOURCES/** — raw source documents this system was
+  synthesized from, kept immutable and separate from SYSTEM_BRAIN/
+  per INGEST.md's own rule that sources are never edited, only read.
+  Currently five: the original four system-design methodology sources
+  (LLM Wiki pattern, ICM paper, claude-os-guide, anatomy reference)
+  plus the Autonomous AI Growth Engine architecture guide ingested in
+  CC-098 (21-agent system, context DB schema, Verifier, Eval Engine,
+  Growth OS director pattern).
 
 - **ARTIFACTS/** — generated, human-facing outputs rendered from
   existing knowledge for human consumption — visual diagrams, exported
