@@ -134,6 +134,41 @@ dialogue instead of a document. Promotion follows the same extends/
 conflicts/genuinely-new test as any reconciliation, triggered by
 chalo's periodic flag, not automatically every session.
 
+### Step 7 — Surface system-improvement suggestions, never auto-apply them
+
+Reconciling a source into the brain (Step 6) is not the end of the
+process if the source describes a PATTERN OR MECHANISM, not just a
+fact. After reconciliation, ask explicitly: does this newly-ingested
+concept suggest a concrete change to OPERATING_CONTRACT.md,
+INGEST.md itself, FRAMEWORK.md, or a skill/hook — something the
+system should DO differently, not just something it now KNOWS?
+
+If yes, produce a SUGGESTION RECORD in this format, and stop there —
+do not edit the target file in the same pass:
+
+```
+## SUGGESTION RECORD: [short title]
+- **Triggered by:** [which ingested source/concept this came from]
+- **Proposed change:** [exactly what would change, and where]
+- **Why:** [what gap this closes, tied to a specific real example if
+  one exists — not a generic "this seems good"]
+- **Status:** PROPOSED (always starts here — never auto-applied)
+- **Date:**
+```
+
+This record goes into the relevant brain's concepts/ page (the same
+page the source was reconciled into) as a clearly marked subsection,
+NOT directly into the target file. A human reviews it and explicitly
+approves before anything is actually changed — the same division of
+labor as the rest of this contract: the system can know something
+and can SUGGEST acting on it, but deciding what the system itself
+should become stays a human call, every time, no exceptions.
+
+If a SUGGESTION RECORD is approved and applied, the resulting change
+gets logged in EVOLUTION_LOG.md as normal, with a reference back to
+the suggestion record that originated it — so the trail from source
+to suggestion to actual change stays traceable.
+
 ---
 
 ## Status Definitions (No Rounding Up)

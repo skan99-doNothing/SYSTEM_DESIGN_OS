@@ -88,7 +88,7 @@ SYSTEM_DESIGN_OS/
   pass, not as an afterthought.
 
 - **INGEST.md** — the verification protocol for any new source, of
-  any kind. Seven steps in order: (0) route the resource — is it about
+  any kind. Eight steps in order: (0) route the resource — is it about
   the system itself or about a specific business domain, and if
   ambiguous, ask rather than guess; (1) confirm the file is actually
   readable; (2) read the real content, with explicit handling for
@@ -99,12 +99,17 @@ SYSTEM_DESIGN_OS/
   the current turn; (5) write a formal ingestion record (INGESTED /
   PARTIAL / FAILED — no rounding up); (6) reconcile the new knowledge
   into the relevant brain, explicitly marked as extending, conflicting
-  with, or being genuinely new relative to what's already there. The
-  same file also states the core rule behind all of this: no
-  confidence claim may exceed the evidence that currently exists for
-  it, illustrated with the two real failures that produced this rule
-  (a wrong page count stated from memory, an image described from its
-  filename without ever actually being viewed).
+  with, or being genuinely new relative to what's already there; (7)
+  if the source describes a pattern or mechanism, ask explicitly
+  whether it suggests a concrete change to the system itself — and if
+  so, produce a SUGGESTION RECORD in the relevant concept page (status
+  always starts PROPOSED, never auto-applied), so the trail from
+  source to suggestion to any eventual change stays traceable and a
+  human makes the final call. The same file also states the core rule
+  behind all of this: no confidence claim may exceed the evidence that
+  currently exists for it, illustrated with the two real failures that
+  produced this rule (a wrong page count stated from memory, an image
+  described from its filename without ever actually being viewed).
 
 - **FRAMEWORK.md** — why the system is built this way, not just what
   it does. Opens with the DNA statement (section 2 above), then the

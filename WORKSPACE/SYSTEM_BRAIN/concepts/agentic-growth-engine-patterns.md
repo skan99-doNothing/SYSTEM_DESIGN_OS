@@ -194,6 +194,73 @@ Each integration is self-contained — agents never talk directly to external se
 
 ---
 
+---
+
+## SUGGESTION RECORDS (Step 7 — PROPOSED, not yet applied)
+
+These were surfaced during CC-098 ingestion and retroactively
+formalized in CC-099 when Step 7 was added to INGEST.md. They are
+the first real instances of this new step — recorded here rather
+than left as informal chat conclusions.
+
+---
+
+## SUGGESTION RECORD: Confidence gradient for INGEST.md self-check (Step 4)
+
+- **Triggered by:** Growth Engine source — Section 6 (confidence
+  scoring: 1.0 API-verified, 0.7 multi-signal inference, 0.4 single
+  signal, 0.2 speculative) and Section 5 (conflict detection with
+  provenance preservation)
+- **Proposed change:** Add an explicit confidence gradient to
+  INGEST.md's Step 4 (self-check). Currently Step 4 is binary:
+  either a claim is verified or it isn't. The Growth Engine source
+  demonstrates a richer four-level scale. Step 4 could require
+  labeling each verification artifact with its evidence strength
+  (API-confirmed fact vs. multi-source inference vs. single mention
+  vs. speculative reading) rather than treating all extracts as
+  equivalent.
+- **Why:** The current binary approach masks real differences in
+  evidential weight — "the document says X" after direct extraction
+  is not the same confidence as "this implies Y" after synthesis.
+  Real example: in CC-098's Step 3, the 13 table names were
+  API-confirmed (from the explicit schema section) while the build
+  order was inferred from narrative sequence, but both were recorded
+  at the same confidence level. The Growth Engine source has a
+  working vocabulary for that distinction.
+- **Status:** PROPOSED
+- **Date:** 2026-06-28
+
+---
+
+## SUGGESTION RECORD: Conflict preservation mechanism for SYSTEM_BRAIN
+
+- **Triggered by:** Growth Engine source — Section 5 (conflict
+  detection and preservation: conflicts are preserved, not resolved,
+  with both sides stored and flagged for human review)
+- **Proposed change:** Add an explicit conflict-preservation rule to
+  INGEST.md's Step 6 (reconciliation). Currently Step 6 says
+  "explicitly mark as extending, conflicting with, or genuinely new"
+  — but does not specify what to do when a conflict is found. The
+  Growth Engine pattern: store both the incoming claim AND the
+  existing claim intact, mark the conflict explicitly with source
+  provenance on each side, and flag for human review rather than
+  picking a winner or silently overwriting. This would change Step 6
+  from "note that a conflict exists" to "preserve both sides,
+  traceable to their sources, with a CONFLICT marker."
+- **Why:** A conflict in SYSTEM_BRAIN/ between two ingested sources
+  is information, not a problem to silently resolve. Overwriting the
+  older claim erases evidence that the two sources disagreed — which
+  is exactly the kind of nuance that matters later when deciding
+  which pattern to apply in a real domain. Real example to date:
+  none yet, because SYSTEM_BRAIN/ has only one source per concept
+  area. But the first real domain ingestion may produce exactly this
+  situation if the Growth Engine's patterns conflict with the ICM
+  paper's workflow model.
+- **Status:** PROPOSED
+- **Date:** 2026-06-28
+
+---
+
 ## What is NOT in this source
 
 - This document does not cover security/auth implementation in depth
