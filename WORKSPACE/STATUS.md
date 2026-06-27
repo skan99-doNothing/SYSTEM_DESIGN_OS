@@ -14,22 +14,19 @@ here, this file may be stale — cross-check before trusting it fully.
 - FRAMEWORK.md — 3 pillars, stage numbering, guardrail concept,
   session-close concept (false "currently built" claim corrected,
   CC-047/CC-051)
-- chalo skill — .claude/skills/chalo/SKILL.md exists and was tested
-  live (CC-051): invoking it via the Skill tool in the same session it
-  was created returned "Unknown skill: chalo" — it does NOT work
-  natively until the skill list reloads in a fresh session. A fallback
-  slash command, .claude/commands/chalo.md, was created per Step 11 but
-  has not itself been tested, since slash-command invocation depends on
-  the harness recognizing user-typed "/chalo," which cannot be
-  triggered from the assistant side. Confirm in the next session that
-  either path actually fires.
+- chalo skill — .claude/skills/chalo/SKILL.md confirmed working in a
+  fresh session (this session): fires exactly once via the skill
+  mechanism. The fallback slash command (.claude/commands/chalo.md)
+  was deleted (CC-055) after it caused triple-fire.
 - RULES.md — 2 proven expansion patterns
 - WORKSPACE/SYSTEM_BRAIN/ — built from 4 real re-ingested sources
 - DOMAINS/_TEMPLATE/ — ready to copy for the first real domain
-- CLAUDE.md + AGENTS.md — agent-agnostic, synced, now also documenting
-  how to end a session via chalo
+- CLAUDE.md + AGENTS.md — agent-agnostic, synced, documenting how to
+  end a session via chalo
 - .claude/hooks/ingest-guard.sh — mechanical write-block, working
-- .claude/hooks/verify-claude-md.sh — SessionStart check, /doctor clean
+- .claude/hooks/verify-claude-md.sh — SessionStart check confirmed at
+  a real session start (this session: "✓ CLAUDE.md verified" fired
+  on startup)
 - .claude/settings.json — correct nested hooks schema
 - Git history — accurate, includes its own corrections
 
@@ -37,25 +34,17 @@ here, this file may be stale — cross-check before trusting it fully.
 
 1. **No real business domain exists yet.** Unresolved since session
    one. Nothing else matters more than this.
-2. **verify-claude-md.sh's success line** never visually confirmed at
-   a genuine session start — only inferred from /doctor.
+2. **REASONING.md is a placeholder** despite D001 being LOCKED.
+   Surfaced CC-053 (read-only). D001's reasoning lives in DECISIONS.md
+   but was never promoted to REASONING.md as the schema intends. Low
+   priority; fix whenever DECISIONS.md next gets a new locked entry.
 3. **Vercel plugin warning is a known, accepted, dropped issue** —
    Claude Code bug anthropics/claude-code#62174. Do not re-investigate.
 4. **CC-026's residual risk is permanent**: rules can be skipped under
    pressure. No hook fixes this. Only spot-checking does.
-5. **chalo's native invocation is unconfirmed in a fresh session.**
-   CC-051 tested it within the same session it was created and got
-   "Unknown skill: chalo." Next session should confirm whether saying
-   "chalo" or typing "/chalo" actually fires the skill now that the
-   skill list has had a chance to reload.
 
 ## What to do next time
 
-1. Confirm chalo actually fires — say "chalo" or type "/chalo" in a
-   fresh session and see if it triggers (CC-051 built the skill and
-   command files but could not verify live invocation from the
-   assistant side — this is the one real open item from infrastructure
-   work).
-2. Once confirmed, bring a real business domain — the single open item
-   since session one. Infrastructure is otherwise in a known, accurate
-   state.
+1. Bring a real business domain — the single open item since session
+   one. All infrastructure is confirmed working and in an accurate
+   state. No more prerequisite work remains.

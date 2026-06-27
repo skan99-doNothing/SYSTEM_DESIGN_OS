@@ -274,3 +274,15 @@ practice this caused three firings on every "chalo" invocation: the
 slash command, the skill it called, and the harness's own skill
 registration. Deleted commands/chalo.md — the skill is confirmed
 working and the command was redundant.
+
+## 2026-06-27 — CC-053 audit findings; chalo and verify hook confirmed (close-day)
+CC-053 (read-only) audited DECISIONS.md, REASONING.md, EVOLUTION_LOG.md.
+Finding: D001 is LOCKED but REASONING.md was never populated — the two
+files are out of sync. Recorded as an open item in STATUS.md; no fix
+applied this session (low priority).
+
+Two long-standing open items confirmed closed this session: (1) chalo
+fired exactly once in a fresh session — skill works, triple-fire fixed
+by CC-055. (2) verify-claude-md.sh fired correctly at real session start
+("✓ CLAUDE.md verified" on startup) — no longer inferred from /doctor
+only. Infrastructure is now fully confirmed working.
