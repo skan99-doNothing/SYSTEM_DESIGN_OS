@@ -372,3 +372,14 @@ Direct check of README.md's actual content (rather than trusting a
 summary) surfaced a real gap: SYSTEM_SOURCES/ was never mentioned.
 Fixed with one line. This is exactly the kind of finding audit's
 cross-reference check should eventually catch on its own.
+
+## 2026-06-27 — Audit's blind spot fixed: reverse-direction check added (CC-076)
+CC-075 found a real documentation gap via direct manual question, not
+via audit, which had already run once and missed it — its check #4
+only verified forward references. Added 4b to close this specifically.
+This is a fourth instance of the session's recurring pattern, this
+time inside the very tool built to catch it.
+
+## 2026-06-27 — Audit ran against new check 4b; clean pass (CC-076)
+All checks passed. No findings. Check 4b confirmed SYSTEM_SOURCES/ (the
+only reverse-direction gap that existed) was already fixed by CC-075.
