@@ -360,3 +360,9 @@ recurring pattern was caught mechanically rather than by the user.
 FRAMEWORK.md now has the self-audit concept spec (Rule 6 compliance).
 Rule 5 now has a real logged example: CC-068's two-session refusal to
 fabricate the missing spec.
+
+## 2026-06-27 — Scaling threshold documented in RULES.md (CC-073)
+Checked the question against LLM_Wiki.md's own stated experience
+rather than answering from general knowledge. Current state nowhere
+near the threshold where Obsidian/vector search would help; documented
+the concrete trigger so it isn't re-litigated from memory later.

@@ -39,6 +39,22 @@ ahead of first use, unlike the domain-creation pattern above, which is
 already proven (DOMAINS/_TEMPLATE/ itself was built and tested in
 CC-014).
 
+## When to reconsider index-file navigation (Obsidian, vector search, etc.)
+
+Per LLM_Wiki.md's own stated experience: index files suffice up to
+roughly 100 articles / ~400,000 words in a single brain. Beyond that,
+the context-window approach starts to strain, and hybrid search or a
+visual link-graph (Obsidian) becomes worth the complexity.
+
+Current state: 9 files in SYSTEM_BRAIN/, 0 active domains. Nowhere
+near that threshold. Introducing this infrastructure now would solve
+a problem that doesn't exist yet.
+
+**Concrete trigger:** any single BRAIN/ exceeding roughly 50-100
+files, or retrieval genuinely feeling slow in practice — not a
+calendar schedule. A future audit check could eventually count files
+per brain mechanically rather than requiring manual judgment.
+
 ## What's still missing here
 
 Patterns for: when to extract a repeated workflow into a Claude Code
