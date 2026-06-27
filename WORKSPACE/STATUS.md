@@ -51,9 +51,11 @@ here, this file may be stale — cross-check before trusting it fully.
 
 ## What to do next time
 
-1. Run CC-051 if it hasn't been run yet — it combines the actual fixes
-   for everything CC-049/CC-050 found missing (standing rule, self-
-   observation log, FRAMEWORK.md correction, real chalo build).
-2. Once CC-051 is confirmed, bring a real business domain — this has
-   been the single open item since session one, and infrastructure is
-   otherwise in a known, accurate state.
+1. Confirm chalo actually fires — say "chalo" or type "/chalo" in a
+   fresh session and see if it triggers (CC-051 built the skill and
+   command files but could not verify live invocation from the
+   assistant side — this is the one real open item from infrastructure
+   work).
+2. Once confirmed, bring a real business domain — the single open item
+   since session one. Infrastructure is otherwise in a known, accurate
+   state.

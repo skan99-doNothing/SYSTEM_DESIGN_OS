@@ -261,3 +261,8 @@ built and tested for real.
 Caught during CC-050's own report: "What to do next time" still asked
 whether CC-047 completed, even though CC-049/CC-050 had already
 answered that. Updated to point at CC-051 instead.
+
+## 2026-06-27 — STATUS.md next-time section corrected again (CC-054)
+CC-052's own report flagged its fix arrived after CC-051 had already
+superseded the premise. Fixed to reflect the actual open item:
+confirming chalo's live invocation.
