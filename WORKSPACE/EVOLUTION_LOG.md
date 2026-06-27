@@ -319,3 +319,15 @@ alongside overview.md, fixed all references, updated chalo.
 Fixed a real asymmetry: chalo wrote into conversational.md but nothing
 read back out to update overview.md. Added a judgment-based periodic
 check, connected to INGEST.md's existing reconciliation logic.
+
+## 2026-06-27 — Second instance of CC-045's pattern: known principle not self-applied (CC-065)
+CC-064 fixed the missing promotion path from conversational.md to
+overview.md. Worth recording precisely why: it was not a gap in
+LLM_Wiki.md's source material. That source explicitly states filing
+outputs back creates compound value, and describes lint passes for
+staleness — both already correctly applied elsewhere this session.
+The principle was known and used. It was not applied to
+conversational.md when that file was created, and only got fixed
+after the user asked why. Same shape of failure as CC-045: a known
+pattern not proactively self-applied, caught by the user, not by
+Claude noticing on its own. Second data point on a recurring risk.
