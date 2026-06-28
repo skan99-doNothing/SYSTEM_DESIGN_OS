@@ -913,3 +913,41 @@ remaining'; autonomous-ai-growth-engine.md method note clarified to
 state content completeness); 'Last full re-verification' date added to
 all 5 records; autonomous-ai-growth-engine.md is next in the rotation.
 README.md updated with both additions. Committed and pushed.
+
+## 2026-06-28 — Second re-ingestion pass under tightened protocol (CC-144)
+Re-ran the full re-ingestion exercise (same 5 sources as CC-140) under
+CC-143's binding gate and audit checks — the real test of whether the
+new enforcement works, not a second look under the same loose rules
+that allowed the original ICM gap.
+
+All 5 sources came back genuinely complete. Gate applied without
+exception: all 5 records have "Nothing" or "Nothing remaining" in
+the verification-gaps field, and Status: INGESTED. Zero PARTIAL
+records found by 1c-supplement scan.
+
+Per-source results:
+- LLM Wiki.md: 8/8 sections, 76/76 lines. INGESTED. No concept page
+  gaps found.
+- ICM paper: 21/21 pages, all 7 sections + references. INGESTED.
+  Three additions to concept page from this complete read that CC-140
+  missed: (1) token range data — stages deliver 2k-8k focused tokens
+  vs 30k-50k for a monolithic approach (Figure 3, Section 3.2);
+  (2) Table 2 — precise Layer 3 vs Layer 4 comparison (changes
+  between runs, example files, model role, folder location, recipe
+  vs ingredients analogy); (3) Edit-Source Principle (Section 6.3) —
+  recurring output edits are debugging signals pointing to fixable
+  source-level problems; fix the source, not just the output.
+- claude-os-guide.pdf: 8/8 pages, both parts. INGESTED. No new
+  structural gaps found.
+- anatomy.jpg: 1/1 image, all text confirmed legible. INGESTED. No
+  gaps found.
+- autonomous-ai-growth-engine.md: all 18 sections. INGESTED. Concept
+  page already thorough; no gaps found.
+
+Rotation: all 5 sources now at "Last full re-verification: 2026-06-28
+(CC-144)" — tied. Next in rotation per alphabetical tiebreaker:
+anatomy-screenshot.md.
+
+Gate confirmed actually exercised (not bypassed): every record was
+read in full before writing any status, and all verification artifacts
+span multiple sections of each source, not clustered in the first 10%.
