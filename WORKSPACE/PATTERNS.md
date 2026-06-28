@@ -86,6 +86,49 @@ path and confirm a commit exists for it.
 
 ---
 
+## P004 (CANDIDATE — watching for instances, not yet a standing rule): Factory-level change requires retroactive re-check of what was built before it
+
+This is NOT yet a confirmed pattern with a standing countermeasure —
+it is being tracked as a candidate, per the user's explicit
+instruction: identify real triggers by observing instances, the way
+PATTERNS.md already works, rather than guessing the right trigger
+frequency or scope from one night's experience.
+
+**Confirmed instances so far, 2026-06-28:**
+
+1. The context/ → synthesis/ rename (CC-063) was a structural decision
+   made without checking it against the source vocabulary that already
+   existed (LLM Wiki.md). When INGEST.md's tightened protocol later
+   existed and a full audit (CC-138/139) was run, this was caught and
+   corrected (CC-141) — but the original decision sat unchecked for the
+   gap between CC-063 and CC-141.
+
+2. The ICM paper's partial original read (abstract + Table 1 only)
+   produced an incomplete concept page and an incomplete FRAMEWORK.md
+   section. When INGEST.md's binding gate was added (CC-143), a full
+   re-read (CC-140, then CC-144) surfaced real content that had been
+   missing the entire time — and a SEPARATE check (CC-145) was needed
+   to discover that FRAMEWORK.md itself still hadn't caught up to the
+   corrected concept page, even after the concept page was fixed.
+
+**The open question this is tracking:** when a factory-level file
+changes (INGEST.md, OPERATING_CONTRACT.md, FRAMEWORK.md, or a core
+audit check), should that automatically flag everything built BEFORE
+the change as needing re-verification against the new rule? Both
+instances above only got caught because a human (the user) explicitly
+suspected something and asked for a manual audit — not because any
+existing mechanism noticed the factory had changed and something old
+might no longer comply.
+
+**Do not build a trigger yet.** Per the two-instance pattern observed
+above, this is now confirmed as a real, recurring shape — but the
+RIGHT trigger design (every factory change? only certain files? what
+counts as "built before"?) is not yet clear from two instances. Watch
+for a third instance before designing the actual mechanism, the same
+discipline already proven correct for P001/P002/P003.
+
+---
+
 ## Open question: what this can and can't catch
 
 Both patterns above were identified by the user, not by the system
@@ -105,3 +148,4 @@ looking at the output with genuine skepticism.
 
 2026-06-27 — initial build with P001 (3 instances) and P002
 (2 instances) (CC-079); P003 added (2 instances) (CC-089)
+2026-06-28 — P004 added as CANDIDATE (2 instances, no mechanism yet) (CC-147)

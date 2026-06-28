@@ -979,3 +979,15 @@ Part B (system-wide consistency check): One finding.
 
 FRAMEWORK.md § 2 now matches the final verified concept page, not the
 original abstract-only version.
+
+## 2026-06-28 — P004 logged as a watched candidate, not yet a built mechanism (CC-147)
+
+User correctly proposed treating "factory-level change requires
+retroactive re-check" the same way PATTERNS.md already treats
+behavioral failures — observe real instances, don't guess the right
+trigger design from one night. Logged two confirmed instances from
+tonight (the context/ rename, the ICM paper's partial read) as P004,
+explicitly marked CANDIDATE rather than a standing rule. No mechanism
+built yet — watching for a genuine third instance before designing the
+actual trigger, since two data points aren't enough to know the right
+scope or frequency.
