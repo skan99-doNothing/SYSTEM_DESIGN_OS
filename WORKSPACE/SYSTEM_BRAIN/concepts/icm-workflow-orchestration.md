@@ -46,6 +46,21 @@ The paper defines a five-layer hierarchy for what an agent has access to at any 
 
 **Key design principle from the paper:** "Configure the factory, not the product." Layer 3 is where stable, reusable configuration lives. Layer 4 is what changes every run. Keeping them distinct prevents per-run artifacts from polluting stable reference material.
 
+## Layer 3 vs Layer 4 — Table 2 detail (Section 3.2)
+
+| Dimension | Layer 3 (Reference / Factory) | Layer 4 (Working / Product) |
+|-----------|-------------------------------|------------------------------|
+| Changes between runs | No | Yes |
+| Example files | voice.md, design-system.md, conventions.md | research-output.md, script-draft.md |
+| Model should | Internalize as constraints | Process as input |
+| Configured during | Workspace setup (once) | Pipeline execution (each run) |
+| Folder location | references/, shared/, _config/ | output/ |
+| Analogy | The recipe | The ingredients |
+
+## Token efficiency (Figure 3, Section 3.2)
+
+ICM stages each deliver 2,000–8,000 focused tokens to the agent. A monolithic approach loading all stage instructions, all reference files, and all prior outputs can reach 30,000–50,000 tokens — most of it irrelevant to the current step. ICM avoids the "lost in the middle" degradation by construction: each stage folder contains only what that stage needs.
+
 ## Stage contracts (Section 3.3)
 
 Each stage's CONTEXT.md follows a structured contract with three required sections:
@@ -55,6 +70,10 @@ Each stage's CONTEXT.md follows a structured contract with three required sectio
 - **Outputs** — what this stage must produce for the next stage to consume
 
 This contract makes stages inspectable and hand-off-ready: anyone opening a stage folder can read CONTEXT.md and know exactly what that stage does, what it needs, and what it produces — without reading any code.
+
+## Edit-Source Principle (Section 6.3)
+
+When output from a stage is wrong, there are two responses: fix the output file (treating the symptom) or trace the problem back to the source that produced it — the stage contract, a reference file, or the prior stage's output — and fix there. Editing the output fixes one run. Editing the source fixes every future run. The paper's principle: "recurring output edits are debugging information pointing to fixable source-level problems." If a practitioner consistently tightens the same paragraph across runs, that is a signal the stage contract needs a new constraint, not that the output needs hand-editing each time.
 
 ## In this system
 

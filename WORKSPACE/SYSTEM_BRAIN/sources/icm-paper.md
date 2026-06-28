@@ -11,7 +11,7 @@
 - **What was actually gotten from this source:** Abstract, introduction, and Table 1 (comparison of ICM vs framework approaches across 10 dimensions). Full paper content available via pdftotext.
 - **What could NOT be verified or read:** Sections 2–6 not extracted in original pass — cleared by CC-140 full re-read 2026-06-28 (see re-verification section below). Nothing remaining.
 - **Date:** 2026-06-26
-- **Last full re-verification:** 2026-06-28 (CC-140)
+- **Last full re-verification:** 2026-06-28 (CC-144)
 
 ## Key content
 

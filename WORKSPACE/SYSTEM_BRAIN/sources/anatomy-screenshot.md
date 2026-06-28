@@ -11,7 +11,7 @@
 - **What was actually gotten from this source:** Complete visual mapping of .claude/ folder structure with one-line "what it does" descriptions for every file and subfolder. More concise than the PDF guide — a reference card rather than a tutorial.
 - **What could NOT be verified or read:** Nothing — image rendered fully and all text is legible.
 - **Date:** 2026-06-26
-- **Last full re-verification:** 2026-06-28 (CC-140)
+- **Last full re-verification:** 2026-06-28 (CC-144)
 
 ## Key content (verbatim from image)
 

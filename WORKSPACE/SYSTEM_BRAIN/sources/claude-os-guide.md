@@ -11,7 +11,7 @@
 - **What was actually gotten from this source:** Full .claude/ folder structure with per-file explanations and example code for CLAUDE.md, .mcp.json, hooks/, skills, agents, rules, settings.json. Two-part structure: Part 1 Technical (every file explained), Part 2 Agency Blueprint (real business application).
 - **What could NOT be verified or read:** Text extraction cut off at ~page 3 in original pass — cleared by CC-140 full re-read 2026-06-28 (see re-verification section below). Nothing remaining.
 - **Date:** 2026-06-26
-- **Last full re-verification:** 2026-06-28 (CC-140)
+- **Last full re-verification:** 2026-06-28 (CC-144)
 
 ## Key content
 

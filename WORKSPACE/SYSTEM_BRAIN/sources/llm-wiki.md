@@ -9,7 +9,7 @@
 - **What was actually gotten from this source:** Full pattern description for building a persistent LLM-maintained knowledge base. Covers the core idea (wiki vs RAG), three-layer architecture, three operations (ingest/query/lint), the role of index.md and log.md, optional tooling (qmd, Obsidian), and a "why this works" section grounding the pattern in the LLM's maintenance advantage over humans.
 - **What could NOT be verified or read:** Nothing — full text extracted cleanly.
 - **Date:** 2026-06-26
-- **Last full re-verification:** 2026-06-28 (CC-140)
+- **Last full re-verification:** 2026-06-28 (CC-144)
 
 ## Key content
 
