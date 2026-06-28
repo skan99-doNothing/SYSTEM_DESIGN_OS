@@ -114,6 +114,30 @@ of the sourced numbered-folder concept, chosen because it allows inserting
 a new stage later without renumbering every existing folder. This is a
 deliberate addition, not a claim about what the ICM paper itself says.)
 
+### Five-layer context hierarchy (Section 3.2)
+
+The paper defines a five-layer hierarchy for what an agent has access to at any stage. Each layer has a distinct role and stability profile:
+
+- **Layer 0 (CLAUDE.md, ~800 tokens)** — the schema: how the system is structured, what workflows to follow. Loads every session.
+- **Layer 1 (CONTEXT.md)** — routing: which stage is active, what the current goal is.
+- **Layer 2 (stage CONTEXT.md)** — stage-specific context: the prompt, goal, and constraints for this stage only.
+- **Layer 3 (reference material / factory)** — stable resources the agent consults (style guides, templates, source data). Loaded as needed, not every step. Does not change between runs.
+- **Layer 4 (working artifacts / product)** — files produced in this run; consumed by the next stage. Changes every run.
+
+**Core design principle (paper's own phrasing):** "Configure the factory, not the product." Layer 3 is where stable, reusable configuration lives — the recipe. Layer 4 is what changes every run — the ingredients. Keeping them distinct prevents per-run artifacts from accumulating in stable reference material and polluting future runs.
+
+**Token efficiency benefit (Figure 3):** ICM stages each deliver 2,000–8,000 focused tokens to the agent. A monolithic approach loading all stage instructions, all reference files, and all prior outputs reaches 30,000–50,000 tokens — most of it irrelevant to the current step. The five-layer hierarchy is what makes the per-stage token budget tractable.
+
+### Stage contracts (Section 3.3)
+
+Each stage's CONTEXT.md follows a structured contract with three required sections:
+
+- **Inputs** — what this stage expects to find (prior stage's output, Layer 3 reference files)
+- **Process** — what the agent does at this stage
+- **Outputs** — what this stage must produce for the next stage to consume
+
+The contract makes stages inspectable and hand-off-ready: anyone (or any agent) opening a stage folder can read CONTEXT.md and know exactly what that stage does, what it needs, and what it produces — without reading any code. This is a direct instantiation of ICM's core claim that the filesystem is sufficient as the coordination spine.
+
 ### The guardrail concept (mechanism-agnostic)
 
 Rules (text in CLAUDE.md/AGENTS.md/OPERATING_CONTRACT.md/INGEST.md) can

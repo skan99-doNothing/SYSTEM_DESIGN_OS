@@ -951,3 +951,31 @@ anatomy-screenshot.md.
 Gate confirmed actually exercised (not bypassed): every record was
 read in full before writing any status, and all verification artifacts
 span multiple sections of each source, not clustered in the first 10%.
+
+## 2026-06-28 — Bounded verification loop concluded, system-wide consistency check run (CC-145)
+
+Ran a capped re-verification loop (max 3 attempts) to reach a final,
+honest state for all 5 sources — then checked whether FRAMEWORK.md
+and README.md's claims about each source match that final state,
+especially the ICM section after CC-140/CC-144's discovery of 3
+previously-unread concepts.
+
+Part A (bounded loop): All 5 sources passed the gate on attempt 1.
+"What could NOT be verified" field is empty ("Nothing" or "Nothing
+remaining") for every record. Status: INGESTED for all 5. No PARTIAL
+records. Hard stop after attempt 1 — loop did not need to run further.
+
+Part B (system-wide consistency check): One finding.
+- README.md: CLEAN. All ICM/LLM Wiki/source references accurate.
+- FRAMEWORK.md § 1 (LLM Wiki): CLEAN.
+- FRAMEWORK.md § 2 (ICM): NEEDS UPDATING. Section reflected only the
+  abstract/Table 1 version. Three concepts discovered by CC-140/CC-144's
+  full 21-page read were in the concept page but absent from FRAMEWORK.md:
+  (1) five-layer context hierarchy (Section 3.2) — Layers 0–4 with roles
+  and the ~800-token Layer 0 budget; (2) stage contracts (Section 3.3) —
+  the Inputs/Process/Outputs template; (3) "Configure the factory, not
+  the product" design principle plus token efficiency data (Figure 3,
+  2k-8k vs 30k-50k). All three added to FRAMEWORK.md § 2 in this pass.
+
+FRAMEWORK.md § 2 now matches the final verified concept page, not the
+original abstract-only version.
