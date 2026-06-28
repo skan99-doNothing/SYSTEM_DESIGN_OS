@@ -142,8 +142,16 @@ SYSTEM_DESIGN_OS/
   three foundational pillars: knowledge accumulation via an LLM-Wiki-
   style pattern (a source is read once and woven into a standing,
   cross-referenced brain rather than re-derived every query); workflow
-  orchestration via ICM-style numbered folders (stages in increments
-  of 10 so one can be inserted later without renumbering everything);
+  orchestration via ICM (the full paper, confirmed via complete re-read
+  in CC-140/144) — numbered folders as stages (increments of 10 so
+  one can be inserted later without renumbering), plus the five-layer
+  context hierarchy (Layer 0 CLAUDE.md ~800 tokens, Layer 1 routing,
+  Layer 2 stage CONTEXT.md, Layer 3 stable reference/factory, Layer 4
+  per-run working artifacts), the "configure the factory, not the
+  product" principle distinguishing Layer 3 from Layer 4, and stage
+  contracts (each stage's CONTEXT.md must declare Inputs / Process /
+  Outputs so any agent or person can pick up a stage cold without
+  reading the rest of the system);
   and plain markdown as the only artifact format, specifically because
   it's the one format that's simultaneously machine-readable,
   human-readable, version-controllable, and requires no translation

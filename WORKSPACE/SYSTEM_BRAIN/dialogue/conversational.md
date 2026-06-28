@@ -202,3 +202,26 @@ visible, the rigorous evaluation of it is not yet done, and that's
 stated plainly rather than implied to be further along than it is.
 
 **Date:** 2026-06-28
+
+### 2026-06-28 — Updating a source record ≠ updating everything that cites it (CC-145)
+
+CC-140/144 updated the ICM concept page with three concepts from the
+full paper re-read. CC-145's separate consistency check then found
+FRAMEWORK.md was still at the old, abstract-only version — the concept
+page was correct but the document citing it hadn't caught up.
+
+**Constraint this reveals:** updating a source record and its concept
+page is not sufficient on its own. Documents that CITE those sources
+(FRAMEWORK.md, README.md, RULES.md) can silently remain at the prior
+version with no trigger to fix them. Without the explicit consistency
+check (CC-145's Part B), the gap would have been invisible — the brain
+would have known the right thing while the architectural reference
+still described the old, incomplete understanding.
+
+**The standing implication:** any time a concept page is substantively
+updated (new mechanisms, corrected claims, additional detail from a
+re-read), the documents that reference that concept — particularly
+FRAMEWORK.md and README.md — should be checked in the same pass, not
+assumed to be current. This is the same discipline INGEST.md's
+reconciliation step (Step 6) applies to ingestion records; it needs
+to apply equally to citation chains between living documents.
