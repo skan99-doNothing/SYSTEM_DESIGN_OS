@@ -808,3 +808,16 @@ deep mode despite three earlier attempts (CC-124/125/126) to do so,
 none of which were ever executed. Concrete revisit trigger stated:
 once a real domain's brain has enough varied sources that synthesis
 across multiple pages becomes genuinely useful, not before.
+
+## 2026-06-28 — Audit run (chalo pre-close)
+Checks 1-7 complete.
+- 1a PASS: 5 sources on disk, overview.md lists 5. Count matches.
+- 1b JUDGMENT-REQUIRED (pre-existing): ARTIFACTS/ visual PDF significantly stale — missing sixth DNA quality, seven concepts, session-identity concept, knowledge-routing changes (CC-132), CC-135 NOTED IDEA, and more. Human decides whether to regenerate.
+- 1c PASS: all four concept pages contain specific numbers/terms from their ingestion records at comparable or greater specificity.
+- 2 JUDGMENT-REQUIRED (mild): conversational.md now 7 entries. Two-channel constraint (entry 5) is the strongest candidate for eventual overview.md synthesis, but not yet warranting promotion. Watch next session.
+- 3 PASS: no new structure this session triggering P001. All skills and hooks have FRAMEWORK.md concepts.
+- 4 PASS: all WORKSPACE files exist and documented in README.md. All CLAUDE.md cross-references resolve.
+- 4b PASS: all WORKSPACE items documented.
+- 5 JUDGMENT-REQUIRED (pre-existing): Rules 3 and 7 have no explicit EVOLUTION_LOG citations by name. Applied in practice but not formally referenced. Pre-existing gap.
+- 6b: no mid-run self-correction occurred; countermeasure not triggered.
+- 7 PASS: STATUS.md NON-NEGOTIABLE instruction present and intact.

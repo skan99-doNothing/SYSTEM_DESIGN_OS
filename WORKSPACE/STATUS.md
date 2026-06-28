@@ -7,7 +7,7 @@ not just open items or what's-working. The baton existing is the
 entire point of this file; skipping it defeats that point. This is
 not optional or context-dependent.
 
-Last manually confirmed accurate: 2026-06-28. If significantly
+Last manually confirmed accurate: 2026-06-28 (end of evening session). If significantly
 more EVOLUTION_LOG.md entries exist after this date than are reflected
 here, this file may be stale — cross-check before trusting it fully.
 
@@ -23,11 +23,12 @@ memory of prior sessions.
 Read WORKSPACE/STATUS.md (you're reading it now) and README.md if
 you need the full dictionary of any file, skill, or hook.
 
-Current real state, as of 2026-06-28:
+Current real state, as of 2026-06-28 (end of evening session):
 - No real business domain exists yet — DOMAINS/_TEMPLATE/ is ready to copy, nothing inside it
-- ARTIFACTS/ visual PDF is significantly stale: missing sixth DNA quality, ingest-validate deep mode, audit check 1c, knowledge-routing changes, session-identity verification concept, and more — JUDGMENT-REQUIRED whether to regenerate
+- ARTIFACTS/ visual PDF is significantly stale: missing sixth DNA quality, ingest-validate deep mode, audit check 1c, knowledge-routing correction (CC-132), CC-135 NOTED IDEA format, and more — JUDGMENT-REQUIRED whether to regenerate
 - Repository is PUBLIC on GitHub (skan99-doNothing/SYSTEM_DESIGN_OS)
 - CC-026 residual risk is permanent: rules can be skipped under pressure; only spot-checking closes this
+- Auto-research idea documented as NOTED IDEA in conversational.md (CC-135) — good-to-have, revisit when a real domain brain has 3+ varied sources
 
 What I want to do this session:
 [STATE THE ACTUAL TASK HERE]
@@ -73,7 +74,9 @@ covered.
 - **chalo skill** — fires exactly once; Step 0 invokes audit; Steps
   5a/5b for conversational.md; Step 5c checks README.md; Step 5d
   regenerates handoff baton (now requires permanent knowledge-routing
-  line every regeneration — CC-130); Step 6 commits AND pushes to
+  line every regeneration — CC-130; wording corrected CC-132 to route
+  through writing a Claude Code prompt, not a direct file check, since
+  claude.ai chats cannot read files); Step 6 commits AND pushes to
   remote (auto-push, explicit failure report if push fails — CC-111)
 - **audit skill** — Steps 0-8: reads PATTERNS.md first; check 1
   (files vs stated purpose) with sub-checks 1a (source count vs
@@ -107,10 +110,12 @@ covered.
   Engine, CC-098); concept pages all verified genuinely deep against
   ingestion records (audit check 1c, CC-116); context/ holds
   overview.md (source count fixed CC-108) and conversational.md
-  (6 entries: 4 prior sessions + 2 this session on two-channel
-  coverage problem and self-report distrust); 2 SUGGESTION RECORDs
-  in agentic-growth-engine-patterns.md: confidence gradient (APPLIED
-  CC-100), conflict preservation (DEFERRED)
+  (7 entries: 4 prior sessions + 2 this session on two-channel
+  coverage problem and self-report distrust + CC-135 NOTED IDEA:
+  auto-research documented as good-to-have, not must-have, with full
+  reasoning trail and honest note that CC-124/125/126 never ran); 2
+  SUGGESTION RECORDs in agentic-growth-engine-patterns.md: confidence
+  gradient (APPLIED CC-100), conflict preservation (DEFERRED)
 - **DOMAINS/_TEMPLATE/** — ready to copy and rename for first real domain
 - **README.md** — comprehensive full system reference; six DNA
   qualities, seven mechanism-agnostic concepts in FRAMEWORK.md entry,
@@ -124,7 +129,9 @@ covered.
   described by audit check 7
 - **WORKSPACE/STATUS.md** — NON-NEGOTIABLE instruction at top
   (requires baton in any status response — CC-127); baton now
-  permanently carries knowledge-routing instruction (CC-130)
+  permanently carries knowledge-routing instruction (CC-130);
+  knowledge-routing line corrected to Rule 6 routing for claude.ai
+  chats (CC-132) — no longer implies impossible direct file access
 - **WORKSPACE/ARTIFACTS/** — holds 5-page visual PDF; staleness
   checked by audit (check 1b); significantly stale
 - **.claude/hooks/ingest-guard.sh** — mechanical write-block, working;
@@ -143,15 +150,19 @@ covered.
    one. Nothing else matters more than this.
 2. **ARTIFACTS/ visual is significantly stale** — missing sixth DNA
    quality, ingest-validate deep mode, audit check 1c, seven mechanism-
-   agnostic concepts (was six), knowledge-routing instruction, and all
-   of tonight's additions. JUDGMENT-REQUIRED: regenerate?
+   agnostic concepts, knowledge-routing correction (CC-132), CC-135
+   NOTED IDEA format, and all this session's additions.
+   JUDGMENT-REQUIRED: regenerate?
 3. **CC-026's residual risk is permanent** — rules can be skipped
    under pressure; no hook fixes this; only spot-checking does.
 4. **Vercel plugin warning** — Claude Code bug, accepted, dropped.
    Do not re-investigate.
-5. **conversational.md has 6 entries** — entries 5-6 (two-channel
+5. **conversational.md has 7 entries** — entries 5-6 (two-channel
    coverage, self-report distrust) may share a new pattern shape
    distinct from P002. Watch for a third instance before naming it.
+   Entry 7 (auto-research NOTED IDEA) is explicitly good-to-have;
+   revisit trigger: when a real domain brain has 3+ varied sources
+   where synthesis would genuinely span multiple pages.
 
 ## What to do next time
 
