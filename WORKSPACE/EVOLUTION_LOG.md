@@ -889,3 +889,27 @@ labeled as extension; RAW/ empty by design. No corrections needed.
   it; FRAMEWORK.md and BRAIN/index.md both label it as extension)
 - Five-layer hierarchy, stage contracts: SOURCED (ICM Section 3.2/3.3)
   — now properly captured in concept page
+
+## 2026-06-28 — Comprehensive two-layer fix: gate plus two-tier audit check (CC-143)
+Implemented the binding gate in INGEST.md Step 5 (status cannot be
+INGESTED if the record's own verification-gaps field is non-empty — a
+mechanical check on the record's own two fields, not a judgment call)
+as the priority enforcement. Combined with a two-tier audit check:
+(1c-supplement) a fast PARTIAL-status scan every run — catches
+honestly-flagged gaps the moment they appear and keeps them visible
+until closed; (1d) a rotating full-source re-verification — picks the
+one source that has gone longest without a fresh re-read (tracked via
+'Last full re-verification' date on each record), re-reads it in full,
+compares against its record and concept page, flags MECHANICAL if a
+gap is found, updates the date regardless of outcome. This rotation
+catches a source marked complete with 'Nothing' in the gap field where
+the underlying read was still quietly incomplete — exactly the failure
+mode the gate alone cannot prevent, since the gate only enforces
+consistency between the record's own two fields, not the record against
+the actual raw source. All 5 existing ingestion records updated: gate
+fields confirmed clean (icm-paper.md and claude-os-guide.md gaps
+cleared by CC-140 and now noted in the gap field with 'Nothing
+remaining'; autonomous-ai-growth-engine.md method note clarified to
+state content completeness); 'Last full re-verification' date added to
+all 5 records; autonomous-ai-growth-engine.md is next in the rotation.
+README.md updated with both additions. Committed and pushed.
