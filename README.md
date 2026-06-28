@@ -316,19 +316,41 @@ explicit /ingest-validate invocation — when the user has a new source
 and wants to know what the system already contains before committing
 to a full INGEST.md pass. Distinct from chalo (session-close) and
 audit (system-wide self-check): this is a one-shot pre-ingestion
-orientation report with no automatic trigger. Produces six sections in
-order: (1) every source already in SYSTEM_BRAIN/index.md with a
-one-line description and ingest date; (2) every synthesized concept
-already in the index; (3) active domains under DOMAINS/ (or an
-explicit "none" if _TEMPLATE/ is the only entry); (4) any open
-SUGGESTION RECORDs found in SYSTEM_BRAIN/concepts/, with their
-current status; (5) routing guidance — which INGEST.md Step 0 bucket
-the new source likely belongs to, stated as a suggestion not a
-decision, with ambiguity named rather than silently resolved; (6) a
-prompt to the user to paste the source content if they decide to
+orientation report with no automatic trigger. Operates in two modes:
+
+**Default (lightweight) mode** — Produces six sections in order:
+(1) every source already in SYSTEM_BRAIN/index.md with a one-line
+description and ingest date; (2) every synthesized concept already in
+the index; (3) active domains under DOMAINS/ (or an explicit "none"
+if _TEMPLATE/ is the only entry); (4) any open SUGGESTION RECORDs
+found in SYSTEM_BRAIN/concepts/, with their current status; (5)
+routing guidance — which INGEST.md Step 0 bucket the new source
+likely belongs to, stated as a suggestion not a decision, with
+ambiguity named rather than silently resolved; (6) a ready-to-use
+handoff block for pasting the source content if the user decides to
 proceed. Writes no files, produces no ingestion record, makes no
 routing decision — the report only answers the prior question of
 whether a full ingest is worth the effort.
+
+**Deep mode** — Activates only when the user explicitly requests a
+full comparison ("deep mode," "deconstruct and compare this"). First
+determines source scope and matches baseline scope accordingly:
+WHOLE-SYSTEM sources (a full repo or methodology comparable to
+SYSTEM_DESIGN_OS) get README.md + FRAMEWORK.md as baseline, read
+fresh from disk; SINGLE-SKILL sources get the one corresponding real
+skill file; SPECIFIC-MECHANISM sources get the one real file or
+section they would modify. Baseline is always SYSTEM_DESIGN_OS's own
+current files — never an external system, never a mismatched
+granularity. Then deconstructs the source factually (substance vs.
+marketing language, overlaps and conflicts with the real baseline),
+runs a comparative analysis rating each novel mechanism on DNA
+compatibility / impact / cost (1–5 each, stated as structured
+reasoning, not objective measurement), and recommends ADOPT, ADAPT,
+DEFER, or REJECT for each with reasoning tied to a specific real gap.
+Any mechanism recommended for ADOPT or ADAPT produces a real
+SUGGESTION RECORD (status PROPOSED) in the relevant concept page via
+the standard INGEST.md Step 7 mechanism — deep mode creates no new
+approval pathway, only more rigorous analysis before the same output.
 
 ## 5. The two hooks — mechanical, cannot be talked past
 

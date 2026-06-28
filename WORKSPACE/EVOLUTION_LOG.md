@@ -636,3 +636,17 @@ with its honest limit. CLAUDE.md and AGENTS.md were correspondingly
 shortened to pure pointers into this file, since duplicating this much
 content into the auto-loading files would blow well past their real,
 sourced 200-line context-budget guideline.
+
+## 2026-06-28 — ingest-validate gains deep mode for full comparisons (CC-112)
+User found a well-designed comparator prompt (deconstruct + weighted
+comparative analysis) from a different model. Adopted its strongest
+ideas - forcing the baseline to be freshly deconstructed too, not
+assumed; explicit PROPOSED-status output for new mechanisms - while
+correcting two real issues: removed the free-choice baseline menu
+(our baseline is never an external system), and added baseline-scope
+matching so a narrow source gets a narrow baseline, not the whole
+system every time. Built as deep mode within ingest-validate, not as
+separate new skills, keeping deconstruct and analyze coupled rather
+than risking drift between two standalone tools. README.md updated
+to document both modes. FRAMEWORK.md already had an ingest-validate
+entry; no new concept page required.

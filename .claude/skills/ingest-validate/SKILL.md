@@ -109,3 +109,65 @@ have enough to judge it, say so and ask, rather than guessing.
 - Does not produce an ingestion record
 - Does not make a routing decision — only a routing suggestion
 - Does not modify SYSTEM_BRAIN/, SYSTEM_SOURCES/, or any WORKSPACE file
+
+---
+
+## Deep mode — full deconstruct-and-compare (explicit request only)
+
+Default mode (above) stays lightweight - this only activates when the
+user explicitly asks for a full comparison, e.g. "deep mode" or
+"deconstruct and compare this."
+
+### Step 1 — Determine source scope, then match baseline scope
+
+Ask (or infer from context) what kind of source this is:
+- WHOLE-SYSTEM (a full repo, methodology, or framework comparable in
+  scope to SYSTEM_DESIGN_OS itself) -> baseline is README.md +
+  FRAMEWORK.md, read fresh from disk, never from memory.
+- SINGLE-SKILL (a found skill, command, or automated procedure) ->
+  baseline is the one real, corresponding skill file (e.g. if
+  comparing against something like our chalo, baseline is
+  .claude/skills/chalo/SKILL.md specifically, not the whole system).
+- SPECIFIC-MECHANISM (a narrow idea, like a scoring method or a
+  single protocol step) -> baseline is the one real file/section it
+  would modify (e.g. INGEST.md's specific step, not the whole
+  protocol).
+
+Never deconstruct the whole system as baseline for a narrow source,
+and never use a narrow baseline for a whole-system source - mismatched
+granularity produces a comparison that looks rigorous but compares
+the wrong things.
+
+### Step 2 — Deconstruct the source
+
+Using the matched baseline scope from Step 1, produce a factual
+breakdown of the new source: what it is, what it actually does
+(verified, not claimed), what's marketing language vs. substance, and
+where it overlaps or conflicts with the real, current baseline file(s)
+just read.
+
+### Step 3 — Comparative analysis
+
+For each mechanism the source contains that the scoped baseline
+doesn't have: name it, state what gap it closes, rate DNA
+compatibility / impact / cost (1-5 each) AS A STRUCTURED WAY TO SURFACE
+REASONING, not as objective proof - the score is only as good as the
+honesty of each input. Recommend ADOPT, ADAPT, DEFER, or REJECT for
+each, with reasoning tied to a specific real gap, not a generic "this
+seems good."
+
+### Step 4 — Output as SUGGESTION RECORDs, per INGEST.md Step 7
+
+Any mechanism recommended for ADOPT or ADAPT becomes a real
+SUGGESTION RECORD, status PROPOSED, in the relevant concept page -
+exactly the existing mechanism, not a new output format. Deep mode
+does not create a new approval pathway; it just does more rigorous
+analysis before producing the same kind of record INGEST.md already
+defines.
+
+### Honest limit of deep mode
+
+The DNA/impact/cost scores are structured judgment, not objective
+measurement - three subjective 1-5 ratings multiplied together don't
+become more true than a plain sentence saying why something matters.
+Treat the math as organizing the reasoning, not replacing it.
