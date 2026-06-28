@@ -706,3 +706,14 @@ not skill portable entries) rather than leaving it an implicit,
 unnoticed gap. Correctly did NOT add a new audit check yet - one
 instance doesn't meet PATTERNS.md's two-instance threshold for a new
 permanent rule. README.md updated to reflect both changes.
+
+## 2026-06-28 — Deep mode scope guideline added (CC-122)
+User confirmed the design (lightweight default, deep mode for
+big/whole-system sources only) was correct as built, but the file
+only stated WHEN deep mode triggers (explicit request), not when
+requesting it actually makes sense. Added explicit guidance: deep
+mode is sized for WHOLE-SYSTEM/SINGLE-SKILL sources where a full
+comparison adds real value; narrow sources should default to
+lightweight plus direct conversation. Prevents the over-engineering
+risk of reaching for deep mode out of habit on sources too small to
+warrant it. README.md updated to reflect the sizing boundary.

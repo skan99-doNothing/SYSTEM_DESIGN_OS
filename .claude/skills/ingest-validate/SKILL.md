@@ -118,6 +118,17 @@ Default mode (above) stays lightweight - this only activates when the
 user explicitly asks for a full comparison, e.g. "deep mode" or
 "deconstruct and compare this."
 
+Deep mode is sized for WHOLE-SYSTEM and SINGLE-SKILL sources -
+something comparable in scope to a real methodology, framework, or
+skill, where a full scope-matched comparison genuinely adds value
+over a quick read. It is not meant to run on every new source by
+default. A narrow fact, a short article, or a small SPECIFIC-MECHANISM
+idea rarely justifies the overhead - the lightweight report plus a
+direct conversation is usually enough to decide on those. If in
+doubt, default to lightweight; only reach for deep mode when the
+source is genuinely large or structurally rich enough that a scored
+comparison would surface something a quick read wouldn't.
+
 ### Step 1 — Determine source scope, then match baseline scope
 
 Ask (or infer from context) what kind of source this is:

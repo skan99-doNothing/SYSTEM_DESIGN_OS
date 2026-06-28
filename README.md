@@ -359,7 +359,10 @@ routing decision — the report only answers the prior question of
 whether a full ingest is worth the effort.
 
 **Deep mode** — Activates only when the user explicitly requests a
-full comparison ("deep mode," "deconstruct and compare this"). First
+full comparison ("deep mode," "deconstruct and compare this"). Sized
+for WHOLE-SYSTEM and SINGLE-SKILL sources where a full scope-matched
+comparison adds real value over a quick read; narrow or small sources
+should default to lightweight plus direct conversation. First
 determines source scope and matches baseline scope accordingly:
 WHOLE-SYSTEM sources (a full repo or methodology comparable to
 SYSTEM_DESIGN_OS) get README.md + FRAMEWORK.md as baseline, read
