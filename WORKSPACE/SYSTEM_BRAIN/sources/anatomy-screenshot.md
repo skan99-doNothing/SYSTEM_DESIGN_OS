@@ -45,3 +45,24 @@
 | settings.local.json | your machine. gitignored |
 
 **Relationship to claude-os-guide.pdf:** This image is the same author's condensed reference card. The PDF expands each item with code examples; this image gives the one-liner for each. Together they cover the same structure — the image is better for quick reference, the PDF for implementation detail.
+
+---
+
+## Re-verification pass — 2026-06-28 (CC-140)
+
+- **Method:** Direct re-read (visual) of SYSTEM_SOURCES/anatomy.jpg. Image rendered fully; all text legible.
+- **Status:** CONFIRMED INGESTED — all original artifacts re-verified from live visual read this session.
+
+**Graded confidence artifacts (re-run):**
+1. Title: "anatomy of a .claude/ folder" — **1.0**
+2. Subtitle: "EVERY FILE. WHAT IT DOES. WHY IT MATTERS." — **1.0**
+3. Account: @akashafter2am; 24 likes — **1.0**
+4. commands/ — "slash commands. legacy but live" — **1.0**
+5. plugins/ — "first-class in 2026. /plugin:cmd" — **1.0**
+6. statusline — "bottom-bar. branch, model, tokens" — **1.0**
+7. Caption: "Most Claude Code users never open the .claude/. THEY HAVE A BETTER .CLAUDE/." — **1.0**
+8. Full key content table (items 4–6 above) matches the table in the Key content section of this record — **1.0**
+
+**Concept page update (done in this pass):** commands/, plugins/, and statusline added to claude-md-and-skills-pattern.md structure tree. All three were in this record's key content table but missing from the concept page tree.
+
+**Finding:** Original ingestion was clean and accurate. Concept page had three items from this source missing from the tree — corrected in this re-verification pass.

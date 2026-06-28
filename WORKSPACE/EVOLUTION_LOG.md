@@ -837,3 +837,55 @@ Both anomalies were minor and well-contained; the core four-folder
 structure (sources/, concepts/, entities/, the renamed synthesis/) is
 confirmed genuinely sourced from LLM Wiki, word-for-word, not
 invented.
+
+
+## 2026-06-28 — Full re-ingest audit of four founding sources (CC-140)
+
+Re-ran all four founding sources through the current mature INGEST.md
+protocol (Steps 3-4 with graded confidence 1.0/0.7/0.4/0.2, full
+source re-read, concept page comparison). Context: these sources were
+originally ingested before INGEST.md reached its current form; the
+user asked for a full audit to ensure the knowledge base genuinely
+builds on Karpathy/ICM, not invented structure claimed as sourced.
+
+**Re-verification results:**
+
+LLM Wiki.md — CONFIRMED INGESTED, no concept page corrections needed.
+New artifact captured: the source's explicit "Note" section states the
+implementation is intentionally abstract and up to the user/LLM —
+confirming our four-folder BRAIN/ structure is correctly
+INVENTED-AND-LABELED-FINE, not misclaimed as prescribed.
+
+ICM paper — CONFIRMED INGESTED. Major gap found: original extraction
+covered abstract and Table 1 only; Sections 2-6 not read in first
+pass. Fresh full read confirmed the five-layer context hierarchy
+(Layer 0 CLAUDE.md → Layer 4 working artifacts), stage contracts
+(each stage CONTEXT.md has Inputs/Process/Outputs), "configure the
+factory, not the product" design principle, and Figure 2's sequential
+stage numbering (01_, 02_, 03_ — confirming increment-of-10 is an
+extension). All added to icm-workflow-orchestration.md concept page.
+Ingestion record updated with graded artifacts.
+
+claude-os-guide.pdf — CONFIRMED INGESTED. Original extraction was
+partial (cut off at page 3). Fresh full read confirmed settings.json
+JSON schema with hook registration patterns, Agency Blueprint (Part 2
+— Whitfield Creative example). Ingestion record updated.
+
+anatomy.jpg — CONFIRMED INGESTED, no record corrections needed.
+Found: three items in the record's key content table (commands/,
+plugins/, statusline) were missing from the concept page tree.
+Corrected: all three added to claude-md-and-skills-pattern.md.
+
+DOMAINS/_TEMPLATE/: VERIFIED CLEAN — sources/, concepts/, entities/,
+synthesis/ match LLM Wiki vocabulary exactly; dialogue/ correctly
+labeled as extension; RAW/ empty by design. No corrections needed.
+
+**Provenance verdicts (CC-138 format):**
+- Four-folder BRAIN/ structure: SOURCED (exact LLM Wiki vocabulary)
+- increment-of-10 stage numbering: INVENTED-AND-LABELED-FINE (ICM
+  uses sequential 01_/02_/03_; ours is an engineering extension;
+  documented in FRAMEWORK.md § 2 with honest note)
+- dialogue/ folder: INVENTED-AND-LABELED-FINE (no source prescribes
+  it; FRAMEWORK.md and BRAIN/index.md both label it as extension)
+- Five-layer hierarchy, stage contracts: SOURCED (ICM Section 3.2/3.3)
+  — now properly captured in concept page

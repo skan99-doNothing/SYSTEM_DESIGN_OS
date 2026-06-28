@@ -29,3 +29,23 @@
 - log.md is chronological: append-only record of ingests, queries, lint passes. Parseable with grep.
 
 **Why it works:** Humans abandon wikis because maintenance burden grows faster than value. LLMs don't get bored, don't forget cross-references, can touch 15 files in one pass. The human curates and asks questions; the LLM does all bookkeeping.
+
+**Note section (lines 73–75):** "This document is intentionally abstract. It describes the idea, not a specific implementation. The exact directory structure, the schema conventions, the page formats, the tooling — all of that will depend on your domain." Confirms our four-folder BRAIN/ structure is an invented instantiation, not prescribed by the source.
+
+---
+
+## Re-verification pass — 2026-06-28 (CC-140)
+
+- **Method:** Direct re-read of raw source in SYSTEM_SOURCES/LLM Wiki.md. Full 76 lines.
+- **Status:** CONFIRMED INGESTED — all original artifacts re-verified from live read this session.
+
+**Graded confidence artifacts (re-run):**
+1. "the wiki is a persistent, compounding artifact" (line 13) — **1.0**
+2. Three-layer architecture: Raw sources / The wiki / The schema (lines 29–33) — **1.0**
+3. Three operations: Ingest / Query / Lint — **1.0**
+4. index.md (content-oriented) vs log.md (chronological append-only) — **1.0**
+5. Source explicitly states implementation is abstract, up to the user/LLM (lines 73–75) — **1.0** (new artifact, not in original record)
+
+**Concept page comparison:** llm-wiki-knowledge-accumulation.md covers all core claims accurately. The "intentionally abstract" note (artifact #5 above) is now captured in this record; it was already reflected in FRAMEWORK.md § 1 but not previously in this record.
+
+**Finding:** No structural corrections to concept page needed. Original ingestion was clean and accurate.

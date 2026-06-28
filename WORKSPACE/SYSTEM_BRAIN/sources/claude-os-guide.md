@@ -42,3 +42,23 @@ YOUR-PROJECT/
 **Two-part structure of the guide:**
 - Part 1 Technical: every file in .claude/, what it does, real code examples
 - Part 2 Agency Blueprint: what this looks like for a real business (not extracted in this pass)
+
+---
+
+## Re-verification pass — 2026-06-28 (CC-140)
+
+- **Method:** Direct re-read of SYSTEM_SOURCES/claude-os-guide.pdf (pdftotext). Full 8-page document read — Files 04 onward now captured (skills, agents, rules, output-styles, settings.json, Agency Blueprint).
+- **Status:** CONFIRMED INGESTED. The original record's note that "Files 04 onward not extracted in this pass" is now resolved — full content confirmed.
+
+**Graded confidence artifacts (re-run, additions noted):**
+1. "CLAUDE.md IS A SUGGESTION. HOOKS ARE LAW." — **1.0**
+2. CLAUDE.md hard limit: 200 lines — **1.0**
+3. Author: Akash Singhaniya (@akashafter2am); 8 pages; created 2026-06-23 — **1.0**
+4. settings.json actual JSON schema: hooks registered under "SessionStart", "PreToolUse", "PostToolUse" with matcher patterns — **1.0** (not in original record)
+5. rules/ glob-scoped: fires only when file path matches glob — **1.0** (not in original record; now in concept page)
+6. Part 2 Agency Blueprint — Whitfield Creative example: client-specific rules files, hooks for pre-delivery QC — **1.0** (not in original record)
+7. output-styles/ — controls response format — **1.0** (not in original record)
+
+**Concept page comparison:** claude-md-and-skills-pattern.md already includes rules/, output-styles/, and other "not extracted" sections — because anatomy.jpg (co-source) provides the structural overview. The concept page correctly attributes both sources. commands/, plugins/, and statusline were added to the concept page tree in this re-verification pass (they were in anatomy.jpg's key content table but missing from the concept page).
+
+**Finding:** Original ingestion honest about its partial extraction. Concept page was populated from both sources and was more complete than this record alone would suggest. Minor tree gaps corrected in this pass.

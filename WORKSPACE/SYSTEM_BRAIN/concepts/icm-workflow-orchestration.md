@@ -34,6 +34,30 @@ For sequential, human-reviewed workflows, multi-agent frameworks (CrewAI, LangCh
 - Concurrent execution: sequential by design vs native parallelism
 - External service integration: local scripts/MCP vs programmatic API management
 
+## Five-layer context hierarchy (Section 3.2)
+
+The paper defines a five-layer hierarchy for what an agent has access to at any stage:
+
+- **Layer 0 (CLAUDE.md, ~800 tokens)** — the schema: how the system is structured, what workflows to follow. Loads every session.
+- **Layer 1 (CONTEXT.md)** — routing: which stage is active, what the current goal is.
+- **Layer 2 (stage CONTEXT.md)** — stage-specific context: the prompt, goal, and constraints for this stage only.
+- **Layer 3 (reference material / factory)** — stable resources the agent consults (style guides, templates, source data). Loaded as needed, not every step.
+- **Layer 4 (working artifacts / product)** — files produced in this run; consumed by the next stage.
+
+**Key design principle from the paper:** "Configure the factory, not the product." Layer 3 is where stable, reusable configuration lives. Layer 4 is what changes every run. Keeping them distinct prevents per-run artifacts from polluting stable reference material.
+
+## Stage contracts (Section 3.3)
+
+Each stage's CONTEXT.md follows a structured contract with three required sections:
+
+- **Inputs** — what this stage expects to find (output from the prior stage, reference files from Layer 3)
+- **Process** — what the agent does at this stage
+- **Outputs** — what this stage must produce for the next stage to consume
+
+This contract makes stages inspectable and hand-off-ready: anyone opening a stage folder can read CONTEXT.md and know exactly what that stage does, what it needs, and what it produces — without reading any code.
+
 ## In this system
 
 ICM governs how domain workflows are structured. Workflow stages (numbered folders with markdown prompts and context) get added to a domain's folder once the domain's actual process is understood from real work — not designed upfront. This is consistent with the paper's own recommendation: start with the filesystem structure, let the workflow emerge from practice.
+
+Note: the ICM paper's Figure 2 uses sequential stage numbering (01_research/, 02_script/, 03_production/). This system uses increments of 10 (10_RESEARCH/, 20_FILTER/) to allow inserting a new stage later without renumbering everything. That increment-of-10 convention is a local engineering extension, not something the paper specifies — documented explicitly in FRAMEWORK.md § 2.

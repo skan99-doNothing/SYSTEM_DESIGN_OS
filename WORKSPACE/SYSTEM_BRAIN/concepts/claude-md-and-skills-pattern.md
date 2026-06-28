@@ -19,10 +19,13 @@ YOUR-PROJECT/
     ├── skills/             ← reusable workflows, /name to trigger
     ├── agents/             ← sub-agents with own context window
     ├── hooks/              ← shell scripts that ALWAYS fire
+    ├── commands/           ← slash commands; legacy but live
+    ├── plugins/            ← first-class in 2026; /plugin:cmd
     ├── rules/              ← glob-scoped rules per file path
     ├── output-styles/      ← response format control
     ├── settings.json       ← permissions, model, hook registry
-    └── settings.local.json ← private overrides, gitignored
+    ├── settings.local.json ← private overrides, gitignored
+    └── statusline          ← bottom-bar: branch, model, tokens
 ```
 
 ## Key distinctions
