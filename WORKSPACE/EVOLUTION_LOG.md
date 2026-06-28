@@ -729,3 +729,14 @@ yet clearly ready for overview.md promotion). Check 1c passed for
 all 4 concept pages; P002 falsification via SUGGESTION RECORD
 statuses came up clean. MECHANICAL finding noted but not fixed here
 per audit's produce-a-report-not-a-fix rule.
+
+## 2026-06-28 — Real bug fixed: status query skipped the baton entirely (CC-127)
+User typed "status" directly and got open-items/what's-working, but
+the Handoff Baton was omitted — had to be asked for separately,
+defeating the section's entire purpose (never needing to be
+requested). Added a non-negotiable instruction at the very top of
+STATUS.md stating the baton must always be included in any status
+response, plus audit check 7 to catch this specific failure if it
+recurs — flagged as a real candidate for PATTERNS.md on a second
+occurrence, since it directly undermines the one mechanism built
+specifically to eliminate repeated context-loss.

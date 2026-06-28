@@ -114,6 +114,20 @@ that still depends on a human asking a question audit wasn't built to
 ask. State this limitation explicitly in any report following a
 self-correction.
 
-## 7. Log the audit itself
+## 7. Check that STATUS.md's NON-NEGOTIABLE instruction is present and intact
+
+Read the first 15 lines of WORKSPACE/STATUS.md. Confirm the
+NON-NEGOTIABLE instruction requiring full Handoff Baton inclusion in
+any status response is still there, verbatim, at the very top above
+"Last manually confirmed accurate." If it is missing or truncated,
+flag MECHANICAL — it was deliberately placed there after CC-127
+confirmed a real failure mode (status query omitting the baton
+entirely, requiring the user to ask for it separately). If a future
+session's response to a status query again omits the Handoff Baton,
+that is a confirmed second instance of this exact failure and must be
+logged toward a PATTERNS.md entry — this is already flagged as a
+repeat-failure-mode candidate after first occurrence.
+
+## 8. Log the audit itself
 Append to EVOLUTION_LOG.md what ran and what was found, or that
 nothing was found, explicitly.

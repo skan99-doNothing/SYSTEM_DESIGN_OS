@@ -1,5 +1,12 @@
 # STATUS.md — Current State Snapshot
 
+NON-NEGOTIABLE: any time this file is read in response to a status
+question — "status," "what's open," "where are we," or similar — the
+Handoff Baton section below must be included in the response in full,
+not just open items or what's-working. The baton existing is the
+entire point of this file; skipping it defeats that point. This is
+not optional or context-dependent.
+
 Last manually confirmed accurate: 2026-06-28. If significantly
 more EVOLUTION_LOG.md entries exist after this date than are reflected
 here, this file may be stale — cross-check before trusting it fully.
