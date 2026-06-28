@@ -44,6 +44,21 @@ be stale relative to README.md's current state — consider
 regenerating." Do not auto-regenerate — this is expensive and a human
 should decide it's worth doing, not a mechanical pass.
 
+### 1c. Check concept-page depth against its own ingestion record's claims
+
+For each concept page in SYSTEM_BRAIN/concepts/, compare its actual
+content against the specific verification artifacts listed in its
+corresponding ingestion record (SYSTEM_BRAIN/sources/[name].md). If
+the ingestion record lists specific extracted facts (exact names,
+numbers, structures) that do NOT appear with comparable specificity in
+the concept page, flag as MECHANICAL: "concept page for [source] is
+thinner than its own ingestion record claims — knowledge was verified
+as read but not fully woven into reusable form." This check exists
+because the system's core promise is that decisions get made FROM
+expanded knowledge, not from a thin summary while richer verified
+content sits unused in a record nobody re-reads — this is core to the
+ever-learning DNA claim, not a cosmetic completeness check.
+
 ## 2. Check for promotion/threshold conditions that may have been crossed
 Has enough material accumulated for a judgment-based promotion (e.g.
 conversational.md to overview.md) to be warranted? Flag, don't act.

@@ -276,17 +276,25 @@ matching standing countermeasure rather than rediscovering a known
 failure from scratch. Then runs five checks: (1) does every file in
 WORKSPACE/ and any active domain's BRAIN/ actually do what its own
 stated purpose says, using git history as evidence rather than
-assumption; (2) has any judgment-based promotion condition (like
-conversational.md's threshold) quietly been crossed without anyone
-acting on it; (3) has a known, already-written principle been applied
-in one place but skipped somewhere it clearly also applies — searched
-for specifically, not assumed absent; (4) are there broken references
-pointing to things that don't exist, and separately, is there real,
-populated structure that exists but isn't documented anywhere it
-should be — both directions checked, since the second direction was
-itself a blind spot found and fixed mid-session; (5) are there rules
-in OPERATING_CONTRACT.md with no EVOLUTION_LOG.md entry ever showing
-them actually being exercised, not just declared. Every finding gets
+assumption — with three sub-checks: (1a) does each brain's
+overview.md source count match the real file count; (1b) would any
+ARTIFACTS/ description be visibly wrong given README.md's current
+structure; (1c) does each concept page in SYSTEM_BRAIN/concepts/
+actually contain the specific facts its own ingestion record's
+verification artifacts name, or is the concept page thinner than
+what was verified as read — because the system's promise is that
+decisions get made from expanded knowledge, not a thin summary while
+richer verified content sits unused; (2) has any judgment-based
+promotion condition (like conversational.md's threshold) quietly been
+crossed without anyone acting on it; (3) has a known, already-written
+principle been applied in one place but skipped somewhere it clearly
+also applies — searched for specifically, not assumed absent; (4) are
+there broken references pointing to things that don't exist, and
+separately, is there real, populated structure that exists but isn't
+documented anywhere it should be — both directions checked, since the
+second direction was itself a blind spot found and fixed mid-session;
+(5) are there rules in OPERATING_CONTRACT.md with no EVOLUTION_LOG.md
+entry ever showing them actually being exercised, not just declared. Every finding gets
 tagged MECHANICAL (a verifiable fact, may be fixed in the same pass,
 but always reported, never silent) or JUDGMENT-REQUIRED (a human
 decision, never auto-resolved). If this run is happening immediately

@@ -663,3 +663,18 @@ evaluate from conversational content first, save only on a real
 decision to ingest, delete immediately if a source was saved early
 and the verdict comes back REJECT. README.md updated to reflect both
 changes.
+
+## 2026-06-28 — Permanent depth check added: knowledge must expand, not just get filed (CC-116)
+User correctly identified that ingestion succeeding (a real, verified
+record) does not automatically mean the BRAIN actually expanded.
+Checked the Growth Engine's concept page honestly against its own
+ingestion record's specific claims. Finding: concept page is
+GENUINELY RICH — all 5 verification artifacts (13 table names,
+7-step lifecycle, 7 Verifier weights, 5 memory types, confidence
+scale) are present in the concept page at equal or greater specificity.
+No expansion was needed. Built a permanent check into audit (1c)
+comparing every concept page's actual depth against its own ingestion
+record's verification artifacts going forward — this is core to the
+system's ever-learning DNA claim: decisions should be made from
+genuinely expanded knowledge, not a thin filed summary while richer
+verified content sits unused. README.md updated to document check 1c.
