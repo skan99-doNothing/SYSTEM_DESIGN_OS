@@ -72,3 +72,30 @@ gaps → fix immediately, in the protocol itself, without waiting for
 a second occurrence. Waiting for the second instance of a
 deterministic gap means deliberately letting the known failure happen
 again. The distinction: the gap recurs with certainty vs. might recur.
+
+### 2026-06-28 — Evaluation criteria are valid when they produce both positive and negative results (CC-116, CC-120)
+
+Two honest evaluations tonight produced opposite outcomes: CC-116
+checked the Growth Engine concept page against its ingestion record's
+specific claims and found it GENUINELY RICH — all five verification
+artifacts present at comparable or greater specificity, no expansion
+needed. CC-120 applied the same evaluation methodology to
+ingest-validate itself and found a REAL GAP — the FRAMEWORK.md
+portable concept entry documented only the lightweight mode, missing
+deep mode entirely.
+
+**Constraint this reveals:** An evaluation check is only trustworthy
+when it can produce both results. If it always finds "good" it's
+validation-seeking, not evaluation. CC-116's clean result is more
+credible because CC-120's gap finding was real and came from the
+same methodology applied honestly. The value of check 1c isn't that
+it found something tonight — it's that it could have, and when
+applied to a different scope (skills vs. ingested sources) it did.
+
+Also surfaced: applying the system's own evaluation criteria to its
+own components (self-evaluation, not just external source evaluation)
+is a distinct high-value operation. It's currently done by exception
+(CC-120 was explicitly requested), not by any standing check.
+Whether this warrants becoming a standing audit step after more
+instances is an open question — one deliberate self-evaluation isn't
+a confirmed pattern yet.

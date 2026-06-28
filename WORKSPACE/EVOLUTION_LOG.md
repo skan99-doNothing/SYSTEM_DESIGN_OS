@@ -717,3 +717,15 @@ comparison adds real value; narrow sources should default to
 lightweight plus direct conversation. Prevents the over-engineering
 risk of reaching for deep mode out of habit on sources too small to
 warrant it. README.md updated to reflect the sizing boundary.
+
+## 2026-06-28 — Audit run at session close (chalo)
+Ran full audit before closing. All three pattern countermeasures
+applied (P001, P002, P003). Findings: one MECHANICAL (pre-existing
+gap: verify-claude-md.sh lacks a mechanism-agnostic concept in
+FRAMEWORK.md — guardrail concept says "one guardrail" but two hooks
+exist); two JUDGMENT-REQUIRED (visual artifact stale relative to
+tonight's README.md additions; conversational.md has 3 entries, not
+yet clearly ready for overview.md promotion). Check 1c passed for
+all 4 concept pages; P002 falsification via SUGGESTION RECORD
+statuses came up clean. MECHANICAL finding noted but not fixed here
+per audit's produce-a-report-not-a-fix rule.
