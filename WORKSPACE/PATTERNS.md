@@ -127,6 +127,17 @@ counts as "built before"?) is not yet clear from two instances. Watch
 for a third instance before designing the actual mechanism, the same
 discipline already proven correct for P001/P002/P003.
 
+**Additional context for P004, from CC-148's architecture check:**
+CLAUDE.md's ~415-token size happens to respect ICM's ~800-token Layer
+0 budget, but by accident (general hygiene from the 200-line
+guideline), not deliberate design to that figure. WORKSPACE/ conflates
+ICM's Layer 3 (stable factory: INGEST.md, OPERATING_CONTRACT.md) and
+Layer 4 (per-run artifacts: STATUS.md, EVOLUTION_LOG.md) in one folder
+— structurally present but with zero real-world consequence so far,
+since no per-run artifact has ever accumulated at volume. Both are
+watched, not fixed — revisit only if a real domain's pipeline makes
+either one a genuine practical problem.
+
 ---
 
 ## Open question: what this can and can't catch

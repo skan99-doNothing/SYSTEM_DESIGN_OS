@@ -991,3 +991,20 @@ explicitly marked CANDIDATE rather than a standing rule. No mechanism
 built yet — watching for a genuine third instance before designing the
 actual trigger, since two data points aren't enough to know the right
 scope or frequency.
+
+## 2026-06-28 — Stage-contract gap fixed before first real domain (CC-149)
+
+CC-148's architecture check found one genuine gap: RULES.md described
+stage folders with three loose bullets, not ICM's actual structured
+Inputs/Process/Outputs contract (Section 3.3, only read in full during
+CC-140/144). Fixed with a clear trigger condition (before the first
+real domain builds a stage, not after) — added the structured
+requirement to RULES.md and a real, copyable CONTEXT.md template to
+_TEMPLATE/STAGE_TEMPLATE/. The other two CC-148 findings (Layer 0
+token budget, Layer 3/4 conflation in WORKSPACE/) are documented as
+watched context within PATTERNS.md's P004, not fixed — neither has a
+real-world consequence yet, and fixing them speculatively would be
+the same over-engineering pattern already rejected for Obsidian and
+auto-discovery tonight. README.md updated via update-readme to reflect
+RULES.md's new stage-contract spec, PATTERNS.md's P004 candidate, and
+_TEMPLATE/'s new STAGE_TEMPLATE/ folder.

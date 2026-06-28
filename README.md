@@ -171,7 +171,12 @@ SYSTEM_DESIGN_OS/
   being proven, not designed speculatively in advance. Currently
   holds: the exact procedure for turning DOMAINS/_TEMPLATE/ into a
   real, working domain; the increments-of-10 numbering convention for
-  workflow stage folders; a concrete, sourced threshold (roughly
+  workflow stage folders, plus the ICM-specified stage-contract
+  requirement — each stage folder must contain a CONTEXT.md with three
+  explicit sections (Inputs / Process / Outputs) so the stage is
+  self-documenting and hand-off-ready to any agent or person opening
+  it cold (Section 3.3, confirmed CC-140/144; template lives at
+  DOMAINS/_TEMPLATE/STAGE_TEMPLATE/CONTEXT.md); a concrete, sourced threshold (roughly
   50-100 files in any one brain, or retrieval genuinely feeling slow)
   for when plain index-file navigation should be reconsidered; a
   domain graduation rule — when a domain is ready to be sold or
@@ -189,14 +194,19 @@ SYSTEM_DESIGN_OS/
 
 - **PATTERNS.md** — the system's record of its own recurring mistakes.
   A failure only earns an entry here after it's been confirmed
-  happening at least twice. As of this writing it holds three: known
-  principles not being self-applied to new work (caught three times
-  before being named explicitly); a fix declared clean immediately
-  after landing, without independent verification (caught twice); and
+  happening at least twice. As of this writing it holds three active
+  patterns plus one candidate: known principles not being self-applied
+  to new work (P001, three instances); a fix declared clean immediately
+  after landing, without independent verification (P002, two instances);
   a fully correct prompt written in chat that never crossed into the
-  tool that executes it (confirmed twice — the same prompt drafted and
-  failing to transmit on two separate occasions). Each entry states
-  its standing countermeasure. audit reads this file first, every run, before its
+  tool that executes it (P003, two instances); and P004 (CANDIDATE —
+  two instances, no mechanism yet) — a factory-level change that
+  required retroactive re-check of what was built before it, caught
+  only because a human explicitly asked, not because any mechanism
+  noticed. P004 is watched, not yet a standing rule — per the same
+  two-instance discipline, the right trigger design isn't clear from
+  two data points. Each confirmed entry states its standing
+  countermeasure. audit reads this file first, every run, before its
   own checks — this is the literal mechanism that makes the system's
   learning durable rather than something that has to be re-explained
   in conversation every time.
@@ -264,10 +274,14 @@ SYSTEM_DESIGN_OS/
 
 The reusable pattern for a real business domain, mirroring
 SYSTEM_BRAIN/'s exact shape (RAW/, then BRAIN/ with the same
-sources/concepts/entities/synthesis/dialogue split). To start a real domain: copy this
-folder, rename it, drop real sources into its RAW/, and run them
-through INGEST.md. No domain currently exists — this is the one
-thing the entire system has been waiting on since its first session.
+sources/concepts/entities/synthesis/dialogue split). To start a real
+domain: copy this folder, rename it, drop real sources into its RAW/,
+and run them through INGEST.md. Also contains STAGE_TEMPLATE/ — a
+copyable CONTEXT.md template (Inputs / Process / Outputs) for any
+workflow stage folder built under a real domain; per RULES.md, every
+stage folder must have a filled-in CONTEXT.md, not just a prompt file.
+No domain currently exists — this is the one thing the entire system
+has been waiting on since its first session.
 
 ## 4. The four skills — what they actually do, in full
 

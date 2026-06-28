@@ -29,10 +29,34 @@ stage (e.g. 15_REVIEW/) to be inserted between two existing ones later
 without renumbering everything downstream (see FRAMEWORK.md's ICM
 section and EVOLUTION_LOG.md CC-023).
 
-Each stage folder, once created, holds:
-- A prompt/instructions file for what that stage does
-- Whatever context (from the domain's BRAIN/) that stage needs
-- An output location the next stage reads from
+Each workflow stage folder (e.g. 10_discovery/) must contain a
+CONTEXT.md with three explicit sections, per ICM's actual stage-
+contract specification (Section 3.3, confirmed via full re-read,
+CC-140/144):
+
+### Inputs
+What this stage needs before it can run — which BRAIN/ content,
+which prior stage's output, what the human needs to provide.
+
+### Process
+What actually happens in this stage — the real steps, not just a
+prompt file reference.
+
+### Outputs
+What this stage produces, in what format, and where the NEXT stage
+should look for it.
+
+This makes a stage self-documenting and hand-off-ready — per ICM's
+own stated goal, anyone (human or a different agent) opening a stage
+folder cold should be able to read its CONTEXT.md and know exactly
+what it does, what it needs, and what it produces, without reading
+the rest of the system. A copyable CONTEXT.md template lives at
+DOMAINS/_TEMPLATE/STAGE_TEMPLATE/CONTEXT.md.
+
+This contract structure was missing from the original spec because
+the ICM paper's relevant section (3.3) wasn't read until CC-140/144's
+full re-ingestion — see PATTERNS.md's P004 for the broader pattern
+this instance belongs to.
 
 No domain has built real stage folders yet — this pattern is specified
 ahead of first use, unlike the domain-creation pattern above, which is

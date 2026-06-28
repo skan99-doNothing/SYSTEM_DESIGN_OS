@@ -12,4 +12,9 @@ This is a template, not a live domain. To create a real domain:
    sources/dialogue as content is actually processed
 5. Workflow stages (ICM-style numbered folders) get added at the domain
    root once the domain's actual process is understood from real work,
-   not designed upfront
+   not designed upfront. When building real workflow stages (e.g.
+   10_discovery/, 20_planning/), copy STAGE_TEMPLATE/CONTEXT.md into
+   each stage folder and fill it in — this is the structured contract
+   ICM specifies (Inputs / Process / Outputs), not optional
+   documentation. A stage without a filled-in CONTEXT.md is not
+   self-documenting and cannot be handed off cold.
