@@ -99,3 +99,36 @@ is a distinct high-value operation. It's currently done by exception
 Whether this warrants becoming a standing audit step after more
 instances is an open question — one deliberate self-evaluation isn't
 a confirmed pattern yet.
+
+### 2026-06-28 — The two-channel problem: CLAUDE.md vs the baton (CC-129/CC-130)
+
+CC-129 closed the knowledge-routing gap by adding an instruction to
+CLAUDE.md. CC-130 revealed this was incomplete: CLAUDE.md auto-loads
+only in Claude Code sessions; claude.ai chat sessions start from the
+baton only, with no file system access and no CLAUDE.md.
+
+**Constraint this reveals:** Any behavioral rule that needs to work in
+BOTH Claude Code AND claude.ai must be written into BOTH delivery
+channels — CLAUDE.md for Claude Code, baton for claude.ai. These are
+parallel channels, not redundant copies. Fixing one doesn't fix the
+other. This is a structural property of the system, not a one-off
+oversight: every future behavioral rule should be checked against
+which channel(s) it needs to reach and whether all of those are covered.
+
+### 2026-06-28 — Self-report distrust as a standing verification principle (CC-130)
+
+User explicitly distrusted CC-129's own report of its cold-read test
+result — not because the report seemed wrong, but because a confident
+description of a test passing is not the same as the test passing with
+real output shown. CC-130 re-ran the verification independently and
+confirmed the result was genuine.
+
+**Constraint this reveals:** A session verifying its own prior work
+can produce a correctly-worded but ungrounded claim. The correct
+response to any self-report of a test passing is to re-run it with
+visible output — not to accept the description as evidence. This is
+the same principle as OPERATING_CONTRACT.md Rule 1 (no claim without
+a check), applied recursively: the claim "the test passed" is itself
+a claim that needs a check, not a terminus. This aligns with P002's
+countermeasure applied one level up: distrust a clean pass, especially
+one that is itself a report of having verified a prior step.

@@ -769,3 +769,17 @@ mechanism that reaches a memoryless chat. Added the routing
 instruction to the baton template itself and made it a permanent,
 required line in chalo's step 5d, so it survives every future baton
 rewrite rather than being optional content that could quietly drop out.
+
+## 2026-06-28 — Chalo audit fixed MECHANICAL gap: verify-claude-md.sh now has FRAMEWORK.md concept (CC-131/chalo)
+Audit check during chalo found the pre-existing MECHANICAL open item:
+FRAMEWORK.md said "one guardrail concept" but two hooks exist and
+verify-claude-md.sh had no portable concept entry. Fixed in this pass:
+guardrail section updated to name two concepts (write-protection and
+session-identity verification); new session-identity verification
+portable concept added to FRAMEWORK.md. README.md updated to reflect
+seven mechanism-agnostic concepts (was six). Audit check 7 (STATUS.md
+NON-NEGOTIABLE integrity) and 6b falsification both ran clean with
+independent verification. Two new conversational.md entries added
+(two-channel coverage problem; self-report distrust as standing
+verification principle). STATUS.md fully rewritten and baton
+regenerated.

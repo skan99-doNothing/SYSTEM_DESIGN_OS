@@ -141,8 +141,13 @@ SYSTEM_DESIGN_OS/
   and plain markdown as the only artifact format, specifically because
   it's the one format that's simultaneously machine-readable,
   human-readable, version-controllable, and requires no translation
-  step to hand to someone else. It also holds six mechanism-agnostic
-  specifications — for the ingest-guard hook, for the chalo
+  step to hand to someone else. It also holds seven mechanism-agnostic
+  specifications — for the ingest-guard write-protection hook, for
+  the session-identity verification hook (confirming the loaded entry-
+  point file is the correct one for this project, using the tool's
+  own authoritative project-root signal rather than a hand-written
+  guess — added in CC-130's chalo audit run after remaining as an
+  open MECHANICAL item since the hook was built), for the chalo
   session-close skill, for the audit self-check, for the update-readme
   dictionary-maintenance process, for the ingest-validate pre-ingestion
   orientation — covering both the default lightweight mode (on-demand
@@ -317,14 +322,20 @@ separately, is there real, populated structure that exists but isn't
 documented anywhere it should be — both directions checked, since the
 second direction was itself a blind spot found and fixed mid-session;
 (5) are there rules in OPERATING_CONTRACT.md with no EVOLUTION_LOG.md
-entry ever showing them actually being exercised, not just declared. Every finding gets
-tagged MECHANICAL (a verifiable fact, may be fixed in the same pass,
-but always reported, never silent) or JUDGMENT-REQUIRED (a human
-decision, never auto-resolved). If this run is happening immediately
-after a previous check was just corrected, audit is required to
-actively try to disprove its own clean result on a different angle
-before reporting it clean — this rule exists because exactly that
-failure happened twice in one session before being caught.
+entry ever showing them actually being exercised, not just declared;
+(6b) if a check was just self-corrected, actively attempt to falsify
+the clean result from a different angle before accepting it; (7) is
+STATUS.md's NON-NEGOTIABLE instruction (requiring the Handoff Baton to
+be included in any status response) still present and intact at the
+file's top — added after CC-127 confirmed a real failure where a status
+query omitted the baton entirely. Every finding gets tagged MECHANICAL
+(a verifiable fact, may be fixed in the same pass, but always reported,
+never silent) or JUDGMENT-REQUIRED (a human decision, never
+auto-resolved). If this run is happening immediately after a previous
+check was just corrected, audit is required to actively try to disprove
+its own clean result on a different angle before reporting it clean —
+this rule exists because exactly that failure happened twice in one
+session before being caught.
 
 ### update-readme
 

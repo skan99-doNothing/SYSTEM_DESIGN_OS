@@ -99,13 +99,15 @@ of thing: an automatic check that runs independently of the agent's own
 judgment, at a specific trigger point, and can block an action outright
 rather than just advising against it.
 
-This system currently implements one guardrail concept — blocking a
-write into DOMAINS/, SYSTEM_BRAIN/, or SYSTEM_SOURCES/ unless that path
-is _TEMPLATE/ — using Claude Code's specific mechanism (a PreToolUse
-hook in .claude/hooks/, registered in .claude/settings.json). That
-implementation is NOT portable to other agents (confirmed: Codex uses
-an entirely different config format and hook trust model under
-.codex/).
+This system currently implements two guardrail concepts — write-
+protection and session-identity verification — each using Claude Code's
+specific mechanism (a PreToolUse or SessionStart hook in .claude/hooks/,
+registered in .claude/settings.json). Neither implementation is portable
+to other agents (confirmed: Codex uses an entirely different config
+format and hook trust model under .codex/).
+
+The write-protection guardrail blocks writes into DOMAINS/, SYSTEM_BRAIN/,
+or SYSTEM_SOURCES/ unless that path is _TEMPLATE/:
 
 What IS portable is the concept itself, specified here independent of
 any tool's syntax, so it can be rebuilt under a different agent's own
@@ -280,6 +282,41 @@ lightweight report:
 A future implementation under a different agent should be able to
 build a functionally equivalent deep mode from this description alone
 — not just the lightweight report half of the skill.
+
+### The session-identity verification concept (mechanism-agnostic)
+
+At the start of every session, an agent may receive a CLAUDE.md (or
+equivalent entry-point file) that isn't the one for this specific
+project — a stale copy from a prior session, a parent-directory file
+that auto-loaded first, or an incorrect file from a different project
+running alongside. If nothing checks this, the agent operates with a
+silently wrong context for the entire session.
+
+The portable concept: at session start, confirm the entry-point file
+that actually loaded corresponds to this project's real path, using
+an authoritative source for the expected path (the tool's own
+environment variable, or equivalent) rather than a hand-written guess
+that could itself be wrong.
+
+The portable specification:
+
+- **Trigger:** session start, before any other work — this is the only
+  window where a wrong context can be caught before it affects anything
+- **Check performed:** compare the path of the loaded CLAUDE.md against
+  the expected path derived from an authoritative project-root signal
+  (not a manually coded constant)
+- **Action on match:** allow the session to proceed; no output needed
+- **Action on mismatch:** report clearly which file loaded vs. which
+  was expected — do not silently continue with wrong context loaded
+- **Known limitation, true regardless of implementation:** this verifies
+  the file's identity (which file loaded), not its currency (whether
+  the file's content matches the latest committed version). A correctly
+  identified CLAUDE.md with stale content still passes this check.
+
+A future implementation under a different agent should build an
+equivalent session-start check using the above specification — not
+by copying .claude/hooks/verify-claude-md.sh directly, since the hook
+format and environment variables differ by tool.
 
 ### The transmission-verification concept (mechanism-agnostic)
 
