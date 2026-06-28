@@ -54,6 +54,15 @@ Only once the destination is decided does Step 1 begin, and Step 1 onward
 runs identically regardless of which destination was chosen — the
 protocol itself doesn't change, only where its output lands.
 
+Step 0 determines WHERE a source goes IF it is being ingested. It does
+not mean the source should be saved before the decision to ingest is
+made. If ingest-validate's deep mode (or a direct conversation) has not
+yet reached a clear decision to ingest, do not pre-save the raw file —
+evaluate from conversational content first, save only once the decision
+is ADOPT, ADAPT, or a direct instruction to ingest. A rejected source is
+never written to SYSTEM_SOURCES/ or RAW/ at all; if it was saved before
+rejection, delete it as part of closing out the evaluation.
+
 ### Step 1 — Identify file type and confirm it's readable at all
 - Run a file-type check (file, pdftotext, view, whatever fits the format) before claiming anything about content.
 - If the file is a scanned/image-based PDF, plain text extraction returning empty or near-empty output is itself a result — it means fall to Step 2b (visual read), not "skip and summarize anyway."

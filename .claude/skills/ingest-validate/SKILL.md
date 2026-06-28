@@ -156,6 +156,19 @@ honesty of each input. Recommend ADOPT, ADAPT, DEFER, or REJECT for
 each, with reasoning tied to a specific real gap, not a generic "this
 seems good."
 
+### Step 3b — If the verdict is REJECT, the source is never saved
+
+A REJECT verdict means: do not write the source's raw content into
+SYSTEM_SOURCES/ or any domain's RAW/ at any point during this
+evaluation. Deep mode's deconstruction works entirely from the
+content already in this conversation/session - it never needs to
+save the file to analyze it. If the source's raw content was already
+saved (e.g. the user pasted a file in and Claude Code wrote it to
+disk before evaluation, the way this happened once before with the
+Growth Engine source), and the verdict comes back REJECT, delete that
+file immediately as part of closing out this evaluation - do not
+leave a rejected source sitting in SYSTEM_SOURCES/ "just in case."
+
 ### Step 4 — Output as SUGGESTION RECORDs, per INGEST.md Step 7
 
 Any mechanism recommended for ADOPT or ADAPT becomes a real

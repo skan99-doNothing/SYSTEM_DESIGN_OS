@@ -90,7 +90,11 @@ SYSTEM_DESIGN_OS/
 - **INGEST.md** — the verification protocol for any new source, of
   any kind. Eight steps in order: (0) route the resource — is it about
   the system itself or about a specific business domain, and if
-  ambiguous, ask rather than guess; (1) confirm the file is actually
+  ambiguous, ask rather than guess; Step 0 also enforces a pre-save
+  safeguard: evaluate from conversational content first, save only
+  once the decision to ingest is confirmed — a rejected source is
+  never written to SYSTEM_SOURCES/ or RAW/, and if it was saved
+  before rejection, delete it as part of closing out the evaluation; (1) confirm the file is actually
   readable; (2) read the real content, with explicit handling for
   text, scanned/visual content, and tool/format mismatches; (3)
   produce 3-5 specific, checkable extracts as proof of having actually
@@ -347,9 +351,14 @@ runs a comparative analysis rating each novel mechanism on DNA
 compatibility / impact / cost (1–5 each, stated as structured
 reasoning, not objective measurement), and recommends ADOPT, ADAPT,
 DEFER, or REJECT for each with reasoning tied to a specific real gap.
-Any mechanism recommended for ADOPT or ADAPT produces a real
-SUGGESTION RECORD (status PROPOSED) in the relevant concept page via
-the standard INGEST.md Step 7 mechanism — deep mode creates no new
+A REJECT verdict means the source's raw content is never written to
+SYSTEM_SOURCES/ or any domain's RAW/ — deep mode works entirely from
+conversational content and requires no file save to analyze a source.
+If the source was saved to disk before evaluation completed, a REJECT
+verdict triggers immediate deletion, not "leave it just in case." Any
+mechanism recommended for ADOPT or ADAPT produces a real SUGGESTION
+RECORD (status PROPOSED) in the relevant concept page via the
+standard INGEST.md Step 7 mechanism — deep mode creates no new
 approval pathway, only more rigorous analysis before the same output.
 
 ## 5. The two hooks — mechanical, cannot be talked past

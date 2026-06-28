@@ -650,3 +650,16 @@ separate new skills, keeping deconstruct and analyze coupled rather
 than risking drift between two standalone tools. README.md updated
 to document both modes. FRAMEWORK.md already had an ingest-validate
 entry; no new concept page required.
+
+## 2026-06-28 — Reject-means-delete safeguard added (CC-113)
+User confirmed the right principle: a rejected source should never
+exist in SYSTEM_SOURCES/ or RAW/ - only sources that ARE ingested
+become part of the wiki/brain. Closed a real gap this session itself
+demonstrated: the Growth Engine source was saved to disk before any
+formal decision to ingest it had been made (corrected later in
+CC-098, but the order was wrong). Added explicit guidance to both
+ingest-validate's deep mode (Step 3b) and INGEST.md's Step 0:
+evaluate from conversational content first, save only on a real
+decision to ingest, delete immediately if a source was saved early
+and the verdict comes back REJECT. README.md updated to reflect both
+changes.
