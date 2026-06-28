@@ -678,3 +678,16 @@ record's verification artifacts going forward — this is core to the
 system's ever-learning DNA claim: decisions should be made from
 genuinely expanded knowledge, not a thin filed summary while richer
 verified content sits unused. README.md updated to document check 1c.
+
+## 2026-06-28 — Sixth DNA quality added: knowledge-deepening (CC-117)
+User correctly identified that none of the five existing DNA qualities
+actually claim or commit to the brain's knowledge DEPTH growing over
+time — "ever-learning" is specifically about recognizing repeated
+failure patterns, a different mechanism entirely from concept pages
+genuinely capturing what their own ingestion records verified.
+Added knowledge-deepening as an explicit sixth quality to both
+FRAMEWORK.md and README.md's DNA section, tied directly to CC-116's
+new audit check 1c. A DNA claim with no mechanism behind it would be
+exactly the kind of overclaim this system exists to avoid — and the
+mechanism (1c) existed before the DNA statement named it, which was
+backwards. All "five qualities" references updated to "six qualities."

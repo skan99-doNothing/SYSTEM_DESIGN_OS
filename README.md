@@ -18,7 +18,7 @@ any future version of yourself who's forgotten the details. As of this
 writing, no real business domain has been built inside it — every
 mechanism here has only been exercised on its own construction.
 
-## 2. The DNA — five qualities, each tied to a real mechanism
+## 2. The DNA — six qualities, each tied to a real mechanism
 
 - **Agent-agnostic** — governed by plain markdown any LLM can read
   (CLAUDE.md + AGENTS.md as identical, synced entry points), with
@@ -39,6 +39,13 @@ mechanism here has only been exercised on its own construction.
 - **Ever-learning** — PATTERNS.md converts a confirmed second instance
   of a failure into a standing rule that gets checked before the
   failure has a chance to recur a third time.
+- **Knowledge-deepening** — ingesting a source isn't complete when a
+  verified ingestion record exists; the brain's concept pages must
+  actually contain the specific, reasoning-ready detail the record
+  verified, not a thin summary while richer content sits unused.
+  Audit's check 1c compares every concept page's depth against its
+  own ingestion record's claims, every session — knowledge is
+  required to expand, not just get filed.
 
 **The honest limit, stated once and meant to be remembered:** this
 system gets better at not repeating a KNOWN mistake. It does not

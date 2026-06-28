@@ -6,7 +6,7 @@ what purpose, and why this choice over the alternatives.
 
 ## The DNA this system is built toward
 
-Five qualities, each tied to an actual implementing mechanism — not
+Six qualities, each tied to an actual implementing mechanism — not
 aspirations, but things that exist in the current codebase and can be
 verified right now:
 
@@ -27,6 +27,13 @@ verified right now:
 - **Ever-learning** — PATTERNS.md converts confirmed multi-instance
   failures into checkable rules. Each new pattern makes the next
   instance of that shape catchable without human intervention.
+- **Knowledge-deepening** — ingesting a source isn't complete when a
+  verified ingestion record exists; the brain's concept pages must
+  actually contain the specific, reasoning-ready detail the record
+  verified, not a thin summary while richer content sits unused.
+  Audit's check 1c compares every concept page's depth against its
+  own ingestion record's claims, every session — knowledge is
+  required to expand, not just get filed.
 
 **The honest limit:** this compounds *known* lessons — it does not
 independently discover unknown ones. A failure has to happen at least
