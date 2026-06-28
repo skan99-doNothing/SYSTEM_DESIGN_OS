@@ -106,6 +106,9 @@ Every ingestion produces a record in this format:
 - **What was actually gotten from this source:** [brief, honest, not padded]
 - **What could NOT be verified or read:** [explicit gaps, even if small]
 - **Date:** [date]
+- **Last full re-verification:** [date — or 'not yet run' if this is the first ingestion pass]
+
+**GATE: status may only be INGESTED if the 'What could NOT be verified' field is empty/'Nothing.' If that field names ANY unread section, page, or unverified claim, status MUST be PARTIAL, with the specific gaps named and a stated plan for closing them. This is not a judgment call — it is a mechanical check on the record's own two fields: if 'what could not be verified' is non-empty, 'status' cannot say INGESTED. This rule exists because the ICM paper's own record honestly said 'Sections 2-6 not extracted' and was marked INGESTED anyway — the honesty was already there, the enforcement wasn't (see EVOLUTION_LOG.md, CC-140/CC-143).**
 
 ---
 

@@ -117,7 +117,13 @@ SYSTEM_DESIGN_OS/
   read it; (4) self-check before claiming anything, including whether
   a claim is being carried forward from memory rather than verified in
   the current turn; (5) write a formal ingestion record (INGESTED /
-  PARTIAL / FAILED — no rounding up); (6) reconcile the new knowledge
+  PARTIAL / FAILED — no rounding up), enforced by a binding gate:
+  status may only be INGESTED if the 'What could NOT be verified' field
+  is empty/'Nothing' — if it names any unread section or unverified
+  claim, status must be PARTIAL, specific gaps named, plan for closing
+  them stated; this is a mechanical check on the record's own two
+  fields, not a judgment call (CC-143); each record also tracks a
+  'Last full re-verification' date for audit's rotation check (1d); (6) reconcile the new knowledge
   into the relevant brain, explicitly marked as extending, conflicting
   with, or being genuinely new relative to what's already there; (7)
   if the source describes a pattern or mechanism, ask explicitly
@@ -312,7 +318,19 @@ decisions get made from expanded knowledge, not a thin summary while
 richer verified content sits unused (scope: covers ingested-source
 concept pages only; FRAMEWORK.md's portable skill entries are a
 named, deliberate gap — one instance found in CC-121 does not yet
-meet PATTERNS.md's two-instance threshold for a new permanent check); (2) has any judgment-based
+meet PATTERNS.md's two-instance threshold for a new permanent check);
+(1c-supplement) scan every sources/ folder for Status: PARTIAL and
+surface each as an open item until closed — fast, runs every audit
+run, catches honestly-flagged gaps; (1d) pick the one source that has
+gone longest without a full re-read (tracked via 'Last full
+re-verification' date on each record), re-read it in full, compare
+against its record and concept page, flag MECHANICAL if a gap is
+found, update the date regardless of outcome — one source per run,
+not all, ensuring eventual coverage without making every audit slow;
+this rotation catches a source that was marked INGESTED with 'Nothing'
+in the gap field but where the underlying read was still quietly
+incomplete in a way nothing flagged, the failure mode the Step 5 GATE
+alone cannot prevent (CC-143); (2) has any judgment-based
 promotion condition (like conversational.md's threshold) quietly been
 crossed without anyone acting on it; (3) has a known, already-written
 principle been applied in one place but skipped somewhere it clearly

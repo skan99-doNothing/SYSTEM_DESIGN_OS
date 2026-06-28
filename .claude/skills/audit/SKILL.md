@@ -70,6 +70,38 @@ trigger to extend this check or add a new one (1d), per PATTERNS.md's
 two-instance rule. One instance (ingest-validate, found and fixed in
 CC-120/CC-121) does not yet warrant a new permanent check.
 
+### 1c-supplement: PARTIAL status scan (every run)
+
+Scan every ingestion record in any sources/ folder for `Status: PARTIAL`.
+Surface each one as an open item requiring a completion pass — this makes
+partial ingestions visible every session until closed, not just at the
+moment they're created. Distinct from check 1d below: this only reads the
+STATUS FIELD, it's fast and runs every time. A PARTIAL source is a known
+hole in the brain's foundation and must not be silently treated as complete.
+
+### 1d. Periodic full-source re-verification (the garbage-in check)
+
+The PARTIAL-status scan above only catches sources that HONESTLY marked
+themselves incomplete. It cannot catch a source that was marked INGESTED
+with 'Nothing' in the verification-gaps field, but where the underlying
+read was still incomplete in a way nothing flagged at the time — exactly
+what could still happen even with INGEST.md's Step 5 GATE in place, since
+the gate only enforces consistency between a record's own two fields, not
+the record against the actual raw source.
+
+Maintain a rotation: each audit run, pick the ONE source that has gone
+longest without a full re-read (tracked via the 'Last full re-verification'
+date field on each record). Re-read that source's raw file in full and
+compare against its record and concept page. Flag as MECHANICAL if a gap
+is found. Update the 'Last full re-verification' date regardless of
+outcome. One source per run, not all of them — full re-reads are expensive;
+the rotation guarantees eventual coverage without making every audit run
+slow.
+
+To identify which source is next: read the 'Last full re-verification' date
+from each record in sources/ and pick the oldest (or 'not yet run'). If
+two sources tie, pick alphabetically.
+
 ## 2. Check for promotion/threshold conditions that may have been crossed
 Has enough material accumulated for a judgment-based promotion (e.g.
 conversational.md to overview.md) to be warranted? Flag, don't act.
