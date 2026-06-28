@@ -132,3 +132,73 @@ a check), applied recursively: the claim "the test passed" is itself
 a claim that needs a check, not a terminus. This aligns with P002's
 countermeasure applied one level up: distrust a clean pass, especially
 one that is itself a report of having verified a prior step.
+
+### 2026-06-28 — NOTED IDEA: Auto-research (query-only synthesis from already-ingested knowledge)
+
+**Status: GOOD-TO-HAVE, NOT MUST-HAVE.** Explicitly placed here,
+not as a SUGGESTION RECORD, because it has never been run through
+ingest-validate's actual deep mode — this entry documents the
+reasoning that led to this placement, not a completed evaluation.
+
+**How the idea surfaced:** While discussing a different system
+(claude-obsidian) found via web search, which has an "autoresearch"
+skill — query a knowledge base, synthesize an answer, cite sources.
+The user asked whether SYSTEM_DESIGN_OS needs an equivalent.
+
+**The real distinction drawn:** auto-RESEARCH (query and synthesize
+from knowledge already ingested and verified) is fundamentally
+different from auto-DISCOVERY (the system finding and proposing new
+sources on its own, without the user bringing them). The user
+explicitly chose to consider only the former, to preserve
+OPERATING_CONTRACT.md's existing division of labor — the user
+originates new knowledge, the system reasons from what's already
+verified. Auto-discovery would change WHO originates ideas in this
+system; that's a much bigger, unexamined decision, correctly not
+conflated with this one.
+
+**What was tested, and what it revealed:** a live test (CC-128)
+showed the underlying knowledge already exists and is already
+correctly synthesized when asked — the gap was never "the system
+can't reason from its own brain," it was "nothing automatically
+routes a cold session to check the brain first." That gap was
+closed separately and directly (CC-129/130/132) by adding one
+routing instruction to CLAUDE.md/AGENTS.md and the STATUS.md baton —
+a much smaller fix than a dedicated skill.
+
+**Why this still isn't fully resolved, and shouldn't be force-closed
+tonight:** the routing fix solves "find the right page once told to
+look." It does not solve a genuinely separate, harder question
+auto-research would actually need to answer well: synthesizing across
+MULTIPLE pages/sources into one answer, with honest
+confidence-weighting when sources partially conflict or only partially
+cover a question. That's a real design problem, not yet worked
+through, and conflating "the routing works" with "auto-research is
+solved" would be premature.
+
+**Why GOOD-TO-HAVE rather than MUST-HAVE:** the system currently has
+exactly one real domain's worth of knowledge analog (SYSTEM_BRAIN/,
+5 sources) and zero active business domains. A multi-source synthesis
+tool is speculative value against a brain that hasn't yet grown large
+enough to need it — the same over-engineering risk RULES.md's
+Obsidian/vector-search threshold was built to catch. This should be
+revisited once a real domain exists with enough real, varied sources
+that a single retrieval question would plausibly need synthesizing
+across more than one or two pages.
+
+**Concrete trigger to revisit:** when a real domain's BRAIN/concepts/
+has enough genuinely varied sources that a query would plausibly span
+3+ pages with partial, possibly-conflicting coverage — not on a
+calendar, not preemptively.
+
+**Process note, logged honestly:** earlier attempts to record this
+(CC-124, CC-125, CC-126) were drafted but never actually executed in
+this session — this is the first real, run instance of documenting
+this idea. A separate process violation (designing the proposal
+directly in conversation rather than running it through
+ingest-validate's deep mode first) was caught and corrected in
+principle, but the actual deep-mode run never happened either.
+Tonight's honest conclusion: the idea is real and worth keeping
+visible, the rigorous evaluation of it is not yet done, and that's
+stated plainly rather than implied to be further along than it is.
+
+**Date:** 2026-06-28

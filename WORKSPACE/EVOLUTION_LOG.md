@@ -795,3 +795,16 @@ files) to route through writing a Claude Code prompt and waiting for
 the user to paste real output - the same proven transport pattern
 used throughout this entire session via Rule 6, rather than a check
 that was never actually possible in this interface.
+
+## 2026-06-28 — Auto-research formally placed as NOTED IDEA, full reasoning documented (CC-135)
+End-of-session decision: auto-research (query-only synthesis from
+already-ingested knowledge) is real and worth keeping visible, but
+explicitly GOOD-TO-HAVE, not MUST-HAVE, given the brain's current
+small size and the lack of any active domain that would need
+multi-source synthesis yet. Documented the full reasoning trail in
+conversational.md as a NOTED IDEA - distinct from a SUGGESTION
+RECORD, since it has never actually been run through ingest-validate's
+deep mode despite three earlier attempts (CC-124/125/126) to do so,
+none of which were ever executed. Concrete revisit trigger stated:
+once a real domain's brain has enough varied sources that synthesis
+across multiple pages becomes genuinely useful, not before.
