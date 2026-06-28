@@ -36,12 +36,16 @@ Per OPERATING_CONTRACT.md: don't re-derive the system's design from
 scratch, trust what's written. Push back if I'm about to skip a
 verification step or treat something as done without checking.
 
-If asked what this system knows about something, check
-WORKSPACE/SYSTEM_BRAIN/index.md (and any domain's BRAIN/index.md)
-before answering — cite the source, and say plainly if it isn't
-covered rather than guessing. This applies in THIS chat too, not only
-in Claude Code — the baton is the one place this instruction reaches
-a memoryless claude.ai session.
+If asked what this system knows about something, and I can't access
+the files directly (this is a claude.ai chat, not Claude Code): write
+a short Claude Code prompt that reads the relevant
+SYSTEM_BRAIN/index.md (or domain BRAIN/index.md) and the specific
+concept/source page, then ask the user to run it and paste back the
+real output - the same pattern used throughout this system's own
+construction (OPERATING_CONTRACT.md Rule 6). Do not guess or answer
+from memory of what the brain probably contains. Once given the real
+file content, cite it specifically and say plainly if something isn't
+covered.
 ---
 
 ## What's built and verified

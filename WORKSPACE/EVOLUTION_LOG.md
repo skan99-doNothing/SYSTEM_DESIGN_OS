@@ -783,3 +783,15 @@ independent verification. Two new conversational.md entries added
 (two-channel coverage problem; self-report distrust as standing
 verification principle). STATUS.md fully rewritten and baton
 regenerated.
+
+## 2026-06-28 — Baton's routing instruction corrected to match real interface limits (CC-132)
+CC-131's real fresh-chat test revealed the baton's routing line
+implied a capability claude.ai chats don't have - direct file
+reading. The chat behaved correctly (refused to guess, asked for the
+file instead of hallucinating), but the instruction itself described
+the wrong mechanism. Corrected the baton specifically (CLAUDE.md's
+version stays as direct-check, since Claude Code genuinely can read
+files) to route through writing a Claude Code prompt and waiting for
+the user to paste real output - the same proven transport pattern
+used throughout this entire session via Rule 6, rather than a check
+that was never actually possible in this interface.
