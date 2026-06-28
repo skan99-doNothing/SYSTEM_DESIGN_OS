@@ -821,3 +821,19 @@ Checks 1-7 complete.
 - 5 JUDGMENT-REQUIRED (pre-existing): Rules 3 and 7 have no explicit EVOLUTION_LOG citations by name. Applied in practice but not formally referenced. Pre-existing gap.
 - 6b: no mid-run self-correction occurred; countermeasure not triggered.
 - 7 PASS: STATUS.md NON-NEGOTIABLE instruction present and intact.
+
+## 2026-06-28 — Both structural anomalies resolved (CC-141)
+CC-138/139's full provenance audit found two real anomalies. Anomaly
+1: context/ (renamed from synthesis/ in CC-063) diverged from LLM
+Wiki's own vocabulary. Corrected by renaming back to synthesis/
+(restoring the sourced name, housing overview.md correctly) and giving
+conversational.md its own new, honestly-labeled dialogue/ folder
+rather than letting it falsely imply LLM Wiki lineage. Every reference
+across the codebase updated, zero broken paths remaining. Anomaly 2:
+the increment-of-10 stage-numbering convention was placed under the
+ICM section without noting it's an extension, not from the paper
+itself - added an explicit note with the real engineering reasoning.
+Both anomalies were minor and well-contained; the core four-folder
+structure (sources/, concepts/, entities/, the renamed synthesis/) is
+confirmed genuinely sourced from LLM Wiki, word-for-word, not
+invented.

@@ -23,8 +23,8 @@ user rather than resolving them.
 ## 5a. If any dialogue-derived insight emerged this session (a non-obvious
    constraint, corrected assumption, or design decision not traceable to
    an ingested source), append it to the relevant brain's
-   context/conversational.md (WORKSPACE/SYSTEM_BRAIN/context/conversational.md
-   for system-level insights; DOMAINS/<domain>/BRAIN/context/conversational.md
+   dialogue/conversational.md (WORKSPACE/SYSTEM_BRAIN/dialogue/conversational.md
+   for system-level insights; DOMAINS/<domain>/BRAIN/dialogue/conversational.md
    for domain-specific ones).
 ## 5b. Check if conversational.md has grown enough to warrant
    promoting into overview.md

@@ -33,14 +33,21 @@ Reusable ideas extracted from sources and governing how this system operates.
 
 ---
 
-## Context
+## Synthesis
 
-Big-picture views: document-derived synthesis and dialogue-derived insights.
+Document-derived big-picture view connecting the ingested sources.
 
 | Page | One-line summary |
 |------|-----------------|
-| [overview.md](context/overview.md) | How LLM Wiki (what agents know), ICM (what agents do), and markdown (transferable format) connect; the division of labor; the autonomy goal |
-| [conversational.md](context/conversational.md) | Insights from live dialogue — non-obvious constraints, corrected assumptions, design decisions not traceable to any ingested source |
+| [overview.md](synthesis/overview.md) | How LLM Wiki (what agents know), ICM (what agents do), and markdown (transferable format) connect; the division of labor; the autonomy goal |
+
+## Dialogue
+
+Insights derived from live use rather than from any document.
+
+| Page | One-line summary |
+|------|-----------------|
+| [conversational.md](dialogue/conversational.md) | Insights from live dialogue — non-obvious constraints, corrected assumptions, design decisions not traceable to any ingested source |
 
 ---
 
@@ -52,4 +59,4 @@ Big-picture views: document-derived synthesis and dialogue-derived insights.
 
 ## Last updated
 
-2026-06-27 — synthesis/ renamed to context/, conversational.md added (CC-063); review skill wired in (CC-066/068); 5th source ingested: autonomous-ai-growth-engine.md (CC-098)
+2026-06-28 — context/ renamed back to synthesis/ (restoring source-accurate LLM Wiki vocabulary), conversational.md moved to new dialogue/ folder (CC-141); prior rename CC-063 was an anomaly caught by CC-138/139 provenance audit

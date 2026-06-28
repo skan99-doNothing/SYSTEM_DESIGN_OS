@@ -28,7 +28,7 @@ history. Flag any file whose own stated rule isn't being followed
 
 For SYSTEM_BRAIN/ and any active domain's BRAIN/: count the actual
 files in sources/ and compare against the number stated in that
-brain's context/overview.md header. A mismatch is MECHANICAL — fix
+brain's synthesis/overview.md header. A mismatch is MECHANICAL — fix
 the count in the same pass, not deferred. This is a known,
 deterministic staleness pattern (see INGEST.md Step 6 sub-check,
 EVOLUTION_LOG.md CC-107/CC-108): every source addition without a

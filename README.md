@@ -225,12 +225,12 @@ SYSTEM_DESIGN_OS/
 - **SYSTEM_BRAIN/** — what the system knows about its own design,
   synthesized from the documents in SYSTEM_SOURCES/. Internally split
   into sources/ (one verified ingestion record per original document),
-  concepts/ (the reusable ideas extracted from them), and context/
-  (overview.md holding the document-derived synthesis, and
-  conversational.md holding insight that came from dialogue rather
-  than from any document — with a judgment-based, not automatic,
-  promotion path from the latter into the former once a real pattern
-  is visible).
+  concepts/ (the reusable ideas extracted from them), synthesis/
+  (overview.md — the document-derived connective summary, named and
+  structured per the LLM Wiki source's own vocabulary), and dialogue/
+  (conversational.md — insight that came from live use rather than
+  from any document, with a judgment-based, not automatic, promotion
+  path into overview.md once a real pattern is visible).
 
 - **SYSTEM_SOURCES/** — raw source documents this system was
   synthesized from, kept immutable and separate from SYSTEM_BRAIN/
@@ -258,7 +258,7 @@ SYSTEM_DESIGN_OS/
 
 The reusable pattern for a real business domain, mirroring
 SYSTEM_BRAIN/'s exact shape (RAW/, then BRAIN/ with the same
-sources/concepts/context/ split). To start a real domain: copy this
+sources/concepts/entities/synthesis/dialogue split). To start a real domain: copy this
 folder, rename it, drop real sources into its RAW/, and run them
 through INGEST.md. No domain currently exists — this is the one
 thing the entire system has been waiting on since its first session.
@@ -274,7 +274,7 @@ exists to catch. Then: reviews what actually happened this session
 against EVOLUTION_LOG.md; confirms the log is current, backfilling
 honestly if something was missed; checks whether this session produced
 any insight through dialogue rather than from a document, and if so
-writes it to the relevant brain's context/conversational.md; checks
+writes it to the relevant brain's dialogue/conversational.md; checks
 whether that file has grown enough that a real pattern is now visible
 and worth promoting into overview.md — flagging this as a judgment
 call rather than auto-promoting; rewrites STATUS.md's two sections

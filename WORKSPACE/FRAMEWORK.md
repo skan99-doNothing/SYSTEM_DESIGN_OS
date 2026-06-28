@@ -56,6 +56,23 @@ contradictions get flagged; the picture gets richer over time. An index
 file and a chronological log let an agent navigate accumulated knowledge
 without re-reading every raw source each time.
 
+**How this system instantiates the LLM Wiki pattern:** each BRAIN/ has
+four folders drawn directly from the source's own vocabulary: sources/
+(raw ingestion records — immutable, LLM reads but never modifies),
+concepts/ (reusable ideas extracted from sources), entities/ (named
+things: people, tools, companies), and synthesis/ (the document-derived
+connective summary — overview.md). A fifth folder, dialogue/, holds
+conversational.md: insights from live use that did not come from any
+ingested document. dialogue/ is an extension of the pattern, not a claim
+about what LLM Wiki specifies — it is honestly labeled as such.
+
+Note: an earlier version of this folder was named context/ (added in
+CC-063, since corrected). A later provenance audit (CC-138/139/141)
+found this name diverged from the LLM Wiki source's own vocabulary,
+which explicitly uses "synthesis" as the content type for this layer.
+Corrected to synthesis/ (sourced name, holds overview.md) and dialogue/
+(honestly-labeled, no claimed source lineage, holds conversational.md).
+
 **Why we chose it:** the goal is a domain-specific knowledge base (e.g.
 a methodology, a market, a body of research) that gets smarter as more
 is fed into it, and that is transferable — to another LLM, to a
@@ -89,6 +106,13 @@ Workflow stages use increments of 10 (10_RESEARCH/, 20_FILTER/,
 stage to be inserted later (e.g. 15_REVIEW/ between 10 and 20) without
 renumbering every existing folder. No workflow stages exist yet in any
 domain — this convention applies the first time one is created.
+
+(Note: the ICM paper itself specifies only that "numbered folders
+represent stages" — it does not prescribe a specific numbering interval.
+The increment-of-10 convention is an engineering extension applied on top
+of the sourced numbered-folder concept, chosen because it allows inserting
+a new stage later without renumbering every existing folder. This is a
+deliberate addition, not a claim about what the ICM paper itself says.)
 
 ### The guardrail concept (mechanism-agnostic)
 

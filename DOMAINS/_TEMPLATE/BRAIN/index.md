@@ -7,9 +7,10 @@ content type:
   relevant to this domain
 - concepts/ — pages about ideas, frameworks, methodologies relevant to
   this domain
-- context/ — the evolving big-picture view connecting everything
-  ingested into this domain so far; overview.md (document-derived) and
-  conversational.md (dialogue-derived insights)
+- synthesis/ — the document-derived big-picture synthesis connecting
+  everything ingested into this domain so far; holds overview.md
+- dialogue/ — insights from live use that emerged through conversation
+  rather than from any document; holds conversational.md
 - sources/ — one page per raw source ingested into this domain,
   summarizing what it contributed
 

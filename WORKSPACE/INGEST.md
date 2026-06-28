@@ -142,7 +142,7 @@ single claim.
 
 After reconciling, count the real number of files in the relevant
 brain's sources/ folder and compare against the source count stated
-in that brain's context/overview.md header line. If they don't match,
+in that brain's synthesis/overview.md header line. If they don't match,
 update overview.md's header count in the same pass — this is
 MECHANICAL (a verifiable count), not something to defer to a future
 audit pass. This check exists because it happened once already (see

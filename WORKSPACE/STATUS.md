@@ -108,8 +108,8 @@ covered.
   deferred with trigger condition — CC-100)
 - **SYSTEM_BRAIN/** — built from 5 sources (4 original + Growth
   Engine, CC-098); concept pages all verified genuinely deep against
-  ingestion records (audit check 1c, CC-116); context/ holds
-  overview.md (source count fixed CC-108) and conversational.md
+  ingestion records (audit check 1c, CC-116); synthesis/ holds
+  overview.md (source count fixed CC-108); dialogue/ holds conversational.md
   (7 entries: 4 prior sessions + 2 this session on two-channel
   coverage problem and self-report distrust + CC-135 NOTED IDEA:
   auto-research documented as good-to-have, not must-have, with full
