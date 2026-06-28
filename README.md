@@ -393,8 +393,12 @@ session before being caught.
 Triggered by structural change — a new domain under DOMAINS/, a new
 skill under .claude/skills/, a new hook under .claude/hooks/, or a
 new file in WORKSPACE/ — checked as step 5c of chalo rather than
-invoked separately. Also fires on explicit request ("update the
-readme," "add this to the dictionary"). Reads the new or changed
+invoked separately. Also triggers when FRAMEWORK.md, RULES.md,
+INGEST.md, or PATTERNS.md receives substantive new content (new
+section, new mechanism, corrected claim) — README.md's dictionary
+entry for that file must be checked and updated in the same pass
+(CC-150). Also fires on explicit request ("update the readme," "add
+this to the dictionary"). Reads the new or changed
 thing's actual content first (per the no-overclaim rule), never from
 the name alone. Finds its correct section in README.md's numbered
 structure, writes an entry matching its neighbors in density and

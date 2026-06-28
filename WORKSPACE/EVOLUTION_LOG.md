@@ -1029,3 +1029,17 @@ Two-part fix applied:
    or describes things no longer present.
 
 README.md entries updated for OPERATING_CONTRACT.md and audit skill.
+
+## 2026-06-28 — Chalo: close of session CC-145 through CC-150 (tonight's full run)
+
+Audit ran: all checks clean except one MECHANICAL finding caught by 6b
+falsification — README.md's update-readme entry didn't mention CC-150's
+new content-update trigger. Fixed in same chalo run. STATUS.md rewritten
+to reflect all session work: INGEST.md binding gate and 1d rotation,
+FRAMEWORK.md ICM § 2 completeness (five-layer hierarchy, stage contracts,
+"configure the factory"), PATTERNS.md P004 CANDIDATE, RULES.md stage
+contract requirement, STAGE_TEMPLATE/ added, CC-150 propagation prevention
++ detection (OPERATING_CONTRACT.md Rule 8 sub-rule, audit 4c,
+update-readme trigger extension). Conversational.md now 8 entries — not
+promoting yet, no single coherent new pattern visible across the new
+entries. Baton regenerated. Committed and pushed.

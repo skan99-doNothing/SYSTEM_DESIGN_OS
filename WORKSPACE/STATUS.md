@@ -7,7 +7,7 @@ not just open items or what's-working. The baton existing is the
 entire point of this file; skipping it defeats that point. This is
 not optional or context-dependent.
 
-Last manually confirmed accurate: 2026-06-28 (end of evening session). If significantly
+Last manually confirmed accurate: 2026-06-28 (close of session, CC-145 through CC-150 + chalo). If significantly
 more EVOLUTION_LOG.md entries exist after this date than are reflected
 here, this file may be stale — cross-check before trusting it fully.
 
@@ -23,12 +23,13 @@ memory of prior sessions.
 Read WORKSPACE/STATUS.md (you're reading it now) and README.md if
 you need the full dictionary of any file, skill, or hook.
 
-Current real state, as of 2026-06-28 (end of evening session):
+Current real state, as of 2026-06-28 (close of session, CC-145–CC-150):
 - No real business domain exists yet — DOMAINS/_TEMPLATE/ is ready to copy, nothing inside it
-- ARTIFACTS/ visual PDF is significantly stale: missing sixth DNA quality, ingest-validate deep mode, audit check 1c, knowledge-routing correction (CC-132), CC-135 NOTED IDEA format, and more — JUDGMENT-REQUIRED whether to regenerate
+- ARTIFACTS/ visual PDF is significantly stale: missing sixth DNA quality, ingest-validate deep mode, audit checks 1c/1c-supplement/1d/4c, PATTERNS.md P004, RULES.md stage contract, FRAMEWORK.md ICM five-layer hierarchy, CC-150 propagation rule, and more — JUDGMENT-REQUIRED whether to regenerate
 - Repository is PUBLIC on GitHub (skan99-doNothing/SYSTEM_DESIGN_OS)
 - CC-026 residual risk is permanent: rules can be skipped under pressure; only spot-checking closes this
-- Auto-research idea documented as NOTED IDEA in conversational.md (CC-135) — good-to-have, revisit when a real domain brain has 3+ varied sources
+- Auto-research idea documented as NOTED IDEA in conversational.md — good-to-have, revisit when a real domain brain has 3+ varied sources
+- P004 (CANDIDATE): factory-level change requiring retroactive re-check — two instances logged, no mechanism built yet, watching for third
 
 What I want to do this session:
 [STATE THE ACTUAL TASK HERE]
@@ -52,117 +53,105 @@ covered.
 ## What's built and verified
 
 - **OPERATING_CONTRACT.md** — division-of-labor statement, 9 rules
-  with clarifications; Rule 5 has a real logged example (CC-071);
-  Rule 6 confirmed applied to all .claude/ artifacts; CLAUDE.md/
-  AGENTS.md sync rule added
-- **INGEST.md** — Steps 0-7; Step 0 now includes pre-save safeguard
-  (evaluate from conversational content first, save only on confirmed
-  decision to ingest, delete if pre-saved and verdict is REJECT —
-  CC-113); Step 4 grades artifacts on 1.0/0.7/0.4/0.2 confidence
-  scale (CC-100); Step 5 template includes confidence field; Step 6
-  has required source-count sub-check for overview.md (CC-109);
-  Step 7 surfaces system-improvement suggestions as gated SUGGESTION
-  RECORDs (CC-099)
+  with clarifications; Rule 8 now includes sub-rule: whenever
+  FRAMEWORK.md, RULES.md, INGEST.md, or PATTERNS.md gets substantive
+  new content, README.md's entry for that file must be checked and
+  updated in the same pass (CC-150); CLAUDE.md/AGENTS.md sync rule;
+  anything under .claude/ needs portable FRAMEWORK.md concept
+- **INGEST.md** — Steps 0-7; Step 0 pre-save safeguard (CC-113);
+  Step 4 confidence scale (1.0/0.7/0.4/0.2, CC-100); Step 5 binding
+  GATE: status may only be INGESTED if 'What could NOT be verified'
+  is empty — mechanical check, not judgment (CC-143); Step 5 record
+  also tracks 'Last full re-verification' date for audit's 1d rotation;
+  Step 6 source-count sub-check (CC-109); Step 7 SUGGESTION RECORDs
 - **FRAMEWORK.md** — 3 pillars, stage numbering; DNA section has SIX
-  qualities (agent-agnostic, transferable, scalable, self-auditing,
-  ever-learning, knowledge-deepening — sixth added CC-117); SEVEN
-  mechanism-agnostic concepts: ingest-guard (write-protection),
-  session-identity-verification (verify-claude-md.sh — added this
-  session, was open MECHANICAL item), session-close, self-audit,
-  dictionary-maintenance, pre-ingestion-orientation (with deep mode
-  fully documented — CC-121), transmission-verification
+  qualities; SEVEN mechanism-agnostic concepts; ICM § 2 now fully
+  reflects the complete paper (CC-140/144/145): five-layer context
+  hierarchy (Layers 0-4), "configure the factory, not the product"
+  principle, stage contracts (Inputs/Process/Outputs), token efficiency
+  data (2k-8k vs 30k-50k monolithic) — previously described only the
+  abstract/Table 1 version
 - **chalo skill** — fires exactly once; Step 0 invokes audit; Steps
   5a/5b for conversational.md; Step 5c checks README.md; Step 5d
-  regenerates handoff baton (now requires permanent knowledge-routing
-  line every regeneration — CC-130; wording corrected CC-132 to route
-  through writing a Claude Code prompt, not a direct file check, since
-  claude.ai chats cannot read files); Step 6 commits AND pushes to
-  remote (auto-push, explicit failure report if push fails — CC-111)
-- **audit skill** — Steps 0-8: reads PATTERNS.md first; check 1
-  (files vs stated purpose) with sub-checks 1a (source count vs
-  overview.md), 1b (ARTIFACTS/ staleness), 1c (concept-page depth vs
-  ingestion record); checks 2-5 (promotion conditions, principles,
-  cross-references, exercised rules); 6b (distrust clean pass after
-  self-correction); check 7 (STATUS.md NON-NEGOTIABLE instruction
-  intact — added CC-127); check 8 (log audit)
-- **update-readme skill** — triggers on structural change or explicit
-  request; step 2a documents tree-vs-dictionary distinction; wired
-  into chalo Step 5c
-- **ingest-validate skill** — two modes: (1) default lightweight
-  on-demand pre-ingestion orientation report: existing sources,
-  concepts, domains, SUGGESTION RECORDs, routing guidance, ready-to-
-  use handoff block (CC-105, CC-106); (2) deep mode (CC-112):
-  scope-classified baseline matching (WHOLE-SYSTEM/SINGLE-SKILL/
-  SPECIFIC-MECHANISM), comparative analysis with DNA/impact/cost
-  ratings and ADOPT/ADAPT/DEFER/REJECT verdicts, REJECT safeguard
-  (source never saved, delete if pre-saved — CC-113), SUGGESTION
-  RECORD output for ADOPT/ADAPT; sized for large/structured sources
-  only, lightweight stays default (CC-122); deep mode documented in
-  FRAMEWORK.md portable concept (CC-121)
+  regenerates handoff baton with permanent knowledge-routing line;
+  Step 6 commits AND pushes (failure reported explicitly)
+- **audit skill** — Steps 0-8; reads PATTERNS.md first; sub-checks
+  1a (source count), 1b (ARTIFACTS staleness), 1c (concept-page depth
+  vs ingestion record), 1c-supplement (PARTIAL scan every run, CC-143),
+  1d (rotating full re-verification — picks oldest 'Last full
+  re-verification' date, one source per run, CC-143), 4c (README.md
+  dictionary entries for FRAMEWORK.md/RULES.md/INGEST.md/PATTERNS.md
+  vs actual content — MECHANICAL flag if entry omits material content
+  or describes things no longer present, CC-150); 6b (distrust clean
+  pass after self-correction); 7 (STATUS.md NON-NEGOTIABLE intact)
+- **update-readme skill** — triggers on structural change (new domain,
+  skill, hook, WORKSPACE file) OR when FRAMEWORK.md, RULES.md,
+  INGEST.md, or PATTERNS.md receives substantive new content (CC-150);
+  wired into chalo Step 5c
+- **ingest-validate skill** — two modes: lightweight (on-demand
+  pre-ingestion orientation) and deep (scope-classified baseline
+  matching, ADOPT/ADAPT/DEFER/REJECT, REJECT safeguard, SUGGESTION
+  RECORDs); deep mode documented in FRAMEWORK.md portable concept
 - **PATTERNS.md** — P001 (3 instances), P002 (2 instances), P003
-  (2 instances); each with standing countermeasure; read by audit
-  before its own checks
+  (2 instances), P004 CANDIDATE (2 instances, no mechanism yet —
+  factory-level change requiring retroactive re-check of what was
+  built before it; additional CC-148 context: CLAUDE.md token budget
+  accidental, WORKSPACE/ Layer 3/4 conflation watched not fixed)
 - **DECISIONS.md + REASONING.md** — D001 locked; RT001 promoted
-- **RULES.md** — horizontal expansion, vertical expansion, scaling
-  threshold, domain graduation, conflict preservation (documented/
-  deferred with trigger condition — CC-100)
-- **SYSTEM_BRAIN/** — built from 5 sources (4 original + Growth
-  Engine, CC-098); concept pages all verified genuinely deep against
-  ingestion records (audit check 1c, CC-116); synthesis/ holds
-  overview.md (source count fixed CC-108); dialogue/ holds conversational.md
-  (7 entries: 4 prior sessions + 2 this session on two-channel
-  coverage problem and self-report distrust + CC-135 NOTED IDEA:
-  auto-research documented as good-to-have, not must-have, with full
-  reasoning trail and honest note that CC-124/125/126 never ran); 2
-  SUGGESTION RECORDs in agentic-growth-engine-patterns.md: confidence
-  gradient (APPLIED CC-100), conflict preservation (DEFERRED)
-- **DOMAINS/_TEMPLATE/** — ready to copy and rename for first real domain
-- **README.md** — comprehensive full system reference; six DNA
-  qualities, seven mechanism-agnostic concepts in FRAMEWORK.md entry,
-  two-mode ingest-validate documented, audit checks 6b and 7
-  documented, knowledge-routing instruction in CLAUDE.md documented
-  — current as of this session's chalo run
-- **CLAUDE.md + AGENTS.md** — synced entry-point files; now include:
-  knowledge-routing instruction (check SYSTEM_BRAIN/index.md before
-  answering knowledge questions, cite source, say plainly if not
-  covered — CC-129); NON-NEGOTIABLE instruction at top of STATUS.md
-  described by audit check 7
-- **WORKSPACE/STATUS.md** — NON-NEGOTIABLE instruction at top
-  (requires baton in any status response — CC-127); baton now
-  permanently carries knowledge-routing instruction (CC-130);
-  knowledge-routing line corrected to Rule 6 routing for claude.ai
-  chats (CC-132) — no longer implies impossible direct file access
-- **WORKSPACE/ARTIFACTS/** — holds 5-page visual PDF; staleness
-  checked by audit (check 1b); significantly stale
-- **.claude/hooks/ingest-guard.sh** — mechanical write-block, working;
-  FRAMEWORK.md concept documented
-- **.claude/hooks/verify-claude-md.sh** — SessionStart check confirmed;
-  FRAMEWORK.md session-identity verification concept NOW DOCUMENTED
-  (fixed this session — was open MECHANICAL item)
+- **RULES.md** — horizontal expansion; vertical expansion now requires
+  ICM-specified stage contract: each stage folder must contain
+  CONTEXT.md with Inputs/Process/Outputs (CC-149, confirmed from
+  Section 3.3 of full paper re-read); scaling threshold; domain
+  graduation; conflict preservation (deferred with trigger)
+- **SYSTEM_BRAIN/** — 5 sources, all re-verified at CC-144 (full
+  re-read of all 5 under tightened binding gate protocol); concept
+  pages verified genuinely deep; synthesis/overview.md current;
+  dialogue/conversational.md now has 8 entries (latest: citation chain
+  gap — updating a source record ≠ updating documents that cite it,
+  CC-145 lesson, logged CC-150 chalo)
+- **DOMAINS/_TEMPLATE/** — STAGE_TEMPLATE/CONTEXT.md added (CC-149):
+  copyable three-section template (Inputs/Process/Outputs) for any
+  workflow stage; README.md updated to point to it
+- **README.md** — comprehensive full system reference; updated this
+  session for: FRAMEWORK.md ICM § 2 completeness, RULES.md stage
+  contract, PATTERNS.md P004, _TEMPLATE/ STAGE_TEMPLATE, update-readme
+  trigger, OPERATING_CONTRACT.md CC-150 sub-rule, audit 4c
+- **CLAUDE.md + AGENTS.md** — synced entry-point files; knowledge-
+  routing instruction; mirror comment labels differ by design
+- **WORKSPACE/STATUS.md** — NON-NEGOTIABLE instruction at top (CC-127);
+  baton carries permanent knowledge-routing line (CC-130/132)
+- **WORKSPACE/ARTIFACTS/** — holds 5-page visual PDF; significantly
+  stale (last generated before many of tonight's additions)
+- **.claude/hooks/** — ingest-guard.sh (write-block) and
+  verify-claude-md.sh (session-identity) both working; FRAMEWORK.md
+  concepts documented for both
 - **.claude/settings.json** — correct nested hooks schema
-- **Git history** — accurate, includes its own corrections; pushed
-  to GitHub (skan99-doNothing/SYSTEM_DESIGN_OS, PUBLIC); tags:
-  v0-scaffold-complete, v0.1-graduation-rule, ingest-loop-complete
+- **Git history** — accurate, pushed to GitHub (skan99-doNothing/
+  SYSTEM_DESIGN_OS, PUBLIC); latest commits: CC-149, CC-150, chalo
 
 ## Open items — genuinely unresolved right now
 
 1. **No real business domain exists yet.** Unchanged since session
    one. Nothing else matters more than this.
 2. **ARTIFACTS/ visual is significantly stale** — missing sixth DNA
-   quality, ingest-validate deep mode, audit check 1c, seven mechanism-
-   agnostic concepts, knowledge-routing correction (CC-132), CC-135
-   NOTED IDEA format, and all this session's additions.
-   JUDGMENT-REQUIRED: regenerate?
+   quality, ingest-validate deep mode, audit checks 1c/1c-supplement/
+   1d/4c, PATTERNS.md P004, RULES.md stage contract, FRAMEWORK.md
+   ICM five-layer hierarchy, CC-150 propagation rule, and all this
+   session's additions. JUDGMENT-REQUIRED: regenerate?
 3. **CC-026's residual risk is permanent** — rules can be skipped
    under pressure; no hook fixes this; only spot-checking does.
 4. **Vercel plugin warning** — Claude Code bug, accepted, dropped.
    Do not re-investigate.
-5. **conversational.md has 7 entries** — entries 5-6 (two-channel
+5. **conversational.md has 8 entries** — entries 5-6 (two-channel
    coverage, self-report distrust) may share a new pattern shape
    distinct from P002. Watch for a third instance before naming it.
    Entry 7 (auto-research NOTED IDEA) is explicitly good-to-have;
-   revisit trigger: when a real domain brain has 3+ varied sources
-   where synthesis would genuinely span multiple pages.
+   revisit trigger: when a real domain brain has 3+ varied sources.
+   Entry 8 (citation chain gap) is a distinct structural insight.
+6. **P004 (CANDIDATE)** — two instances logged; no mechanism built;
+   watching for third instance to determine right trigger design.
+7. **anatomy-screenshot.md** is next in audit 1d rotation (all 5
+   sources tied at 2026-06-28 CC-144; alphabetically first).
 
 ## What to do next time
 
@@ -171,4 +160,6 @@ covered.
    significantly behind the system's current state.
 3. Watch for a third instance of the "verification requires covering
    all contexts" shape (conversational.md entries 5-6) before deciding
-   whether to promote it as P004 or fold into P002.
+   whether to name it separately from P002.
+4. Watch for a third P004 instance before designing the factory-change
+   trigger mechanism.
