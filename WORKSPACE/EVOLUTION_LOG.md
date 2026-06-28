@@ -753,3 +753,19 @@ confirmed routing worked: starting from only CLAUDE.md's new
 instruction, navigation to SYSTEM_BRAIN/index.md → concept page →
 Eval Engine section succeeded without additional prompting. README.md
 updated to reflect the new auto-loading behavior in CLAUDE.md/AGENTS.md.
+
+## 2026-06-28 — Independent re-verification + baton now carries routing instruction (CC-130)
+User correctly distrusted CC-129's own report as potentially
+ungrounded — re-ran the verification independently with real command
+output, not a restated claim. Confirmed: CLAUDE.md line 31 contains
+the instruction verbatim; diff between CLAUDE.md and AGENTS.md
+returned exit code 0 (files identical); grep of the concept page
+returned the Eval Engine section with real content (A-F grading, judge
+model, golden examples, report-card mechanism). Verification
+confirmed, not papered over. Separately, closed a real gap CC-129
+missed: the routing fix only lives in CLAUDE.md, which auto-loads in
+Claude Code but NOT in claude.ai chat sessions — the baton is the only
+mechanism that reaches a memoryless chat. Added the routing
+instruction to the baton template itself and made it a permanent,
+required line in chalo's step 5d, so it survives every future baton
+rewrite rather than being optional content that could quietly drop out.

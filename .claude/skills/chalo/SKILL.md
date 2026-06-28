@@ -46,6 +46,16 @@ updated Open Items section, not from memory of an earlier session.
 Leave the "What I want to do this session" line as a blank placeholder
 — chalo does not guess the next task. The date in the baton header
 must match today's real date, not a prior session's.
+
+Always include the knowledge-routing line in every regenerated baton
+— it is a permanent, required line, not optional content:
+
+"If asked what this system knows about something, check
+WORKSPACE/SYSTEM_BRAIN/index.md (and any domain's BRAIN/index.md)
+before answering — cite the source, and say plainly if it isn't
+covered rather than guessing. This applies in THIS chat too, not only
+in Claude Code — the baton is the one place this instruction reaches
+a memoryless claude.ai session."
 ## 6. Commit and push
 Run: git add -A && git commit -m "Close day [DATE]: ..."
 Then immediately: git push origin master && git push --tags

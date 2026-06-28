@@ -36,6 +36,13 @@ What I want to do this session:
 Per OPERATING_CONTRACT.md: don't re-derive the system's design from
 scratch, trust what's written. Push back if I'm about to skip a
 verification step or treat something as done without checking.
+
+If asked what this system knows about something, check
+WORKSPACE/SYSTEM_BRAIN/index.md (and any domain's BRAIN/index.md)
+before answering — cite the source, and say plainly if it isn't
+covered rather than guessing. This applies in THIS chat too, not only
+in Claude Code — the baton is the one place this instruction reaches
+a memoryless claude.ai session.
 ---
 
 ## What's built and verified
