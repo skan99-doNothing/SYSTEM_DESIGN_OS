@@ -691,3 +691,18 @@ new audit check 1c. A DNA claim with no mechanism behind it would be
 exactly the kind of overclaim this system exists to avoid — and the
 mechanism (1c) existed before the DNA statement named it, which was
 backwards. All "five qualities" references updated to "six qualities."
+
+## 2026-06-28 — ingest-validate's self-evaluation findings applied (CC-121)
+CC-120 ran ingest-validate's own deep-mode methodology on itself and
+found a real gap: FRAMEWORK.md's portable concept entry documented
+only the lightweight default mode, missing half the skill's actual
+surface area (deep mode's scope-matching, scoring, reject safeguard,
+and suggestion output). Verdict was ADAPT, not PIVOT - the skill's
+actual behavior is sound, only its portable documentation was
+incomplete. Applied both specific fixes: expanded FRAMEWORK.md to
+cover deep mode at the mechanism level, and named audit check 1c's
+real scope limit explicitly (covers ingested-source concept pages,
+not skill portable entries) rather than leaving it an implicit,
+unnoticed gap. Correctly did NOT add a new audit check yet - one
+instance doesn't meet PATTERNS.md's two-instance threshold for a new
+permanent rule. README.md updated to reflect both changes.

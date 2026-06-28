@@ -59,6 +59,17 @@ expanded knowledge, not from a thin summary while richer verified
 content sits unused in a record nobody re-reads — this is core to the
 ever-learning DNA claim, not a cosmetic completeness check.
 
+Scope note: this check covers SYSTEM_BRAIN/concepts/ and any domain
+BRAIN/concepts/ — pages built from formally ingested sources. It does
+NOT currently cover FRAMEWORK.md's portable concept entries for
+skills/hooks (a different category — documentation of a mechanism's
+own behavior, not a synthesized source). This is a named, deliberate
+gap, not an unnoticed blind spot — if a second skill's FRAMEWORK.md
+entry is ever found thin relative to its real behavior, that's the
+trigger to extend this check or add a new one (1d), per PATTERNS.md's
+two-instance rule. One instance (ingest-validate, found and fixed in
+CC-120/CC-121) does not yet warrant a new permanent check.
+
 ## 2. Check for promotion/threshold conditions that may have been crossed
 Has enough material accumulated for a judgment-based promotion (e.g.
 conversational.md to overview.md) to be warranted? Flag, don't act.

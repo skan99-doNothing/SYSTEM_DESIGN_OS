@@ -240,6 +240,47 @@ The portable specification:
 
 A future implementation under a different agent should build an equivalent on-demand report generator using the output spec above, not by copying the Claude Code skill (.claude/skills/ingest-validate/SKILL.md) directly.
 
+### Deep mode (mechanism-agnostic)
+
+When explicitly requested ("deep mode," "deconstruct and compare
+this"), the skill performs a heavier evaluation than the default
+lightweight report:
+
+- **Scope classification:** the new source is classified as
+  WHOLE-SYSTEM (a full repo/methodology, comparable in scope to this
+  system itself), SINGLE-SKILL (a found skill/procedure), or
+  SPECIFIC-MECHANISM (a narrow idea affecting one file/step). The
+  classification determines what gets read fresh as the baseline —
+  whole-system sources compare against the system's own full
+  reference and design rationale; single-skill sources compare
+  against the one real, corresponding file; specific-mechanism
+  sources compare against the one real section they'd modify. Scope
+  and baseline granularity must always match — a narrow source never
+  gets compared against the whole system, and a whole-system source
+  never gets compared against one file.
+- **Comparative analysis:** for each mechanism the source has that the
+  matched baseline doesn't, rate DNA-compatibility, impact, and cost
+  (each a structured judgment scale, not an objective measurement),
+  then recommend ADOPT, ADAPT, DEFER, or REJECT with reasoning tied to
+  a specific real gap.
+- **Reject safeguard:** a REJECT verdict means the source's raw
+  content is never persisted as a saved source. If it was saved
+  before the verdict was reached, it gets deleted as part of closing
+  out the evaluation — a rejected source should never exist on disk.
+- **Terminal output:** ADOPT/ADAPT verdicts produce a real proposal
+  record (status always starting as proposed, never auto-applied) in
+  the relevant existing knowledge page — this is the same gated
+  mechanism used for any new-knowledge suggestion, not a separate
+  approval path invented for deep mode specifically.
+- **Honest limit:** the DNA/impact/cost scores organize reasoning,
+  they don't replace it — three subjective ratings multiplied
+  together aren't objectively truer than a plain sentence explaining
+  why something matters.
+
+A future implementation under a different agent should be able to
+build a functionally equivalent deep mode from this description alone
+— not just the lightweight report half of the skill.
+
 ### The transmission-verification concept (mechanism-agnostic)
 
 A prompt being correctly written is not evidence it was executed — it

@@ -136,10 +136,14 @@ SYSTEM_DESIGN_OS/
   specifications — for the ingest-guard hook, for the chalo
   session-close skill, for the audit self-check, for the update-readme
   dictionary-maintenance process, for the ingest-validate pre-ingestion
-  orientation (on-demand report of what the system already contains,
-  before deciding whether a new source is worth a full ingest pass),
-  and for the transmission-verification practice (confirming a prompt
-  was executed, not just written) — written so a different agent's
+  orientation — covering both the default lightweight mode (on-demand
+  report of what the system already contains, before deciding whether a
+  new source is worth a full ingest pass) and the deep mode (scope-
+  classified baseline matching, comparative analysis with ADOPT/ADAPT/
+  DEFER/REJECT verdicts per novel mechanism, reject safeguard preventing
+  a rejected source from ever being persisted, and SUGGESTION RECORD
+  output for ADOPT/ADAPT items) — and for the transmission-verification
+  practice (confirming a prompt was executed, not just written) — written so a different agent's
   tooling could rebuild the same behavior without copying Claude Code's
   specific files.
 
@@ -291,7 +295,10 @@ actually contain the specific facts its own ingestion record's
 verification artifacts name, or is the concept page thinner than
 what was verified as read — because the system's promise is that
 decisions get made from expanded knowledge, not a thin summary while
-richer verified content sits unused; (2) has any judgment-based
+richer verified content sits unused (scope: covers ingested-source
+concept pages only; FRAMEWORK.md's portable skill entries are a
+named, deliberate gap — one instance found in CC-121 does not yet
+meet PATTERNS.md's two-instance threshold for a new permanent check); (2) has any judgment-based
 promotion condition (like conversational.md's threshold) quietly been
 crossed without anyone acting on it; (3) has a known, already-written
 principle been applied in one place but skipped somewhere it clearly
