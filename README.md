@@ -24,7 +24,16 @@ mechanism here has only been exercised on its own construction.
   (CLAUDE.md + AGENTS.md as identical, synced entry points), with
   tool-specific implementations (hooks, skills) kept explicitly
   separate from their portable concepts in FRAMEWORK.md, so the
-  system survives a change of tooling.
+  system survives a change of tooling. Both files auto-load four
+  non-negotiable behavioral rules, a knowledge-routing instruction
+  (check WORKSPACE/SYSTEM_BRAIN/index.md and any active domain's
+  BRAIN/index.md before answering a knowledge question from general
+  knowledge or inference — cite the source, and say plainly if the
+  brain doesn't cover it rather than filling the gap), and a session-
+  end instruction. The knowledge-routing instruction was added in
+  CC-129 after CC-128 confirmed a fresh session had no automatic path
+  to SYSTEM_BRAIN/ for knowledge questions; the brain was never the
+  problem, the routing pointer simply hadn't been written.
 - **Transferable** — no database, no proprietary format. Copyable
   wholesale to another person, agent, or future session with no
   translation step.

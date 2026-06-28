@@ -26,6 +26,18 @@ WORKSPACE/STATUS.md has the current state right now.
   follow it from Step 0. Produce the verification artifacts it requires.
   Do not report INGESTED without them.
 
+## Answering knowledge questions
+
+If asked what this system knows about something — a concept, a
+mechanism, a prior decision — check WORKSPACE/SYSTEM_BRAIN/index.md
+(and any active domain's BRAIN/index.md) BEFORE answering from
+general knowledge or guessing. Cite the specific concept or source
+page the answer came from. If the brain genuinely doesn't cover it,
+say so plainly rather than filling the gap with inference — this is
+the same no-overclaim standard INGEST.md already requires for
+ingesting a source, applied here to answering FROM what's already
+ingested.
+
 ## Ending a session
 
 Say "chalo" — it runs audit first, then refreshes STATUS.md, confirms

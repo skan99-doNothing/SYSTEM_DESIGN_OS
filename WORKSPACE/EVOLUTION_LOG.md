@@ -740,3 +740,16 @@ response, plus audit check 7 to catch this specific failure if it
 recurs — flagged as a real candidate for PATTERNS.md on a second
 occurrence, since it directly undermines the one mechanism built
 specifically to eliminate repeated context-loss.
+
+## 2026-06-28 — Knowledge-routing gap closed in CLAUDE.md/AGENTS.md (CC-129)
+CC-128 confirmed a real, specific gap: nothing in the auto-loaded
+entry-point files told a cold session to check SYSTEM_BRAIN/ before
+answering a knowledge question — the brain itself was never the
+problem, the routing pointer was simply never written. Fixed with
+one instruction in both CLAUDE.md and AGENTS.md: check
+SYSTEM_BRAIN/index.md first, cite the source, say plainly if the
+brain doesn't cover something rather than guessing. Cold-read test
+confirmed routing worked: starting from only CLAUDE.md's new
+instruction, navigation to SYSTEM_BRAIN/index.md → concept page →
+Eval Engine section succeeded without additional prompting. README.md
+updated to reflect the new auto-loading behavior in CLAUDE.md/AGENTS.md.
