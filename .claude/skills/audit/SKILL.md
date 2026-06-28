@@ -123,6 +123,27 @@ neither as MECHANICAL — fixable directly with one line, the same way
 SYSTEM_SOURCES/ was fixed. A populated standalone file can be just as
 undocumented as a folder.
 
+### 4c. Check README.md dictionary entries against actual file content (key files)
+
+For each of the four files whose content is most likely to drift from
+their README.md entries — FRAMEWORK.md, RULES.md, INGEST.md,
+PATTERNS.md — read the file's actual current content and compare
+against README.md's dictionary entry for it. Flag any entry that:
+- Describes a section or mechanism the file no longer contains
+- Omits a section or mechanism the file now contains that is material
+  enough to change what a reader learns from the entry
+
+Tag MECHANICAL if the gap is clear and the correct update is
+unambiguous. Tag JUDGMENT-REQUIRED if the gap requires interpretation
+of what "material" means for that entry.
+
+This check exists because updating a file without updating its README.md
+entry produces a silently stale dictionary — caught only when a human
+happens to notice (confirmed: CC-145 updated FRAMEWORK.md § 2 with
+five-layer hierarchy, stage contracts, and "configure the factory" —
+README.md's entry still described only "numbered folders, increments
+of 10" until caught by post-session completeness check, CC-150).
+
 ## 5. Check for rules that exist but were never actually exercised
 Flag OPERATING_CONTRACT.md rules with no corresponding EVOLUTION_LOG.md
 entry showing real application.

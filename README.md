@@ -101,7 +101,10 @@ SYSTEM_DESIGN_OS/
   actions; the CLAUDE.md hierarchy should be scoped narrowly and
   verified rather than assumed safe; and anything built under .claude/
   needs its portable concept documented in FRAMEWORK.md in the same
-  pass, not as an afterthought.
+  pass, not as an afterthought; and when FRAMEWORK.md, RULES.md,
+  INGEST.md, or PATTERNS.md receives substantive new content, README.md's
+  dictionary entry for that file must be checked and updated in the same
+  pass — the detection backstop is audit's check 4c (CC-150).
 
 - **INGEST.md** — the verification protocol for any new source, of
   any kind. Eight steps in order: (0) route the resource — is it about
@@ -361,8 +364,16 @@ there broken references pointing to things that don't exist, and
 separately, is there real, populated structure that exists but isn't
 documented anywhere it should be — both directions checked, since the
 second direction was itself a blind spot found and fixed mid-session;
-(5) are there rules in OPERATING_CONTRACT.md with no EVOLUTION_LOG.md
-entry ever showing them actually being exercised, not just declared;
+(4c) for FRAMEWORK.md, RULES.md, INGEST.md, and PATTERNS.md — read
+each file's actual current content and compare against README.md's
+dictionary entry, flagging MECHANICAL if an entry omits something now
+material or describes something the file no longer contains (the check
+that would have caught the CC-145 gap automatically, where FRAMEWORK.md
+§ 2 was updated but README.md's entry still described only numbered
+folders — not the five-layer hierarchy, stage contracts, or "configure
+the factory" added in that same pass, CC-150); (5) are there rules in
+OPERATING_CONTRACT.md with no EVOLUTION_LOG.md entry ever showing them
+actually being exercised, not just declared;
 (6b) if a check was just self-corrected, actively attempt to falsify
 the clean result from a different angle before accepting it; (7) is
 STATUS.md's NON-NEGOTIABLE instruction (requiring the Handoff Baton to

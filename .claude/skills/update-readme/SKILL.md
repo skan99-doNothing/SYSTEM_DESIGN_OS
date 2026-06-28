@@ -31,6 +31,13 @@ grows.
 - Anything existing gets renamed, restructured, or removed — update
   or remove its entry in the same pass. A stale entry describing
   something that no longer exists is worse than no entry at all.
+- FRAMEWORK.md, RULES.md, INGEST.md, or PATTERNS.md receives
+  substantive new content (a new section, a new mechanism, a corrected
+  claim) — README.md's dictionary entry for that file must be checked
+  and updated in the same pass. These four files describe the system's
+  core behavior; their README.md entries are the first place a new
+  session or a new agent learns what each one covers. A stale entry
+  here is as misleading as a stale ingestion record.
 
 ## How to do it
 

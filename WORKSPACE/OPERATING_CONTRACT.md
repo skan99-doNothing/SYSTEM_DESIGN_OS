@@ -225,6 +225,25 @@ real recommendation is reached. The user decides whether to run it —
 withholding it pending permission is still a Rule 8 miss, not a safer
 version of compliance.
 
+### When key files get new content, README.md's entry for them gets updated in the same pass
+
+FRAMEWORK.md, RULES.md, INGEST.md, and PATTERNS.md each have a
+dictionary entry in README.md describing what they contain. Whenever
+any of these files receives substantive new content — a new section,
+a new mechanism, a corrected claim — README.md's entry for that file
+must be checked and updated in the same pass, not deferred.
+
+This is the same no-lag discipline as Rule 8's decision-logging rule:
+updating a file without updating its README.md entry leaves the
+dictionary describing something that no longer exists — the same
+failure mode as a decision existing only in chat. The detection
+backstop is audit's check 4c, which verifies these entries each run.
+Without this rule, a content update produces a silently stale entry
+that only a human asking the right question would catch (confirmed
+instance: CC-145 updated FRAMEWORK.md § 2 but README.md's entry was
+not updated until caught by a post-session completeness check —
+CC-150's root cause).
+
 ### CLAUDE.md and AGENTS.md must stay in sync
 
 This system maintains two entry-point files with identical content —

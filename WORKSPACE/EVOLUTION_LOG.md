@@ -1008,3 +1008,24 @@ the same over-engineering pattern already rejected for Obsidian and
 auto-discovery tonight. README.md updated via update-readme to reflect
 RULES.md's new stage-contract spec, PATTERNS.md's P004 candidate, and
 _TEMPLATE/'s new STAGE_TEMPLATE/ folder.
+
+## 2026-06-28 — Propagation gap closed: prevention rule + detection check added (CC-150)
+
+Root cause: update-readme only fired for structural changes (new files,
+new skills, new hooks), not for content updates to existing files.
+When FRAMEWORK.md § 2 was updated (CC-145), README.md's entry for it
+was not updated — caught only by a post-session completeness check, not
+by any standing mechanism.
+
+Two-part fix applied:
+1. Prevention — new sub-rule added to OPERATING_CONTRACT.md Rule 8:
+   whenever FRAMEWORK.md, RULES.md, INGEST.md, or PATTERNS.md receives
+   substantive new content, README.md's dictionary entry for that file
+   must be checked and updated in the same pass. Mirrored in
+   update-readme SKILL.md's trigger conditions.
+2. Detection — new audit check 4c: for each of the four key files,
+   read the actual current content and compare against README.md's
+   dictionary entry; flag MECHANICAL if entry omits material content
+   or describes things no longer present.
+
+README.md entries updated for OPERATING_CONTRACT.md and audit skill.
