@@ -225,3 +225,55 @@ FRAMEWORK.md and README.md — should be checked in the same pass, not
 assumed to be current. This is the same discipline INGEST.md's
 reconciliation step (Step 6) applies to ingestion records; it needs
 to apply equally to citation chains between living documents.
+
+### 2026-07-01 — Scope a corrective rule to where its underlying risk actually exists, not to everything it superficially resembles (CC-151)
+
+While setting up fork/upstream tracking for two personal repos
+(gbrain, gstack) outside SYSTEM_DESIGN_OS, a "never commit directly on
+the default branch" rule was written into memory as a universal
+git-hygiene practice for any repo. The user corrected this
+immediately: the rule exists to keep a FORK's default branch
+fast-forwardable against its upstream remote — a repo with no upstream
+has no mirror to protect, so the same restriction there is process
+defending against a risk that doesn't exist.
+
+**Constraint this reveals:** a fix that's correct for the case that
+prompted it can still be wrong once stated as a general principle, if
+the general form drops the specific precondition that made the
+original risk real. The overgeneralization felt like tidiness (“a
+consistent rule everywhere”) but was actually unscoped reasoning.
+
+**The standing implication:** before writing any new rule as a general
+practice, name the specific precondition that makes the underlying
+risk real, and state the rule as conditional on that precondition —
+not as a blanket default with the precondition left implicit. Applies
+well beyond git: any "we got burned once, so always do X" fix should
+carry its triggering condition explicitly, or it will eventually get
+applied somewhere it doesn't belong.
+
+### 2026-07-01 — A received prompt's embedded state assumptions can go stale mid-session, not just across a transmission gap (CC-152/154)
+
+A prompt drafted with ID "CC-152" was executed later in the same
+session, after CC-153 had already been assigned and committed in the
+interim. Its embedded assumption ("the next number is 152") was
+correct when written but stale by the time it actually ran — not
+because it was never transmitted (P003's shape), but because
+sequential state changed between drafting and execution within one
+continuous session.
+
+**Constraint this reveals:** P003 already covers a prompt that never
+crosses from chat into execution. This is a different failure mode: a
+prompt that DOES execute, correctly, but carries a state assumption
+(a number, a count, a "current" anything) that was only ever a
+snapshot at draft time. A well-formed, internally consistent prompt
+provides no guarantee its embedded assumptions still hold at run time.
+
+**The standing implication:** any embedded sequential or "current
+state" assumption in a prompt (an ID, a count, "the latest X") should
+be re-verified mechanically at execution time, not trusted because the
+prompt reads as internally consistent. This is exactly why
+OPERATING_CONTRACT.md Rule 9's collision check specifies grepping for
+the real current number rather than trusting what the prompt says it
+should be — this entry generalizes that same fix beyond CC-XXX
+numbers to any stateful assumption in a delegated task. One instance
+so far — watch for a second before considering a PATTERNS.md entry.

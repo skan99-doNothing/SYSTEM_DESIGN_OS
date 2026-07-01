@@ -11,7 +11,7 @@
 - **What was actually gotten from this source:** Complete visual mapping of .claude/ folder structure with one-line "what it does" descriptions for every file and subfolder. More concise than the PDF guide — a reference card rather than a tutorial.
 - **What could NOT be verified or read:** Nothing — image rendered fully and all text is legible.
 - **Date:** 2026-06-26
-- **Last full re-verification:** 2026-06-28 (CC-144)
+- **Last full re-verification:** 2026-07-01 (chalo audit, 1d rotation)
 
 ## Key content (verbatim from image)
 
@@ -67,3 +67,12 @@
 **Concept page update (done in this pass):** commands/, plugins/, and statusline added to claude-md-and-skills-pattern.md structure tree. All three were in this record's key content table but missing from the concept page tree.
 
 **Finding:** Original ingestion was clean and accurate. Concept page had three items from this source missing from the tree — corrected in this re-verification pass.
+
+---
+
+## Re-verification pass — 2026-07-01 (chalo audit, 1d rotation)
+
+- **Method:** Direct re-read (visual) of SYSTEM_SOURCES/anatomy.jpg, full image rendered and viewed.
+- **Result:** Every row in this record's Key content table matches the live image exactly — no drift found. claude-md-and-skills-pattern.md's structure tree still contains all folder categories (including commands/, plugins/, statusline from CC-140's fix).
+- **Judgment note (not flagged MECHANICAL):** the record's specific example filenames (ui-ux-pro-max/, code-reviewer.md, security-auditor.md, format-on-save.sh, block-dangerous-bash.sh, desktop-notify.sh, claude-finance/, api.md, terse.md, commit.md) are not individually listed in the concept page's structure tree — only the folder categories are. Assessed as non-material: these are illustrative example names from one screenshot, not reusable pattern facts the concept page needs to carry. Noted explicitly rather than silently passed, per audit's no-silent-pass rule.
+- **Status:** CONFIRMED INGESTED, no gap found.

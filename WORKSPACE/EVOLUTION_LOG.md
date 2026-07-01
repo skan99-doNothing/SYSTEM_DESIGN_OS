@@ -4,6 +4,44 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-07-01 — Chalo: audit run, anatomy.jpg re-verified (1d rotation), conversational.md gained 2 entries, STATUS.md refreshed
+Full audit run before session close. PATTERNS.md read first; no new
+instances of P001/P002/P003 found, though Rule 3/4 (surface problems,
+push back) were exercised live twice this session correcting a
+drafted prompt's false premises (CC-153, CC-154). 1a clean (5/5
+sources match overview.md count). 1c-supplement clean (no PARTIAL
+records). 1d rotation: anatomy-screenshot.md re-read in full via
+direct image view — every row of its key-content table confirmed
+against the live image, zero drift; concept page's structure tree
+still accurate; judgment call made (not flagged MECHANICAL) that the
+record's illustrative example filenames not appearing individually in
+the concept page's tree is non-material. 4/4b/4c clean. 4d (new check)
+run with 6b falsification applied since it's brand new: an initial
+broad scan flagged several false positives (numbers mentioned in
+header prose but tagged with a different ID); narrowed to the trailing
+(CC-XXX) tag specifically, found one real duplicate header pair
+(CC-076), inspected in full and confirmed it's one continuous
+fix-then-verify action logged in two steps under one ID, not a real
+collision - matches the pre-existing CC-076/CC-077 P002 account. 5:
+new Rule 9 subsections checked - the collision-check has real
+exercise evidence (CC-154's own renumbering); the mid-task-
+checkpointing rule has none yet, expected since it was added this
+session and no long-running task has triggered it. 7: STATUS.md's
+NON-NEGOTIABLE instruction confirmed present and intact.
+
+Two real dialogue-derived insights from this session written to
+conversational.md (10 entries total, up from 8): scoping a corrective
+rule to its actual precondition rather than generalizing it blindly
+(CC-151's fork-scoping correction), and a delegated prompt's embedded
+state assumptions (a sequential ID) going stale mid-session when other
+numbered work happens between drafting and execution (CC-152/154) -
+distinct from P003's never-transmitted shape, logged as a first
+instance to watch for a second.
+
+STATUS.md's built/open-items sections rewritten and handoff baton
+regenerated in full to reflect CC-151/153/154 and this audit's
+findings.
+
 ## 2026-07-01 — Mid-task discovery checkpointing rule added (CC-154, drafted as CC-152)
 User described a real incident: website-publishing work done on a
 VPS, outside formal SYSTEM_DESIGN_OS protocol, ran as one long

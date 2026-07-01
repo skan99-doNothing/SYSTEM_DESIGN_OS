@@ -7,7 +7,7 @@ not just open items or what's-working. The baton existing is the
 entire point of this file; skipping it defeats that point. This is
 not optional or context-dependent.
 
-Last manually confirmed accurate: 2026-06-28 (close of session, CC-145 through CC-150 + chalo). If significantly
+Last manually confirmed accurate: 2026-07-01 (close of session, CC-151, CC-153, CC-154 + chalo). If significantly
 more EVOLUTION_LOG.md entries exist after this date than are reflected
 here, this file may be stale — cross-check before trusting it fully.
 
@@ -23,13 +23,15 @@ memory of prior sessions.
 Read WORKSPACE/STATUS.md (you're reading it now) and README.md if
 you need the full dictionary of any file, skill, or hook.
 
-Current real state, as of 2026-06-28 (close of session, CC-145–CC-150):
+Current real state, as of 2026-07-01 (close of session, CC-151/153/154):
 - No real business domain exists yet — DOMAINS/_TEMPLATE/ is ready to copy, nothing inside it
-- ARTIFACTS/ visual PDF is significantly stale: missing sixth DNA quality, ingest-validate deep mode, audit checks 1c/1c-supplement/1d/4c, PATTERNS.md P004, RULES.md stage contract, FRAMEWORK.md ICM five-layer hierarchy, CC-150 propagation rule, and more — JUDGMENT-REQUIRED whether to regenerate
+- ARTIFACTS/ visual PDF is significantly stale — now also missing this session's OPERATING_CONTRACT.md Rule 6/9 additions and audit 4d — JUDGMENT-REQUIRED whether to regenerate
 - Repository is PUBLIC on GitHub (skan99-doNothing/SYSTEM_DESIGN_OS)
 - CC-026 residual risk is permanent: rules can be skipped under pressure; only spot-checking closes this
 - Auto-research idea documented as NOTED IDEA in conversational.md — good-to-have, revisit when a real domain brain has 3+ varied sources
 - P004 (CANDIDATE): factory-level change requiring retroactive re-check — two instances logged, no mechanism built yet, watching for third
+- New watch item (one instance, CC-152/154): a delegated prompt's embedded "current state" assumption (e.g. a sequential ID) can go stale mid-session if other numbered work happens between drafting and execution — not the same shape as P003 (never transmitted). Logged in conversational.md, watching for a second instance before considering a PATTERNS.md entry.
+- Unrelated to SYSTEM_DESIGN_OS's own domain work but relevant context: this session also forked/cloned two personal repos (garrytan/gbrain, garrytan/gstack) into ~/projects/, with upstream tracking and a `work` branch convention. That work lives outside this repo entirely — what's actually part of SYSTEM_DESIGN_OS is the general rule it produced: OPERATING_CONTRACT.md Rule 6 now scopes "never commit on the default branch" to repos with an upstream remote only (CC-151).
 
 What I want to do this session:
 [STATE THE ACTUAL TASK HERE]
@@ -53,113 +55,93 @@ covered.
 ## What's built and verified
 
 - **OPERATING_CONTRACT.md** — division-of-labor statement, 9 rules
-  with clarifications; Rule 8 now includes sub-rule: whenever
-  FRAMEWORK.md, RULES.md, INGEST.md, or PATTERNS.md gets substantive
-  new content, README.md's entry for that file must be checked and
-  updated in the same pass (CC-150); CLAUDE.md/AGENTS.md sync rule;
-  anything under .claude/ needs portable FRAMEWORK.md concept
-- **INGEST.md** — Steps 0-7; Step 0 pre-save safeguard (CC-113);
-  Step 4 confidence scale (1.0/0.7/0.4/0.2, CC-100); Step 5 binding
-  GATE: status may only be INGESTED if 'What could NOT be verified'
-  is empty — mechanical check, not judgment (CC-143); Step 5 record
-  also tracks 'Last full re-verification' date for audit's 1d rotation;
-  Step 6 source-count sub-check (CC-109); Step 7 SUGGESTION RECORDs
-- **FRAMEWORK.md** — 3 pillars, stage numbering; DNA section has SIX
-  qualities; SEVEN mechanism-agnostic concepts; ICM § 2 now fully
-  reflects the complete paper (CC-140/144/145): five-layer context
-  hierarchy (Layers 0-4), "configure the factory, not the product"
-  principle, stage contracts (Inputs/Process/Outputs), token efficiency
-  data (2k-8k vs 30k-50k monolithic) — previously described only the
-  abstract/Table 1 version
-- **chalo skill** — fires exactly once; Step 0 invokes audit; Steps
-  5a/5b for conversational.md; Step 5c checks README.md; Step 5d
-  regenerates handoff baton with permanent knowledge-routing line;
-  Step 6 commits AND pushes (failure reported explicitly)
-- **audit skill** — Steps 0-8; reads PATTERNS.md first; sub-checks
-  1a (source count), 1b (ARTIFACTS staleness), 1c (concept-page depth
-  vs ingestion record), 1c-supplement (PARTIAL scan every run, CC-143),
-  1d (rotating full re-verification — picks oldest 'Last full
-  re-verification' date, one source per run, CC-143), 4c (README.md
-  dictionary entries for FRAMEWORK.md/RULES.md/INGEST.md/PATTERNS.md
-  vs actual content — MECHANICAL flag if entry omits material content
-  or describes things no longer present, CC-150); 6b (distrust clean
-  pass after self-correction); 7 (STATUS.md NON-NEGOTIABLE intact)
-- **update-readme skill** — triggers on structural change (new domain,
-  skill, hook, WORKSPACE file) OR when FRAMEWORK.md, RULES.md,
-  INGEST.md, or PATTERNS.md receives substantive new content (CC-150);
-  wired into chalo Step 5c
-- **ingest-validate skill** — two modes: lightweight (on-demand
-  pre-ingestion orientation) and deep (scope-classified baseline
-  matching, ADOPT/ADAPT/DEFER/REJECT, REJECT safeguard, SUGGESTION
-  RECORDs); deep mode documented in FRAMEWORK.md portable concept
-- **PATTERNS.md** — P001 (3 instances), P002 (2 instances), P003
-  (2 instances), P004 CANDIDATE (2 instances, no mechanism yet —
-  factory-level change requiring retroactive re-check of what was
-  built before it; additional CC-148 context: CLAUDE.md token budget
-  accidental, WORKSPACE/ Layer 3/4 conflation watched not fixed)
-- **DECISIONS.md + REASONING.md** — D001 locked; RT001 promoted
-- **RULES.md** — horizontal expansion; vertical expansion now requires
-  ICM-specified stage contract: each stage folder must contain
-  CONTEXT.md with Inputs/Process/Outputs (CC-149, confirmed from
-  Section 3.3 of full paper re-read); scaling threshold; domain
-  graduation; conflict preservation (deferred with trigger)
-- **SYSTEM_BRAIN/** — 5 sources, all re-verified at CC-144 (full
-  re-read of all 5 under tightened binding gate protocol); concept
-  pages verified genuinely deep; synthesis/overview.md current;
-  dialogue/conversational.md now has 8 entries (latest: citation chain
-  gap — updating a source record ≠ updating documents that cite it,
-  CC-145 lesson, logged CC-150 chalo)
-- **DOMAINS/_TEMPLATE/** — STAGE_TEMPLATE/CONTEXT.md added (CC-149):
-  copyable three-section template (Inputs/Process/Outputs) for any
-  workflow stage; README.md updated to point to it
-- **README.md** — comprehensive full system reference; updated this
-  session for: FRAMEWORK.md ICM § 2 completeness, RULES.md stage
-  contract, PATTERNS.md P004, _TEMPLATE/ STAGE_TEMPLATE, update-readme
-  trigger, OPERATING_CONTRACT.md CC-150 sub-rule, audit 4c
-- **CLAUDE.md + AGENTS.md** — synced entry-point files; knowledge-
-  routing instruction; mirror comment labels differ by design
-- **WORKSPACE/STATUS.md** — NON-NEGOTIABLE instruction at top (CC-127);
-  baton carries permanent knowledge-routing line (CC-130/132)
-- **WORKSPACE/ARTIFACTS/** — holds 5-page visual PDF; significantly
-  stale (last generated before many of tonight's additions)
-- **.claude/hooks/** — ingest-guard.sh (write-block) and
-  verify-claude-md.sh (session-identity) both working; FRAMEWORK.md
-  concepts documented for both
-- **.claude/settings.json** — correct nested hooks schema
-- **Git history** — accurate, pushed to GitHub (skan99-doNothing/
-  SYSTEM_DESIGN_OS, PUBLIC); latest commits: CC-149, CC-150, chalo
+  with clarifications; Rule 6 now scopes the "never commit on the
+  default branch" convention to repos with an `upstream` remote only —
+  a repo owned outright has no mirror to protect (CC-151); Rule 8's
+  README-propagation sub-rule unchanged; Rule 9 gained two new
+  subsections: a grep-before-assigning check that prevents two
+  findings from sharing one CC-XXX number (CC-153), and mid-task
+  discovery checkpointing — a conditional (not time-based) ~15-minute
+  check during any long-running task that writes a real
+  conversational.md entry only if something genuinely reusable was
+  found (CC-154)
+- **INGEST.md** — Steps 0-7; unchanged this session
+- **FRAMEWORK.md** — unchanged this session
+- **chalo skill** — unchanged this session
+- **audit skill** — gained check 4d: scans EVOLUTION_LOG.md for any
+  CC-XXX number appearing as a header more than once with genuinely
+  different content, flagged MECHANICAL — the mechanical backstop for
+  Rule 9's collision check (CC-153). Verified against a real
+  false-positive risk this session: a naive scan flags several numbers
+  that appear twice in header TEXT but are only tagged once (the
+  actual ID); the check specifically means the trailing (CC-XXX) tag,
+  not incidental mentions
+- **update-readme skill** — unchanged this session; invoked twice
+  (CC-153, CC-154) to keep README.md's OPERATING_CONTRACT.md and audit
+  entries current
+- **ingest-validate skill** — unchanged this session
+- **PATTERNS.md** — unchanged this session; P004 still CANDIDATE,
+  two instances, watching for a third
+- **DECISIONS.md + REASONING.md** — unchanged this session
+- **RULES.md** — unchanged this session
+- **SYSTEM_BRAIN/** — 5 sources; anatomy-screenshot.md's 1d rotation
+  completed this session (chalo audit) — full image re-viewed
+  directly, every row of its ingestion record's key-content table
+  confirmed against the live image with zero drift, concept page's
+  structure tree confirmed still accurate; 'Last full re-verification'
+  updated to 2026-07-01. dialogue/conversational.md grew from 8 to 10
+  entries: scoping a corrective rule to its actual precondition rather
+  than generalizing it blindly (CC-151), and a delegated prompt's
+  embedded state assumptions going stale mid-session (CC-152/154)
+- **DOMAINS/_TEMPLATE/** — unchanged this session
+- **README.md** — updated this session: OPERATING_CONTRACT.md entry
+  now describes Rule 6's fork-scoping and Rule 9's two new subsections;
+  audit entry now describes check 4d
+- **CLAUDE.md + AGENTS.md** — unchanged this session
+- **WORKSPACE/STATUS.md** — this rewrite (CC-151/153/154 + chalo)
+- **WORKSPACE/ARTIFACTS/** — still significantly stale, now also
+  missing this session's additions
+- **.claude/hooks/** — unchanged this session
+- **.claude/settings.json** — unchanged this session
+- **Git history** — accurate, pushed to GitHub; latest commits:
+  CC-151, CC-153, CC-154, this chalo close
 
 ## Open items — genuinely unresolved right now
 
 1. **No real business domain exists yet.** Unchanged since session
    one. Nothing else matters more than this.
-2. **ARTIFACTS/ visual is significantly stale** — missing sixth DNA
-   quality, ingest-validate deep mode, audit checks 1c/1c-supplement/
-   1d/4c, PATTERNS.md P004, RULES.md stage contract, FRAMEWORK.md
-   ICM five-layer hierarchy, CC-150 propagation rule, and all this
-   session's additions. JUDGMENT-REQUIRED: regenerate?
+2. **ARTIFACTS/ visual is significantly stale** — now also missing
+   this session's OPERATING_CONTRACT.md/audit additions.
+   JUDGMENT-REQUIRED: regenerate?
 3. **CC-026's residual risk is permanent** — rules can be skipped
    under pressure; no hook fixes this; only spot-checking does.
 4. **Vercel plugin warning** — Claude Code bug, accepted, dropped.
    Do not re-investigate.
-5. **conversational.md has 8 entries** — entries 5-6 (two-channel
-   coverage, self-report distrust) may share a new pattern shape
-   distinct from P002. Watch for a third instance before naming it.
-   Entry 7 (auto-research NOTED IDEA) is explicitly good-to-have;
-   revisit trigger: when a real domain brain has 3+ varied sources.
-   Entry 8 (citation chain gap) is a distinct structural insight.
+5. **conversational.md has 10 entries** — entries 5-6 (two-channel
+   coverage, self-report distrust) still watched for a third instance
+   before naming a pattern distinct from P002. No cross-entry pattern
+   yet visible spanning this session's two new entries and the prior
+   eight — not flagging a promotion to overview.md yet.
 6. **P004 (CANDIDATE)** — two instances logged; no mechanism built;
    watching for third instance to determine right trigger design.
-7. **anatomy-screenshot.md** is next in audit 1d rotation (all 5
-   sources tied at 2026-06-28 CC-144; alphabetically first).
+7. **New watch item (one instance): stale embedded assumptions in a
+   delegated prompt** (CC-152/154) — logged in conversational.md,
+   watching for a second instance before considering a PATTERNS.md
+   entry.
+8. **autonomous-ai-growth-engine.md is next in audit 1d rotation**
+   (anatomy-screenshot.md just completed 2026-07-01; remaining four
+   sources tied at 2026-06-28 CC-144; alphabetically next).
 
 ## What to do next time
 
 1. Bring a real business domain. Everything else is ready.
 2. Decide whether to regenerate the ARTIFACTS/ visual — it now lags
-   significantly behind the system's current state.
+   even further behind the system's current state.
 3. Watch for a third instance of the "verification requires covering
    all contexts" shape (conversational.md entries 5-6) before deciding
    whether to name it separately from P002.
 4. Watch for a third P004 instance before designing the factory-change
    trigger mechanism.
+5. Watch for a second instance of the "delegated prompt's embedded
+   state assumption goes stale mid-session" shape before considering a
+   PATTERNS.md entry.
