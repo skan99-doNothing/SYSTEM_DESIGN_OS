@@ -165,6 +165,34 @@ Going forward: any prompt that creates something under .claude/ must
 include, as part of that same prompt, a step writing the corresponding
 concept into FRAMEWORK.md.
 
+### Protecting a repo's default branch — only when it's actually a fork
+
+**Problem:** When Claude Code edits or commits inside a git repository
+on the user's behalf, "never commit directly on the default branch,
+always use a separate working branch" is not a universal git-hygiene
+rule to apply everywhere. It exists for one specific reason: keeping a
+fork's default branch fast-forwardable against its `upstream` remote,
+so `gh repo sync` (or GitHub's own Sync Fork button) never fails or
+needs a destructive `--force` hard reset. Applying it to a repo the
+user owns outright — with no upstream to mirror — would be unneeded
+process defending against a risk that doesn't exist there. This
+distinction also cannot live only in Claude's conversational memory,
+since memory does not persist forever across sessions the way a file
+in this contract does.
+
+**Solution:** Before committing to a repo's default branch, check
+whether it actually has an `upstream` remote configured (`git remote
+get-url upstream`):
+
+- **Upstream remote exists** (a genuine fork of someone else's
+  project): never commit on the default branch directly. Check out or
+  create a dedicated working branch first — the `work` branch
+  convention set up for the `gbrain`/`gstack` forks (CC-151).
+- **No upstream remote** (the user owns the repo outright, e.g.
+  SYSTEM_DESIGN_OS itself): there is no mirror to protect — committing
+  directly on the default branch is normal here, no work-branch
+  requirement applies.
+
 ## 7. Don't assume the topic — ask, then go fetch only what's relevant
 
 At the start of a session, Claude does not know which domain, decision, or thread the user wants to work on — even if a prior session ended mid-topic. Carrying that prior topic forward by default is itself an assumption, and a session may have nothing to do with it.
@@ -280,6 +308,18 @@ states whether a log entry was written. A structural change that exists
 only as an uncommitted working-tree state is one accidental overwrite
 away from being lost — the same risk Rule 6 names for unverified claims,
 just applied to version history instead of claims.
+
+### Check for an ID collision before assigning a new number
+
+Before assigning a new CC-XXX number to any prompt, grep
+EVOLUTION_LOG.md for that exact number first. If an entry already
+exists under it describing something different, this is a collision —
+do not proceed with the reused number. Use the next real, unused
+number instead (grep for the current highest CC-XXX in use, then use
+highest+1 — never assume the next number from memory of "what we're
+probably on"). This check takes one grep command and prevents two
+different findings from sharing one ID, which breaks traceability for
+both.
 
 ---
 

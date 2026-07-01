@@ -4,6 +4,48 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-07-01 — ID-collision check added; CC-151 checked and confirmed clean, no collision actually found (CC-153)
+Investigated a suspected CC-151 numbering collision (the git-branch/
+upstream-remote rule vs. an update-readme/FRAMEWORK.md propagation
+fix believed to share the same number). Verified directly via grep:
+only one entry exists under CC-151 — the fork branch-protection rule.
+The propagation fix referenced is already correctly logged under
+CC-150, from the prior session. No renumbering was needed or
+performed; nothing was renamed. Root cause of the false alarm: no
+mechanism existed to make ID reuse checkable except a manual grep, so
+an incorrect belief that a collision existed could not be told apart
+from a real one without doing that check. Added prevention regardless,
+since the underlying risk (two real findings sharing one ID) is real
+even though this specific instance turned out clean:
+OPERATING_CONTRACT.md Rule 9 now requires a grep of EVOLUTION_LOG.md
+for the exact number before assigning any new CC-XXX ID, and audit
+gained a matching mechanical backstop (4d) scanning for duplicate
+CC-XXX headers — same two-layer prevention-plus-backstop pattern as
+CC-150/151.
+
+update-readme: OPERATING_CONTRACT.md and audit entries in README.md
+updated to reflect Rule 9's collision-check subsection and audit's new
+4d check (CC-153).
+
+## 2026-07-01 — Fork-branch-protection rule scoped to repos with an upstream remote, not all repos (CC-151)
+Forked and cloned garrytan/gbrain and garrytan/gstack (skan99-doNothing
+account) for ownership + deletion safety, added `upstream` remotes,
+and set up a `work` branch in each so the default branch (`master`/
+`main`) stays a pure, fast-forwardable mirror. Rewrote the user's
+`~/scripts/start` to run the full cycle: `gh repo sync` (fork ←
+upstream, fast-forward only, fails safe on divergence) → local default
+branch fast-forward → merge into the current working branch, stopping
+without auto-accepting either side if a real conflict surfaces.
+User caught an overreach: this "never commit on the default branch"
+practice only makes sense when a repo actually has an `upstream`
+remote (a real fork) — a repo the user owns outright has no mirror to
+protect, so forcing the same restriction there is unneeded process.
+Corrected an initial memory note that had wrongly generalized the rule
+to "any repo," and instead wrote the scoped version into
+OPERATING_CONTRACT.md itself (new subsection under Rule 6) rather than
+only in Claude's own session memory, since memory does not persist
+forever the way a contract file does.
+
 ## 2026-06-28 — Remote configured, chalo now auto-pushes every session (CC-111)
 Discovered the repo had never been pushed anywhere — 24+ hours of
 work, including two safety tags meant to allow reverting, existed in

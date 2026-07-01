@@ -104,7 +104,13 @@ SYSTEM_DESIGN_OS/
   pass, not as an afterthought; and when FRAMEWORK.md, RULES.md,
   INGEST.md, or PATTERNS.md receives substantive new content, README.md's
   dictionary entry for that file must be checked and updated in the same
-  pass — the detection backstop is audit's check 4c (CC-150).
+  pass — the detection backstop is audit's check 4c (CC-150); Rule 6
+  also states that the "never commit on the default branch" convention
+  only applies to a repo with an `upstream` remote configured (a real
+  fork) — a repo owned outright has no mirror to protect (CC-151); Rule
+  9 requires a grep of EVOLUTION_LOG.md for an exact CC-XXX number
+  before assigning it, so two different findings never share one ID —
+  the detection backstop is audit's check 4d (CC-153).
 
 - **INGEST.md** — the verification protocol for any new source, of
   any kind. Eight steps in order: (0) route the resource — is it about
@@ -374,6 +380,10 @@ folders — not the five-layer hierarchy, stage contracts, or "configure
 the factory" added in that same pass, CC-150); (5) are there rules in
 OPERATING_CONTRACT.md with no EVOLUTION_LOG.md entry ever showing them
 actually being exercised, not just declared;
+(4d) scan EVOLUTION_LOG.md for any CC-XXX number appearing as a header
+more than once with genuinely different content — flag MECHANICAL,
+since a real collision requires one entry to be renumbered; the
+mechanical backstop for Rule 9's grep-before-assigning check (CC-153);
 (6b) if a check was just self-corrected, actively attempt to falsify
 the clean result from a different angle before accepting it; (7) is
 STATUS.md's NON-NEGOTIABLE instruction (requiring the Handoff Baton to
