@@ -144,11 +144,12 @@ five-layer hierarchy, stage contracts, and "configure the factory" —
 README.md's entry still described only "numbered folders, increments
 of 10" until caught by post-session completeness check, CC-150).
 
-### 4d. Check: duplicate CC-XXX IDs
+### 4d. Check: duplicate ID numbers
 
-Scan EVOLUTION_LOG.md for any CC-XXX number that appears as a header
-more than once with genuinely different content. Flag any found as
-MECHANICAL — a real collision requiring one entry to be renumbered.
+Scan EVOLUTION_LOG.md for any ID number (SDO-XXX going forward, or a
+historical CC-XXX entry) that appears as a header more than once with
+genuinely different content. Flag any found as MECHANICAL — a real
+collision requiring one entry to be renumbered.
 
 This is the mechanical backstop for OPERATING_CONTRACT.md Rule 9's
 grep-before-assigning check — the same rule alone only works if it's

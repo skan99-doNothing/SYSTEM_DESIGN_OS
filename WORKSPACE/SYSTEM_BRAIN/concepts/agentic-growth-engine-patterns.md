@@ -122,9 +122,7 @@ Composite score < 0.6 OR any blocking check → automatic retry with failure rea
 - Access to golden examples (A-grade outputs from previous runs) as reference
 - Grades (A-F, 0-10) and specific weaknesses saved to context DB
 - Next run reads them during INJECT step — agent sees its own report card
-- Growth OS reads weekly quality summary; declining agents get P1 directives; F-grade agents called out explicitly
-
-To promote a run to golden examples: `bun cli.ts evals promote <runId>`
+- Growth OS reads weekly quality summary every Monday; declining agents get P1 directives
 
 ---
 
@@ -167,7 +165,7 @@ Does not do growth work directly. Reads all agents' work and tells them what to 
 ## 12. Minimum Viable Flywheel (start with 3)
 
 1. **Revenue Intelligence** — daily financial pulse (Stripe + Supabase): MRR, churn, at-risk users, upsell candidates
-2. **VoC Synthesis** — weekly: synthesizes signals from handoffs, agent memory, web search, feedback emails → themes, customer language glossary, one urgent signal with estimated revenue impact
+2. **VoC Synthesis** — weekly synthesis of customer signals from 4 sources
 3. **Growth OS** — the director; without it, agents run in isolation
 
 **Build these first, get a week of data, then add more in order of MRR impact.**

@@ -277,3 +277,33 @@ the real current number rather than trusting what the prompt says it
 should be — this entry generalizes that same fix beyond CC-XXX
 numbers to any stateful assumption in a delegated task. One instance
 so far — watch for a second before considering a PATTERNS.md entry.
+
+### 2026-07-01 — A concept page can overclaim beyond its own raw source, not just under-represent it (SDO-001 chalo, 1d rotation)
+
+Audit's 1d rotation on autonomous-ai-growth-engine.md found something
+new: the concept page stated three specifics that do not appear
+anywhere in the 301-line raw source - a fabricated-sounding CLI
+command (`bun cli.ts evals promote <runId>`), an itemized breakdown of
+VoC Synthesis's outputs the source never states, and a claim about
+"F-grade agents called out explicitly" the source doesn't make. The
+ingestion record itself was fully accurate; only the concept page had
+drifted into unsupported specificity.
+
+**Constraint this reveals:** check 1c (and 1d's concept-page
+comparison) has so far only ever looked for the concept page being
+THINNER than what the record verified - richer verified content
+sitting unused. This is the opposite direction: a concept page can
+also be RICHER than what's actually verifiable, if specific-sounding
+detail gets added during synthesis without being checked against the
+raw source. A confident, specific-sounding false detail is more
+dangerous than an honestly thin one, because it reads as verified
+knowledge with no signal that it isn't.
+
+**The standing implication:** when writing or reviewing a concept
+page, treat added specificity with the same suspicion INGEST.md
+already applies to the original read - a concrete detail (an exact
+command, an exact list) is a claim that needs a traceable source, not
+just plausible-sounding elaboration. One instance so far - watch for a
+second before considering whether 1c/1d's check needs an explicit
+over-claim direction, not just the under-claim direction it currently
+covers.

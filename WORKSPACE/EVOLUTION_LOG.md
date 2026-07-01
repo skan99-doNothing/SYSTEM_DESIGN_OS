@@ -4,6 +4,38 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-07-01 — Chalo: audit found a new failure direction (concept-page overclaiming), audit's own 4d wording corrected, STATUS.md refreshed
+Full audit run before session close. PATTERNS.md read first; no new
+instances of P001-P004 found. 1a/1c-supplement/4/4b clean. Caught audit
+SKILL.md's own check 4d still describing "duplicate CC-XXX IDs" -
+stale the moment SDO-001 renamed the prefix; corrected to "duplicate ID
+numbers" covering both SDO-XXX and historical CC-XXX. 4d re-run (only
+trailing ID tags, not incidental mentions): one duplicate found
+(CC-076), same legitimate one-continuous-action case judged clean at
+the last chalo close, not a new collision.
+
+1d rotation: autonomous-ai-growth-engine.md re-read in full (301-line
+raw source) against its ingestion record and concept page. The record
+itself was completely accurate - every verification artifact and every
+claim in "What was actually gotten" confirmed exactly, including the
+21-agent count (10 named + 11 stubs, Growth OS correctly excluded as
+the director layer). The CONCEPT PAGE, however, was found overclaiming
+in three places beyond what the raw source states: a CLI command
+(`bun cli.ts evals promote <runId>`) that does not appear in the
+source, an itemized VoC Synthesis output breakdown the source never
+states, and a claim about "F-grade agents called out explicitly" the
+source doesn't make. This is the inverse of audit 1c/1d's usual
+direction (concept page thinner than verified) - a genuinely new
+failure shape, logged to conversational.md (now 11 entries) as a first
+instance to watch for a second before deciding whether the check needs
+an explicit over-claim direction. All three overclaims corrected in
+the concept page in this same pass.
+
+STATUS.md's built/open-items sections rewritten and handoff baton
+regenerated in full to reflect SDO-001 and this audit's findings.
+Next 1d rotation target: claude-os-guide.md.
+
+## 2026-07-01 — Chalo: audit run, anatomy.jpg re-verified (1d rotation), conversational.md gained 2 entries, STATUS.md refreshed
 ## SDO-001 - 2026-07-01 - ID-linking rule established, CC- to SDO- prefix rename
 - **Precursor:** CC-154 (last entry under the retired prefix)
 - **Task:** Established the general ID-linking rule in RULES.md
