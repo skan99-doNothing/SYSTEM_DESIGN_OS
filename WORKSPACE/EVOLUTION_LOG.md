@@ -4,6 +4,35 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## 2026-07-01 — Mid-task discovery checkpointing rule added (CC-154, drafted as CC-152)
+User described a real incident: website-publishing work done on a
+VPS, outside formal SYSTEM_DESIGN_OS protocol, ran as one long
+session, a genuinely reusable prompt/approach was found through
+iteration, then the VPS crashed before any commit happened - the
+discovery was lost entirely, requiring real re-derivation. Root cause:
+the system's existing checkpoints (job-completion via chalo/CC-XXX
+commits) only fire when a task finishes, with no mechanism for a long
+single task that never reaches that point. Added a conditional rule
+to OPERATING_CONTRACT.md Rule 9: every ~15 minutes during a
+long-running task, check whether something genuinely reusable was
+found since the last write - if yes, commit it immediately to the
+relevant BRAIN/dialogue/conversational.md, using the existing NOTED
+IDEA mechanism with a forced trigger; an empty checkpoint is
+explicitly noise, not safety, and should not be written.
+
+This prompt was drafted as CC-152, but by the time it was run, CC-153
+(the ID-collision check) had already been assigned and committed in
+this same session - reusing 152 would have put a lower number after a
+higher one already in use. Applied the CC-153 rule to itself: grepped
+for the current highest CC-XXX (153) and used highest+1 (154) instead.
+Step 0's original premise (a CC-151 collision between the git-branch
+rule and an update-readme/FRAMEWORK.md propagation fix) was re-checked
+and reconfirmed false - same conclusion as CC-153's investigation; the
+propagation fix is CC-150, not CC-151.
+
+update-readme: OPERATING_CONTRACT.md entry in README.md updated to
+describe Rule 9's mid-task checkpointing subsection (CC-154).
+
 ## 2026-07-01 — ID-collision check added; CC-151 checked and confirmed clean, no collision actually found (CC-153)
 Investigated a suspected CC-151 numbering collision (the git-branch/
 upstream-remote rule vs. an update-readme/FRAMEWORK.md propagation

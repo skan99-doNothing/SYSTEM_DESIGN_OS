@@ -110,7 +110,14 @@ SYSTEM_DESIGN_OS/
   fork) — a repo owned outright has no mirror to protect (CC-151); Rule
   9 requires a grep of EVOLUTION_LOG.md for an exact CC-XXX number
   before assigning it, so two different findings never share one ID —
-  the detection backstop is audit's check 4d (CC-153).
+  the detection backstop is audit's check 4d (CC-153); Rule 9 also
+  covers mid-task discovery checkpointing — a conditional (not
+  time-based) check roughly every 15 minutes during any single
+  long-running task, writing a real entry to the relevant
+  BRAIN/dialogue/conversational.md only if something genuinely
+  reusable was found since the last write, using the existing NOTED
+  IDEA mechanism with a forced trigger rather than waiting for someone
+  to notice (CC-154).
 
 - **INGEST.md** — the verification protocol for any new source, of
   any kind. Eight steps in order: (0) route the resource — is it about

@@ -321,6 +321,44 @@ probably on"). This check takes one grep command and prevents two
 different findings from sharing one ID, which breaks traceability for
 both.
 
+### Mid-task discovery checkpointing
+
+Job-completion already triggers a commit (this rule doesn't change
+that). This addresses the gap inside a SINGLE long-running task with
+no natural completion point for an extended period - the case where
+real work and real discoveries happen but nothing gets written until
+the task eventually finishes or crashes.
+
+**The check, every ~15 minutes during any task running longer than
+that:** has anything happened since the last write that would take
+real effort to rediscover if the session ended right now? This is
+NOT a time-based write - an empty checkpoint (nothing new since last
+write) is noise, not safety, and should not be created.
+
+**What counts as worth writing, when the answer is yes:** specifically
+information that makes the SAME job closer to autonomous next time -
+a working prompt/config/approach found through iteration that wasn't
+obvious at the start, or a real decision about why one approach was
+chosen over one that was tried and rejected. NOT a status update
+('step 3 of 8 in progress') - that's noise, not reusable knowledge.
+The test: would a future attempt at this same job benefit from
+knowing this, or is it just narration of activity.
+
+**Where it goes:** the relevant domain's BRAIN/dialogue/
+conversational.md (or SYSTEM_BRAIN's, if this is system-level work) -
+never mixed between the two. As a real entry, immediately, the moment
+it's found - not deferred to session-end. This uses the same NOTED
+IDEA mechanism already built for capturing dialogue-derived insight,
+just with a forced trigger during long single tasks instead of
+relying on someone noticing.
+
+**Why this exists:** a real domain attempt (website-publishing work
+on a VPS, outside formal SYSTEM_DESIGN_OS protocol) ran for an
+extended single session, found a genuinely reusable working
+prompt/approach, then crashed before any commit happened - losing the
+discovery entirely and requiring a full re-derivation. See
+EVOLUTION_LOG.md for the incident this rule directly responds to.
+
 ---
 
 ## What this file is not
