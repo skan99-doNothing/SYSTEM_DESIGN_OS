@@ -125,6 +125,58 @@ intact with their source provenance, tag the entry as CONFLICT, and
 require explicit human resolution rather than auto-resolving by
 recency or confidence score alone.
 
+## ID-linking: stable identity, mutable state, traceable history
+
+Every ID minted in this system (system-level SDO-XXX, or any domain's
+own scoped prefix, e.g. DN-INFRA-XXXX) follows one rule: the ID is a
+permanent, stable key - it is never re-parsed to derive structure, and
+its text is never edited after the fact.
+
+**When to mint a new ID vs. reuse the current one:** did the underlying
+STATE actually change (ownership, structure, or what's fundamentally
+true) - or did only a LABEL change with nothing else different? Real
+state changes (a Department moves to a different Business, a Department
+splits or merges) mint a new ID under whatever prefix now correctly
+represents the new state. A pure label/naming change (a rename with no
+change in ownership, team, or knowledge) does NOT mint a new ID - it's
+documented once, in the relevant README.md or DECISIONS.md, and the
+existing ID/prefix continues unchanged.
+
+**Linking, when a new ID IS minted:** the new ID's first log entry
+includes a Precursor field pointing to the ID(s) it succeeds. The old
+ID's final entry (or a note added to it) includes a Superseded by
+field pointing to the ID(s) that follow. Both fields support MULTIPLE
+values - a Department split produces one precursor with multiple
+successors; a merge produces one successor with multiple precursors.
+
+**Tracing:** follow Precursor backward, or Superseded by forward,
+through however many links exist, until reaching an entry with none -
+that's the origin or the current end of the chain. This requires no
+database, index, or search infrastructure - it's a small number of
+targeted file reads per trace, distinct from and much cheaper than the
+separate, already-documented question of full-knowledge-base search at
+scale (see this file's "When to reconsider index-file navigation"
+section - that threshold governs broad search across a growing brain,
+not chain-tracing, which stays cheap at any realistic scale since git
+already proves pointer-chains of this shape work at massive scale
+without special infrastructure).
+
+### Applied instance: CC- to SDO- prefix rename
+
+The system's own prompt-numbering prefix was historically CC- (never
+formally defined, used since this project's first prompt). Renamed to
+SDO- (SYSTEM_DESIGN_OS - self-explanatory, matching the same logic
+already applied to domain-scoped prefixes like DN-INFRA-). This is a
+LABEL change, not a state change - the counter still tracks the exact
+same thing (system-level governance prompts), so per the rule above,
+this does NOT create a Precursor chain of retired IDs. It's documented
+once, here, plus a Precursor note on the first SDO- entry pointing to
+the last CC- entry, purely so a future reader knows where the
+convention switched.
+
+Last CC-XXX entry: CC-154
+First SDO-XXX entry: SDO-001
+
 ## What's still missing here
 
 Patterns for: when to extract a repeated workflow into a Claude Code

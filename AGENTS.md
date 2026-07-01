@@ -17,7 +17,7 @@ WORKSPACE/STATUS.md has the current state right now.
 ## Non-negotiable behavioral rules (kept here so they load automatically)
 
 - Every prompt handed to the user to run in Claude Code gets an ID
-  (CC-XXX). No exceptions.
+  (SDO-XXX). No exceptions.
 - Log real decisions to WORKSPACE/DECISIONS.md and WORKSPACE/EVOLUTION_LOG.md
   as part of doing the work, not as a separate step afterward.
 - Never claim a file was created, edited, or verified without running

@@ -4,6 +4,31 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-001 - 2026-07-01 - ID-linking rule established, CC- to SDO- prefix rename
+- **Precursor:** CC-154 (last entry under the retired prefix)
+- **Task:** Established the general ID-linking rule in RULES.md
+  (stable ID as permanent key, retire-and-mint only on real state
+  change, Precursor/Superseded-by fields supporting multiple values
+  for splits/merges, chain-tracing requires no database at any
+  realistic scale). Renamed the system's own prompt prefix from the
+  historically-unnamed CC- to the self-explanatory SDO- (a label
+  change, not a state change, per the rule's own test - documented
+  once, not treated as a retirement chain).
+- **Scope caught beyond the original request:** the drafted prompt only
+  specified editing RULES.md. The actual authoritative definition of
+  the ID format lives in two other places - CLAUDE.md/AGENTS.md's
+  non-negotiable rule line ("gets an ID (CC-XXX). No exceptions.") and
+  OPERATING_CONTRACT.md Rule 9's format definition and its five
+  generic-format CC-XXX mentions across Rules 8-9. Left unfixed, these
+  would have gone stale immediately - the same propagation-gap shape
+  CC-145/CC-150 already spent a session building safeguards against.
+  Updated all of them to SDO-XXX in this same pass (historical CC-XXX
+  citations of actual past prompt numbers, e.g. CC-030/CC-045/CC-151,
+  were left untouched - only the forward-looking format placeholders
+  changed). README.md's RULES.md and OPERATING_CONTRACT.md dictionary
+  entries updated to match (update-readme invoked).
+- **Status:** done
+
 ## 2026-07-01 — Chalo: audit run, anatomy.jpg re-verified (1d rotation), conversational.md gained 2 entries, STATUS.md refreshed
 Full audit run before session close. PATTERNS.md read first; no new
 instances of P001/P002/P003 found, though Rule 3/4 (surface problems,

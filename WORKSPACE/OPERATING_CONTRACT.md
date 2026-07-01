@@ -241,12 +241,12 @@ If a recommendation is reached in chat and Claude cannot write to
 DECISIONS.md or EVOLUTION_LOG.md directly, that does not waive the
 obligation — it changes the delivery mechanism. Claude must produce the
 DECISIONS.md entry as formatted text inline, with all required fields
-filled, plus a Claude Code prompt (with its own CC-XXX ID) the user can
+filled, plus a Claude Code prompt (with its own SDO-XXX ID) the user can
 run to write it to the file. The entry does not have to land in the file
 in that same turn, but it must exist in complete, draftable form in the
 response — it cannot be left undone or deferred with no concrete output.
 
-Producing the CC-XXX prompt is not contingent on the user confirming the
+Producing the SDO-XXX prompt is not contingent on the user confirming the
 session is real or the decision is worth filing. Produce it
 unconditionally, alongside the inline DECISIONS.md draft, every time a
 real recommendation is reached. The user decides whether to run it —
@@ -295,13 +295,13 @@ noticing drift.
 
 ## 9. Every Claude Code prompt gets an ID, and Claude Code logs its own actions
 
-Every prompt Claude hands the user to run in Claude Code carries a short ID (format: CC-001, CC-002, incrementing). The ID lets a report-back be matched to the request that produced it. A prompt without an ID cannot be confirmed against — if multiple prompts are sent before a report comes back, there's no way to know which one the report answers.
+Every prompt Claude hands the user to run in Claude Code carries a short ID (format: SDO-001, SDO-002, incrementing — renamed from the historically-unnamed CC- prefix at SDO-001; see RULES.md's "Applied instance: CC- to SDO- prefix rename" for why this was a label change, not a new ID chain). The ID lets a report-back be matched to the request that produced it. A prompt without an ID cannot be confirmed against — if multiple prompts are sent before a report comes back, there's no way to know which one the report answers.
 
 When a Claude Code prompt makes a real change (per Rule 8's decision-worthiness criteria), the prompt itself must instruct Claude Code to write the EVOLUTION_LOG.md and/or DECISIONS.md entry as part of executing that prompt — not leave logging as a separate step for Claude to remember afterward in chat. Claude Code is the actor with filesystem access at the moment the change happens; it is the one that logs it, in the same operation, referencing the prompt ID it was executing.
 
 This means every Claude Code prompt going forward has three required parts: (1) an ID, (2) the actual task, (3) an instruction to log the result — including the ID — before reporting back.
 
-After a CC-XXX prompt makes a structural change (new files, folder
+After an SDO-XXX prompt makes a structural change (new files, folder
 moves, renames — not minor text edits), commit it. State in the report-
 back whether a commit was made and its message, the same way the report
 states whether a log entry was written. A structural change that exists
@@ -311,15 +311,16 @@ just applied to version history instead of claims.
 
 ### Check for an ID collision before assigning a new number
 
-Before assigning a new CC-XXX number to any prompt, grep
+Before assigning a new SDO-XXX number to any prompt, grep
 EVOLUTION_LOG.md for that exact number first. If an entry already
 exists under it describing something different, this is a collision —
 do not proceed with the reused number. Use the next real, unused
-number instead (grep for the current highest CC-XXX in use, then use
-highest+1 — never assume the next number from memory of "what we're
-probably on"). This check takes one grep command and prevents two
-different findings from sharing one ID, which breaks traceability for
-both.
+number instead (grep for the current highest SDO-XXX in use — or
+CC-XXX, until the older prefix fully ages out of recent context — then
+use highest+1 — never assume the next number from memory of "what
+we're probably on"). This check takes one grep command and prevents
+two different findings from sharing one ID, which breaks traceability
+for both.
 
 ### Mid-task discovery checkpointing
 

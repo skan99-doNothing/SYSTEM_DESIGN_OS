@@ -108,9 +108,12 @@ SYSTEM_DESIGN_OS/
   also states that the "never commit on the default branch" convention
   only applies to a repo with an `upstream` remote configured (a real
   fork) — a repo owned outright has no mirror to protect (CC-151); Rule
-  9 requires a grep of EVOLUTION_LOG.md for an exact CC-XXX number
+  9 requires a grep of EVOLUTION_LOG.md for an exact ID number
   before assigning it, so two different findings never share one ID —
-  the detection backstop is audit's check 4d (CC-153); Rule 9 also
+  the detection backstop is audit's check 4d (CC-153); Rule 9's own ID
+  format is now SDO-XXX (renamed from the historically-unnamed CC-
+  prefix at SDO-001 — see RULES.md's ID-linking rule for why this is a
+  label change, not a new ID chain); Rule 9 also
   covers mid-task discovery checkpointing — a conditional (not
   time-based) check roughly every 15 minutes during any single
   long-running task, writing a real entry to the relevant
@@ -214,7 +217,16 @@ SYSTEM_DESIGN_OS/
   preserved intact with their source provenance and tagged CONFLICT
   for human resolution rather than silently overwritten. Both of the
   last two are not built yet; documented so the decisions exist before
-  they're needed under pressure.
+  they're needed under pressure; and an ID-linking rule (SDO-001) —
+  every ID (system-level SDO-XXX or a domain's own scoped prefix) is a
+  permanent key, never edited after the fact; a new ID is minted only
+  on a real state change (a Department moving, splitting, or merging),
+  never for a pure label/naming change, using Precursor and Superseded
+  by fields (each supporting multiple values, for splits and merges)
+  to keep the chain traceable with nothing more than targeted file
+  reads. Documents its own first applied instance: the system's prompt
+  prefix renaming from the historically-unnamed CC- to the
+  self-explanatory SDO-, a label change and not a new ID chain.
 
 - **PATTERNS.md** — the system's record of its own recurring mistakes.
   A failure only earns an entry here after it's been confirmed
