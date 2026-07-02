@@ -1,0 +1,50 @@
+# Independent Review — Checkpoint and Task List
+
+## Session metadata
+- Started: 2026-07-02
+- Completed: 2026-07-02 (all nine tasks)
+- Setup reads completed: OPERATING_CONTRACT.md, STATUS.md, README.md, FRAMEWORK.md, SYSTEM_BRAIN/index.md
+- Recovery instruction: if this session is interrupted, read this file first, find the last COMPLETED task, and continue from the next one. Do not restart from the beginning.
+
+## Task list
+
+TASK-01: DNA quality checks — COMPLETED
+Agent-agnostic: PARTIAL (portable specs real, but sole mechanical guardrail is a no-op — see TASK-05; chalo hardcodes `git push origin master`). Transferable: PARTIAL-PASS (all markdown, but SYSTEM_SOURCES/ and RAW/ are gitignored, so the GitHub backup cannot support audit 1d on a fresh clone). Scalable: PARTIAL (brain threshold documented in RULES.md, but no threshold exists for governance-file growth; EVOLUTION_LOG.md at 1212 lines already exceeds one read). Self-auditing: PARTIAL (audit demonstrably catches real things — 2026-07-01 overclaim catch — but checks 1/3/5 are unbounded judgment with no evidence procedure, and check-5 findings have no closure lifecycle). Ever-learning: PASS (two-instance discipline genuinely followed; P004 correctly held as CANDIDATE). Knowledge-deepening: PASS (1c/1d exercised with real catches; overclaim direction honestly tracked as a watch item).
+
+TASK-02: OPERATING_CONTRACT.md rule exercise checks — COMPLETED
+Rules 1, 3, 4, 5, 6, 8, 9 have real logged exercise instances (CC-050/130; CC-153/154 for 3 and 4; CC-068/071 for 5; CC-088/P003 for 6; pervasive for 8/9). Rule 2: only synthetic-test instances (CC-005/006, both fictional scenarios) — no real-work exercise ever logged. Rule 7: no logged instance at all; audit check 5 flagged it 2026-06-28 as "pre-existing gap" and it has simply been re-reported since, with no closure path.
+
+TASK-03: PATTERNS.md countermeasure checks — COMPLETED
+P001 → present (audit check 3 + step 0). P002 → present verbatim (audit 6b). P003 → NOT in audit/SKILL.md as a dedicated check; lives in chalo step 5 plus audit step 0's generic "apply countermeasures" — no mechanical backstop analogous to 4c/4d. P004 → no countermeasure by design (CANDIDATE, honest).
+
+TASK-04: INGEST.md gate check — COMPLETED
+The gate is good-faith markdown, not structural — INGEST.md line 5's "structurally impossible" overclaims by the system's own guardrail doctrine (rules can be skipped; only hooks block, and the relevant hook is broken anyway). Letter-vs-spirit failure found: icm-paper.md line 12 and claude-os-guide.md line 12 both carry non-empty "What could NOT be verified" fields ("...cleared by CC-140... Nothing remaining") with Status: INGESTED — satisfies the spirit, violates the gate's literal rule ("empty/'Nothing'"), and defeats mechanical (grep-level) checkability.
+
+TASK-05: audit skill self-check — COMPLETED
+CRITICAL: ingest-guard.sh is a no-op. It reads $1 for the target path, but Claude Code PreToolUse hooks pass tool input as JSON on stdin with no positional args; with realistic stdin the script exits 0 unconditionally. Even its blocking branch uses exit 1 (non-blocking in Claude Code; blocking requires exit 2) and echoes to stdout, not stderr. Empirically confirmed: a live Write into SYSTEM_BRAIN/ succeeded with no block or warning (test file deleted). Zero "INGEST GUARD" events exist anywhere in EVOLUTION_LOG.md — the guard has never fired in the system's entire history, and no negative test was ever logged. Other audit findings: check 1 (every file vs stated purpose) is never itemized in any logged audit report — silently narrowed to its sub-checks in practice; check 6 ("report, not a fix") vs 1a/chalo-0 ("fix in same pass") applied inconsistently across logged runs; 4d only covers EVOLUTION_LOG.md headers. 6b applied to three clean findings: (1) CLAUDE.md/AGENTS.md "identical" → broken, they differ by one line (intentional mirror comments); (2) "all 5 records pass the gate" → broken at the letter level (two non-'Nothing' gap fields); (3) "hooks are mechanical enforcement" → broken empirically (live write succeeded).
+
+TASK-06: Token efficiency audit — COMPLETED
+CLAUDE.md/AGENTS.md ≈ 400–450 tokens each — within ICM's Layer 0 ~800-token budget. audit per-run estimate 60–90k tokens today (PATTERNS + all concept pages (1c) + all records + one full raw source (1d) + README + four key files (4c) + full EVOLUTION_LOG scan (4d, 5) + STATUS head), scaling linearly and unboundedly with source count, log length, and README size. chalo is a strict superset (audit + session review + conversational.md + STATUS rewrite) paid at every session close. ingest-validate: moderate, could be grep-bounded. update-readme: bounded per invocation. 1d's one-source-per-run rotation is the only deliberately capped check — the design model the others lack. EVOLUTION_LOG.md (1212 lines ≈ 30k tokens) already exceeds a single read cap; append-only with no rotation rule anywhere.
+
+TASK-07: update-readme trigger check — COMPLETED
+CC-150's content-update trigger IS in update-readme SKILL.md's body (lines 34–40) but NOT in its frontmatter description (lines 3–7), which is what surfaces the skill for auto-invocation. Worse: chalo step 5c (chalo/SKILL.md lines 37–40) still lists structural triggers only and says "If nothing structural changed this session, skip silently" — the propagation-gap fix (CC-150) itself failed to propagate to chalo. Detection backstop 4c exists, so the gap is caught eventually, but the prevention wiring is incomplete.
+
+TASK-08: Transferability test — COMPLETED
+Cold read of CLAUDE.md + README.md alone: a competent agent CAN orient — architecture, every file's role, skills and hooks in depth, honest limits stated. Caveats: README §5's hook claims are false in practice (a cold agent would trust mechanical protection that doesn't exist); "say chalo" and skill invocation assume Claude Code; current SDO counter requires a log grep. Verdict: PASS for orientation, with README overstating enforcement.
+
+TASK-09: Architectural review synthesis — COMPLETED
+See SECTION 2 of the review output. Core synthesis: the system's honesty discipline (two-instance rule, honest limits, no-overclaim) is genuinely implemented and exercised; its ENFORCEMENT layer is weaker than every file claims (one broken hook, one good-faith gate); and its cost curve is unmanaged (unbounded audit reads, unbounded log growth, README duplication policed rather than reduced).
+
+## Prompt improvement log
+
+- PIL-01: The prompt was delivered via /goal, which has a 4000-character limit (this prompt is ~13.8k chars). It failed to set and had to be executed as a plain instruction instead. Next cycle: deliver the review prompt as a normal message or a file on disk, not as a /goal condition.
+- PIL-02: The task list never asks for the hooks to be tested. The single CRITICAL finding of this entire review (ingest-guard.sh is a no-op) came from a check no task specified — TASK-01..08 cover skills, DNA, rules, and gates but not hook mechanics. Next cycle: add an explicit task "for each hook, verify empirically that it fires and blocks as claimed (correct input source, correct exit code, correct output stream), and confirm at least one logged instance of it actually firing."
+- PIL-03: EVOLUTION_LOG.md (1212 lines, ~30k tokens) exceeds a single read cap and had to be read in two passes. TASK-02's design assumes one read. Next cycle: instruct grep-by-rule/ID first, full read only for candidate sections — and treat the log's own size as a standing finding to re-check.
+- PIL-04: The strict "sequential — complete each before starting the next" instruction conflicts with efficient evidence gathering: audit/SKILL.md was needed by TASK-01, -03, and -05; EVOLUTION_LOG.md by -02, -05, -07. Batching reads across tasks saved multiple re-reads. Next cycle: state explicitly that evidence reads may be batched across tasks while findings remain sequential.
+- PIL-05: The prompt places the checkpoint in WORKSPACE/ARTIFACTS/ but never says whether it should be registered in ARTIFACTS/index.md (audit check 1b reads that index) or left unregistered/uncommitted. Judgment call made: left untracked, not registered, for the user to decide — an adversarial review artifact arguably shouldn't contaminate the system being audited. Next cycle: specify the checkpoint file's intended lifecycle (commit? register? delete after report?).
+- PIL-06: The prompt forbids running the audit skill but doesn't say how to treat EVOLUTION_LOG.md's own audit self-reports as evidence. They are legitimate evidence that audit RAN (exercise evidence) but not that its results were CORRECT. Next cycle: state that distinction explicitly — it changes what "proof a rule was exercised" means for TASK-02.
+- PIL-07: Surprise the prompt did not anticipate: the review's live-fire hook test required deliberately writing into a guarded directory (SYSTEM_BRAIN/) — an action the system's own rules forbid. The prompt should pre-authorize (or explicitly scope) harmless, immediately-reverted probe writes for enforcement testing, so the reviewer doesn't have to make that call unilaterally.
+
+## Files read this session (token discipline)
+Setup: OPERATING_CONTRACT.md, STATUS.md, README.md, FRAMEWORK.md, SYSTEM_BRAIN/index.md.
+Evidence: PATTERNS.md, RULES.md, INGEST.md, EVOLUTION_LOG.md (full, two passes), CLAUDE.md, all four skill files, .gitignore, .claude/settings.json, both hook scripts (full/head), grep-extracts of all 5 ingestion records. Diff: CLAUDE.md vs AGENTS.md. Never read in full: AGENTS.md (diff sufficed), concept pages, raw sources, DECISIONS.md/REASONING.md (wc only), conversational.md (wc only), ARTIFACTS/index.md.

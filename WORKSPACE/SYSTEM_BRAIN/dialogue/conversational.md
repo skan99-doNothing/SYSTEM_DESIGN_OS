@@ -308,7 +308,7 @@ second before considering whether 1c/1d's check needs an explicit
 over-claim direction, not just the under-claim direction it currently
 covers.
 
-## [2026-07-02] — A guardrail's absence of failures is not evidence it works
+### 2026-07-02 — A guardrail's absence of failures is not evidence it works
 
 An independent adversarial review tested ingest-guard.sh empirically for
 the first time since its build (CC-027) — instead of trusting its

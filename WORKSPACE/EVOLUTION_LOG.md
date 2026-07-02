@@ -156,7 +156,52 @@ verification" pattern. conversational.md is now 345 lines (up from 309);
 not evaluated for overview.md promotion in this pass, since this session
 was a targeted fix pass, not a chalo close.
 
-## 2026-07-01 — Chalo: audit found a new failure direction (concept-page overclaiming), audit's own 4d wording corrected, STATUS.md refreshed
+## SDO-009 - 2026-07-02 - Chalo audit caught the first real CC-150/SDO-003 gap; update-readme invoked; conversational.md heading format corrected
+Chalo's audit step (0) ran and found two things:
+
+1. MECHANICAL (self-correction): SDO-008's own conversational.md entry used
+   the wrong heading format (`## [2026-07-02] — ...`, two hashes with
+   brackets) — every existing entry in that file uses `### 2026-07-02 —
+   ...` (three hashes, no brackets). Position was correct (file is
+   chronological oldest-to-newest; 2026-07-02 correctly sits last) but the
+   format was not. Fixed directly via Bash (same reason as SDO-004/008 —
+   the hook's matcher doesn't cover Bash writes).
+
+2. MECHANICAL (4c, first real test of SDO-003's fix): README.md's
+   FRAMEWORK.md dictionary entry still said "seven mechanism-agnostic
+   specifications" with no mention of SDO-002's new guardrail-testing
+   addition to the ingest-guard spec. This is exactly the CC-150 gap
+   SDO-003 fixed the trigger for — SDO-002 itself substantively changed
+   FRAMEWORK.md but was executed as a targeted fix-list item, not through
+   chalo, so update-readme was never invoked for it at the time. Chalo's
+   audit step is the backstop that caught it, as designed. Invoked
+   update-readme to close it: README's FRAMEWORK.md entry now describes
+   the guardrail-testing rule and cites ingest-guard.sh's own history as
+   the concrete example.
+
+All other checks clean: 1a (5 sources, overview.md header matches), 1c-
+supplement (no PARTIAL records), 4d (no duplicate ID headers), 7 (STATUS.md
+NON-NEGOTIABLE instruction present and intact). 1b: ARTIFACTS/ visual PDF
+is further stale relative to tonight's README changes (section 5's title
+itself changed) — same pre-existing JUDGMENT-REQUIRED item, not a new one,
+deepened rather than newly created. 4b: WORKSPACE/ARTIFACTS/review-
+checkpoint.md (an untracked artifact from the independent review session)
+sits undocumented, but it's inside an already-documented subfolder
+(ARTIFACTS/), outside 4b's literal WORKSPACE-root-loose-file scope — not
+flagged as a violation, noted as the same open judgment call the review
+session itself already logged (register it, leave it, or delete it — human
+call). Rule exercise check (5): Rule 2 and Rule 7 remain without a real-
+work exercise instance, unchanged from the last audit — not worsened, not
+newly discovered. 1d rotation: claude-os-guide.md is next per the tied
+2026-06-28 dates (alphabetically first of the three) — not completed in
+this run; carried forward as an open item since this chalo pass was a
+short fix-and-close session, not a full source re-verification pass.
+
+6b applied: this audit ran immediately after SDO-003 corrected chalo's own
+step 5c logic — exactly 6b's trigger condition. The 4c finding above is
+the direct result of actively testing that correction rather than trusting
+it declared-fixed; it worked, catching a real gap on the first real test.
+
 Full audit run before session close. PATTERNS.md read first; no new
 instances of P001-P004 found. 1a/1c-supplement/4/4b clean. Caught audit
 SKILL.md's own check 4d still describing "duplicate CC-XXX IDs" -

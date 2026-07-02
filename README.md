@@ -177,7 +177,14 @@ SYSTEM_DESIGN_OS/
   it's the one format that's simultaneously machine-readable,
   human-readable, version-controllable, and requires no translation
   step to hand to someone else. It also holds seven mechanism-agnostic
-  specifications — for the ingest-guard write-protection hook, for
+  specifications — for the ingest-guard write-protection hook (now
+  including a standing rule added in SDO-002: a guardrail isn't
+  considered built until a real blocked action has been live-fire
+  tested and logged — ingest-guard.sh itself silently exited 0 on
+  every real write from CC-027's original build until SDO-002 found
+  and fixed the wrong input source and exit code, with zero blocked-
+  write events ever logged across that entire period as the tell
+  nobody had checked), for
   the session-identity verification hook (confirming the loaded entry-
   point file is the correct one for this project, using the tool's
   own authoritative project-root signal rather than a hand-written
