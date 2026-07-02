@@ -13,6 +13,28 @@ rotation policy going forward.
 
 ---
 
+## SDO-014 - 2026-07-02 - resume and checkpoint skills added
+User pushed back correctly on prior advice conflating two different
+things: resuming (continuing work, should be cheap) vs. closing (chalo's
+full audit ritual, expensive). Built two skills to make the distinction
+concrete rather than relying on inference each time:
+
+- **resume** — ordered, cheap recovery sequence for a fresh session with
+  zero memory: read STATUS.md's baton, read EVOLUTION_LOG.md's newest
+  entries (catching anything newer than STATUS.md's confirmed date),
+  cross-check git log, then state back what's done/open/unstarted before
+  proceeding. Explicitly does NOT re-run audit or chalo.
+- **checkpoint** — user-forced, on-demand, minimal write-commit-push for
+  when real uncertainty is known ahead (session limit, unstable
+  connection) — distinct from Rule 9's judgment-triggered ~15-minute
+  rule, this is immediate and explicit, no audit, no full chalo.
+
+FRAMEWORK.md gained both mechanism-agnostic concepts (Rule 6). README's
+skills section gained both entries. Session limit was at ~7% when this
+was built — kept intentionally minimal (no exhaustive testing, unlike
+SDO-012's guard work) since the risk profile is much lower: these are new
+skill files, not a live enforcement mechanism.
+
 ## SDO-013 - 2026-07-02 - EVOLUTION_LOG.md rotated: older history moved to WORKSPACE/EVOLUTION_LOG_ARCHIVE/2026-06.md
 This file's own trigger for rotation had already fired earlier the same
 session, not hypothetically: a Read call against it truncated mid-file

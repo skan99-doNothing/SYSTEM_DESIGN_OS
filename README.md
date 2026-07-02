@@ -544,6 +544,31 @@ RECORD (status PROPOSED) in the relevant concept page via the
 standard INGEST.md Step 7 mechanism — deep mode creates no new
 approval pathway, only more rigorous analysis before the same output.
 
+### resume (SDO-014)
+
+Session-start recovery, not session-close — the counterpart to chalo.
+Triggered by "resume" or explicit invocation after a fresh session (a
+machine restart, a session-limit reset) has zero memory of prior work.
+Reads WORKSPACE/STATUS.md's baton, then EVOLUTION_LOG.md's newest entries
+(catching anything newer than STATUS.md's own confirmed-accurate date),
+cross-checks git log against what's claimed committed/pushed, then states
+back explicitly what's done/open/unstarted before proceeding. Built after
+a real gap: the bare word "resume" doesn't force a fresh session to read
+the right file on its own — CLAUDE.md only points to STATUS.md, it
+doesn't inject it. Does not re-run audit or chalo; those stay separate.
+
+### checkpoint (SDO-014)
+
+Forces an immediate, minimal write-commit-push when the user knows of
+real uncertainty ahead (session limit close, unstable connection) —
+distinct from OPERATING_CONTRACT.md Rule 9's judgment-triggered
+~15-minute mid-task rule, this one is user-forced, on demand, right now.
+Writes one EVOLUTION_LOG.md entry covering real progress since the last
+write (an empty checkpoint is noise, not safety — same standard as Rule
+9), optionally a dialogue insight, an honest STATUS.md staleness note if
+fast, then commits and pushes immediately. No audit, no full chalo — pure
+speed, capture-and-push, nothing more.
+
 ## 5. The two hooks — mechanical, with an honest limit on Bash coverage
 
 ### ingest-guard.sh

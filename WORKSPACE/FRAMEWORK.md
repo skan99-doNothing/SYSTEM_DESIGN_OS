@@ -346,6 +346,28 @@ A future implementation under a different agent should build an
 equivalent session-close check using the above trigger and precondition,
 not by copying the Claude Code skill directly.
 
+### The session-resume concept (mechanism-agnostic, SDO-014)
+
+The obligation: after a fresh session start with zero memory (machine
+restart, session-limit reset), reconstruct real state cheaply — a handful
+of targeted reads (STATUS.md's baton, EVOLUTION_LOG.md's newest entries,
+a git log cross-check), not a full audit or chalo re-run. Built after a
+real gap: "just say resume" alone doesn't force a fresh session to read
+the right file, since CLAUDE.md only points to STATUS.md, it doesn't
+inject it. What does NOT transfer: the Claude Code skill mechanism
+(.claude/skills/resume/). A future agent needs its own equivalent
+trigger + ordered read sequence.
+
+### The forced checkpoint concept (mechanism-agnostic, SDO-014)
+
+Distinct from OPERATING_CONTRACT.md Rule 9's judgment-triggered ~15-minute
+mid-task rule: this is a USER-forced, on-demand write when real
+uncertainty is known ahead (session limit approaching, unstable
+connection) — write what's real to EVOLUTION_LOG.md, commit, push,
+immediately, minimally, no full audit. What does NOT transfer: the
+Claude Code skill (.claude/skills/checkpoint/). A future agent needs its
+own on-demand trigger doing the same minimal write-commit-push sequence.
+
 ### The pre-ingestion orientation concept (mechanism-agnostic)
 
 Before committing to a full ingestion pass (which writes to SYSTEM_BRAIN/, updates indexes, and requires formal verification artifacts), an agent should be able to answer: "what does the system already contain, and would this new source add anything genuinely new?" That orientation check is distinct from ingestion itself — it reads existing state, produces a report, and makes no writes.
