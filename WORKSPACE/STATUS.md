@@ -12,6 +12,16 @@ same-day session). If significantly more EVOLUTION_LOG.md entries exist
 after this date than are reflected here, this file may be stale —
 cross-check before trusting it fully.
 
+**KNOWN STALE AS OF SDO-013 (this note added deliberately, not missed):**
+this file's baton below stops at SDO-012. SDO-013 (EVOLUTION_LOG.md
+rotation — older history moved to WORKSPACE/EVOLUTION_LOG_ARCHIVE/2026-06.md)
+happened after, is fully committed and pushed (commit d48250e), and is
+NOT reflected in the baton text below. Read EVOLUTION_LOG.md's SDO-013
+entry (top of the live file) for what actually happened. This session
+also ended WITHOUT a chalo close — no formal session-close pass, no
+STATUS.md re-verification beyond this note. Run chalo first thing next
+session to properly close this out and regenerate an accurate baton.
+
 ## Handoff baton — paste this to start a new chat with Claude
 
 [This entire section gets REPLACED in full by chalo at every session
