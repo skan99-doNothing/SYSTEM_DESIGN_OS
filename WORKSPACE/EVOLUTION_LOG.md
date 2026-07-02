@@ -4,6 +4,85 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-012 - 2026-07-02 - ingest-guard.sh redesigned: guard blocks are conflicts to resolve, not tool gaps to route around
+SDO-005 (this same day) logged, but did not fix, two real gaps exposed once
+SDO-002 made the guard actually block for the first time: it only covered
+the Write/Edit tools (a Bash-based write bypassed it entirely), and it had
+no path through for a legitimate, confirmed-correct write — meaning the
+next real INGEST.md Step 6 reconciliation would hit the identical wall a
+malformed write would.
+
+The user, working through the design live, correctly rejected an early
+framing that treated "use the Bash tool since its bypass is unguarded" as
+an acceptable channel for legitimate writes — a write is a write regardless
+of tool, and leaning on an accidental matcher gap just relocates the same
+unchecked hole rather than closing it. The user then reframed the actual
+problem correctly: a guard block on a write believed to be legitimate is a
+CONFLICT (the mechanical check says no, the actor says yes), not a routing
+inconvenience — and conflicts in this system get surfaced and explicitly
+resolved, never silently routed around. This is the same principle
+RULES.md already documents for content conflicts (new source vs. existing
+brain content, deferred since no real instance existed) — applied here as
+a second, live instance, one layer down: an enforcement conflict instead
+of a content conflict.
+
+**What was built**, per that design:
+1. `.claude/settings.json`'s PreToolUse matcher extended from `Write|Edit`
+   to `Write|Edit|Bash`, so a Bash-based write into a guarded path is now
+   actually checked, not silently exempt.
+2. The Bash check is an honestly-imperfect heuristic: a guarded-path
+   mention combined with a write-risk token (redirection, sed -i, cp/mv/
+   tee, or a general-purpose interpreter invocation) triggers a block.
+   Deliberately biased toward extra friction over a silent miss, and
+   explicitly documented as unable to catch every conceivable way a shell
+   command could write a file.
+3. A genuine override mechanism, modeled as logged conflict resolution,
+   not a bypass: `.claude/.guard-override.json` (gitignored, ephemeral)
+   must state the exact target path, a reference string, and a creation
+   timestamp. The guard only honors it if (a) the path matches the actual
+   write target, (b) the reference string is already found, verbatim, in
+   THIS file (WORKSPACE/EVOLUTION_LOG.md) — the paper trail must exist
+   BEFORE the override is honored, not after — and (c) the marker is under
+   15 minutes old. On a successful match, the marker is deleted
+   immediately (single-use, not a standing bypass).
+
+**Verification, not self-report:** built a 17-case test battery (simulated
+stdin, then real harness calls) covering: non-guarded paths pass; guarded
+paths without an override block (both Write/Edit and Bash); `_TEMPLATE/`
+still exempt; read-only commands merely mentioning a guarded path pass;
+valid overrides consume and allow exactly once; a reused, wrong-path,
+non-existent-logref, or stale-timestamp override all still block. One real
+bug was found and fixed during testing: the write-token check's bare `>`
+matched harmless diagnostic redirects (`2>&1`, `2>/dev/null`) that mention
+a guarded path only incidentally — these are now stripped before the
+write-token check, while a genuine write redirect (even combined with a
+stderr redirect) still blocks correctly (re-verified after the fix). Then
+live-fire tested through the actual harness itself, not simulation: a real
+Bash write attempt into WORKSPACE/SYSTEM_BRAIN/ was genuinely refused
+(confirmed via `ls` — no file landed).
+
+RULES.md's conflict-preservation section extended with this as its second
+named instance (enforcement layer, alongside the original content-layer
+one). FRAMEWORK.md's guardrail concept and README.md's hooks section
+updated to describe the new design plainly, including its honest limits.
+SDO-005 is superseded by this entry, not left open — see STATUS.md.
+
+Mid-task checkpoint: the design reasoning (before this entry existed) was
+written to SYSTEM_BRAIN/dialogue/conversational.md partway through this
+session, per the mid-task-discovery-checkpointing rule, since more than 15
+minutes had passed with real, non-narration decisions made only in chat.
+
+Addendum, same pass: per SDO-011's own extended rule, RULES.md and
+FRAMEWORK.md both received substantive new content above — README.md's
+dictionary entries for both were checked and updated (RULES.md's entry
+now describes both conflict-preservation instances, content and
+enforcement; FRAMEWORK.md's entry now mentions the SDO-012 redesign
+alongside SDO-002's testing lesson), not deferred to a later pass.
+STATUS.md fully rewritten to reflect SDO-002 through SDO-012 (not a
+formal chalo close — see its own header note).
+
+
+
 ## SDO-011 - 2026-07-02 - INDEPENDENT_REVIEW.md created: the review protocol is now a standing, self-improving file, not a one-off prompt
 Per explicit user instruction: the next independent review cycle must
 start from an already-updated prompt (not require someone to manually dig

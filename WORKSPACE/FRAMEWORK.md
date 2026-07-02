@@ -166,24 +166,61 @@ to other agents (confirmed: Codex uses an entirely different config
 format and hook trust model under .codex/).
 
 The write-protection guardrail blocks writes into DOMAINS/, SYSTEM_BRAIN/,
-or SYSTEM_SOURCES/ unless that path is _TEMPLATE/:
+or SYSTEM_SOURCES/ unless that path is _TEMPLATE/, OR a genuine, logged
+override is presented (redesigned SDO-012 — see below):
 
 What IS portable is the concept itself, specified here independent of
 any tool's syntax, so it can be rebuilt under a different agent's own
 mechanism:
 
-- **Trigger condition:** before any file write completes
+- **Trigger condition:** before any file-write-capable action completes —
+  not just a dedicated Write/Edit tool, but ANY mechanism that tool can
+  use to write a file (SDO-012 extended this from Write/Edit-only to also
+  cover Bash-tool invocations, since a write is a write regardless of
+  which tool makes it — see the honest limitation below on why this still
+  isn't total coverage).
 - **Check performed:** does the target path fall under DOMAINS/,
   SYSTEM_BRAIN/, or SYSTEM_SOURCES/, and is it NOT under a _TEMPLATE/
-  subpath?
-- **Action on match:** block the write; surface a message referencing
-  INGEST.md Step 0 (routing must be confirmed before writing here)
-- **Action on no match:** allow the write normally
-- **Known limitation, true regardless of implementation:** this checks
-  WHERE a write happens, not WHETHER a genuine routing decision occurred
-  first. It's a geography check, not a process check (CC-027's own
-  stated limitation) — true for any agent's version of this guardrail,
-  not just Claude Code's.
+  subpath? If so, is a valid override present — a record whose stated
+  target matches this exact write, whose stated justification already
+  exists (verbatim) in the append-only decision log, and whose age is
+  within a short, bounded window?
+- **Action on match, no valid override:** block the action; surface a
+  message stating this is a CONFLICT (the guard disagrees with the
+  actor's belief the write is legitimate), not a routing gap, and explain
+  how to produce a genuine override.
+- **Action on match, valid override present:** allow the write once, then
+  consume (delete) the override — it is single-use, not a standing
+  bypass.
+- **Action on no match:** allow the write normally.
+- **Known limitation, true regardless of implementation:** a block used
+  to be resolved by checking WHERE a write happens, not WHETHER a genuine
+  routing decision occurred first — a geography check, not a process
+  check (CC-027's original, honest limitation). SDO-012 closes that
+  specific gap by requiring an actual logged decision before any override
+  is honored. What remains true for any implementation: if the tool this
+  guardrail hooks into can be extended arbitrarily (a general-purpose
+  scripting/shell tool), no finite set of pattern checks can be
+  guaranteed complete — the Bash-tool check is a best-effort heuristic
+  over the raw command text, not a full interpreter, and cannot catch
+  every conceivable way a command could write a file. This is a real,
+  stated residual risk, not claimed as complete coverage.
+
+**A guard block is a conflict to resolve, not a tool gap to route around
+(SDO-012).** An early design pass considered treating an accidental
+exemption (a tool the guardrail's matcher didn't cover) as an acceptable
+channel for legitimate writes. This was rejected: a write is a write
+regardless of tool, and using an accidental gap as if it were a sanctioned
+path just relocates the same unchecked hole rather than closing it. The
+correct model, worked out with the user directly: a block on a write
+believed to be legitimate is the same shape as RULES.md's already-
+documented content-conflict mechanism (two things disagree; don't silently
+pick one; surface it; require an explicit, logged, human-traceable
+resolution) — applied one layer down, at the enforcement layer instead of
+the content layer. The override mechanism this produced requires a
+matching decision-log entry to exist ON DISK before it is honored (the
+paper trail is a precondition for resolution, not a record written after
+the fact), and is consumed after exactly one use.
 
 **A guardrail is not built until a real blocked write has been logged
 (SDO-002).** The original ingest-guard.sh implementation (CC-027) read

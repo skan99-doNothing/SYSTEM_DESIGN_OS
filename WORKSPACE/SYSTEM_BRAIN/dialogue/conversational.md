@@ -343,3 +343,42 @@ further: SDO-002's fix exposed that the hook's matcher only covers the
 Write/Edit tools, not Bash-based writes, and that it has no override path
 for a legitimate blocked action (SDO-005, logged as a deferred design
 item, not yet a second confirmed instance of anything).
+
+### 2026-07-02 — A guard block is a conflict to resolve, not a tool gap to route around (SDO-012, in progress)
+
+While designing a fix for SDO-005 (ingest-guard.sh has no override path and
+only covers Write/Edit, not Bash), an early proposal considered treating the
+Bash tool's accidental exemption from the guard's matcher as an acceptable
+"sanctioned channel" for legitimate writes. This was directly and correctly
+rejected: a write is a write regardless of which tool makes it, and leaning
+on an accidental matcher gap as if it were a real permission path just
+relocates the same unchecked hole instead of closing it.
+
+**The reframe that replaced it:** a guard block is not a technical
+inconvenience to route around. The guard's own stated purpose (per its
+original comment) was always to block "unless an explicit routing decision
+has just been stated" — but its actual check never verified that, only
+path geography. So a block on a write believed to be legitimate is a real
+CONFLICT: the mechanical check says no, the actor believes yes. This system
+already has exactly one other instance of "never silently resolve a
+conflict, surface it and require explicit human resolution" — RULES.md's
+conflict-preservation mechanism, previously scoped only to content
+conflicts (new source vs. existing brain content) and deliberately left
+unbuilt since no real content conflict had ever occurred. This is a second
+instance of the SAME underlying principle, one layer down: an enforcement
+conflict (is this action allowed) instead of a content conflict (what is
+true).
+
+**Design consequence:** the override mechanism being built is not a bypass
+button — it requires a real EVOLUTION_LOG.md entry to exist ON DISK before
+the override marker is honored (log-first, not log-after), single-use,
+path-matched, and time-bounded. The guard's matcher is also being extended
+to cover Bash (best-effort heuristic on the raw command, honestly
+documented as imperfect), so no tool gets a silent pass by name alone.
+
+**Standing implication:** when a mechanical check blocks something believed
+legitimate, the right question is never "which tool gets around this" —
+it's "what would make this an explicit, logged, resolved conflict instead
+of a silent one." Watch for a second instance of this shape (an enforcement
+mechanism vs. a genuine legitimate action) before treating it as a fully
+generalized pattern beyond this specific guard.

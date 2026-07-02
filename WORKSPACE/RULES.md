@@ -125,6 +125,36 @@ intact with their source provenance, tag the entry as CONFLICT, and
 require explicit human resolution rather than auto-resolving by
 recency or confidence score alone.
 
+### Second instance, built for real: enforcement conflicts (SDO-012)
+
+The section above is scoped to CONTENT conflicts — two facts disagreeing.
+SDO-012 found and built a second, real instance of the exact same
+underlying principle at a different layer: an ENFORCEMENT conflict — a
+mechanical guardrail (ingest-guard.sh) blocks a write, and the actor
+believes that specific write is legitimate. This is the same "never
+silently resolve, surface and require explicit resolution" shape, just
+one layer down (is this action allowed, not what is true).
+
+Unlike the content-conflict instance above, this one was NOT deferred
+waiting for a hypothetical first occurrence — it was a live, immediate
+problem the moment SDO-002 made the guard actually block for the first
+time (any real INGEST.md Step 6 write would hit it). The built mechanism:
+a single-use override (`.claude/.guard-override.json`) that is only
+honored if a matching, dated reason ALREADY EXISTS in EVOLUTION_LOG.md
+before the override is checked — the log entry is a precondition for
+resolution, not a record written after the fact. This keeps the same
+discipline the content-conflict design above calls for (explicit,
+provenanced, human-traceable resolution, never a silent pick) without
+waiting for that mechanism to also be built first.
+
+**The general pattern, now confirmed twice:** when this system detects two
+things disagreeing — a new fact vs. an existing one, or a mechanical check
+vs. an actor's belief — the resolution is always the same shape: surface
+it, require an explicit and logged decision, never let one side win
+silently. Watch for a third instance before considering whether this
+deserves promotion to a single, generalized "conflict resolution" concept
+in FRAMEWORK.md rather than two separately-described instances.
+
 ## ID-linking: stable identity, mutable state, traceable history
 
 Every ID minted in this system (system-level SDO-XXX, or any domain's

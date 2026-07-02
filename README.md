@@ -184,7 +184,10 @@ SYSTEM_DESIGN_OS/
   every real write from CC-027's original build until SDO-002 found
   and fixed the wrong input source and exit code, with zero blocked-
   write events ever logged across that entire period as the tell
-  nobody had checked), for
+  nobody had checked; SDO-012 then substantially redesigned the spec —
+  a guard block is now modeled as a CONFLICT to explicitly resolve via
+  a single-use, log-verified override, not a bypass to route around,
+  extended to cover the Bash tool as well as Write/Edit), for
   the session-identity verification hook (confirming the loaded entry-
   point file is the correct one for this project, using the tool's
   own authoritative project-root signal rather than a hand-written
@@ -219,14 +222,16 @@ SYSTEM_DESIGN_OS/
   handed off independently, it gets copied out of DOMAINS/ into its
   own brand-new git repository (a deliberate one-way split, not a
   synced submodule), so ownership isolation is preserved without
-  exposing other domains' history; and a conflict preservation
-  mechanism — documented but not yet built, with an explicit trigger
-  condition (the first real conflict surfaced by Step 6 reconciliation
-  or audit), specifying that both sides of a contradiction must be
-  preserved intact with their source provenance and tagged CONFLICT
-  for human resolution rather than silently overwritten. Both of the
-  last two are not built yet; documented so the decisions exist before
-  they're needed under pressure; and an ID-linking rule (SDO-001) —
+  exposing other domains' history; a conflict preservation principle
+  with two named instances — the original CONTENT-layer one (a new
+  source contradicts existing brain content) is still documented but
+  not yet built, waiting for a genuine first occurrence rather than
+  designing against a hypothetical; a second, ENFORCEMENT-layer
+  instance (SDO-012) was built for real the same day it was needed — a
+  guard block on a believed-legitimate write is the same "never
+  silently resolve, surface and require explicit resolution" shape,
+  applied to ingest-guard.sh (see section 5's hooks entry for the full
+  mechanism); and an ID-linking rule (SDO-001) —
   every ID (system-level SDO-XXX or a domain's own scoped prefix) is a
   permanent key, never edited after the fact; a new ID is minted only
   on a real state change (a Department moving, splitting, or merging),
@@ -522,40 +527,48 @@ RECORD (status PROPOSED) in the relevant concept page via the
 standard INGEST.md Step 7 mechanism — deep mode creates no new
 approval pathway, only more rigorous analysis before the same output.
 
-## 5. The two hooks — mechanical for Write/Edit, not a complete write-guard
+## 5. The two hooks — mechanical, with an honest limit on Bash coverage
 
 ### ingest-guard.sh
 
-Fires on every Write or Edit tool call, before it completes. Blocks that
-call into DOMAINS/, SYSTEM_BRAIN/, or SYSTEM_SOURCES/ unless the target
-path is inside a _TEMPLATE/ folder. This is not advice Claude can choose
-to follow via the Write/Edit tools specifically — a shell script runs
-regardless of what Claude decides in the moment for those two tools.
+Fires on every Write, Edit, or Bash tool call, before it completes.
+Blocks any that targets DOMAINS/, SYSTEM_BRAIN/, or SYSTEM_SOURCES/ (and
+isn't under _TEMPLATE/) unless a genuine, logged override is presented.
+This is not advice Claude can choose to follow — a shell script runs
+regardless of what Claude decides in the moment.
 
-**This claim was false from CC-027 (original build) until SDO-002 —
-and is still only partially true today.** The original implementation
-read its target path from a positional argument and exited 1 on a
-match — Claude Code actually delivers PreToolUse input as JSON on stdin
-and only exit code 2 blocks the tool call, so the hook silently exited 0
-on every real write for its entire history; zero blocked-write events
-were ever logged. SDO-002 rewrote it to parse stdin JSON, exit 2, and
-warn on stderr, then live-fire tested it against a real Write into
-SYSTEM_BRAIN/ — the harness genuinely refused the write (logged as the
-first real INGEST GUARD firing).
+**History, stated honestly rather than smoothed over:** the original
+implementation (CC-027) read its target path from a positional argument
+and exited 1 on a match — Claude Code actually delivers PreToolUse input
+as JSON on stdin and only exit code 2 blocks the tool call, so the hook
+silently exited 0 on every real write for its entire history until
+SDO-002 found and fixed it, live-fire tested against a real blocked
+Write. Fixing that exposed two further gaps: the hook only covered
+Write/Edit (a Bash-based write bypassed it entirely), and it had no path
+through for a legitimate write, meaning a real INGEST.md Step 6 write
+would hit the identical wall a malformed one would (logged as SDO-005).
 
-Fixing the exit code exposed two further limits, both logged as
-undecided design items rather than fixed (SDO-005): (1) the hook is only
-registered against the Write|Edit matcher in .claude/settings.json — a
-file write via the Bash tool (`sed`, `python`, `>`) is never intercepted
-at all, so "cannot be talked past" only holds for two of the tools that
-can write a file; (2) the hook has no override path once it blocks — not
-even a human's explicit chat-level approval changes its decision, which
-means a real, legitimate INGEST.md Step 6 reconciliation write would hit
-the identical wall a malformed one would. See FRAMEWORK.md's guardrail
-concept section for the mechanism-agnostic lesson from SDO-002 (a
-guardrail isn't built until a real blocked action is logged), and
-EVOLUTION_LOG.md's SDO-005 entry for the open design questions this
-review deliberately left undecided rather than rushing a fix.
+**SDO-012 redesigned it properly, based on a direct correction from the
+user:** an early idea to treat the Bash-tool exemption as an acceptable
+channel for legitimate writes was rejected — a write is a write regardless
+of tool, and leaning on an accidental gap just relocates the same hole. A
+guard block on a believed-legitimate write is a CONFLICT (the mechanical
+check disagrees with the actor), and this system already has a principle
+for exactly that shape (RULES.md's conflict-preservation mechanism,
+previously scoped to content conflicts only) — applied here as a second
+instance, one layer down. The hook now also covers Bash (best-effort
+heuristic on the raw command text: a guarded-path mention plus a
+write-risk token), and a real write gets through only via a single-use
+override that requires a matching, dated justification to already exist
+in EVOLUTION_LOG.md before it's honored — the log entry is a precondition
+for resolution, not an afterthought. Verified with a 17-case test battery
+plus real harness-level live-fire tests (a genuine blocked Bash write, and
+a genuine override-based write that succeeded and was correctly
+consumed). **Honest residual limit, unchanged in kind:** the Bash check is
+a heuristic over raw command text, not a shell parser — it cannot catch
+every conceivable way a command could write a file (e.g. a compiled
+binary, a symlink trick). See FRAMEWORK.md's guardrail concept section
+and RULES.md's conflict-preservation section for the full design.
 
 ### verify-claude-md.sh
 

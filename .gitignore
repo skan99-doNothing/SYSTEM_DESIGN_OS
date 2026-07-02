@@ -1,6 +1,9 @@
 # Machine-specific Claude Code overrides
 .claude/settings.local.json
 
+# Single-use guard override marker (SDO-012) — ephemeral, never committed
+.claude/.guard-override.json
+
 # Source files — stored in Google Drive, not git
 WORKSPACE/SYSTEM_SOURCES/
 DOMAINS/*/RAW/
