@@ -4,6 +4,41 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-028 - 2026-07-02 - CHECKPOINT: real, unresolved simplification question raised — no decision locked yet, no files changed since SDO-027
+User raised a substantive architectural critique after SDO-027: this
+system was meant to be a simple, two-pillar design (LLM Wiki + ICM, per
+synthesis/overview.md's own stated DNA) and has become "extremely
+complicated." Asked to reason it through together before acting, not to
+jump straight to fixing.
+
+**Real facts surfaced in that reasoning, worth preserving even though no
+decision was made:** this single session alone produced 27 SDO log
+entries; current real inventory is 7 skills, 4 hooks, 10
+OPERATING_CONTRACT rules with many sub-rules, plus PATTERNS.md,
+RULES.md, INDEPENDENT_REVIEW.md, DECISIONS.md, STATUS.md, and a rotated
+EVOLUTION_LOG — and **zero real business domains have ever been run
+through any of it.** Nearly all of tonight's mechanism-building
+(sdo-log-guard.sh, checkpoint-reminder.sh, audit 1e/1f, sync-status, the
+INDEPENDENT_REVIEW.md PIL apparatus) exists because something was caught
+broken and got a permanent fix, one incident at a time, never revisited
+as a whole against the original two-pillar scope.
+
+**Proposed method (not yet agreed to):** classify every real file/
+skill/hook into three buckets — Core (directly IS LLM Wiki or ICM),
+Load-bearing scaffolding (prevents a real, demonstrated failure, would
+be genuinely missed), Self-referential accretion (built to keep the
+system honest about its own construction, no clear tie to serving a real
+domain). Explicit recommendation given: don't cut based on a whiteboard
+guess — run ONE real domain through DOMAINS/_TEMPLATE/ first, let real
+use reveal what's actually load-bearing vs. untouched, THEN cut with
+evidence rather than opinion.
+
+**Open question, unresolved, asked directly of the user:** simplify
+first, or run a real domain first to generate the evidence for what to
+cut? Awaiting the user's answer — this is exactly a real decision per
+Rule 8, not yet locked, so no DECISIONS.md entry yet; that comes once
+resolved.
+
 ## SDO-027 - 2026-07-02 - audit gains check 1f: routine, rotation-based hook live-fire testing — closes the actual mechanism gap that let ingest-guard.sh sit broken through its entire history
 User's pushback was structural, not rhetorical: what is audit's actual
 role if things get built and never tested for real function? Checked
