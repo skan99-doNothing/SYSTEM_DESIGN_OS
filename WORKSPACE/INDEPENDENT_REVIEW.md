@@ -65,7 +65,59 @@ they are already known and logged in STATUS.md/EVOLUTION_LOG.md. The next
 review's value is in finding what ISN'T already known, not re-confirming
 what is.
 
-<!-- Next cycle: append a new ### v3 section here, in this same format,
+### v3 — 2026-07-02 (real work pass, SDO-015 through SDO-024, not a formal review run)
+
+Same category as v2's fold-in: not a paste-into-fresh-session review, but
+a same-day real work pass whose findings are generalizable enough to
+belong here rather than only in EVOLUTION_LOG.md. Four new lessons:
+
+**PIL-12 — A soft rule's exact wording can leave a loophole even when its
+intent is clear.** CLAUDE.md's "check SYSTEM_BRAIN... BEFORE answering"
+was violated in spirit but arguably not in letter (SDO-020): spawning an
+external verification agent was not literally "answering," so the brain
+check was skipped and only performed afterward to explain the miss. A
+rule stated as "before X" implicitly permits everything that isn't
+literally X. Fix pattern: state the rule as "before ANY action, including
+[specific enumerated actions most likely to be mistaken for exempt]," not
+just "before the outcome." Applied at CLAUDE.md/AGENTS.md's fix (SDO-023).
+Next review should spot-check other "before X" rules in this system for
+the same category of loophole, not just this one instance.
+
+**PIL-13 — A single-use conflict-resolution override is real friction in
+a multi-file operation, observed for the first time.** SDO-012's override
+mechanism (`.claude/.guard-override.json`) was exercised in genuine
+production for the first time this session (SDO-021/022/024) — a
+multi-file ingestion needed the override re-created fresh three separate
+times, once per guarded Bash call, since it's consumed on first use by
+design. This worked correctly and safely, but the friction is real: it
+rewards batching guarded writes into as few Bash calls as possible
+(demonstrated: one heredoc-based Bash call writing multiple files
+consumes only one override). Not a flaw to fix — a usage pattern worth
+documenting so the next real ingestion doesn't rediscover it by trial and
+error. Candidate: add this batching tip directly to ingest-guard.sh's own
+stderr block message.
+
+**PIL-14 — A self-caught overclaim is real evidence 6b-style self-distrust
+is working, and is itself worth checking for, not just failures.** SDO-024
+found and corrected an inflated instance count in STATUS.md (SDO-017/018
+wrongly counted as further instances of the conflict-preservation
+pattern) BEFORE acting on it, without the user pointing it out first.
+Independent review's existing mandate only asks whether CLEAN results get
+falsified (6b); it does not currently ask whether the working session
+demonstrated any self-caught corrections at all. Add to TASK-05 or a new
+sub-task: scan EVOLUTION_LOG.md for self-initiated corrections (not
+user-flagged) as a positive signal, not just scanning for missed errors.
+
+**PIL-15 — Step 7's human-approval loop was exercised for real for the
+first time (SDO-024): confirm the traceback survives, not just the
+approval.** The SUGGESTION RECORD → APPLIED flow requires "a reference
+back to the suggestion record that originated it" per INGEST.md's own
+text. This was done (SDO-024 cites SDO-022; the concept page's record
+was updated in place, not deleted). Next review should verify this
+traceback pattern holds for any FUTURE suggestion-record approvals too,
+not assume one clean instance means the mechanism is permanently proven.
+
+<!-- Next cycle: append a new ### v4 section here, in this same format,
      with its own PIL entries — do not create a separate file. -->
 
 ---

@@ -4,6 +4,48 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-025 - 2026-07-02 - INDEPENDENT_REVIEW.md gained v3: four new PIL entries folded in from tonight's real work pass (SDO-015 through SDO-024), same precedent v2 already set
+User asked directly whether the independent-review prompt had been
+upgraded with tonight's learnings — it had not. This was a real, live
+gap: tonight's session (SDO-015 through SDO-024) surfaced several
+genuinely generalizable lessons, the same category v2 already
+established belongs in this file even from a real work pass rather than
+a formal cold-session review run.
+
+**Added as v3, PIL-12 through PIL-15:**
+- PIL-12: a "before X" rule can leave a loophole for anything not
+  literally X (SDO-020's brain-check-before-answering miss) — fix
+  pattern is enumerating the specific exempt-seeming actions explicitly,
+  not just naming the outcome.
+- PIL-13: the guard override's single-use design creates real,
+  observed friction across a multi-file operation (SDO-021/022/024) —
+  not a flaw, but a usage pattern worth documenting (batch guarded
+  writes into one Bash call to consume only one override).
+- PIL-14: a self-caught overclaim (SDO-024 correcting its own inflated
+  instance count before acting) is positive evidence worth actively
+  checking for in future reviews, not just scanning for missed errors.
+- PIL-15: Step 7's suggestion-record-to-APPLIED traceback was exercised
+  for real for the first time (SDO-024) and held — next review should
+  verify this holds for future instances too, not assume one clean
+  pass proves it permanently.
+
+README.md's INDEPENDENT_REVIEW.md dictionary entry checked against this
+change — describes the mechanism generically (Revision History
+accumulates PIL entries every cycle) without enumerating specific PIL
+numbers, so it does not go stale from this addition; no README edit
+needed.
+
+**Addendum, same shape of miss as SDO-020, caught by the user asking
+twice:** the user's first question ("have you upgraded the prompt as
+advised") was answered narrowly — only CLAUDE.md/AGENTS.md were checked,
+because that was the most recent fix in mind. "The prompt" was not
+recognized as potentially also meaning INDEPENDENT_REVIEW.md's own named
+"Review Prompt" section, even though that file exists specifically for
+this kind of cross-session learning capture. Only a second, more
+specific question surfaced the actual gap. Same underlying failure as
+SDO-020: answering from what's already in hand instead of checking what
+else a question could reasonably mean before responding.
+
 ## SDO-024 - 2026-07-02 - OVERRIDE JUSTIFICATION + APPLIED: audit's SUGGESTION RECORD (1e, secondary-source-only check) approved and applied; STATUS.md's earlier overclaim on "3 instances" of conflict-preservation corrected
 User gave explicit approval to close identified gaps without waiting for
 further per-item confirmation ("lets start closing all identified gaps
