@@ -4,6 +4,52 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-017 - 2026-07-02 - sdo-log-guard.sh built: a commit referencing an SDO-ID with no EVOLUTION_LOG.md entry is now mechanically blocked
+Discovered live during a `resume`: SDO-016 (e45b3fe, CLAUDE.md/AGENTS.md gaining
+resume/checkpoint triggers) had been committed with NO corresponding
+EVOLUTION_LOG.md entry at all — a direct violation of CLAUDE.md's own
+non-negotiable ("log real decisions... as part of doing the work, not as a
+separate step afterward"). The gap was only caught because `resume`'s git-log
+cross-check step surfaced a commit with no matching log entry — an expensive,
+manual, after-the-fact detection, not a prevention.
+
+User correctly identified this as the same soft-rule failure shape SDO-015
+already flagged for Rule 9 (mid-task checkpoint timing): a rule that depends
+entirely on the model remembering under pressure will eventually get skipped,
+silently, with no signal until someone happens to cross-check. Rather than
+just patching the missing SDO-016 entry and moving on, built the mechanical
+fix: `.claude/hooks/sdo-log-guard.sh`, a new PreToolUse hook (matcher `Bash`,
+added alongside the existing ingest-guard.sh entry in .claude/settings.json)
+that inspects any `git commit` command, extracts every `SDO-\d+` ID referenced
+in it, and blocks (exit 2) if any ID has no matching mention yet in
+WORKSPACE/EVOLUTION_LOG.md. Same category of fix as ingest-guard.sh
+(SDO-002/012): a rule alone can be skipped under pressure, a hook cannot.
+
+Tested before trusting it (per the SDO-002 lesson — a hook that silently does
+nothing is worse than none): a commit message with a fake, unlogged SDO-999
+ID was genuinely blocked (exit 2, real stderr message); a commit referencing
+the real, already-logged SDO-015 passed (exit 0); non-commit Bash commands and
+non-Bash tool calls both passed through untouched. All four cases verified
+against the real hook script, not simulated.
+
+**Known, honest limitation** (stated in the hook's own header): only checks
+that the SDO-ID string appears somewhere in EVOLUTION_LOG.md, not that the
+entry is substantive — a bare mention would pass. Only covers commits made
+via the Bash tool inside this harness, not commits made in a raw terminal
+outside Claude Code.
+
+The immediate gap this exposed (SDO-016's missing entry) is backfilled
+separately, see SDO-016 entry below.
+
+## SDO-016 - 2026-07-02 - CLAUDE.md/AGENTS.md gain resume and checkpoint triggers
+(Backfilled: this entry was missing at commit time — e45b3fe — discovered and
+logged only during SDO-017's investigation above. The commit itself: a cold
+session reading only CLAUDE.md had no way to learn `resume` or `checkpoint`
+exist as skills, ironic given SDO-014 built `resume` specifically for that
+cold-start scenario. Both CLAUDE.md and AGENTS.md gained a short "Starting
+fresh" / "Mid-session" trigger section pointing to the two skills, kept in
+sync per Rule 8's CLAUDE.md/AGENTS.md sync requirement.)
+
 ## SDO-015 - 2026-07-02 - URGENT NEXT SESSION: Rule 9's 15-min checkpoint is soft and already demonstrably failed once — needs a mechanical fix, not just a skill
 User correctly rejected "judgment-based, can be skipped" as an acceptable
 answer for this specific rule — unlike other soft rules in this system,

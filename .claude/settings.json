@@ -19,6 +19,15 @@
             "command": "bash .claude/hooks/ingest-guard.sh"
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/sdo-log-guard.sh"
+          }
+        ]
       }
     ]
   }
