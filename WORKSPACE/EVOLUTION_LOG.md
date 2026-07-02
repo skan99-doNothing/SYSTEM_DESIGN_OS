@@ -4,6 +4,17 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-034 - 2026-07-02 - CHECKPOINT: user states real, direct loss of trust after SDO-033 (a "full audit" missing something checkable with one `ls`) — no fix attempted in this entry, stated plainly
+User checkpointed explicitly to log this moment honestly rather than let
+it pass unrecorded: after SDO-029's full chalo audit was reported clean,
+README.md was found stale on something as simple as its own skill count
+(SDO-033) — user states this directly caused real, total loss of
+confidence, "as simple as readme." No mitigating framing added here;
+this entry exists to record the trust state honestly, not to argue it
+was actually fine. A concrete confidence-rebuilding proposal was
+requested next, explicitly scoped as PROPOSAL ONLY — no execution
+without the user choosing it first.
+
 ## SDO-033 - 2026-07-02 - README.md's "The four skills" header was stale (real count: seven) — survived SDO-029's "full audit" minutes earlier; real cause found and fixed with a new mechanical check, not just the content typo
 Directly after chalo closed and was reported complete, the user found
 README.md §4 still read "The four skills" and the architecture tree
