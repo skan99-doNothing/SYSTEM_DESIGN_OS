@@ -3,6 +3,36 @@
 Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
+
+## SDO-015 - 2026-07-02 - URGENT NEXT SESSION: Rule 9's 15-min checkpoint is soft and already demonstrably failed once — needs a mechanical fix, not just a skill
+User correctly rejected "judgment-based, can be skipped" as an acceptable
+answer for this specific rule — unlike other soft rules in this system,
+Rule 9's mid-task checkpoint exists SPECIFICALLY to prevent hours of real
+work being lost with nothing written down. A rule that can silently not
+fire (confirmed: it didn't fire on its own earlier this same session -
+the user had to prompt "it's been 15 min, are checkpoints being
+practiced" before a checkpoint was actually written) defeats its own
+purpose. The `checkpoint` skill (SDO-014) is a good on-demand backstop
+but does not fix the underlying gap: nothing forces the 15-minute check
+to happen if the user doesn't notice and ask.
+
+**Real fix needed, not yet built (out of budget this session):** a
+PostToolUse hook (or similar mechanical trigger, matching a broad set of
+tools) that checks elapsed real time since EVOLUTION_LOG.md's last
+modification (`stat`/`git log -1 --format=%ct` on that file) against a
+~15-minute threshold, and if exceeded, emits a strong, visible reminder
+that surfaces to the model — not just relying on Claude noticing on its
+own. This converts Rule 9 from a self-monitored judgment call into a
+hook-backed forcing function, the same category of fix SDO-002/SDO-012
+already applied to ingest-guard.sh (a rule alone can be skipped under
+pressure; a hook cannot). Needs real design before building: what tool
+matcher to use, what the reminder message should say, whether it should
+be able to fire on every tool call cheaply without adding meaningful
+overhead. Treat this as the TOP priority next session, ahead of any other
+open item — it is the one gap that could cause the exact failure this
+whole system was built to prevent.
+
+---
 ## Log rotation notice (permanent, not a dated entry)
 
 Older history (CC-111 and earlier, 2026-06-26 through 2026-06-28) lives in
