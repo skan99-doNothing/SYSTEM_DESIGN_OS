@@ -4,6 +4,9 @@
 # Single-use guard override marker (SDO-012) — ephemeral, never committed
 .claude/.guard-override.json
 
+# Checkpoint reminder throttle marker (SDO-018) — ephemeral, never committed
+.claude/.checkpoint-reminder-state
+
 # Source files — stored in Google Drive, not git
 WORKSPACE/SYSTEM_SOURCES/
 DOMAINS/*/RAW/

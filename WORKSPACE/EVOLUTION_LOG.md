@@ -4,6 +4,37 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-018 - 2026-07-02 - checkpoint-reminder.sh built: Rule 9's 15-min checkpoint is now a throttled, non-blocking mechanical nudge, not a self-monitored judgment call
+Closes the exact gap SDO-015 flagged as top priority: Rule 9's checkpoint
+timing had already demonstrably failed once (didn't fire on its own; the
+user had to prompt "it's been 15 min, are checkpoints being practiced").
+Same soft-rule-to-hook fix pattern as ingest-guard.sh (SDO-002/012) and
+sdo-log-guard.sh (SDO-017) — but deliberately NON-BLOCKING: unlike a bad
+write or an unlogged commit, "15 minutes passed" is not a discrete
+correctable action worth stalling a tool call over. A hard block here would
+have been the "absurd fix" explicitly ruled out this session.
+
+User pushed correctly on cost during design: firing an identical reminder
+on every tool call while overdue would repeat text into context for no
+added safety past the first instance — pure token waste, the same "don't
+keep loading tokens and being expensive" concern raised earlier about
+resume's cross-check cost. Resolved by throttling: a new gitignored marker,
+`.claude/.checkpoint-reminder-state` (same ephemeral-state precedent as
+`.claude/.guard-override.json`, SDO-012), records the last-reminded time;
+a fresh reminder only fires after its own ~15-minute cooldown. A real
+EVOLUTION_LOG.md write always takes precedence and silently clears the
+marker — no bookkeeping needed for the "problem solved" case.
+
+Built as `.claude/hooks/checkpoint-reminder.sh`, wired to PostToolUse with
+an all-tools matcher (`""`, confirmed via docs lookup to be equivalent to
+`"*"` or omitting the field) in `.claude/settings.json`. Tested before
+trusting it, per the SDO-002 lesson: confirmed it correctly detected a
+genuinely overdue state (EVOLUTION_LOG.md's real last-write time), fired a
+non-blocking reminder, and then correctly stayed silent on an immediate
+re-run (throttle verified). This reminder firing during the hook's own
+build is itself the first real, organic instance of the mechanism working
+as designed — this entry is that checkpoint.
+
 ## SDO-017 - 2026-07-02 - sdo-log-guard.sh built: a commit referencing an SDO-ID with no EVOLUTION_LOG.md entry is now mechanically blocked
 Discovered live during a `resume`: SDO-016 (e45b3fe, CLAUDE.md/AGENTS.md gaining
 resume/checkpoint triggers) had been committed with NO corresponding
