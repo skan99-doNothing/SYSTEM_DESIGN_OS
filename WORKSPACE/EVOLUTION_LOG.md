@@ -4,6 +4,53 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-035 - 2026-07-02 - Real-count verification of all four "N skills/hooks/sources/rules" prose claims across README.md, CLAUDE.md, AGENTS.md, FRAMEWORK.md — one real mismatch found and fixed (rule count stale at "9" since Rule 10 was added at SDO-019), three counts confirmed already correct
+User-directed check, explicitly bounded to verify-and-fix-in-place (no
+new skill/hook/file), directly following SDO-034's stated loss of trust
+in "full audit" claims that turn out not to be checkable-with-one-command
+verified.
+
+**Real counts, by shell command:**
+- Skills: `ls -1d .claude/skills/*/ | wc -l` → 7
+- Hooks: `ls -1 .claude/hooks/*.sh | wc -l` → 4
+- Sources: `ls -1 WORKSPACE/SYSTEM_BRAIN/sources/ | wc -l` → 6
+- OPERATING_CONTRACT.md rules: `grep -nE '^##+ ' WORKSPACE/OPERATING_CONTRACT.md`
+  → `## 1.` through `## 10.` → 10
+
+**Prose locations checked (grep across README.md, CLAUDE.md, AGENTS.md,
+WORKSPACE/FRAMEWORK.md for every skills/hooks/sources/rules count
+mention, word-form and digit-form):**
+- Skills: 1 location (README.md:382 "The seven skills") — CORRECT.
+- Hooks: 2 locations (README.md:609 "The four hooks", README.md:693
+  "all four hooks") — both CORRECT.
+- Sources: 1 location (README.md:343 "Currently six") — CORRECT.
+- Rules: 3 locations (README.md:96, CLAUDE.md:12, AGENTS.md:12, all
+  "9 rules") — all 3 WRONG. Real count is 10; Rule 10 (token/context-cost
+  awareness) was added at SDO-019 and never propagated into these three
+  docs' prose, surviving every audit run since, including SDO-029's full
+  chalo-close audit.
+- FRAMEWORK.md: 0 count-bearing locations found for any of the four
+  categories (structural/conceptual references only, no numeric claims).
+
+**Fixed:** all 3 wrong "9 rules" instances corrected to "10 rules"
+(README.md:96, CLAUDE.md:12, AGENTS.md:12). Verified post-fix: `grep -c
+"9 rules"` returns 0 in all three files; `grep -n "10 rules"` confirms
+the corrected line in each.
+
+**JUDGMENT-REQUIRED, NOT fixed (out of this task's bounded scope — count
+fix only):** README.md:93-127's rule enumeration sentence lists 9's
+worth of items with the "9 rules:" claim already appearing to fold Rule
+6's CLAUDE.md-hierarchy subsection in as if a distinct entry; scanning
+it against OPERATING_CONTRACT.md's real 10, Rule 5 ("Plain
+acknowledgment of limits") and Rule 10 (token/context-cost awareness)
+are not represented as top-level items in that enumeration at all. The
+count number is now correct; the enumeration's own completeness was not
+audited or fixed in this pass — flagged here so it isn't silently
+assumed solved.
+
+Total: 4 counts checked, 7 prose locations checked, 3 wrong (all under
+"rules"), 4 already correct.
+
 ## SDO-034 - 2026-07-02 - CHECKPOINT: user states real, direct loss of trust after SDO-033 (a "full audit" missing something checkable with one `ls`) — no fix attempted in this entry, stated plainly
 User checkpointed explicitly to log this moment honestly rather than let
 it pass unrecorded: after SDO-029's full chalo audit was reported clean,

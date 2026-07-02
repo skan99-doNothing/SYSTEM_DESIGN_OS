@@ -9,7 +9,7 @@ WORKSPACE/STATUS.md has the current state right now.
 
 ## The two files referenced most often during real work
 
-- **WORKSPACE/OPERATING_CONTRACT.md** — how Claude behaves: 9 rules,
+- **WORKSPACE/OPERATING_CONTRACT.md** — how Claude behaves: 10 rules,
   the division-of-labor statement, and what counts as a real decision.
 - **WORKSPACE/INGEST.md** — the protocol for any new source. Always
   follow from Step 0. Do not improvise a similar-sounding process.

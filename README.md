@@ -93,7 +93,7 @@ SYSTEM_DESIGN_OS/
 - **OPERATING_CONTRACT.md** — the behavioral contract. Opens with a
   foundational division-of-labor statement (the user owns vision and
   real-world testing; Claude owns reasoning in conversation; Claude
-  Code owns documentation and execution), then 9 rules: no claim
+  Code owns documentation and execution), then 10 rules: no claim
   without a check; one issue at a time with the order stated even when
   obvious; surface problems the moment they're seen; push back rather
   than agree by default; the sandbox is not the real filesystem, and
