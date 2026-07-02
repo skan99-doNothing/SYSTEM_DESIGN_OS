@@ -39,9 +39,10 @@ Invoke update-readme before committing if EITHER of the following is true
 this session:
 - A new domain, skill, hook, or WORKSPACE file was created — or an
   existing one was removed/renamed (the original structural trigger).
-- FRAMEWORK.md, RULES.md, INGEST.md, or PATTERNS.md received substantive
-  new content (a new section, a new mechanism, a corrected claim) — per
-  OPERATING_CONTRACT.md Rule 8's content-update sub-rule (CC-150). This
+- FRAMEWORK.md, RULES.md, INGEST.md, PATTERNS.md, or INDEPENDENT_REVIEW.md
+  received substantive new content (a new section, a new mechanism, a
+  corrected claim) — per OPERATING_CONTRACT.md Rule 8's content-update
+  sub-rule (CC-150, extended SDO-011). This
   is not structural change, but README.md's dictionary entry for that
   file still goes stale exactly the same way.
 If neither condition is true this session, skip silently.

@@ -37,6 +37,14 @@ See SECTION 2 of the review output. Core synthesis: the system's honesty discipl
 
 ## Prompt improvement log
 
+**Superseded 2026-07-02 (SDO-011):** this section is historical record of
+v1's actual run only. The accumulating, canonical version of these entries
+— plus four more added after the fix-execution pass — now lives in
+WORKSPACE/INDEPENDENT_REVIEW.md's Revision History, which is also the
+reusable prompt for the next review cycle. Do not edit the entries below;
+add new prompt-improvement findings to INDEPENDENT_REVIEW.md instead, so
+this content has one home, not two that can drift apart.
+
 - PIL-01: The prompt was delivered via /goal, which has a 4000-character limit (this prompt is ~13.8k chars). It failed to set and had to be executed as a plain instruction instead. Next cycle: deliver the review prompt as a normal message or a file on disk, not as a /goal condition.
 - PIL-02: The task list never asks for the hooks to be tested. The single CRITICAL finding of this entire review (ingest-guard.sh is a no-op) came from a check no task specified — TASK-01..08 cover skills, DNA, rules, and gates but not hook mechanics. Next cycle: add an explicit task "for each hook, verify empirically that it fires and blocks as claimed (correct input source, correct exit code, correct output stream), and confirm at least one logged instance of it actually firing."
 - PIL-03: EVOLUTION_LOG.md (1212 lines, ~30k tokens) exceeds a single read cap and had to be read in two passes. TASK-02's design assumes one read. Next cycle: instruct grep-by-rule/ID first, full read only for candidate sections — and treat the log's own size as a standing finding to re-check.

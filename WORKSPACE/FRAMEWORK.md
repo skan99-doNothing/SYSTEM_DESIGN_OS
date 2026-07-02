@@ -23,7 +23,18 @@ verified right now:
   decision to add tooling is driven by evidence, not anxiety.
 - **Self-auditing** — audit runs as chalo's first step every session,
   reading PATTERNS.md before its own checks, so accumulated lessons
-  apply automatically rather than depending on being remembered.
+  apply automatically rather than depending on being remembered. This is
+  continuous self-checking FROM INSIDE the system's own stated beliefs —
+  it can only catch a gap between what the system claims and what it
+  does if something in it already suspects the gap exists. A second,
+  distinct mechanism (WORKSPACE/INDEPENDENT_REVIEW.md, added SDO-011)
+  runs periodically from OUTSIDE that frame — a fresh session with zero
+  prior context, adversarially checking things audit doesn't know to ask
+  about. Its first real run found a mechanical guardrail that had
+  silently done nothing since it was built, a gap neither audit nor
+  chalo had ever surfaced in the system's entire history, precisely
+  because both only ever checked the system against its own
+  self-description.
 - **Ever-learning** — PATTERNS.md converts confirmed multi-instance
   failures into checkable rules. Each new pattern makes the next
   instance of that shape catchable without human intervention.

@@ -4,6 +4,47 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-011 - 2026-07-02 - INDEPENDENT_REVIEW.md created: the review protocol is now a standing, self-improving file, not a one-off prompt
+Per explicit user instruction: the next independent review cycle must
+start from an already-updated prompt (not require someone to manually dig
+PIL-01 through PIL-11 out of a log), and every future review must be
+required — not just encouraged — to produce its own self-improvement
+suggestions.
+
+Created WORKSPACE/INDEPENDENT_REVIEW.md as the single, evolving home for
+this protocol: Part 1 is the reusable Review Prompt (mandate, task list,
+exit conditions), folding in all seven of v1's own prompt-improvement
+notes (PIL-01 through PIL-07) as concrete instruction changes — notably a
+new TASK-05b requiring an empirical live-fire test of every hook (the
+exact check missing from v1 that would have caught the CRITICAL
+ingest-guard.sh finding sooner). Part 2 is Fix-Execution Guidance, folding
+in the four lessons that only surfaced once v1's findings were actually
+executed (PIL-08 through PIL-11 — test the positive case after a
+guardrail fix, run the system's own audit/chalo immediately after any fix
+pass, the guarded-write Bash-bypass procedure, and "a fix can create a
+new blocker" for enforcement mechanisms). A Revision History section
+records v1 and this v2 update, with a NON-NEGOTIABLE standing rule at the
+top: every future cycle must append its own dated section here, and an
+empty prompt-improvement log on a "clean" run is itself a red flag.
+
+review-checkpoint.md's own Prompt improvement log section marked
+superseded (pointing here) rather than left as a second, divergent copy
+of the same information — the single-source-of-truth concern the
+original review itself raised, applied to its own artifacts.
+
+Treated INDEPENDENT_REVIEW.md as a fifth key file alongside FRAMEWORK.md/
+RULES.md/INGEST.md/PATTERNS.md, extending the same protections those four
+already have, in the same pass rather than as a later gap: audit's check
+4c, update-readme's trigger (frontmatter + body), chalo's step 5c, and
+OPERATING_CONTRACT.md's Rule 8 sub-rule all updated to include it.
+FRAMEWORK.md's self-auditing DNA bullet updated to name this as a second,
+distinct mechanism — periodic and adversarial, run from outside the
+system's own stated beliefs, versus audit/chalo's continuous but
+inside-the-frame checking. README.md's dictionary gained a new entry for
+INDEPENDENT_REVIEW.md in the same pass (no separate update-readme
+invocation needed — content and dictionary entry written together, since
+this was the file's first creation, not a later edit to it).
+
 ## SDO-002 - 2026-07-02 - ingest-guard.sh fixed: it had never actually blocked a write since CC-027
 An independent adversarial review (fresh session, no prior context) tested
 the hook empirically instead of trusting its self-description — something

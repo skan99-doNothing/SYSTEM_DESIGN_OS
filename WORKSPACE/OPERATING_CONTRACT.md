@@ -255,11 +255,12 @@ version of compliance.
 
 ### When key files get new content, README.md's entry for them gets updated in the same pass
 
-FRAMEWORK.md, RULES.md, INGEST.md, and PATTERNS.md each have a
-dictionary entry in README.md describing what they contain. Whenever
-any of these files receives substantive new content — a new section,
-a new mechanism, a corrected claim — README.md's entry for that file
-must be checked and updated in the same pass, not deferred.
+FRAMEWORK.md, RULES.md, INGEST.md, PATTERNS.md, and
+INDEPENDENT_REVIEW.md (added SDO-011) each have a dictionary entry in
+README.md describing what they contain. Whenever any of these files
+receives substantive new content — a new section, a new mechanism, a
+corrected claim — README.md's entry for that file must be checked and
+updated in the same pass, not deferred.
 
 This is the same no-lag discipline as Rule 8's decision-logging rule:
 updating a file without updating its README.md entry leaves the

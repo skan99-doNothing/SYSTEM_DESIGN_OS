@@ -125,10 +125,12 @@ undocumented as a folder.
 
 ### 4c. Check README.md dictionary entries against actual file content (key files)
 
-For each of the four files whose content is most likely to drift from
+For each of the five files whose content is most likely to drift from
 their README.md entries — FRAMEWORK.md, RULES.md, INGEST.md,
-PATTERNS.md — read the file's actual current content and compare
-against README.md's dictionary entry for it. Flag any entry that:
+PATTERNS.md, INDEPENDENT_REVIEW.md (added SDO-011, since it's now a
+protocol file of the same weight as the other four) — read the file's
+actual current content and compare against README.md's dictionary
+entry for it. Flag any entry that:
 - Describes a section or mechanism the file no longer contains
 - Omits a section or mechanism the file now contains that is material
   enough to change what a reader learns from the entry

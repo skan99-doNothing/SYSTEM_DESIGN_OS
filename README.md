@@ -256,6 +256,24 @@ SYSTEM_DESIGN_OS/
   learning durable rather than something that has to be re-explained
   in conversation every time.
 
+- **INDEPENDENT_REVIEW.md** (added SDO-011) — a periodic, adversarial
+  architectural review and self-consistency audit protocol, distinct
+  from audit (which checks the system against its OWN stated beliefs)
+  and chalo (single-session review): this one is designed to run cold,
+  in a fresh session with zero prior context, so it isn't biased by
+  what the current session already believes is true. Holds a reusable
+  Review Prompt (the mandate, task list, and exit conditions), Fix-
+  Execution Guidance (lessons for whoever executes the findings, which
+  may be a different session), and an accumulating Revision History —
+  every cycle appends its own Prompt Improvement Log entries to this
+  same file, a NON-NEGOTIABLE requirement stated at the top (an empty
+  log on a "clean" run is itself a red flag). Created after the first
+  real cycle (v1) found the system's enforcement layer was weaker than
+  every file claimed, including a hook that had silently done nothing
+  since it was built — v2 folded that cycle's 11 prompt-improvement
+  entries directly into the reusable prompt so the next cycle starts
+  sharper instead of re-deriving them from a separate log.
+
 - **DECISIONS.md** — a small, deliberately short list of choices that
   reached LOCKED status, each with what was decided, why, what
   triggered the question, and what would reopen it. Most day-to-day
