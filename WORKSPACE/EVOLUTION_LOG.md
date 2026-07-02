@@ -4,6 +4,43 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-023 - 2026-07-02 - CLAUDE.md/AGENTS.md's "Answering knowledge questions" section closed against the exact loophole SDO-020 exploited, and against the "transfer gap" the user flagged
+User asked directly for the underlying investigation MECHANISM to be
+fixed, not just this one instance patched, after SDO-020/021/022 played
+out live: a knowledge question got answered by spawning an external
+agent first, brain checked only afterward to explain the miss — and
+separately, flagged that an external fact found this way must not just
+answer one question and evaporate; it should transfer into the brain for
+real, or the ingestion mechanism itself has a gap.
+
+Read the actual prior wording: "check WORKSPACE/SYSTEM_BRAIN/index.md...
+BEFORE answering from general knowledge or guessing." This has a real
+loophole — spawning an external verification agent is not literally
+"answering," so the letter of the rule was arguably not broken even
+though its spirit clearly was. That ambiguity is exactly how SDO-020
+happened.
+
+**Fix, applied to both CLAUDE.md and AGENTS.md in the same pass (Rule 8
+sync requirement):**
+1. Reworded to require the brain check before ANY action — explicitly
+   including spawning an agent or fetching an external source — not just
+   before the final answer. Cites SDO-020 as the confirmed real instance
+   this closes.
+2. Added an explicit loop-back requirement: if external verification is
+   genuinely needed, what's found is a candidate for INGEST.md's real
+   protocol (Step 0 onward), not a one-off answer. Cites SDO-021/022 as
+   the confirmed instance where this was actually done right, once
+   already caught missing it once.
+
+**Known limit, stated honestly:** this remains a self-monitored textual
+rule, not a hook — unlike SDO-017/018's fixes, "is this a knowledge
+question requiring a brain check before any tool call" is a semantic
+judgment a shell script cannot reliably detect (unlike "did a commit
+message reference an unlogged SDO-ID" or "has 15 minutes passed"). If
+this same shape of miss happens a second time, that would be the trigger
+to look for a different, more mechanical backstop rather than assuming a
+clearer sentence fixes it permanently.
+
 ## SDO-022 - 2026-07-02 - agent-skills-docs.md formally INGESTED (real Step 6 write, guard override used for the first genuine time); SUGGESTION RECORD produced for audit's real blind spot, NOT applied
 Closes SDO-020's content gap for real, through the actual protocol —
 not a hand-edit. Fetched the primary source (code.claude.com/docs/en/skills,

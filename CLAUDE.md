@@ -30,13 +30,32 @@ WORKSPACE/STATUS.md has the current state right now.
 
 If asked what this system knows about something — a concept, a
 mechanism, a prior decision — check WORKSPACE/SYSTEM_BRAIN/index.md
-(and any active domain's BRAIN/index.md) BEFORE answering from
-general knowledge or guessing. Cite the specific concept or source
-page the answer came from. If the brain genuinely doesn't cover it,
-say so plainly rather than filling the gap with inference — this is
-the same no-overclaim standard INGEST.md already requires for
-ingesting a source, applied here to answering FROM what's already
-ingested.
+(and any active domain's BRAIN/index.md) FIRST, before taking ANY
+other action: before answering from general knowledge, before
+guessing, and before spawning an agent or fetching an external source
+to verify. Checking the brain is the first move, not just a step
+before the final sentence — a knowledge question answered by going
+straight to an external check, with the brain read only afterward to
+explain the miss, still counts as a violation of this rule (confirmed
+real instance: SDO-020).
+
+Cite the specific concept or source page the answer came from. If the
+brain genuinely doesn't cover it, say so plainly rather than filling
+the gap with inference — this is the same no-overclaim standard
+INGEST.md already requires for ingesting a source, applied here to
+answering FROM what's already ingested.
+
+**If external verification turns out to be genuinely needed** (the
+brain doesn't cover it and the answer matters enough to check for
+real): that verification is not just a one-off answer to hand back and
+forget. Treat what was found as a candidate for WORKSPACE/INGEST.md's
+real protocol — Step 0 onward — so the brain actually grows from the
+gap instead of the same external check being needed again next time.
+This closes the "transfer gap": an external fact that answers today's
+question but never enters the brain has not actually made the system
+smarter, only answered one question (confirmed real instance:
+SDO-021/022, where this loop was followed correctly after being missed
+once at SDO-020).
 
 ## Starting fresh (machine restart, session-limit reset, new chat)
 
