@@ -4,6 +4,35 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-036 - 2026-07-02 - Repeat re-run of SDO-035's count verification (user-directed) — all 7 prose locations across README.md/CLAUDE.md/AGENTS.md/FRAMEWORK.md now correct, zero mismatches, SDO-035's fix holds and nothing regressed
+Same request re-issued verbatim by the user directly after SDO-035
+closed; re-ran every step fresh with real commands rather than reusing
+the prior result, since the point of this exercise (post-SDO-034 trust
+break) is real verification each time, not a cached claim.
+
+**Real counts, by shell command (unchanged from SDO-035):**
+- Skills: `ls -1d .claude/skills/*/ | wc -l` → 7
+- Hooks: `ls -1 .claude/hooks/*.sh | wc -l` → 4
+- Sources: `ls -1 WORKSPACE/SYSTEM_BRAIN/sources/ | wc -l` → 6
+- OPERATING_CONTRACT.md rules: `grep -cE '^##+ [0-9]+\.' WORKSPACE/OPERATING_CONTRACT.md`
+  → 10 (`## 1.` through `## 10.`)
+
+**Prose locations checked (fresh grep, all four files):**
+- Skills: 1 (README.md:382 "seven skills") — CORRECT.
+- Hooks: 2 (README.md:609, 693 "four hooks") — both CORRECT.
+- Sources: 1 (README.md:343 "Currently six") — CORRECT. (Also checked
+  README.md:212's separate "Currently" mention — confirmed unrelated,
+  it describes RULES.md's content, not a skill/hook/source/rule count.)
+- Rules: 3 (README.md:96, CLAUDE.md:12, AGENTS.md:12) — all now "10
+  rules," all CORRECT. This is SDO-035's fix holding under a genuine
+  independent re-check, not just re-reading the same diff.
+- FRAMEWORK.md: 0 count-bearing locations for any of the four
+  categories, same as SDO-035.
+
+Total: 4 counts checked, 7 prose locations checked, 0 wrong, 7 already
+correct. No fix needed this pass — working tree had nothing to stage
+for the count-check itself; only this log entry is new content.
+
 ## SDO-035 - 2026-07-02 - Real-count verification of all four "N skills/hooks/sources/rules" prose claims across README.md, CLAUDE.md, AGENTS.md, FRAMEWORK.md — one real mismatch found and fixed (rule count stale at "9" since Rule 10 was added at SDO-019), three counts confirmed already correct
 User-directed check, explicitly bounded to verify-and-fix-in-place (no
 new skill/hook/file), directly following SDO-034's stated loss of trust
