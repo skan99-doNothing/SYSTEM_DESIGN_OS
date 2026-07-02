@@ -4,6 +4,33 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-033 - 2026-07-02 - README.md's "The four skills" header was stale (real count: seven) — survived SDO-029's "full audit" minutes earlier; real cause found and fixed with a new mechanical check, not just the content typo
+Directly after chalo closed and was reported complete, the user found
+README.md §4 still read "The four skills" and the architecture tree
+still listed only 4 by name — real count is seven (chalo, audit,
+update-readme, ingest-validate, resume, checkpoint, sync-status). This
+survived SDO-029's full audit, run minutes earlier in this same session
+and reported clean. That is a real, serious credibility gap, not a minor
+typo: a check that was just run and reported thorough missed something
+directly checkable with one `ls` command.
+
+**Root cause, found not assumed:** all 7 skills WERE actually fully
+documented in their own README subsections (resume, checkpoint,
+sync-status all present in full, lines 565-609) — the underlying content
+was never missing. Only the section-4 header count and one architecture-
+tree line were stale. Checked audit's own 4b (undocumented-structure
+check): it only ever covers WORKSPACE/ and DOMAINS/, never
+`.claude/skills/` or `.claude/hooks/` — meaning a header COUNT drifting
+from a real folder count was structurally outside every existing check's
+scope, not something 1a/4b/4c almost caught and missed by bad luck.
+
+**Fixed:** README §4 header corrected to "seven," architecture tree line
+corrected to list all 7 by name. **New audit check 4e added**
+(`.claude/skills/audit/SKILL.md`) — directly compares `ls
+.claude/skills/` and `ls .claude/hooks/*.sh` real counts against
+README's stated headers and tree listing, MECHANICAL, no judgment
+required. This closes the actual gap, not just the one instance of it.
+
 ## SDO-032 - 2026-07-02 - OVERRIDE JUSTIFICATION: final chalo commit blocked by ingest-guard.sh's Bash heuristic (git add referencing SYSTEM_BRAIN/ paths alongside other real work) — legitimate, all content already individually justified above
 The final chalo close commit (staging README.md, EVOLUTION_LOG.md,
 STATUS.md, sdo-log-guard.sh, and the two SYSTEM_BRAIN/ files already

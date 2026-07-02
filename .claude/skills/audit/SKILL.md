@@ -190,6 +190,29 @@ neither as MECHANICAL — fixable directly with one line, the same way
 SYSTEM_SOURCES/ was fixed. A populated standalone file can be just as
 undocumented as a folder.
 
+### 4e. Check .claude/skills/ and .claude/hooks/ real counts against README's stated counts (SDO-033)
+
+Run `ls .claude/skills/` and `ls .claude/hooks/*.sh` and count each
+directly. Compare against README.md section 4's header ("The N
+skills") and section 5's header ("The N hooks"), AND against the
+architecture tree's `skills/` line in section 3 (which names them
+individually, not just a count). Flag MECHANICAL if either the stated
+number or the named list has drifted from the real count/contents —
+fix directly, this is a pure count/list comparison with no judgment
+required.
+
+This check exists because 4b's undocumented-structure check only ever
+covered WORKSPACE/ and DOMAINS/, never `.claude/skills/` or
+`.claude/hooks/` — meaning a new skill could be added, fully
+documented in its own README subsection, and the SECTION HEADER COUNT
+could still silently go stale with nothing ever catching it. Confirmed
+real: README said "The four skills" for an unknown number of sessions
+after resume/checkpoint/sync-status brought the real count to seven —
+survived multiple audit runs, including this same session's SDO-029
+full audit, because no check was ever scoped to catch it. Caught only
+by the user directly reading README.md and finding the mismatch
+themselves.
+
 ### 4c. Check README.md dictionary entries against actual file content (key files)
 
 For each of the five files whose content is most likely to drift from

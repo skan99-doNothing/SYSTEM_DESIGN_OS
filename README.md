@@ -75,7 +75,8 @@ SYSTEM_DESIGN_OS/
 ├── .claude/                (Claude-Code-specific machinery — see section 5)
 │   ├── settings.json / settings.local.json
 │   ├── hooks/               (mechanical guardrails — see section 5)
-│   └── skills/              (chalo, audit, update-readme, ingest-validate — see section 4)
+│   └── skills/              (chalo, audit, update-readme, ingest-validate,
+│                              resume, checkpoint, sync-status — see section 4)
 │
 ├── DOMAINS/
 │   └── _TEMPLATE/           (copy + rename this to start a real domain)
@@ -378,7 +379,7 @@ stage folder must have a filled-in CONTEXT.md, not just a prompt file.
 No domain currently exists — this is the one thing the entire system
 has been waiting on since its first session.
 
-## 4. The four skills — what they actually do, in full
+## 4. The seven skills — what they actually do, in full
 
 ### chalo
 
