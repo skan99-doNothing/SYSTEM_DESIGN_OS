@@ -569,7 +569,25 @@ write (an empty checkpoint is noise, not safety — same standard as Rule
 fast, then commits and pushes immediately. No audit, no full chalo — pure
 speed, capture-and-push, nothing more.
 
-## 5. The two hooks — mechanical, with an honest limit on Bash coverage
+### sync-status (SDO-019)
+
+Targeted, low-cost STATUS.md refresh — a cheaper alternative to a full
+chalo close when the only real need is keeping the Handoff Baton
+accurate, not a full session close-out. Chalo's step 0 unconditionally
+runs a full system audit before touching STATUS.md, but STATUS.md's own
+refresh steps (chalo 1–5d) only depend on "what happened this session,"
+not on audit's separate system-wide checks (source counts,
+cross-references, promotion thresholds) — the two were bundled by
+chalo's design, not by a real dependency. Built after the user pushed
+directly on token cost: don't default to the expensive ritual when a
+narrower one satisfies the actual need. Runs no audit, no promotion
+check, no dialogue-insight pass — only reviews recent EVOLUTION_LOG.md
+entries, rewrites STATUS.md's built/open-items sections and baton, does
+a narrow structural-trigger check (new skill/hook/file → update-readme),
+then commits and pushes. States plainly that it is not a substitute for
+chalo if the user actually wanted a full close.
+
+## 5. The four hooks — mechanical, with an honest limit on Bash coverage
 
 ### ingest-guard.sh
 
@@ -623,7 +641,37 @@ abandoned version of this hook tried to manually walk up the directory
 tree and was replaced once the official variable was found to do the
 same job more reliably).
 
-**Known, permanent limitation of both hooks:** they are Claude-Code-
+### sdo-log-guard.sh
+
+Fires on every Bash `git commit` call. Blocks (exit 2) any commit whose
+message references an SDO-XXX ID with no matching entry yet in
+WORKSPACE/EVOLUTION_LOG.md. Built (SDO-017) after SDO-016 landed with no
+log entry at all — caught only by an expensive manual cross-check during
+a `resume`, not prevented. Same soft-rule-to-hook pattern as
+ingest-guard.sh: a rule that depends on the model remembering under
+pressure eventually gets skipped; a hook cannot be skipped the same way.
+Tested against a fake unlogged ID (blocked), a real logged ID (passed),
+and non-commit/non-Bash calls (passed) before being trusted — then
+proved itself live on its own commit.
+
+### checkpoint-reminder.sh
+
+Fires on every tool call (PostToolUse, all-tools matcher). Checks elapsed
+time since WORKSPACE/EVOLUTION_LOG.md's last real write against Rule 9's
+~15-minute threshold; if overdue, prints a non-blocking stderr reminder.
+Built (SDO-018) after Rule 9 demonstrably failed to fire on its own once
+(the user had to prompt "it's been 15 min" before a checkpoint was
+written). Deliberately non-blocking — unlike ingest-guard.sh or
+sdo-log-guard.sh, "15 minutes passed" is not a discrete correctable
+action worth stalling a tool call over. Throttled via a gitignored
+marker (`.claude/.checkpoint-reminder-state`, same ephemeral-state
+precedent as `.claude/.guard-override.json`) so it doesn't repeat
+identical text into context every tool call — token cost was an
+explicit design constraint (OPERATING_CONTRACT.md's cost-awareness
+rule, SDO-019). A real log write always clears the overdue state
+naturally.
+
+**Known, permanent limitation of all four hooks:** they are Claude-Code-
 specific. A different agent (Codex, or otherwise) would need its own
 equivalent built in its own mechanism — FRAMEWORK.md's mechanism-
 agnostic specifications exist specifically so that rebuild has a real

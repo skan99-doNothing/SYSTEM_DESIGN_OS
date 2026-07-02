@@ -363,6 +363,34 @@ prompt/approach, then crashed before any commit happened - losing the
 discovery entirely and requiring a full re-derivation. See
 EVOLUTION_LOG.md for the incident this rule directly responds to.
 
+## 10. Weigh token/context cost before defaulting to a broad or expensive action
+
+When more than one mechanism could satisfy a request — a full system
+audit vs. a targeted check, a full chalo close vs. a STATUS.md-only
+refresh, a wide re-read vs. one file — do not default to the expensive
+one out of habit or ritual. Check whether the real need is narrower
+than the broadest available tool, and say so explicitly before running
+either one.
+
+**Why:** flagged directly, more than once in the same session (SDO-019):
+whether `resume`'s manual cross-check was worth its cost, whether a full
+chalo/audit was actually required just to refresh STATUS.md's baton, and
+`checkpoint-reminder.sh`'s throttle design (SDO-018), built specifically
+to avoid repeating identical reminder text into context on every tool
+call. Token and context cost are real decision variables here, not
+incidental overhead to wave through.
+
+**How to apply:** Before recommending or running a broad mechanism (full
+audit, full chalo, a wide re-read, a repeating reminder), ask whether an
+existing narrower mechanism (resume, checkpoint, sync-status) already
+covers the real need. If the broad mechanism is genuinely warranted —
+real suspected staleness beyond what's already known, an actual
+end-of-session close — say why, explicitly, rather than picking it
+silently. This does not mean skip verification or under-check; it means
+match the tool's cost to the actual size of the question being asked,
+the same discipline Rule 4 already applies to over-building code or
+plans, applied here to Claude's own operating choices.
+
 ---
 
 ## What this file is not

@@ -4,6 +4,45 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-019 - 2026-07-02 - OPERATING_CONTRACT.md Rule 10 added (token/context-cost awareness); sync-status skill built as its first applied instance
+User pushed directly, more than once this session, on token/context cost:
+whether resume's manual cross-check was worth its expense, whether
+checkpoint-reminder.sh should fire on every tool call (resolved via
+throttling, SDO-018), and — the trigger for this entry — whether closing
+out tonight's work required a full chalo (which unconditionally runs a
+full system audit first, chalo step 0) just to refresh STATUS.md's stale
+baton.
+
+Traced the actual dependency before assuming: chalo's steps 1-5d (review
+session, confirm log, rewrite STATUS.md's built/open-items sections,
+regenerate the baton) only require knowing what happened THIS session —
+they do not read or depend on audit's output (source counts,
+cross-references, promotion thresholds, broad README dictionary checks).
+Audit and STATUS.md's refresh are bundled by chalo's design choice, not
+by a real logical dependency. This means a STATUS.md-only refresh is a
+legitimately separable, cheaper action — not a corner-cut version of
+chalo, a correctly-scoped one.
+
+**Built two things from this:**
+1. **OPERATING_CONTRACT.md Rule 10** — "weigh token/context cost before
+   defaulting to a broad or expensive action." Generalizes the
+   instances above into a standing rule: before recommending or running
+   a broad mechanism, check whether a narrower existing one already
+   covers the real need, and state the tradeoff explicitly rather than
+   picking the expensive path by habit.
+2. **sync-status skill** (`.claude/skills/sync-status/SKILL.md`) — the
+   first applied instance of Rule 10: does chalo's steps 1-5d (STATUS.md
+   refresh, baton regeneration) without chalo's step 0 (full audit) or
+   its promotion/dialogue-capture passes. Explicitly states when NOT to
+   use it (real suspected staleness, genuine session close — use chalo).
+
+README.md's section 5 also corrected in the same pass — its own title
+still said "the two hooks" after SDO-017/018 added a third and fourth
+(sdo-log-guard.sh, checkpoint-reminder.sh); now reads "the four hooks"
+with both new hooks documented, plus a new sync-status entry in the
+skills section (SDO-011-style dictionary-currency discipline, applied
+without waiting for chalo's 5c to catch it later).
+
 ## SDO-018 - 2026-07-02 - checkpoint-reminder.sh built: Rule 9's 15-min checkpoint is now a throttled, non-blocking mechanical nudge, not a self-monitored judgment call
 Closes the exact gap SDO-015 flagged as top priority: Rule 9's checkpoint
 timing had already demonstrably failed once (didn't fire on its own; the
