@@ -7,36 +7,11 @@ not just open items or what's-working. The baton existing is the
 entire point of this file; skipping it defeats that point. This is
 not optional or context-dependent.
 
-Last manually confirmed accurate: 2026-07-02 (SDO-002 through SDO-024,
-same-day session, refreshed via the `sync-status` skill — a targeted
-baton refresh, not a full chalo close; no system-wide audit ran as part
-of this update). If significantly more EVOLUTION_LOG.md entries exist
-after this date than are reflected here, this file may be stale —
-cross-check before trusting it fully.
-
-**Since the SDO-019 baton was written, these landed (SDO-020–024),
-folded into this refresh:**
-- SDO-020: real process miss — a knowledge question was answered via an
-  external agent before checking SYSTEM_BRAIN, violating CLAUDE.md's own
-  instruction. Logged plainly, not smoothed over.
-- SDO-021/022: closed the actual content gap — formally ingested the
-  real Agent Skills docs (primary source) into SYSTEM_BRAIN via
-  INGEST.md's real protocol. First genuine production use of
-  ingest-guard.sh's override mechanism (built SDO-012, unused until now).
-  Produced a Step 7 SUGGESTION RECORD (new audit check 1e) — see below.
-- SDO-023: CLAUDE.md/AGENTS.md's "Answering knowledge questions" section
-  closed against the exact loophole SDO-020 exploited (external
-  verification before a brain check didn't technically count as
-  "answering") and against the "transfer gap" (an external find now
-  must loop back into real ingestion, not just answer once and vanish).
-- SDO-024: the SDO-022 suggestion record (audit check 1e: flag concept
-  pages built entirely from secondary/informal sources) APPROVED and
-  APPLIED to `.claude/skills/audit/SKILL.md`, per explicit user
-  authorization. Also corrected an overclaim in this same baton (see
-  open item 9 below) — SDO-017/018 were wrongly counted as further
-  instances of the conflict-preservation pattern; on re-check, neither
-  fits, and RULES.md's own "watch for a third instance" threshold has
-  NOT been crossed. Not promoted to FRAMEWORK.md.
+Last manually confirmed accurate: 2026-07-02 (SDO-002 through SDO-031,
+CLOSED WITH A REAL CHALO — full audit ran (SDO-029), not a targeted
+sync-status refresh). This is the most trustworthy state this file can
+be in; still cross-check EVOLUTION_LOG.md's newest entries if a large
+gap in time has passed since this date.
 
 ## Handoff baton — paste this to start a new chat with Claude
 
@@ -51,85 +26,111 @@ memory of prior sessions.
 Read WORKSPACE/STATUS.md (you're reading it now) and README.md if
 you need the full dictionary of any file, skill, or hook.
 
-Current real state, as of 2026-07-02 (SDO-002 through SDO-019, same-day
-session; this baton refreshed via `sync-status`, NOT a full chalo close
-— no system-wide audit has run since SDO-011/012's session):
+Current real state, as of 2026-07-02 (SDO-002 through SDO-031, closed
+with a real chalo — full audit ran, not a shortcut):
 
-- **An independent adversarial review ran earlier this session** and
-  found the system's honesty discipline was real but its enforcement
-  layer weaker than claimed. All findings from that review are now
-  either fixed or deliberately deferred with a stated reason.
-- **ingest-guard.sh (SDO-002, redesigned SDO-012)** — blocks writes into
-  DOMAINS/, SYSTEM_BRAIN/, SYSTEM_SOURCES/ unless a logged, single-use
-  override exists. Covers Write/Edit/Bash. Live-fire tested.
-- **EVOLUTION_LOG.md rotated (SDO-013)** — older history (CC-111 and
-  earlier) moved to WORKSPACE/EVOLUTION_LOG_ARCHIVE/2026-06.md, verified
-  byte-for-byte. This file now holds CC-151 forward.
-- **resume and checkpoint skills built (SDO-014)** — resume: cheap,
-  ordered session-start recovery (read STATUS.md baton, newest
-  EVOLUTION_LOG.md entries, cross-check git log, state back what's
-  done/open/unstarted). checkpoint: user-forced, immediate,
-  minimal write-commit-push for known uncertainty ahead. CLAUDE.md and
-  AGENTS.md gained explicit trigger sections pointing to both (SDO-016)
-  — a cold session previously had no way to discover either existed.
-- **Two NEW mechanical hooks built this session, closing gaps this
-  same session's own work exposed:**
-  - **sdo-log-guard.sh (SDO-017)** — blocks any `git commit` referencing
-    an SDO-XXX ID with no matching WORKSPACE/EVOLUTION_LOG.md entry yet.
-    Built after SDO-016 itself landed with no log entry, caught only by
-    an expensive manual resume cross-check. Tested (fake unlogged ID
-    blocked, real logged ID passed, non-commit calls passed) before
-    being trusted, then proved itself live on its own commit.
-  - **checkpoint-reminder.sh (SDO-018)** — non-blocking, throttled
-    PostToolUse reminder when EVOLUTION_LOG.md hasn't been written to in
-    ~15 min, closing the exact gap SDO-015 flagged (Rule 9's checkpoint
-    timing had already failed to fire on its own once). Throttled via a
-    gitignored marker so it doesn't repeat identical text into context
-    every tool call — explicit token-cost design constraint.
-- **OPERATING_CONTRACT.md Rule 10 added (SDO-019): weigh token/context
-  cost before defaulting to a broad or expensive action.** Generalizes
-  what the user flagged repeatedly this session (resume's cross-check
-  cost, checkpoint-reminder's throttle, and whether a full chalo was
-  really needed just to refresh this baton). First applied instance:
-  the **sync-status** skill — does chalo's STATUS.md-refresh steps
-  (1-5d) without chalo's mandatory full audit (step 0), for exactly the
-  case where the baton is known-stale but nothing suggests broader
-  system drift. **This baton was regenerated using sync-status, not
-  chalo — no system-wide audit has run since SDO-011/012.**
-- README.md's hooks section corrected from "the two hooks" to "the four
-  hooks" (SDO-019) — it had gone stale immediately after SDO-017/018
-  added the two new ones. New sync-status dictionary entry added too.
-- No real business domain exists yet — DOMAINS/_TEMPLATE/ is ready to
-  copy, nothing inside it. Still the single largest open item, unchanged
-  across every session so far.
-- **Structural items from the original independent review, still NOT
-  touched:** a closure lifecycle for audit findings that currently just
-  get re-reported indefinitely (Rule 2/Rule 7); capping audit's own
-  unbounded read scope; shrinking README's duplication surface.
-  Log rotation (the other structural item) WAS resolved (SDO-013).
-- ARTIFACTS/ visual PDF remains stale relative to README's current
-  state (now missing several sections' worth of changes on top of
-  everything already missing). JUDGMENT-REQUIRED whether to regenerate.
-- Repository is PUBLIC on GitHub (skan99-doNothing/SYSTEM_DESIGN_OS).
-- claude-os-guide.md is still next in the audit 1d full-source
-  re-verification rotation — not run since before this session; a real
-  audit run is needed to actually advance that rotation.
-- **No system-wide audit has run this session.** Everything above is
-  from direct work plus this targeted sync-status refresh — not audit's
-  system-wide checks (source counts, cross-references, promotion
-  thresholds, full README dictionary sweep). If a fuller self-check is
-  needed, run audit or chalo explicitly next.
+- **This was a very large single-day session (27+ SDO entries).**
+  Started with an independent adversarial review finding real
+  enforcement gaps, then a long real-work pass fixing them, then a
+  direct user challenge to the system's overall trustworthiness and
+  scope. Read the sections below in order — each built on the last.
 
-What I want to do this session:
-[STATE THE ACTUAL TASK HERE]
+- **Foundational fixes (SDO-002 through SDO-019):** ingest-guard.sh
+  redesigned around logged conflict-resolution (SDO-012);
+  EVOLUTION_LOG.md rotated, archive at
+  WORKSPACE/EVOLUTION_LOG_ARCHIVE/2026-06.md (SDO-013); resume and
+  checkpoint skills built (SDO-014); two NEW mechanical hooks —
+  sdo-log-guard.sh (blocks unlogged-SDO-ID commits, SDO-017) and
+  checkpoint-reminder.sh (throttled Rule 9 reminder, SDO-018);
+  OPERATING_CONTRACT.md Rule 10 (token/context-cost awareness, SDO-019)
+  and its first applied instance, the sync-status skill.
+
+- **A real, honest process failure and its fix (SDO-020/021/022/023):**
+  a knowledge question was answered via an external agent BEFORE
+  checking SYSTEM_BRAIN, violating CLAUDE.md's own instruction — logged
+  plainly, not smoothed over. Root-caused: the brain genuinely didn't
+  contain the answer (two informal, same-author sources never captured
+  the SKILL.md-per-folder fact). Fixed for real: the actual Agent Skills
+  documentation was formally ingested via INGEST.md's real protocol —
+  first genuine production use of ingest-guard.sh's override mechanism
+  (built SDO-012, unused until this session). CLAUDE.md/AGENTS.md's
+  "Answering knowledge questions" section closed against the exact
+  loophole exploited (spawning an external agent didn't technically
+  count as "answering") and against the "transfer gap" (an external
+  find must loop into real ingestion, not just answer once and vanish).
+
+- **Gap-closing pass, user-authorized to proceed without per-item
+  confirmation (SDO-024 through SDO-027):** the SDO-022 SUGGESTION
+  RECORD (new audit check 1e: flag concept pages resting only on
+  secondary/informal sources) was APPROVED and APPLIED. A self-caught
+  correction happened in the same pass — an earlier claim that
+  SDO-017/018 were further instances of the conflict-preservation
+  pattern was checked against RULES.md's actual text and found wrong;
+  NOT promoted to FRAMEWORK.md on a false count. `ingest-validate`'s
+  founding rationale was backfilled into its own SKILL.md, honestly
+  labeled as a backfill (SDO-026). **The most structurally important
+  fix of the session: audit check 1f (SDO-027)** — a routine,
+  rotation-based hook live-fire test, closing the exact mechanism gap
+  that let ingest-guard.sh sit silently broken through its ENTIRE
+  history: audit's other checks only verified documentation
+  self-consistency, never whether a hook actually functions. That was
+  previously only tested by a rare, manually-invoked cold-session
+  independent review. Now it's routine, one hook per audit run.
+
+- **A real, unresolved architectural question, raised directly by the
+  user, NOT decided (SDO-028):** this system was meant to be a simple,
+  two-pillar design (LLM Wiki + ICM). This single session alone
+  produced 27+ SDO entries; real inventory is 7 skills, 4 hooks, 10
+  OPERATING_CONTRACT rules, plus PATTERNS.md/RULES.md/
+  INDEPENDENT_REVIEW.md/DECISIONS.md — and ZERO real business domains
+  have ever been run through any of it. A three-bucket classification
+  method was proposed (Core / Load-bearing scaffolding / Self-
+  referential accretion) along with a recommendation to run one real
+  domain first to generate evidence for what to cut, rather than
+  guessing from a whiteboard. **Not decided. Sitting open on purpose —
+  do not silently resolve this by picking a direction without the
+  user.** See dialogue/conversational.md's 2026-07-02 entry for the
+  fuller reasoning trail.
+
+- **Full chalo close, this session (SDO-029/030/031):** ran audit in
+  full for the first time since SDO-011/012 (delegated to protect
+  context, then personally spot-checked before trusting). Found and
+  fixed 3 real README.md staleness gaps (audit's own 1e/1f checks were
+  undocumented in README §4; SYSTEM_SOURCES/ said "five" sources, real
+  count is six; INDEPENDENT_REVIEW.md's entry didn't mention v3).
+  1d rotation picked agent-skills-docs.md (clean, re-verification date
+  updated). 1f rotation picked sdo-log-guard.sh (real probe confirmed
+  correct blocking; found a real testing gotcha — SDO-999 as a "fresh"
+  test ID now false-passes because it's already literal text in the
+  log from a prior test; hook header updated with this finding for
+  future testers). 6b self-distrust genuinely applied to both new
+  checks (1e, 1f) since they were the highest-risk, just-added category
+  — both surfaced something real, not just a rubber-stamped clean pass.
+
+**JUDGMENT-REQUIRED findings from this close, NOT fixed, genuinely open:**
+- `claude-md-and-skills-pattern.md`'s SKILL.md-per-folder claim now has
+  official backing, but the SAME page's other claims (hooks semantics,
+  agents/, rules/ glob-scoping, .mcp.json, statusline, the 200-line
+  limit) are still sourced only from the two informal, same-author
+  sources — never checked against official docs.
+- WORKSPACE/ARTIFACTS/'s visual PDF (generated 2026-06-27) is now
+  substantially stale — postdates 2 new hooks, 3 new skills, checks
+  1e/1f, Rule 10, and the 6th source. Regeneration is a human call.
+- dialogue/conversational.md has grown to 384 lines / 16 entries —
+  worth a real look at whether a pattern is visible enough to promote
+  into synthesis/overview.md. Not acted on.
+- The two-pillar simplification question (above) — fully open.
 
 Per OPERATING_CONTRACT.md: don't re-derive the system's design from
 scratch, trust what's written. Push back if I'm about to skip a
 verification step or treat something as done without checking. Per
 Rule 10 (SDO-019): also push back if I'm about to default to an
-expensive mechanism (full audit, full chalo, a wide re-read) when a
-narrower one already covers the real need — state the tradeoff
-explicitly rather than picking either extreme by habit.
+expensive mechanism when a narrower one already covers the real need —
+state the tradeoff explicitly rather than picking either extreme by
+habit. Per this session's own hard-won lesson: don't declare anything
+"production-grade" without a real test gating it first, and if
+something was only fixed AFTER being caught, say so plainly rather than
+letting it read as if it was always solid.
 
 If asked what this system knows about something, and I can't access
 the files directly (this is a claude.ai chat, not Claude Code): write
@@ -145,111 +146,128 @@ covered.
 
 ## What's built and verified
 
-- **OPERATING_CONTRACT.md** — Rule 8's CLAUDE.md/AGENTS.md sync
-  sub-rule corrected (SDO-006); five key files list unchanged since
-  SDO-011. **New Rule 10 (SDO-019): token/context-cost awareness.**
-- **INGEST.md** — unchanged this session.
-- **FRAMEWORK.md** — unchanged since SDO-012's guardrail rewrite.
-- **chalo skill** — unchanged this session. Still the full close ritual
-  (audit + STATUS.md refresh + promotion checks); sync-status is a
-  separate, narrower sibling, not a replacement.
-- **audit skill** — unchanged this session. Has NOT run this session.
-- **update-readme skill** — unchanged in content; invoked implicitly
-  (its own trigger conditions applied directly) for the hooks-section
-  and skills-section fixes in SDO-019, rather than a separate call.
-- **ingest-validate skill** — unchanged.
-- **resume skill (SDO-014)** — unchanged since creation; exercised for
-  real this session (the session that produced SDO-017 through SDO-019
-  began with a real `resume` invocation, which is what surfaced the
-  SDO-016 missing-log-entry gap in the first place).
-- **checkpoint skill (SDO-014)** — unchanged since creation; not
-  exercised for real this session (no session-limit pressure hit).
-- **sync-status skill (SDO-019) — NEW.** Used for the first time to
-  produce this very baton refresh.
-- **ingest-guard.sh** — unchanged since SDO-012's redesign.
-- **sdo-log-guard.sh (SDO-017) — NEW.** Blocks unlogged-SDO-ID commits.
-- **checkpoint-reminder.sh (SDO-018) — NEW.** Throttled Rule 9 reminder.
-- **PATTERNS.md** — unchanged this session; P004 still CANDIDATE.
-- **RULES.md** — unchanged this session.
-- **CLAUDE.md + AGENTS.md** — gained resume/checkpoint trigger sections
-  (SDO-016), kept in sync per Rule 8.
-- **INDEPENDENT_REVIEW.md** — unchanged this session.
-- **SYSTEM_BRAIN/** — unchanged in source count this session. 1d
-  rotation not advanced (no audit ran).
-- **DOMAINS/_TEMPLATE/** — unchanged.
-- **README.md** — hooks section corrected (two → four hooks, two new
-  entries); sync-status entry added to skills section (SDO-019).
-- **WORKSPACE/STATUS.md** — this rewrite (sync-status refresh, covering
-  SDO-013 through SDO-019; not a chalo close, no audit ran).
-- **WORKSPACE/EVOLUTION_LOG.md** — SDO-013 through SDO-019 appended;
-  current and accurate as of this refresh.
-- **WORKSPACE/EVOLUTION_LOG_ARCHIVE/2026-06.md** — created SDO-013,
-  unchanged since.
-- **WORKSPACE/ARTIFACTS/** — still stale, unchanged this session.
-- **.claude/hooks/, .claude/settings.json** — two new hooks added
-  (sdo-log-guard.sh, checkpoint-reminder.sh), both wired into
-  settings.json's PreToolUse/PostToolUse blocks and live-fire tested.
-  `.claude/.checkpoint-reminder-state` is a new gitignored ephemeral
-  marker, same precedent as `.claude/.guard-override.json`.
-- **Git history** — SDO-013 through SDO-019 each committed and pushed
-  individually (commits d48250e, 32fbe8f, 8aedcde, e45b3fe, f7801e7,
-  5fbc55d, 6b45eb2) — confirmed via `git log` during this sync, branch
-  even with origin/master, clean working tree at time of this refresh.
+- **OPERATING_CONTRACT.md** — Rule 10 (token/context-cost awareness,
+  SDO-019) is the newest addition; all 10 rules confirmed by SDO-029's
+  audit check 5 to have real EVOLUTION_LOG.md exercise evidence.
+- **INGEST.md** — unchanged in content; exercised for real this session
+  (SDO-021/022, first genuine production ingestion since the protocol
+  matured).
+- **FRAMEWORK.md, RULES.md, PATTERNS.md** — unchanged this session.
+- **chalo skill** — this session's own run is its evidence; unchanged
+  in content.
+- **audit skill** — gained checks 1e (SDO-024) and 1f (SDO-027) this
+  session — the most structurally significant change of the day. Both
+  were exercised for real, not just added and left untested (SDO-029).
+- **update-readme skill** — unchanged; its trigger conditions were
+  applied directly during SDO-019 and SDO-029 rather than invoked
+  separately.
+- **ingest-validate skill** — gained a backfilled "Why this exists"
+  section (SDO-026), correcting a real traceability gap.
+- **resume, checkpoint skills (SDO-014)** — both genuinely exercised
+  this session (resume opened it; checkpoint ran mid-session at SDO-028).
+- **sync-status skill (SDO-019)** — used once for a targeted refresh
+  before this full chalo close superseded it.
+- **ingest-guard.sh** — unchanged in logic since SDO-012; genuinely
+  exercised in real production for the first time this session
+  (SDO-021/022/024/030/031's guarded writes).
+- **sdo-log-guard.sh, checkpoint-reminder.sh (SDO-017/018)** — both
+  live-fire tested at creation and again during SDO-029's 1f rotation
+  (sdo-log-guard.sh specifically, with a real, documented testing
+  gotcha found and fixed).
+- **verify-claude-md.sh** — live-fire tested for real at SDO-027
+  (positive case via real session transcript, two negative cases
+  probed safely and cleaned up).
+- **CLAUDE.md + AGENTS.md** — "Answering knowledge questions" section
+  substantially rewritten (SDO-023), kept in sync.
+- **INDEPENDENT_REVIEW.md** — gained v3 (PIL-12 through PIL-15, SDO-025)
+  from this session's real work, not a formal cold-session review run.
+- **SYSTEM_BRAIN/** — 6 sources now (agent-skills-docs.md added,
+  SDO-021/022), count verified matching in both index.md and
+  overview.md (SDO-029's 1a check, clean). dialogue/conversational.md
+  gained 2 new entries this session (guard-as-conflict insight,
+  earlier in the session; the production-grade/prevention-loop insight,
+  this close) — now 16 entries, 384 lines, flagged for a promotion look.
+- **DOMAINS/_TEMPLATE/** — unchanged. Still nothing built inside it.
+- **README.md** — hooks section already read "four hooks" from SDO-019;
+  this close fixed 3 further staleness gaps (audit's 1e/1f undocumented,
+  SYSTEM_SOURCES/ source count stale, INDEPENDENT_REVIEW.md's v3 missing).
+- **WORKSPACE/STATUS.md** — this rewrite, a real chalo close, not a
+  targeted sync.
+- **WORKSPACE/EVOLUTION_LOG.md** — SDO-020 through SDO-031 appended;
+  current and accurate.
+- **WORKSPACE/ARTIFACTS/** — stale (see JUDGMENT-REQUIRED above),
+  unchanged this session — regeneration not attempted.
+- **.claude/hooks/, .claude/settings.json** — 4 hooks total now (2 new
+  this session). All 4 carry real, dated, evidenced
+  `# Last live-fire tested:` tracking lines as of this close — none
+  left as an unverified claim.
+- **Git history** — SDO-002 through SDO-031 each committed individually
+  and pushed; confirmed clean working tree and branch even with
+  origin/master at multiple points during this session, most recently
+  before this chalo close began.
 
 ## Open items — genuinely unresolved right now
 
 1. **No real business domain exists yet.** Unchanged since session one.
-   Still the single largest open item, nothing currently blocks it.
-2. **Structural items from the independent review, partially resolved:**
-   log rotation DONE (SDO-013). Still NOT touched: a closure lifecycle
-   for audit findings that currently just get re-reported indefinitely
-   (Rule 2/Rule 7); capping audit's own unbounded read scope; shrinking
-   README's duplication surface.
-3. **ARTIFACTS/ visual is significantly stale** — missing multiple
-   README section rewrites across several sessions now.
-   JUDGMENT-REQUIRED: regenerate?
+   Still the single largest open item — and now the center of an
+   unresolved architectural question (see item 12 below), not just a
+   backlog line.
+2. **Structural items from the original independent review, mostly
+   resolved:** log rotation DONE (SDO-013). Hook functional-testing gap
+   DONE (SDO-027, the biggest one). Still NOT touched: a closure
+   lifecycle for audit findings that currently just get re-reported
+   indefinitely (Rule 2/Rule 7); capping audit's own unbounded read
+   scope; shrinking README's duplication surface.
+3. **ARTIFACTS/ visual is significantly stale** — now missing 2 new
+   hooks, 3 new skills, checks 1e/1f, Rule 10, and the 6th source.
+   JUDGMENT-REQUIRED: regenerate? (SDO-029)
 4. **CC-026's residual risk is permanent** — rules can be skipped under
-   pressure; hooks now cover the log-entry (SDO-017) and checkpoint-
-   timing (SDO-018) instances of this specifically; other rules remain
-   spot-check-only.
-5. **conversational.md's entry count** — not checked this session (no
-   audit ran); last known count was 13 entries as of SDO-012.
-6. **P004 (CANDIDATE)** — two-plus possible instances logged across
-   sessions; no mechanism built. Still a judgment call, not escalated.
+   pressure. Two specific instances now have hook backstops (log-entry
+   requirement, checkpoint timing); most others remain spot-check-only.
+5. **conversational.md has grown to 16 entries / 384 lines** —
+   JUDGMENT-REQUIRED: worth a real look at promotion to overview.md,
+   flagged by SDO-029's check 2, not acted on.
+6. **P004 (CANDIDATE)** — unchanged, no third instance confirmed yet.
 7. **Watch item: stale embedded assumptions in a delegated prompt**
    (CC-152/154) — watching for a second instance.
 8. **Watch item: concept page overclaiming beyond its raw source**
    (autonomous-ai-growth-engine.md) — watching for a second instance.
-9. **Watch item: a guard block is a conflict to resolve, not a tool gap
-   to route around** (SDO-012) — CORRECTED (SDO-024): an earlier version
-   of this baton wrongly counted SDO-017/018 as a 2nd/3rd instance of
-   this exact pattern. Re-checked against RULES.md's actual definition:
-   neither fits (SDO-017 has no legitimate-but-blocked override scenario;
-   SDO-018 is non-blocking, no conflict at all). Only SDO-012 is a real
-   built instance. RULES.md's own "watch for a third instance" threshold
-   has NOT been crossed — do not promote to FRAMEWORK.md on this count.
-10. **claude-os-guide.md is next in audit 1d rotation** — unchanged;
-    rotation has not advanced since no audit has run this session.
+9. **Conflict-preservation pattern (SDO-012)** — still only ONE real
+   built instance. RULES.md's own "watch for a third instance"
+   threshold has NOT been crossed; do not promote to FRAMEWORK.md
+   without a genuine second/third instance (corrected SDO-024 after an
+   earlier overclaim).
+10. **claude-md-and-skills-pattern.md's non-SKILL.md claims** — still
+    resting only on informal sources, no official corroboration
+    checked (SDO-029 check 1e finding).
 11. **Rule 2 and Rule 7 have no real-work exercise evidence in
     EVOLUTION_LOG.md** — unchanged, pre-existing gap.
-12. **No system-wide audit has run since SDO-011/012.** This baton was
-    refreshed via `sync-status` specifically because a full chalo/audit
-    wasn't judged necessary — nothing suggests broader drift beyond what
-    this baton already documents. If real doubt about broader staleness
-    surfaces, run audit or chalo directly, not another sync-status pass.
+12. **THE live open question: has this system grown past its two-pillar
+    DNA into unmanaged complexity?** Raised directly by the user
+    (SDO-028), not resolved. A three-bucket classification method was
+    proposed (Core / Load-bearing / Self-referential accretion) with a
+    recommendation to run a real domain first to generate evidence
+    before cutting anything. This is the single most important open
+    item in this file — bigger than any individual bug or gap above.
+    Do not treat any individual fix in this session as having answered
+    it; none of them did.
 
 ## What to do next time
 
-1. Bring a real business domain — nothing currently blocks it.
-2. Decide on the remaining structural items (audit finding lifecycle,
-   audit read-scope caps, README duplication) — a dedicated design
-   pass, not a rushed addition.
-3. Decide whether to regenerate the ARTIFACTS/ visual.
-4. Judgment call: does the guard-block-is-a-conflict shape (item 9)
-   now warrant promotion to a single named FRAMEWORK.md concept, given
-   three instances across SDO-012/017/018?
-5. Run a real audit at some point soon — this session deliberately used
-   the cheaper sync-status path per Rule 10, which means system-wide
-   checks (conversational.md count, 1d source rotation, promotion
-   thresholds) have not been re-verified in a while and are genuinely
-   unknown, not just assumed clean.
+1. **Resolve the sequencing question from item 12** — simplify first,
+   or build one real domain first to generate evidence for what to cut.
+   This is a real decision for the user to make, not for Claude to
+   infer or default on.
+2. If a real domain is chosen: bring it, run it through
+   DOMAINS/_TEMPLATE/ for real — nothing currently blocks it.
+3. If simplification is chosen first: use the three-bucket method
+   (Core / Load-bearing scaffolding / Self-referential accretion)
+   against the real file inventory, starting with the highest-count
+   category (skills: 7; check whether some are genuinely redundant
+   with each other, e.g. sync-status vs. chalo's overlap).
+4. Decide on the remaining structural items (audit finding lifecycle,
+   audit read-scope caps, README duplication).
+5. Decide whether to regenerate the ARTIFACTS/ visual, given how stale
+   it now is.
+6. Consider whether conversational.md's 16 entries warrant a real
+   promotion pass into overview.md.

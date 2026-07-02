@@ -1,5 +1,5 @@
 #!/bin/bash
-# Last live-fire tested: 2026-07-02 (SDO-017 creation test; re-exercised live on every real commit since, incl. this session's own commits)
+# Last live-fire tested: 2026-07-02 (SDO-028 audit 1f rotation — real probe with a fresh unused ID (SDO-88888) confirmed exit 2 block; a stale reused test ID (SDO-999) was found to false-pass because it already existed as literal text in EVOLUTION_LOG.md from a prior test, a real gotcha for future rotations; non-Bash and non-commit passthroughs and a real logged ID all confirmed correct; no probe residue left. Originally SDO-017 creation test; re-exercised live on every real commit since, incl. this session's own commits)
 # Fires on PreToolUse for Bash — blocks any `git commit` whose message
 # references an SDO-XXX ID that has no corresponding entry in
 # WORKSPACE/EVOLUTION_LOG.md yet.

@@ -382,3 +382,40 @@ it's "what would make this an explicit, logged, resolved conflict instead
 of a silent one." Watch for a second instance of this shape (an enforcement
 mechanism vs. a genuine legitimate action) before treating it as a fully
 generalized pattern beyond this specific guard.
+
+## 2026-07-02 — "Production-grade" here has mostly meant "declared done, tested only after being caught" (SDO-020 through SDO-029)
+
+Across this same session, five hooks/skills (ingest-guard.sh originally,
+sdo-log-guard.sh, checkpoint-reminder.sh, ingest-validate's founding
+rationale, audit's own 1e/1f checks) were all built or fixed in direct
+response to something already being caught broken or missing — not from
+a pre-existing test that gated them before real reliance. The user named
+this pattern directly: real software practice is write code, write test,
+if it survives the test THEN it's production-grade — but this system's
+actual history has more often been write code, declare it production-
+grade, ship it, and the test (if one exists at all) gets written later,
+only once a failure surfaces. ingest-guard.sh's own history is the
+starkest confirmed instance: silently non-functional from its original
+build until SDO-002 found it, with no test ever gating its "done" status
+in between.
+
+**Standing implication, not yet a PATTERNS.md entry (would need a second
+session-level instance to confirm the shape, per the two-instance rule):**
+the recovery loop in this system is real and repeatedly demonstrated
+working — gaps get found, fixed correctly, logged honestly, re-verified.
+The PREVENTION loop is weaker — most fixes exist because something
+already shipped broken and was caught, mostly by direct user pushback,
+not by a pre-existing check. Audit's new 1f (hook live-fire rotation,
+SDO-027) is a real step toward prevention rather than pure reaction, but
+it is bounded (one hook per audit run) and still audit-triggered, not a
+gate that blocks a hook from ever being trusted before its first real test.
+
+**Open, unresolved question, also raised this session, deliberately not
+answered yet:** whether the system has grown past its original two-pillar
+DNA (LLM Wiki + ICM) into something with too much self-referential
+process — 27 SDO entries in one session, 7 skills, 4 hooks, 10 contract
+rules, and zero real business domains ever run through any of it. No
+decision was made on whether to simplify first or build a real domain
+first to generate evidence for what to cut (see EVOLUTION_LOG.md SDO-028).
+This is flagged here because it's a real, live tension in how the system
+is being built, not because it's resolved.

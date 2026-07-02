@@ -4,6 +4,120 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-032 - 2026-07-02 - OVERRIDE JUSTIFICATION: final chalo commit blocked by ingest-guard.sh's Bash heuristic (git add referencing SYSTEM_BRAIN/ paths alongside other real work) — legitimate, all content already individually justified above
+The final chalo close commit (staging README.md, EVOLUTION_LOG.md,
+STATUS.md, sdo-log-guard.sh, and the two SYSTEM_BRAIN/ files already
+justified in SDO-030/031 above) was blocked by ingest-guard.sh's Bash
+matcher — a `git add` command naming SYSTEM_BRAIN/ paths alongside other
+tokens tripped the heuristic. This is a real, honest gotcha in the
+guard's own design (a multi-file git add/commit spanning both guarded
+and non-guarded paths in one command), not a new content decision — all
+underlying writes were already justified in SDO-030 and SDO-031. Logging
+this separately per the override protocol rather than silently retrying,
+since the guard's own rule requires the log entry to exist first
+regardless of whether the underlying content is already justified
+elsewhere.
+
+Reference string for the override file to match: OVERRIDE-SDO-032-CHALO-COMMIT
+
+## SDO-030 - 2026-07-02 - OVERRIDE JUSTIFICATION: SDO-029's audit 1d rotation found one small guarded-path write it correctly deferred — agent-skills-docs.md's 'Last full re-verification' date field
+SDO-029's full audit ran its 1d rotation on agent-skills-docs.md (no gap
+found, record and concept page both hold), but correctly did not write
+the resulting 'Last full re-verification' date update itself since
+WORKSPACE/SYSTEM_BRAIN/ is a guarded path. This entry is that write's
+justification, logged first per ingest-guard.sh's protocol.
+
+Reference string for the override file to match: OVERRIDE-SDO-030-1D-DATE-UPDATE
+
+## SDO-031 - 2026-07-02 - OVERRIDE JUSTIFICATION: chalo close's dialogue-derived insight (5a) capturing this session's "declared production-grade, tested only after being caught" pattern and the open simplification question
+Chalo step 5a requires capturing any real dialogue-derived insight into
+WORKSPACE/SYSTEM_BRAIN/dialogue/conversational.md as part of session
+close, not deferred. This entry is that write's justification, logged
+first per ingest-guard.sh's protocol.
+
+Reference string for the override file to match: OVERRIDE-SDO-031-DIALOGUE-INSIGHT
+
+## SDO-029 - 2026-07-02 - Full self-audit run (chalo close): 2 README.md staleness gaps found and fixed, 1f rotation picked and real-tested sdo-log-guard.sh, all other checks clean
+
+Ran the audit skill in full per its SKILL.md (checks 0, 1, 1a-1f, 2, 3,
+4, 4b-4d, 5, 6b, 7), triggered by session close after SDO-002 through
+SDO-028's real work.
+
+**1f rotation (hook live-fire):** all four hooks carry a 2026-07-02
+date, so the real tiebreaker was which SDO number each hook's test
+cites — sdo-log-guard.sh's is SDO-017, the lowest (oldest) of the four,
+so it was picked. Real probe: a commit message with a fresh, never-used
+ID (SDO-88888) was blocked (exit 2) as designed. A first probe attempt
+with the commonly-reused test ID SDO-999 incorrectly passed — not a
+hook bug, but because SDO-999 already exists as literal text in
+EVOLUTION_LOG.md from a prior test, so the grep found it and treated it
+as "logged." Confirmed via non-Bash passthrough, non-commit passthrough,
+and a real logged ID (SDO-017) all behaving correctly, and no probe
+residue left (`git status` clean). Hook's header comment updated with
+this finding so a future rotation doesn't reuse SDO-999 as a "fresh" ID
+by mistake.
+
+**MECHANICAL findings, fixed this pass (README.md):**
+1. Audit's own SKILL.md description in README.md § 4 never mentioned
+   checks 1e or 1f, both added earlier this session (SDO-024, SDO-027)
+   — README's dictionary entry for audit was stale relative to the file
+   it describes. Added both.
+2. README § 3.1's SYSTEM_SOURCES/ entry still said "Currently five"
+   sources and didn't mention agent-skills-docs.md (ingested SDO-021,
+   bringing the real count to six, matching overview.md's already-
+   correct count). Fixed.
+3. README § 3.1's INDEPENDENT_REVIEW.md entry described v1 and v2 but
+   not v3 (PIL-12 through PIL-15, SDO-025), added this session. Fixed.
+
+**JUDGMENT-REQUIRED findings, reported not fixed:**
+- Check 1e: `SYSTEM_BRAIN/concepts/claude-md-and-skills-pattern.md`'s
+  SKILL.md-per-folder claim now has official backing (agent-skills-docs.md,
+  SDO-021), but the SAME page's other claims — hooks semantics ("hooks
+  are law"), `agents/` sub-agent definition, `rules/` glob-scoping,
+  `.mcp.json` behavior, `statusline`, CLAUDE.md's 200-line limit — are
+  still sourced only from claude-os-guide.md and anatomy-screenshot.md,
+  both informal, same non-Anthropic author, with no official
+  corroboration ever checked for those specific claims.
+- Check 1b: WORKSPACE/ARTIFACTS/SYSTEM_DESIGN_OS_full_visual.pdf was
+  generated 2026-06-27, before 4 hooks (2 new), 3 skills (all new),
+  audit checks 1e/1f, Rule 10, and the 6th ingested source existed —
+  README.md has diverged substantially since. Regeneration is a human
+  call, not auto-triggered.
+- Check 2: WORKSPACE/SYSTEM_BRAIN/dialogue/conversational.md has grown
+  to 384 lines / 16 dated entries spanning 2026-06-28 through
+  2026-07-02 — worth a real look at whether a pattern is visible enough
+  to promote into overview.md. Not acted on; promotion is judgment-based.
+- 1d rotation's own write-back: agent-skills-docs.md's raw source
+  (SYSTEM_SOURCES/agent-skills-docs.md) was re-read in full against its
+  ingestion record and concept page — no gap found, the record's own
+  honest PARTIAL-on-depth note (invocation control, subagent execution,
+  dynamic context injection never extracted) still holds and nothing
+  claims otherwise. The 'Last full re-verification' date field on that
+  record needs updating from "not yet run" to today, but
+  SYSTEM_BRAIN/sources/ is a guarded path — reported here, not written.
+
+**Clean, nothing found:** 1a (overview.md's stated 6 sources matches
+real sources/ file count), 1c (agent-skills-docs.md's concept-page
+coverage matches its own ingestion record), 1c-supplement (no PARTIAL-
+status sources), 3 (no inconsistently-applied principle found), 4 (no
+broken cross-references — every referenced path across CLAUDE.md,
+AGENTS.md, README.md, FRAMEWORK.md, OPERATING_CONTRACT.md, INGEST.md,
+and skill files resolves to a real file), 4b (every real top-level
+WORKSPACE/ and DOMAINS/ item is documented in README.md), 4d (no
+duplicate SDO-XXX or CC-XXX header across EVOLUTION_LOG.md and its
+archive), 5 (all 10 OPERATING_CONTRACT.md rules have real exercised
+evidence in the live log or archive), 7 (STATUS.md's NON-NEGOTIABLE
+baton instruction present and intact, CLAUDE.md/AGENTS.md in sync
+aside from their intentional mirror comment).
+
+**6b self-distrust applied:** since 1e and 1f were both added this
+session (the highest-risk category per PATTERNS.md P002), each was
+actively tested from a different angle rather than trusted on a first
+clean pass — 1e by re-checking the SAME page's OTHER claims beyond the
+one gap it already closed (found the residual gap above), 1f by
+actually running the probe with a fresh ID rather than accepting the
+header comment's claim, which surfaced the SDO-999 stale-test-ID gotcha.
+
 ## SDO-028 - 2026-07-02 - CHECKPOINT: real, unresolved simplification question raised — no decision locked yet, no files changed since SDO-027
 User raised a substantive architectural critique after SDO-027: this
 system was meant to be a simple, two-pillar design (LLM Wiki + ICM, per

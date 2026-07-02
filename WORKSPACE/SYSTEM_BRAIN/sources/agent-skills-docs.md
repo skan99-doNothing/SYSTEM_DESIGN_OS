@@ -11,7 +11,7 @@
 - **What was actually gotten from this source:** The exact required skill file structure (folder-per-skill, mandatory SKILL.md filename), confirmation that Claude Code skills follow the Agent Skills open standard (agentskills.io) shared across multiple AI tools — making this the primary-source answer to "is folder+SKILL.md the agent-agnostic best practice," which the two prior sources (claude-os-guide.md, anatomy-screenshot.md) never actually covered despite being topically adjacent. Also covers nested/monorepo-scoped skills, symlinked skills, and live change detection behavior.
 - **What could NOT be verified or read:** The full page's remaining sections (invocation control, subagent execution, dynamic context injection details) were fetched but not exhaustively extracted into this record — only the sections answering the specific triggering question were pulled through in full. This is a scoped, deliberate PARTIAL on depth beyond the triggering question, not a failed read.
 - **Date:** 2026-07-02
-- **Last full re-verification:** not yet run (first ingestion pass)
+- **Last full re-verification:** 2026-07-02 (SDO-029 audit 1d rotation — re-read against record and concept page, no gap found, PARTIAL-on-depth note still honest and unchanged)
 
 ## Why this was ingested (trigger)
 

@@ -283,7 +283,10 @@ SYSTEM_DESIGN_OS/
   every file claimed, including a hook that had silently done nothing
   since it was built — v2 folded that cycle's 11 prompt-improvement
   entries directly into the reusable prompt so the next cycle starts
-  sharper instead of re-deriving them from a separate log.
+  sharper instead of re-deriving them from a separate log. v3
+  (SDO-015 through SDO-024, same day) added PIL-12 through PIL-15 from
+  a real work pass rather than a formal review run, including a second
+  logged instance of the SDO-020 answering-miss shape.
 
 - **DECISIONS.md** — a small, deliberately short list of choices that
   reached LOCKED status, each with what was decided, why, what
@@ -336,11 +339,13 @@ SYSTEM_DESIGN_OS/
 - **SYSTEM_SOURCES/** — raw source documents this system was
   synthesized from, kept immutable and separate from SYSTEM_BRAIN/
   per INGEST.md's own rule that sources are never edited, only read.
-  Currently five: the original four system-design methodology sources
-  (LLM Wiki pattern, ICM paper, claude-os-guide, anatomy reference)
-  plus the Autonomous AI Growth Engine architecture guide ingested in
+  Currently six: the original four system-design methodology sources
+  (LLM Wiki pattern, ICM paper, claude-os-guide, anatomy reference),
+  the Autonomous AI Growth Engine architecture guide ingested in
   CC-098 (21-agent system, context DB schema, Verifier, Eval Engine,
-  Growth OS director pattern). **Gitignored, not pushed to git** (per
+  Growth OS director pattern), and agent-skills-docs.md (Claude Code's
+  own official Skills documentation, ingested SDO-021 to close the
+  SDO-020 secondary-source-only gap). **Gitignored, not pushed to git** (per
   .gitignore — stored in Google Drive instead, same for any domain's
   RAW/); the git push protects SYSTEM_BRAIN/ and every other WORKSPACE/
   file, but not these raw originals, and audit's 1d rotation (full
@@ -453,16 +458,29 @@ folders — not the five-layer hierarchy, stage contracts, or "configure
 the factory" added in that same pass, CC-150); (5) are there rules in
 OPERATING_CONTRACT.md with no EVOLUTION_LOG.md entry ever showing them
 actually being exercised, not just declared;
-(4d) scan EVOLUTION_LOG.md for any CC-XXX number appearing as a header
-more than once with genuinely different content — flag MECHANICAL,
-since a real collision requires one entry to be renumbered; the
-mechanical backstop for Rule 9's grep-before-assigning check (CC-153);
-(6b) if a check was just self-corrected, actively attempt to falsify
-the clean result from a different angle before accepting it; (7) is
-STATUS.md's NON-NEGOTIABLE instruction (requiring the Handoff Baton to
-be included in any status response) still present and intact at the
-file's top — added after CC-127 confirmed a real failure where a status
-query omitted the baton entirely. Every finding gets tagged MECHANICAL
+(4d) scan EVOLUTION_LOG.md AND WORKSPACE/EVOLUTION_LOG_ARCHIVE/ for any
+SDO-XXX or CC-XXX number appearing as a header more than once with
+genuinely different content — flag MECHANICAL, since a real collision
+requires one entry to be renumbered; the mechanical backstop for Rule
+9's grep-before-assigning check (CC-153); (1e) for any concept or
+synthesis page describing a Claude-Code-specific mechanism, flag
+JUDGMENT-REQUIRED if every source cited is informal/third-party with
+none from Anthropic's own official documentation — added SDO-024 after
+SDO-020/021/022 found `claude-md-and-skills-pattern.md` resting
+entirely on two informal, same-author sources for a mechanical detail
+(the SKILL.md-per-folder requirement) that only an official source
+actually confirmed; (1f) a rotation, same shape as 1d, that live-fire
+tests the one hook in `.claude/hooks/` that has gone longest without a
+real test (tracked via each hook's own `# Last live-fire tested:` line)
+— added SDO-027 to close the exact gap that let ingest-guard.sh sit
+silently non-functional through its entire history with no routine
+mechanism ever exercising it for real; (6b) if a check was just
+self-corrected, actively attempt to falsify the clean result from a
+different angle before accepting it; (7) is STATUS.md's NON-NEGOTIABLE
+instruction (requiring the Handoff Baton to be included in any status
+response) still present and intact at the file's top — added after
+CC-127 confirmed a real failure where a status query omitted the baton
+entirely. Every finding gets tagged MECHANICAL
 (a verifiable fact, may be fixed in the same pass, but always reported,
 never silent) or JUDGMENT-REQUIRED (a human decision, never
 auto-resolved). If this run is happening immediately after a previous
