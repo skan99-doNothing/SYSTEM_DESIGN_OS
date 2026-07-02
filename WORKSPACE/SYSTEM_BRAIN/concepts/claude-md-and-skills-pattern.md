@@ -107,7 +107,8 @@ on this topic.
   SDO-017 pattern (a rule/check that depends on someone noticing) applied
   one level up: to what the brain itself is built from, not just to
   whether a rule got followed.
-- **Status:** PROPOSED (not applied — audit's skill file is unchanged;
-  this record documents the gap and a candidate fix, pending explicit
-  human review and approval per INGEST.md Step 7)
+- **Status:** APPLIED (SDO-024) — user explicitly approved closing
+  identified gaps without further per-item confirmation. New check 1e
+  added to `.claude/skills/audit/SKILL.md`. This record kept as the
+  originating suggestion, per Step 7's traceability requirement.
 - **Date:** 2026-07-02

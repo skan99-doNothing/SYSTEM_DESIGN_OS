@@ -102,6 +102,32 @@ To identify which source is next: read the 'Last full re-verification' date
 from each record in sources/ and pick the oldest (or 'not yet run'). If
 two sources tie, pick alphabetically.
 
+### 1e. Check for foundational claims resting only on secondary sources (SDO-021/022)
+
+For any concept or synthesis page describing a Claude-Code-specific
+mechanism (a hook, a skill format, a settings.json behavior, or similar
+content that has an official Anthropic specification somewhere), check
+whether EVERY source cited for that page is informal/third-party (a
+blog post, a social media graphic, an unofficial guide) with none from
+Anthropic's own official documentation.
+
+Flag as JUDGMENT-REQUIRED, not MECHANICAL — "informal vs. official"
+requires judgment about the source itself, not a pure count. State
+which page, which sources back it, and what topic within it is most
+likely to be thin as a result (a specific mechanical detail, not just
+"could be incomplete").
+
+This check exists because audit's 1c (concept page vs. its own
+ingestion record) cannot catch this category: a record and its concept
+page can agree with each other perfectly while both are simply thin
+relative to ground truth, because the underlying source never went
+deeper. Confirmed real instance: `claude-md-and-skills-pattern.md` was
+built entirely from claude-os-guide.md and anatomy-screenshot.md (both
+informal, same non-Anthropic author) and did not contain the
+SKILL.md-per-folder requirement or the Agent Skills open-standard fact
+until agent-skills-docs.md (an official source) was ingested to close
+the gap (SDO-020/021/022).
+
 ## 2. Check for promotion/threshold conditions that may have been crossed
 Has enough material accumulated for a judgment-based promotion (e.g.
 conversational.md to overview.md) to be warranted? Flag, don't act.

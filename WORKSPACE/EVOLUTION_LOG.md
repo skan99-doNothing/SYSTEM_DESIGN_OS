@@ -4,6 +4,38 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-024 - 2026-07-02 - OVERRIDE JUSTIFICATION + APPLIED: audit's SUGGESTION RECORD (1e, secondary-source-only check) approved and applied; STATUS.md's earlier overclaim on "3 instances" of conflict-preservation corrected
+User gave explicit approval to close identified gaps without waiting for
+further per-item confirmation ("lets start closing all identified gaps
+no need to wait"), read as the human approval INGEST.md Step 7 requires
+for the PROPOSED suggestion record from SDO-022.
+
+Reference string for the override file to match: OVERRIDE-SDO-024-AUDIT-1E-APPLY
+
+**Applied:** new audit check 1e added to `.claude/skills/audit/SKILL.md`
+(not a guarded path) — flags concept/synthesis pages describing a
+Claude-Code-specific mechanism where every cited source is
+informal/third-party, JUDGMENT-REQUIRED not MECHANICAL. The originating
+SUGGESTION RECORD in claude-md-and-skills-pattern.md is updated from
+PROPOSED to APPLIED in this same pass (guarded write, override above),
+with a reference back to this entry, per Step 7's traceability
+requirement.
+
+**Separately, a self-caught correction, not a new gap:** while reviewing
+what else to close, re-read RULES.md's actual conflict-preservation
+text before promoting it to a FRAMEWORK.md concept as STATUS.md's open
+item 9 had suggested. STATUS.md's own wording overclaimed — it treated
+SDO-017 and SDO-018 as a 2nd and 3rd instance of the "guard block is a
+conflict requiring a logged override" pattern. Neither actually fits:
+SDO-017 blocks until a log entry exists (no legitimate-but-blocked
+scenario, no override needed — just a fix), and SDO-018 is explicitly
+non-blocking (no conflict at all). Only SDO-012 is a real built instance
+of that specific pattern; RULES.md's own text already says "watch for a
+third instance" and that threshold has not actually been crossed.
+Not promoting to FRAMEWORK.md — doing so on an inflated count would be
+exactly the kind of overclaim this system exists to catch. STATUS.md's
+next refresh corrects this instead of carrying the error forward.
+
 ## SDO-023 - 2026-07-02 - CLAUDE.md/AGENTS.md's "Answering knowledge questions" section closed against the exact loophole SDO-020 exploited, and against the "transfer gap" the user flagged
 User asked directly for the underlying investigation MECHANISM to be
 fixed, not just this one instance patched, after SDO-020/021/022 played

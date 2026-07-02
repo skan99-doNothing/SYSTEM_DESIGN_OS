@@ -7,12 +7,36 @@ not just open items or what's-working. The baton existing is the
 entire point of this file; skipping it defeats that point. This is
 not optional or context-dependent.
 
-Last manually confirmed accurate: 2026-07-02 (SDO-002 through SDO-019,
+Last manually confirmed accurate: 2026-07-02 (SDO-002 through SDO-024,
 same-day session, refreshed via the `sync-status` skill — a targeted
 baton refresh, not a full chalo close; no system-wide audit ran as part
 of this update). If significantly more EVOLUTION_LOG.md entries exist
 after this date than are reflected here, this file may be stale —
 cross-check before trusting it fully.
+
+**Since the SDO-019 baton was written, these landed (SDO-020–024),
+folded into this refresh:**
+- SDO-020: real process miss — a knowledge question was answered via an
+  external agent before checking SYSTEM_BRAIN, violating CLAUDE.md's own
+  instruction. Logged plainly, not smoothed over.
+- SDO-021/022: closed the actual content gap — formally ingested the
+  real Agent Skills docs (primary source) into SYSTEM_BRAIN via
+  INGEST.md's real protocol. First genuine production use of
+  ingest-guard.sh's override mechanism (built SDO-012, unused until now).
+  Produced a Step 7 SUGGESTION RECORD (new audit check 1e) — see below.
+- SDO-023: CLAUDE.md/AGENTS.md's "Answering knowledge questions" section
+  closed against the exact loophole SDO-020 exploited (external
+  verification before a brain check didn't technically count as
+  "answering") and against the "transfer gap" (an external find now
+  must loop back into real ingestion, not just answer once and vanish).
+- SDO-024: the SDO-022 suggestion record (audit check 1e: flag concept
+  pages built entirely from secondary/informal sources) APPROVED and
+  APPLIED to `.claude/skills/audit/SKILL.md`, per explicit user
+  authorization. Also corrected an overclaim in this same baton (see
+  open item 9 below) — SDO-017/018 were wrongly counted as further
+  instances of the conflict-preservation pattern; on re-check, neither
+  fits, and RULES.md's own "watch for a third instance" threshold has
+  NOT been crossed. Not promoted to FRAMEWORK.md.
 
 ## Handoff baton — paste this to start a new chat with Claude
 
@@ -197,11 +221,13 @@ covered.
 8. **Watch item: concept page overclaiming beyond its raw source**
    (autonomous-ai-growth-engine.md) — watching for a second instance.
 9. **Watch item: a guard block is a conflict to resolve, not a tool gap
-   to route around** (SDO-012) — now arguably reinforced by SDO-017's
-   own design (same principle, applied to log-entry enforcement) and
-   SDO-018 (same soft-rule-to-hook shape, applied to checkpoint timing)
-   — worth a judgment call on whether this now warrants a single named
-   FRAMEWORK.md concept rather than three separately-described instances.
+   to route around** (SDO-012) — CORRECTED (SDO-024): an earlier version
+   of this baton wrongly counted SDO-017/018 as a 2nd/3rd instance of
+   this exact pattern. Re-checked against RULES.md's actual definition:
+   neither fits (SDO-017 has no legitimate-but-blocked override scenario;
+   SDO-018 is non-blocking, no conflict at all). Only SDO-012 is a real
+   built instance. RULES.md's own "watch for a third instance" threshold
+   has NOT been crossed — do not promote to FRAMEWORK.md on this count.
 10. **claude-os-guide.md is next in audit 1d rotation** — unchanged;
     rotation has not advanced since no audit has run this session.
 11. **Rule 2 and Rule 7 have no real-work exercise evidence in
