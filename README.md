@@ -36,7 +36,9 @@ mechanism here has only been exercised on its own construction.
   problem, the routing pointer simply hadn't been written.
 - **Transferable** — no database, no proprietary format. Copyable
   wholesale to another person, agent, or future session with no
-  translation step.
+  translation step. Caveat: raw sources (SYSTEM_SOURCES/, any domain's
+  RAW/) are gitignored, not part of the git-copyable whole — see section
+  3.1's SYSTEM_SOURCES/ entry.
 - **Scalable** — knowledge accumulates per-domain, never shared
   across unrelated work, with a concrete, evidence-based threshold
   (RULES.md) for when plain index-file navigation needs to become
@@ -291,7 +293,12 @@ SYSTEM_DESIGN_OS/
   (LLM Wiki pattern, ICM paper, claude-os-guide, anatomy reference)
   plus the Autonomous AI Growth Engine architecture guide ingested in
   CC-098 (21-agent system, context DB schema, Verifier, Eval Engine,
-  Growth OS director pattern).
+  Growth OS director pattern). **Gitignored, not pushed to git** (per
+  .gitignore — stored in Google Drive instead, same for any domain's
+  RAW/); the git push protects SYSTEM_BRAIN/ and every other WORKSPACE/
+  file, but not these raw originals, and audit's 1d rotation (full
+  re-read of a raw source) cannot run against a fresh clone of the
+  public GitHub repo for this reason.
 
 - **ARTIFACTS/** — generated, human-facing outputs rendered from
   existing knowledge for human consumption — visual diagrams, exported
@@ -490,17 +497,40 @@ RECORD (status PROPOSED) in the relevant concept page via the
 standard INGEST.md Step 7 mechanism — deep mode creates no new
 approval pathway, only more rigorous analysis before the same output.
 
-## 5. The two hooks — mechanical, cannot be talked past
+## 5. The two hooks — mechanical for Write/Edit, not a complete write-guard
 
 ### ingest-guard.sh
 
-Fires on every file write attempt, before it completes. Blocks any
-write into DOMAINS/, SYSTEM_BRAIN/, or SYSTEM_SOURCES/ unless the
-target path is inside a _TEMPLATE/ folder. This is not advice Claude
-can choose to follow — it's a shell script that runs regardless of
-what Claude decides in the moment, which is the entire reason it
-exists: rules in markdown can be skipped under pressure to seem
-helpful; a hook cannot.
+Fires on every Write or Edit tool call, before it completes. Blocks that
+call into DOMAINS/, SYSTEM_BRAIN/, or SYSTEM_SOURCES/ unless the target
+path is inside a _TEMPLATE/ folder. This is not advice Claude can choose
+to follow via the Write/Edit tools specifically — a shell script runs
+regardless of what Claude decides in the moment for those two tools.
+
+**This claim was false from CC-027 (original build) until SDO-002 —
+and is still only partially true today.** The original implementation
+read its target path from a positional argument and exited 1 on a
+match — Claude Code actually delivers PreToolUse input as JSON on stdin
+and only exit code 2 blocks the tool call, so the hook silently exited 0
+on every real write for its entire history; zero blocked-write events
+were ever logged. SDO-002 rewrote it to parse stdin JSON, exit 2, and
+warn on stderr, then live-fire tested it against a real Write into
+SYSTEM_BRAIN/ — the harness genuinely refused the write (logged as the
+first real INGEST GUARD firing).
+
+Fixing the exit code exposed two further limits, both logged as
+undecided design items rather than fixed (SDO-005): (1) the hook is only
+registered against the Write|Edit matcher in .claude/settings.json — a
+file write via the Bash tool (`sed`, `python`, `>`) is never intercepted
+at all, so "cannot be talked past" only holds for two of the tools that
+can write a file; (2) the hook has no override path once it blocks — not
+even a human's explicit chat-level approval changes its decision, which
+means a real, legitimate INGEST.md Step 6 reconciliation write would hit
+the identical wall a malformed one would. See FRAMEWORK.md's guardrail
+concept section for the mechanism-agnostic lesson from SDO-002 (a
+guardrail isn't built until a real blocked action is logged), and
+EVOLUTION_LOG.md's SDO-005 entry for the open design questions this
+review deliberately left undecided rather than rushing a fix.
 
 ### verify-claude-md.sh
 

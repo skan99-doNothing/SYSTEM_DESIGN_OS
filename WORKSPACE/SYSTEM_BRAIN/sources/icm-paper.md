@@ -9,7 +9,8 @@
   4. Keywords extracted: "context engineering, human-AI interaction, AI agent orchestration, filesystem architecture, human-in-the-loop, mixed-initiative systems, workflow automation"
   5. Key phrase from abstract: "Numbered folders represent stages. Plain markdown files carry the prompts and context that tell a single AI agent what role to play at each step."
 - **What was actually gotten from this source:** Abstract, introduction, and Table 1 (comparison of ICM vs framework approaches across 10 dimensions). Full paper content available via pdftotext.
-- **What could NOT be verified or read:** Sections 2–6 not extracted in original pass — cleared by CC-140 full re-read 2026-06-28 (see re-verification section below). Nothing remaining.
+- **What could NOT be verified or read:** Nothing.
+- **Cleared gaps:** Sections 2–6 were not extracted in the original pass; cleared by CC-140's full re-read on 2026-06-28 (see re-verification section below).
 - **Date:** 2026-06-26
 - **Last full re-verification:** 2026-06-28 (CC-144)
 

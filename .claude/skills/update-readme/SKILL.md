@@ -3,8 +3,11 @@ name: update-readme
 description: Keeps README.md's dictionary-style entries current.
 Trigger whenever a new domain is created under DOMAINS/, a new skill
 is added under .claude/skills/, a new hook is added under
-.claude/hooks/, or a new file is added to WORKSPACE/. Also trigger on
-explicit request ("update the readme," "add this to the dictionary").
+.claude/hooks/, or a new file is added to WORKSPACE/. Also trigger
+whenever FRAMEWORK.md, RULES.md, INGEST.md, or PATTERNS.md receives
+substantive new content (new section, new mechanism, corrected claim)
+— not just structural additions. Also trigger on explicit request
+("update the readme," "add this to the dictionary").
 ---
 
 # Update README.md

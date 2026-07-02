@@ -174,6 +174,26 @@ mechanism:
   stated limitation) — true for any agent's version of this guardrail,
   not just Claude Code's.
 
+**A guardrail is not built until a real blocked write has been logged
+(SDO-002).** The original ingest-guard.sh implementation (CC-027) read
+its target path from a positional argument and exited 1 on match — Claude
+Code actually delivers PreToolUse hook input as a JSON object on stdin
+(the path lives at `.tool_input.file_path`) and only exit code 2 blocks
+the tool call; exit 1 just reports a non-blocking error. This meant the
+hook silently exited 0 on every real invocation from the moment it was
+built until SDO-002's live-fire test caught it — zero blocked writes were
+ever logged in EVOLUTION_LOG.md across the hook's entire history, which
+in hindsight was itself the tell. A guardrail's implementation detail
+(where the tool actually delivers its input, which exit code actually
+blocks, which stream a warning must write to) is agent-specific and must
+be confirmed against that agent's real behavior, not assumed by analogy
+to a different mechanism — this is the same "no confidence claim may
+exceed the evidence" standard INGEST.md already applies to sources,
+applied here to a hook's own claimed behavior. A future implementation
+under a different agent must include this same live-fire verification
+step (attempt a real blocked action, confirm it is refused, log the
+result) before being considered built — not just written.
+
 A future implementation under a different agent (Kimi, Codex, or
 otherwise) should read this specification and build its own equivalent
 using whatever hook/automation mechanism that agent actually supports —

@@ -35,9 +35,16 @@ user rather than resolving them.
    has grown — consider promoting a synthesis into overview.md," with
    specific reasoning, not just a count.
 ## 5c. Check whether README.md needs a dictionary update
-If this session created a new domain, skill, hook, or WORKSPACE file
-— or removed/renamed an existing one — invoke update-readme before
-committing. If nothing structural changed this session, skip silently.
+Invoke update-readme before committing if EITHER of the following is true
+this session:
+- A new domain, skill, hook, or WORKSPACE file was created — or an
+  existing one was removed/renamed (the original structural trigger).
+- FRAMEWORK.md, RULES.md, INGEST.md, or PATTERNS.md received substantive
+  new content (a new section, a new mechanism, a corrected claim) — per
+  OPERATING_CONTRACT.md Rule 8's content-update sub-rule (CC-150). This
+  is not structural change, but README.md's dictionary entry for that
+  file still goes stale exactly the same way.
+If neither condition is true this session, skip silently.
 ## 5d. Regenerate the handoff baton
 Before the final commit, rewrite STATUS.md's "Handoff baton" section
 in full, replacing the previous one entirely — never append. Pull the

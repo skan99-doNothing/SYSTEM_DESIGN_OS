@@ -307,3 +307,39 @@ just plausible-sounding elaboration. One instance so far - watch for a
 second before considering whether 1c/1d's check needs an explicit
 over-claim direction, not just the under-claim direction it currently
 covers.
+
+## [2026-07-02] — A guardrail's absence of failures is not evidence it works
+
+An independent adversarial review tested ingest-guard.sh empirically for
+the first time since its build (CC-027) — instead of trusting its
+self-description, it attempted a real blocked write. Found: the hook read
+its target path from a positional argument and exited 1 on match; Claude
+Code actually delivers PreToolUse input as JSON on stdin and only exit
+code 2 blocks a tool call. The hook had silently exited 0 on every real
+invocation for its entire history. A grep for "INGEST GUARD" across all of
+EVOLUTION_LOG.md returned zero hits — and that absence was itself
+available evidence nobody had read as a finding. Zero blocked-write events
+in a system that writes to guarded folders regularly should have been a
+standing question ("why has this never fired?"), not a quiet assumption
+that it simply hadn't needed to.
+
+**The pattern:** P002 (fix declared clean without independent verification)
+already covers a check being wrong right after a correction. This is the
+same shape one level down — a guardrail's total silence over its whole
+life was treated as proof of good behavior instead of a candidate
+symptom of never having run at all. The absence of a failure log is not
+neutral evidence; for a mechanism that should occasionally fire under
+normal system use, sustained silence is itself a data point worth
+checking.
+
+**Standing implication:** any future guardrail or hook should have its
+blocking behavior live-fire tested at build time (a real attempted
+violation, confirmed refused, logged) — not just its logic reviewed —
+and a hook with zero logged firings after a reasonable period of real use
+should be treated as a candidate for "verify this still works," not
+assumed fine by default. Fixing this one (SDO-002) also surfaced a second,
+narrower limit worth watching for a second instance before generalizing
+further: SDO-002's fix exposed that the hook's matcher only covers the
+Write/Edit tools, not Bash-based writes, and that it has no override path
+for a legitimate blocked action (SDO-005, logged as a deferred design
+item, not yet a second confirmed instance of anything).

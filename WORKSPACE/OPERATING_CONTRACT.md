@@ -274,13 +274,15 @@ CC-150's root cause).
 
 ### CLAUDE.md and AGENTS.md must stay in sync
 
-This system maintains two entry-point files with identical content —
-CLAUDE.md (read by Claude Code) and AGENTS.md (read by Codex and other
+This system maintains two entry-point files with identical content,
+except for each file's own one-line mirror comment naming the other
+(CLAUDE.md notes it mirrors into AGENTS.md; AGENTS.md notes the reverse)
+— CLAUDE.md (read by Claude Code) and AGENTS.md (read by Codex and other
 agents following that convention) — so the system is agent-agnostic,
 not locked to one tool. Any edit to one must be mirrored in the other in
-the same pass. If they're found to differ unintentionally, that's a
-Rule 8 violation — a real change happened and wasn't properly recorded
-across both required copies.
+the same pass. If they're found to differ beyond that one intentional
+line each, that's a Rule 8 violation — a real change happened and wasn't
+properly recorded across both required copies.
 
 ### STATUS.md must be refreshed at session end, not on every prompt
 
