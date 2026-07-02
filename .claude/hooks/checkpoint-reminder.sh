@@ -1,4 +1,5 @@
 #!/bin/bash
+# Last live-fire tested: 2026-07-02 (SDO-018 creation test; confirmed firing organically and throttling correctly mid-session)
 # Fires on PostToolUse (broad matcher) — Rule 9's 15-minute checkpoint rule,
 # made mechanical instead of relying on the model noticing on its own.
 #

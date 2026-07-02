@@ -4,6 +4,46 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-027 - 2026-07-02 - audit gains check 1f: routine, rotation-based hook live-fire testing — closes the actual mechanism gap that let ingest-guard.sh sit broken through its entire history
+User's pushback was structural, not rhetorical: what is audit's actual
+role if things get built and never tested for real function? Checked
+directly rather than assumed — `audit`'s SKILL.md (grep for
+"hook"/"live-fire") confirmed it has ZERO functional hook testing. The
+only place that testing ever existed was INDEPENDENT_REVIEW.md's
+TASK-05b, which only runs when a human manually pastes that entire
+protocol into a fresh, cold session — rare and human-triggered, not
+routine. This is precisely the mechanism gap that let ingest-guard.sh
+sit silently non-functional through its ENTIRE history despite
+presumably many chalo/audit cycles running in that window: audit was
+never built to ask "does this actually fire and block," only "does this
+file's description match what's written elsewhere."
+
+**Fix: ported TASK-05b's live-fire methodology into audit's own routine
+checks, as check 1f — a bounded rotation, same pattern as 1d's source
+re-verification.** Each audit run tests exactly ONE hook (the one that's
+gone longest without a live-fire test, tracked via a new `# Last
+live-fire tested:` comment line added to every hook script), not all of
+them — keeping audit's cost fixed as hooks accumulate, the same
+discipline 1d already proved for sources. The test itself: confirm real
+input source matches the current harness, confirm blocking exit code
+actually blocks, run a real scoped probe and confirm it's reverted, grep
+EVOLUTION_LOG.md for the hook's own name to check it has ever fired for
+real. 6b's self-distrust discipline explicitly called out as mandatory
+here, not optional — this is the exact category with the worst prior
+track record in this system.
+
+**Immediately exercised, not left untested:** all four existing hooks
+got honest tracking lines. Three (ingest-guard.sh, sdo-log-guard.sh,
+checkpoint-reminder.sh) already had real evidence from tonight's own
+session (production override use, live commit-blocking, organic
+throttled firing) and were dated accordingly. `verify-claude-md.sh` had
+no real test this session — ran the actual 1f check on it immediately:
+positive case confirmed via this session's own real SessionStart
+transcript; two negative cases (missing CLAUDE.md, wrong-project marker)
+probed safely in /tmp, both correctly warned and exited 1, probes
+cleaned up and verified removed via `ls`. All four hooks now carry real,
+dated, evidenced tracking lines — none left as an unverified claim.
+
 ## SDO-026 - 2026-07-02 - ingest-validate's founding rationale backfilled, honestly labeled as a backfill — closes a traceability gap found during a direct verification pass, not a functionality bug
 User asked for a full evidence-based traceback of why audit,
 ingest-validate, and INGEST.md were built, then required personal

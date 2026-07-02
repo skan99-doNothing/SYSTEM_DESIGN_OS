@@ -1,4 +1,5 @@
 #!/bin/bash
+# Last live-fire tested: 2026-07-02 (SDO-017 creation test; re-exercised live on every real commit since, incl. this session's own commits)
 # Fires on PreToolUse for Bash — blocks any `git commit` whose message
 # references an SDO-XXX ID that has no corresponding entry in
 # WORKSPACE/EVOLUTION_LOG.md yet.

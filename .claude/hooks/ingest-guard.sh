@@ -1,4 +1,5 @@
 #!/bin/bash
+# Last live-fire tested: 2026-07-02 (SDO-021/022/024 real production use — override consumed correctly, guarded writes blocked/allowed as designed)
 # Fires on PreToolUse for Write, Edit, and Bash — blocks any write into
 # DOMAINS/, WORKSPACE/SYSTEM_BRAIN/, or WORKSPACE/SYSTEM_SOURCES/ unless
 # a genuine, logged override exists first. This is a guardrail, not a

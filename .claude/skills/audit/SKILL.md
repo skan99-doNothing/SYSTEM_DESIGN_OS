@@ -128,6 +128,47 @@ SKILL.md-per-folder requirement or the Agent Skills open-standard fact
 until agent-skills-docs.md (an official source) was ingested to close
 the gap (SDO-020/021/022).
 
+### 1f. Periodic hook live-fire re-verification rotation (SDO-027)
+
+**This is the routine-cycle fix for the exact gap that let ingest-guard.sh
+sit silently non-functional through its entire history:** audit's other
+checks (1a-1e, 3, 4) verify DOCUMENTATION self-consistency — whether a
+file's description matches what's written elsewhere. None of them ever
+test whether a hook actually FUNCTIONS. The only place that testing
+existed before this check was INDEPENDENT_REVIEW.md's TASK-05b — which
+only runs when a human manually pastes that whole protocol into a fresh,
+cold session. That is rare and human-triggered, not routine, and it is
+exactly how a hook can be broken for its entire history across many
+`chalo`/audit cycles without ever being caught.
+
+Maintain a rotation, same pattern as 1d: each audit run, pick the ONE
+hook in `.claude/hooks/` that has gone longest without a live-fire test
+(tracked via a `# Last live-fire tested: DATE` comment line near the top
+of each hook script; a hook with no such line yet counts as oldest/never
+tested). Test only that one hook this run — full live-fire tests on
+every hook every run would make audit's cost scale with hook count
+unboundedly, the same problem 1d's rotation already solves for sources.
+
+**The test itself (ported from INDEPENDENT_REVIEW.md TASK-05b):**
+(a) confirm the hook's actual input-reading matches what the CURRENT
+harness really sends (e.g. PreToolUse hooks receive JSON on stdin, not
+positional args — verify this for the current harness, don't assume
+from a prior review); (b) confirm its blocking exit code actually blocks
+(exit 2 blocks, exit 1 does not, in Claude Code); (c) attempt a real,
+scoped probe action that SHOULD trigger the hook's behavior, confirm the
+harness actually responds as expected, and confirm the probe left no
+trace (reverted, verified via `git status`/`ls` in the same turn); (d)
+grep EVOLUTION_LOG.md for that hook's own name/warning text — if it has
+never once fired in the system's real history, treat that silence as a
+candidate symptom worth investigating, not neutral evidence.
+
+Update the hook's `# Last live-fire tested:` comment regardless of
+outcome. Flag as MECHANICAL if the hook fails its own stated behavior;
+report clean if it passes, but do not skip 6b's self-distrust discipline
+on a clean result here specifically — this exact category (a hook
+believed fine that silently wasn't) is the one with the worst prior
+track record in this system.
+
 ## 2. Check for promotion/threshold conditions that may have been crossed
 Has enough material accumulated for a judgment-based promotion (e.g.
 conversational.md to overview.md) to be warranted? Flag, don't act.

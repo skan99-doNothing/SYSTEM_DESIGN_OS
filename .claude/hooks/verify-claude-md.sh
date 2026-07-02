@@ -1,4 +1,5 @@
 #!/bin/bash
+# Last live-fire tested: 2026-07-02 (SDO-027, first real 1f rotation run — positive case confirmed via this session's own SessionStart transcript; negative cases (missing CLAUDE.md, wrong-project marker) probed in /tmp, both correctly warned and exited 1, probes cleaned up and verified removed)
 # Fires on SessionStart. Confirms the CLAUDE.md actually loaded is the
 # real one for THIS project. Uses CLAUDE_PROJECT_DIR — the official
 # environment variable Claude Code itself sets to the project root it
