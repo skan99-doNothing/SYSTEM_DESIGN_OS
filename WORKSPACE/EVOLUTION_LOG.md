@@ -4,6 +4,47 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-020 - 2026-07-02 - Real miss: answered a knowledge question from an external agent before checking SYSTEM_BRAIN, as CLAUDE.md's own instruction requires. Brain checked afterward — genuinely thin on the question asked.
+User asked whether the `<skill-name>/SKILL.md` folder structure is the right,
+agent-agnostic naming convention. Instead of checking
+WORKSPACE/SYSTEM_BRAIN/index.md first — CLAUDE.md's own non-negotiable
+instruction for exactly this kind of question — a claude-code-guide agent
+was spawned to verify externally, and its answer (Agent Skills open
+standard, agentskills.io; folder+SKILL.md required, not optional; portable
+across tools, not Claude-Code-specific) was reported as if it were the
+correct first move. It wasn't. The user caught this directly and asked
+whether the answer should have come from the brain instead, since that is
+the actual point of building one — reboot-proof, agent-agnostic knowledge
+that doesn't require re-fetching from live docs every time the same
+question comes up.
+
+**Checked the brain honestly after being caught, not defensively:**
+WORKSPACE/SYSTEM_BRAIN/concepts/claude-md-and-skills-pattern.md (sourced
+from claude-os-guide.md and anatomy.jpg, both INGESTED 2026-06-26) does
+cover the .claude/skills/ folder's existence and that skills are "reusable
+workflows invoked by /name" — but it does NOT contain the specific fact
+actually needed: the required SKILL.md filename-inside-folder structure,
+or the Agent Skills open-standard/portability claim. This is a genuine
+content gap in the brain, not a case of an available answer being ignored
+in favor of an external one — the ingested sources apparently never
+captured this specific mechanical detail at the level of depth needed to
+answer this question.
+
+**Two distinct problems, logged separately so neither gets lost in the
+other:** (1) process — the brain must be checked FIRST for this class of
+question, not after being caught skipping it; this is a repeat of the same
+principle CLAUDE.md already states, not a new rule, so this entry is the
+first confirmed real-work instance of that instruction being followed
+imperfectly under real conditions, worth watching for a second instance
+per PATTERNS.md's two-instance rule. (2) content — the brain is
+genuinely incomplete on Claude Code's own skill-file structure, despite
+having two INGESTED sources that are topically adjacent. This should be
+surfaced as a real candidate for a proper INGEST.md-governed ingestion
+(the actual docs.claude.com Agent Skills page, or equivalent primary
+source) — validated and ingested through the normal protocol, not
+hand-edited into SYSTEM_BRAIN/ directly (a guarded path per
+ingest-guard.sh), and not done casually inside this entry.
+
 ## SDO-019 - 2026-07-02 - OPERATING_CONTRACT.md Rule 10 added (token/context-cost awareness); sync-status skill built as its first applied instance
 User pushed directly, more than once this session, on token/context cost:
 whether resume's manual cross-check was worth its expense, whether
