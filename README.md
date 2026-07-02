@@ -83,7 +83,8 @@ SYSTEM_DESIGN_OS/
 │       └── BRAIN/           (same shape as SYSTEM_BRAIN/, see section 3.2)
 │
 └── WORKSPACE/               (everything governing the system itself — see section 3.1)
-    └── ARTIFACTS/           (generated human-facing outputs — see section 3.1)
+    ├── ARTIFACTS/           (generated human-facing outputs — see section 3.1)
+    └── EVOLUTION_LOG_ARCHIVE/  (rotated-out log history — see section 3.1)
 ```
 
 ### 3.1 — Every file in WORKSPACE/, what it actually does
@@ -231,7 +232,12 @@ SYSTEM_DESIGN_OS/
   guard block on a believed-legitimate write is the same "never
   silently resolve, surface and require explicit resolution" shape,
   applied to ingest-guard.sh (see section 5's hooks entry for the full
-  mechanism); and an ID-linking rule (SDO-001) —
+  mechanism); a log-rotation pattern (SDO-013) — proven after the fact,
+  not designed ahead of need, since EVOLUTION_LOG.md's trigger (a Read
+  call truncating mid-file) had already fired: rotate via a purely
+  mechanical, hash-verified line split (never chronological or
+  content-based), archived chunks are relocated verbatim, never
+  re-sorted; and an ID-linking rule (SDO-001) —
   every ID (system-level SDO-XXX or a domain's own scoped prefix) is a
   permanent key, never edited after the fact; a new ID is minted only
   on a real state change (a Department moving, splitting, or merging),
@@ -298,7 +304,18 @@ SYSTEM_DESIGN_OS/
   afterward — including the system's own mistakes and their
   corrections, left visible rather than edited away, because rewriting
   history to look cleaner than it was is itself a form of the
-  overclaiming this whole system exists to prevent.
+  overclaiming this whole system exists to prevent. Rotated once
+  (SDO-013) after genuinely exceeding a single safe read — older
+  history (2026-06-26 through 2026-06-28) now lives in
+  WORKSPACE/EVOLUTION_LOG_ARCHIVE/2026-06.md, moved there via a purely
+  mechanical, hash-verified split (RULES.md documents the proven
+  pattern). This file keeps CC-151 (2026-07-01) forward.
+
+- **WORKSPACE/EVOLUTION_LOG_ARCHIVE/** — rotated-out history from
+  EVOLUTION_LOG.md, one dated file per rotation. Each archive file states
+  plainly that it's an unmodified relocation, not re-sorted — the
+  original ordering wasn't always strictly chronological, and re-sorting
+  would be a content judgment rather than a mechanical move.
 
 - **STATUS.md** — a current-state snapshot, explicitly distinct from
   the log above: what's actually built and verified right now, what's

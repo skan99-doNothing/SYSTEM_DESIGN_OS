@@ -79,6 +79,38 @@ files, or retrieval genuinely feeling slow in practice — not a
 calendar schedule. A future audit check could eventually count files
 per brain mechanically rather than requiring manual judgment.
 
+## EVOLUTION_LOG.md rotation — proven pattern (SDO-013)
+
+Unlike the domain-graduation and conflict-preservation patterns below
+(documented ahead of a real need), this one is written up AFTER being
+proven for real: EVOLUTION_LOG.md's trigger had already fired (a Read
+call truncated mid-file) before the rotation happened, not projected.
+
+**Concrete trigger:** a single Read call against the file gets truncated,
+or the file's line count approaches that point in practice — re-check
+against the actual tool's cap at the time rather than trusting a fixed
+number to stay accurate forever.
+
+**Method, once triggered:** a purely mechanical line-count split, never a
+chronological or content-based one. Pick a clean entry boundary (a blank
+line immediately before a full `## ` header) near the older end of the
+file — the exact line doesn't need to mean anything, it just needs to be
+a clean boundary. Before writing anything: verify the original file's
+hash matches the hash of (kept-content + archived-content) reconstructed
+in that order — this proves zero content was lost, duplicated, or
+reordered, independent of trusting the split logic by inspection alone.
+Move the archived chunk verbatim into WORKSPACE/EVOLUTION_LOG_ARCHIVE/
+[range].md, add a short header there stating it's an unmodified
+relocation (not re-sorted — the original file's ordering was not always
+strictly chronological, and re-sorting would be a content judgment, not
+a mechanical relocation), and add a short permanent pointer note (not a
+dated log entry) near the top of the live file.
+
+**Why this is safe to do without re-litigating the split's meaning:** the
+verification is mechanical (hash equality), not a judgment call about
+"is this the right cutoff" — any clean boundary works, since nothing
+inside either resulting file is edited, reordered, or interpreted.
+
 ## Domain graduation — when a domain needs its own git repository
 
 Knowledge isolation (separate RAW/ and BRAIN/ per domain, enforced by

@@ -148,10 +148,14 @@ of 10" until caught by post-session completeness check, CC-150).
 
 ### 4d. Check: duplicate ID numbers
 
-Scan EVOLUTION_LOG.md for any ID number (SDO-XXX going forward, or a
-historical CC-XXX entry) that appears as a header more than once with
-genuinely different content. Flag any found as MECHANICAL — a real
-collision requiring one entry to be renumbered.
+Scan EVOLUTION_LOG.md AND every file under WORKSPACE/EVOLUTION_LOG_ARCHIVE/
+(added SDO-013, once the log was rotated) for any ID number (SDO-XXX going
+forward, or a historical CC-XXX entry) that appears as a header more than
+once with genuinely different content — across BOTH the live file and any
+archive, not just the live one, since a reused historical ID would
+otherwise go undetected once rotated out of the file being scanned. Flag
+any found as MECHANICAL — a real collision requiring one entry to be
+renumbered.
 
 This is the mechanical backstop for OPERATING_CONTRACT.md Rule 9's
 grep-before-assigning check — the same rule alone only works if it's
