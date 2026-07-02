@@ -38,6 +38,20 @@ the same no-overclaim standard INGEST.md already requires for
 ingesting a source, applied here to answering FROM what's already
 ingested.
 
+## Starting fresh (machine restart, session-limit reset, new chat)
+
+Say "resume" (or /resume) — reads WORKSPACE/STATUS.md's baton, then
+EVOLUTION_LOG.md's newest entries, cross-checks git log, states back
+what's done/open/unstarted before proceeding. Cheap — a few file reads,
+not a full audit.
+
+## Mid-session, if uncertainty is ahead (session limit, unstable connection)
+
+Say "checkpoint" — forces an immediate, minimal write-commit-push of
+real progress. On-demand backstop to the ~15-min judgment rule in
+OPERATING_CONTRACT.md Rule 9 (SDO-015: that rule is known-soft and not
+yet mechanically enforced — don't rely on it alone).
+
 ## Ending a session
 
 Say "chalo" — it runs audit first, then refreshes STATUS.md, confirms
