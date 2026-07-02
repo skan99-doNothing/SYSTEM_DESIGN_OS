@@ -4,6 +4,39 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-026 - 2026-07-02 - ingest-validate's founding rationale backfilled, honestly labeled as a backfill — closes a traceability gap found during a direct verification pass, not a functionality bug
+User asked for a full evidence-based traceback of why audit,
+ingest-validate, and INGEST.md were built, then required personal
+(not delegated) verification of each claim before accepting it. 4 of 5
+checked out with exact, verbatim matches to real log entries (audit's
+origin: CC-066/068; INGEST.md's origin: the real "9 pages vs 21 pages"
+incident, line 310; dialogue-ingestion: Rule 9's VPS-crash story,
+already read in full earlier this same session; brain folder structure:
+CC-141's "confirmed genuinely sourced from LLM Wiki, word-for-word, not
+invented").
+
+**ingest-validate did not check out at the same standard.** Its
+individual referenced entries (CC-100, CC-105, CC-106) are all real —
+confirmed directly — but no single entry states its founding rationale
+explicitly; the "why this exists, distinct from audit/INGEST.md" framing
+was a synthesis across scattered entries, not a verbatim quote like the
+other four. Git history confirms the skill file itself was first created
+at its current path in CC-105 ("Consolidate ingest-validate from a
+command into a skill"), meaning an earlier `.claude/commands/` version
+existed with no equally clear founding record.
+
+**Fix, scoped precisely to the actual gap (not a functionality change —
+the skill already worked correctly and was already clearly described in
+its own frontmatter):** added a "Why this exists" section directly to
+`.claude/skills/ingest-validate/SKILL.md`, explicitly labeled as
+"backfilled SDO-026 — no clean founding quote existed until now" rather
+than silently inserted as if it had always been there — silently
+back-dating it would itself be the exact kind of overclaim this
+verification pass exists to catch. States the real distinction: INGEST.md
+governs HOW to verify once ingestion is decided; ingest-validate answers
+WHETHER it's worth the effort first, distinct from audit (checks already-
+ingested claims against reality, not a not-yet-ingested candidate).
+
 ## SDO-025 - 2026-07-02 - INDEPENDENT_REVIEW.md gained v3: four new PIL entries folded in from tonight's real work pass (SDO-015 through SDO-024), same precedent v2 already set
 User asked directly whether the independent-review prompt had been
 upgraded with tonight's learnings — it had not. This was a real, live

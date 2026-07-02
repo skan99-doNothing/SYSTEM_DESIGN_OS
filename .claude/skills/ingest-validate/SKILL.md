@@ -20,6 +20,21 @@ This is not a substitute for INGEST.md. If the user decides to
 proceed, follow INGEST.md from Step 0 in full. This skill only
 answers the prior question: is this worth the effort?
 
+## Why this exists (backfilled SDO-026 — no clean founding quote existed until now)
+
+Built as a `.claude/commands/` file before CC-100 (2026-06-28), then
+consolidated into a proper skill at CC-105. Its distinct reason for
+existing, reconstructed from CC-100/105/106 rather than one clean
+original quote: `INGEST.md` governs HOW to verify a source once
+ingestion is already decided — it has no step for deciding WHETHER to
+bother in the first place, and running its full proof-of-read protocol
+on a source that turns out to be redundant or low-value wastes the
+same verification effort `INGEST.md` exists to make rigorous. This
+skill is the gate in front of that protocol, not a replacement for
+any part of it, and not overlapping with `audit` (which checks the
+system against its own already-ingested claims, not a not-yet-ingested
+candidate).
+
 ## When to run
 
 - User says "ingest-validate," "should I ingest this," or "is this
