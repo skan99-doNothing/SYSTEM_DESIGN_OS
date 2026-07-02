@@ -1,6 +1,6 @@
 # Synthesis: How the Three Pillars Connect
 
-**Sources:** LLM Wiki.md, ICM paper, claude-os-guide.pdf, anatomy.jpg, autonomous-ai-growth-engine.md
+**Sources:** LLM Wiki.md, ICM paper, claude-os-guide.pdf, anatomy.jpg, autonomous-ai-growth-engine.md, agent-skills-docs.md
 **Cross-reference:** FRAMEWORK.md
 
 ## The connective layer

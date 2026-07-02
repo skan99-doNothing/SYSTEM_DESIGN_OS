@@ -4,6 +4,77 @@ Append-only. One entry per dated event. Format: `## [date] — what happened`
 
 ---
 
+## SDO-022 - 2026-07-02 - agent-skills-docs.md formally INGESTED (real Step 6 write, guard override used for the first genuine time); SUGGESTION RECORD produced for audit's real blind spot, NOT applied
+Closes SDO-020's content gap for real, through the actual protocol —
+not a hand-edit. Fetched the primary source (code.claude.com/docs/en/skills,
+via WebFetch, redirected from docs.claude.com/en/docs/claude-code/skills),
+ran it through INGEST.md Steps 1-6: verification artifacts produced from a
+live fetch in this turn (not recalled or assumed), ingestion record written
+to WORKSPACE/SYSTEM_BRAIN/sources/agent-skills-docs.md (Status: INGESTED,
+5 verification artifacts at confidence 1.0, one explicit PARTIAL-on-depth
+note for sections beyond the triggering question), concept page
+claude-md-and-skills-pattern.md extended (not overwritten) with the actual
+SKILL.md-per-folder requirement and the Agent Skills open-standard fact,
+index.md and overview.md source counts/lists updated to stay in sync
+(6 sources, 6 index rows, confirmed via direct count).
+
+**This was the first genuine, real-world use of ingest-guard.sh's override
+mechanism (built SDO-012, never exercised for a real write until now).**
+Per its own protocol: this justification entry was written to disk FIRST
+(reference OVERRIDE-SDO-021-AGENT-SKILLS-INGEST, in SDO-021 above), then
+a matching .claude/.guard-override.json was created immediately before
+each guarded write, consumed (single-use, confirmed via direct file-
+existence check after each write) and re-created fresh for the next
+guarded operation. Three separate guarded writes were needed (raw source
+save, ingestion record + concept/index/overview batch, suggestion-record
+append) since the override is genuinely single-use, not a session-wide
+bypass — each was justified by the same already-logged reference, not a
+new fabricated one each time.
+
+**User pushed back mid-task, correctly, before this ingestion pass was
+even finished:** raised that this could not be a one-time manual fix —
+if closing this gap implies the system's own design/architecture (i.e.
+audit's checks) should change, that is altering the DNA, and doing so
+unilaterally would make the brain's "ingested knowledge" claim meaningless
+if it doesn't actually drive real verification improvements through a
+real, human-approved channel. This is a direct, correct invocation of
+INGEST.md Step 7, applied at the moment it was actually needed rather
+than as an afterthought:
+
+**Step 7 SUGGESTION RECORD produced (status PROPOSED, appended to
+claude-md-and-skills-pattern.md, NOT applied to audit's actual skill
+file):** a new candidate audit check (1e) — flag any concept/synthesis
+page describing a Claude-Code-specific mechanism where EVERY cited source
+is informal/third-party with no official Anthropic documentation, as
+JUDGMENT-REQUIRED. This is the real, generalizable fix: audit's existing
+1c check (concept page vs. its own ingestion record) could not have
+caught this, because the record and the concept page agreed with each
+other — both were simply thin relative to ground truth because the
+underlying sources never went deeper. The suggestion record stays
+PROPOSED until explicitly reviewed and approved — this entry does not
+constitute approval.
+
+## SDO-021 - 2026-07-02 - OVERRIDE JUSTIFICATION: real INGEST.md Step 6 write into SYSTEM_SOURCES/ and SYSTEM_BRAIN/ closing SDO-020's content gap — the Agent Skills open standard, fetched from primary source (code.claude.com/docs/en/skills), formally ingested
+Direct continuation of SDO-020: that entry found the brain's coverage of
+.claude/skills/ rested entirely on two informal, third-party sources
+(a guide PDF and an Instagram infographic by the same non-Anthropic
+author) with no primary/official corroboration, and specifically lacked
+the SKILL.md-per-folder requirement and the Agent Skills open-standard
+fact. This entry is the justification, logged first per ingest-guard.sh's
+own override protocol, for the real Write/Bash operations that follow:
+fetching the actual Claude Code docs (code.claude.com/docs/en/skills,
+redirected from docs.claude.com/en/docs/claude-code/skills) via WebFetch,
+running it through INGEST.md's real protocol (Steps 1-6), and writing the
+resulting raw source + ingestion record + concept-page extension into the
+guarded WORKSPACE/SYSTEM_SOURCES/ and WORKSPACE/SYSTEM_BRAIN/ paths.
+
+Reference string for the override file to match: OVERRIDE-SDO-021-AGENT-SKILLS-INGEST
+
+This write is believed legitimate: it is a real, protocol-following
+ingestion (not a bypass), closing a real, user-identified content gap,
+with primary-source verification artifacts (verbatim extracts confirmed
+via a live WebFetch call in this turn) rather than secondary paraphrase.
+
 ## SDO-020 - 2026-07-02 - Real miss: answered a knowledge question from an external agent before checking SYSTEM_BRAIN, as CLAUDE.md's own instruction requires. Brain checked afterward — genuinely thin on the question asked.
 User asked whether the `<skill-name>/SKILL.md` folder structure is the right,
 agent-agnostic naming convention. Instead of checking

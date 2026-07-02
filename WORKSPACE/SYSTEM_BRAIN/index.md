@@ -17,6 +17,7 @@ Pages summarizing what each ingested source contributed.
 | [claude-os-guide.md](sources/claude-os-guide.md) | CLAUDE/OS guide (8 pages, Singhaniya 2026); full .claude/ folder structure with code examples for CLAUDE.md, .mcp.json, hooks/, skills, agents, rules | INGESTED |
 | [anatomy-screenshot.md](sources/anatomy-screenshot.md) | anatomy.jpg Instagram reference card; complete .claude/ file-by-file one-liners; same structure as claude-os-guide but condensed | INGESTED |
 | [autonomous-ai-growth-engine.md](sources/autonomous-ai-growth-engine.md) | 21-agent autonomous growth system architecture; 13-table context DB, 7-step agent lifecycle, 7-check Verifier with weights, Eval Engine, Growth OS director pattern, conflict preservation, confidence scoring (0-1) | INGESTED |
+| [agent-skills-docs.md](sources/agent-skills-docs.md) | Official Claude Code Skills docs (primary source); SKILL.md-per-folder is the required, mandatory structure; confirms Claude Code skills follow the Agent Skills (agentskills.io) open standard | INGESTED |
 
 ---
 
@@ -59,4 +60,4 @@ Insights derived from live use rather than from any document.
 
 ## Last updated
 
-2026-06-28 — context/ renamed back to synthesis/ (restoring source-accurate LLM Wiki vocabulary), conversational.md moved to new dialogue/ folder (CC-141); prior rename CC-063 was an anomaly caught by CC-138/139 provenance audit
+2026-07-02 (SDO-021) — agent-skills-docs.md ingested (primary source, closing SDO-020's identified gap on SKILL.md/folder structure); prior update: 2026-06-28 — context/ renamed back to synthesis/ (restoring source-accurate LLM Wiki vocabulary), conversational.md moved to new dialogue/ folder (CC-141); prior rename CC-063 was an anomaly caught by CC-138/139 provenance audit
